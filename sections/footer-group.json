@@ -44,20 +44,14 @@
       "settings": {
         "color_scheme": "scheme-1",
         "social_label": "Follow Us",
-        "logo_image": "shopify://shop_images/logo-kerala.png",
         "logo_alt": "Kerala Ayurveda",
         "tagline": "Some Formulas Don't Need Improving.\nThis Is One Of Them.",
         "padding_top": 80,
         "padding_bottom": 80,
-        "facebook_icon": "shopify://shop_images/Icon_FB.png",
         "facebook_link": "https://www.facebook.com/keralaayurvedaltd/",
-        "instagram_icon": "shopify://shop_images/Icon_Instagram.png",
         "instagram_link": "https://www.instagram.com/keralaayurvedaltd/?hl=en",
-        "youtube_icon": "shopify://shop_images/Icon_YT.png",
         "youtube_link": "https://www.youtube.com/@KeralaAyurvedalimited",
-        "linkedin_icon": "shopify://shop_images/Icon_LinkedIn.png",
         "linkedin_link": "https://in.linkedin.com/company/kerala-ayurveda",
-        "x_icon": "shopify://shop_images/Icon_X.png",
         "x_link": "https://keralaayurveda.us/?srsltid=AfmBOoq1pl-KFY8kfAAEx7cME6gS0YGCcYL8QLFI_sImIelvlr1iX5Jj"
       }
     }
