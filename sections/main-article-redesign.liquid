@@ -10,7 +10,7 @@
 {%- render 'custom-article-font' -%}
 
 {%- liquid
-  assign category_label = article.metafields.custom.category_label | default: article.tags.first
+  assign category_label = article.metafields.custom.hero_badge.value | default: article.metafields.custom.hero_badge | default: article.metafields.custom.category_label | default: article.tags.first
   assign topic = article.metafields.custom.topic.value
   assign topic_title = topic.title | default: category_label
   assign topic_tag = topic.article_filter_tag | default: category_label | handleize
@@ -100,24 +100,31 @@
         {%- render 'ka-article-faqs', article: article -%}
 
         {%- comment -%} Author card {%- endcomment -%}
-        {%- if author_profile -%}
-          {%- render 'ka-author-reviewer-card',
-            profile: author_profile,
-            role_label: 'Written by',
-            fallback_name: article.author
-          -%}
-        {%- else -%}
-          {%- comment -%} Fallback: show basic author info from article.author {%- endcomment -%}
-          {%- if article.author != blank -%}
-            <section class="ka-article-author-card" id="author">
-              <div class="ka-article-avatar" aria-hidden="true">
-                {{ article.author | split: ' ' | first | slice: 0 | upcase }}{{ article.author | split: ' ' | last | slice: 0 | upcase }}
-              </div>
-              <div>
-                <p class="ka-blog-eyebrow">Written by</p>
-                <h2>{{ article.author }}</h2>
-              </div>
-            </section>
+        {%- assign show_author = true -%}
+        {%- assign author_name_str = author_profile.name | default: article.author -%}
+        {%- if author_name_str contains 'Editorial Team' or author_name_str contains 'Editorial' -%}
+          {%- assign show_author = false -%}
+        {%- endif -%}
+        {%- if show_author -%}
+          {%- if author_profile -%}
+            {%- render 'ka-author-reviewer-card',
+              profile: author_profile,
+              role_label: 'Written by',
+              fallback_name: article.author
+            -%}
+          {%- else -%}
+            {%- comment -%} Fallback: show basic author info from article.author {%- endcomment -%}
+            {%- if article.author != blank -%}
+              <section class="ka-article-author-card" id="author">
+                <div class="ka-article-avatar" aria-hidden="true">
+                  {{ article.author | split: ' ' | first | slice: 0 | upcase }}{{ article.author | split: ' ' | last | slice: 0 | upcase }}
+                </div>
+                <div>
+                  <p class="ka-blog-eyebrow">Written by</p>
+                  <h2>{{ article.author }}</h2>
+                </div>
+              </section>
+            {%- endif -%}
           {%- endif -%}
         {%- endif -%}
 
@@ -127,6 +134,19 @@
             profile: reviewer_profile,
             role_label: 'Reviewed by'
           -%}
+        {%- else -%}
+          {%- assign review_label = article.metafields.custom.review_label.value | default: article.metafields.custom.review_label -%}
+          {%- if review_label != blank -%}
+            <section class="ka-article-author-card" id="reviewer">
+              <div class="ka-article-avatar" aria-hidden="true">
+                RV
+              </div>
+              <div>
+                <p class="ka-blog-eyebrow">Reviewed by</p>
+                <h2>{{ review_label | replace: 'Reviewed by ', '' | replace: 'Reviewed by', '' | strip }}</h2>
+              </div>
+            </section>
+          {%- endif -%}
         {%- endif -%}
 
         {%- comment -%} Related articles {%- endcomment -%}

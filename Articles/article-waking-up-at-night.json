@@ -1,0 +1,92 @@
+{
+  "handle": "waking-up-at-night",
+  "title": "Waking up in the middle of the night",
+  "hindi_title": "रात में बार-बार जागना",
+  "excerpt": "You fall asleep fine, then snap awake at 2 or 3 in the morning and lie there watching the ceiling. Ayurveda has a calm, practical way of understanding this broken sleep and gently mending it.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "waking-up-at-night.webp",
+  "at_a_glance": [
+    "Waking at 2 to 3am is often vata restlessness meeting a busy mind and a late, heavy dinner.",
+    "The oldest fixes are the plainest: eat lighter and earlier, dim the lights, and keep steady sleep times.",
+    "If you wake, do not reach for the phone; keep it dark, breathe slow, and let sleep return on its own."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "the 3am wake-up, in plain terms",
+      "paragraphs": [
+        "Many people sleep easily but wake in the small hours and cannot drop back off. The mind switches on, you check the time, and the harder you try the more awake you feel. In Ayurveda, sleep is called nidra, and it is treated as one of the three pillars that hold up the body, alongside food and balanced energy (Caraka Samhita, Sutrasthana, the chapter on the three supports of life). When nidra comes at the right time and stays whole through the night, the body repairs and the mind settles. When it breaks, you feel it all the next day.",
+        "Ayurveda explains broken sleep mainly through two of the body's energies, or doshas: vata and pitta. Vata is the light, mobile, airy quality, and when it rises it makes the mind restless and the sleep shallow and easily disturbed (Caraka Samhita, Sutrasthana, on the natures of the doshas). Pitta is the hot, sharp quality tied to digestion and the body clock. The deep middle of the night is a naturally pitta-influenced window, which is why a heavy late dinner or a churning mind so often surfaces around 2 or 3am."
+      ],
+      "pullQuote": "When nidra comes at the right time and stays whole through the night, the body repairs and the mind settles."
+    },
+    {
+      "heading": "why the night breaks: late food, light, and a busy mind",
+      "paragraphs": [
+        "The single most common disturbance Ayurveda points to is eating too late or too heavily. Digestion needs the early evening; food eaten close to bedtime sits undigested, the digestive fire labours through the night, and that internal restlessness pushes you awake (Ashtanga Hridaya, Sutrasthana, on daily and nightly regimen). A light, early dinner is one of the oldest and plainest sleep remedies in the texts.",
+        "Bright light late at night is the modern version of an old problem. The classical routine, the dinacharya, asks us to wind down as darkness falls and keep the last part of the evening calm and dim (Ashtanga Hridaya, Sutrasthana, on the regimen of the day). Screens held close to the eyes do the opposite: they keep vata and the mind stimulated when both should be quieting. Worry works the same way. An agitated mind aggravates vata, and aggravated vata thins out sleep (Caraka Samhita, Sutrasthana, on sleep). This is why the wake-up so often comes with a racing head rather than a restless body."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "gentle everyday habits to deepen the night",
+      "paragraphs": [
+        "The Ayurvedic approach is not a single pill but a set of small, repeatable habits that calm vata and let the night stay whole. Eat your last meal lighter and earlier, ideally a couple of hours before bed, so digestion is finished before you lie down (Ashtanga Hridaya, Sutrasthana). Keep your sleep and waking times steady, because a regular rhythm is itself medicine in the classical routine.",
+        "The texts also praise simple comforts before bed: warm, oily, grounding foods earlier in the evening, a little warm milk, and a calm, dim, predictable wind-down (Caraka Samhita, Sutrasthana, on what brings sleep). Warm oil massage of the head and feet, abhyanga, is repeatedly recommended to settle vata and invite deeper sleep (Ashtanga Hridaya, Sutrasthana, on the day regimen). And if you do wake at 3am, the kindest thing is not to fight it or reach for the phone: keep the light off, breathe slowly, and let the body drift back rather than forcing it."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "Occasional broken sleep is common and usually settles with gentler evenings. But see a doctor or a qualified vaidya if the waking is frequent and persistent, if you are exhausted in the day no matter how long you lie down, or if it comes with low mood, anxiety, chest discomfort, breathlessness, loud snoring with gasping, or new pain. Sudden severe sleeplessness, sleep that worsens steadily, or waking that disrupts your work and relationships also deserves a proper assessment. This article is general information drawn from the classical texts, not a diagnosis or a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "finish dinner earlier",
+      "description": "Aim to eat your last meal a couple of hours before bed, and keep it lighter than lunch. A finished digestion is one of the classical texts' simplest sleep aids."
+    },
+    {
+      "title": "dim the last hour",
+      "description": "Lower the lights and put screens away for the final stretch of the evening, the way the daily regimen asks us to wind down as darkness falls."
+    },
+    {
+      "title": "warm oil on head and feet",
+      "description": "A few minutes of gentle warm-oil massage on the scalp and soles before bed settles vata and invites deeper, less broken sleep."
+    },
+    {
+      "title": "if you wake, stay dark",
+      "description": "Do not check the time or reach for the phone. Keep the room dark, breathe slowly and evenly, and let the body drift back instead of forcing it."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "nidra.",
+      "definition": "Sleep, counted in Ayurveda as one of the three pillars of health alongside food and balanced energy."
+    },
+    {
+      "term": "vata.",
+      "definition": "The light, mobile, airy dosha; when raised it makes the mind restless and sleep shallow and easily disturbed."
+    },
+    {
+      "term": "pitta.",
+      "definition": "The hot, sharp dosha tied to digestion and the body's clock; influences the deep middle of the night."
+    },
+    {
+      "term": "dinacharya.",
+      "definition": "The classical daily and nightly routine, including winding down calmly as darkness falls."
+    },
+    {
+      "term": "abhyanga.",
+      "definition": "Warm-oil self-massage, recommended to calm vata and encourage sound sleep."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana (on sleep, nidra, and the three supports of life) · Ashtanga Hridaya, Sutrasthana (on the daily and nightly regimen, dinacharya)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

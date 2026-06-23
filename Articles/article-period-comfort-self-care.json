@@ -1,0 +1,78 @@
+{
+  "handle": "period-comfort-self-care",
+  "title": "Period comfort and self-care",
+  "hindi_title": "मासिक धर्म में आराम",
+  "excerpt": "A calm, practical guide to how Ayurveda views the monthly cycle, with simple food, rest, and routine habits the classical texts suggest for those uncomfortable days.",
+  "badge": "Feature",
+  "read_time": "5 min read",
+  "image": "period-comfort-self-care.webp",
+  "at_a_glance": [
+    "Ayurveda treats period days as a time to ease off and rest, not push through.",
+    "Cramping is linked to disturbed downward air energy (apana vata), calmed by warmth and rest.",
+    "Favor warm, light, freshly cooked food and quiet, unhurried sleep."
+  ],
+  "has_agni": false,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "what your body is doing",
+      "paragraphs": [
+        "If you searched for period pain today, you already know how those few days can feel. The dull ache low in the belly, the heaviness, the tiredness, the wish that the world would just slow down for a while. You are not making it up, and you are not weak for needing rest. Ayurveda has spoken about these days for a very long time, and its main message is gentle: this is a time to ease off, not to push through.",
+        "First, a reassuring word about what is normal. The classical texts describe the monthly flow (rajas or artava) in plain, almost comforting detail. The Ashtanga Hridaya notes that the flow comes month after month and usually lasts about three days, beginning in the early teens and easing by around fifty. The Charaka Samhita describes a healthy cycle as one that is roughly monthly, not slimy, free of burning and sharp pain, lasting about five nights, and neither very heavy nor very scanty. These are not tests you must pass, just the tradition's way of saying that a range of normal exists.",
+        "So what does Ayurveda see behind the discomfort? In simple terms, the downward, outward movement in the body is governed by a kind of air energy (apana vata). When this gentle downward flow is smooth, the days pass more easily. When it gets disturbed, by too much rushing, too little sleep, cold, irregular meals, or stress, the texts suggest it can become unsettled, and that is often when cramping and unease show up. The classical advice, then, is less about doing more and more about calming that movement through rest and warmth."
+      ],
+      "pullQuote": "this is a time to ease off, not to push through"
+    },
+    {
+      "heading": "what helps",
+      "paragraphs": [
+        "Here are a few everyday habits the tradition suggests, offered as supportive care, not as cures. The Ashtanga Hridaya advises that during these days a woman eat only a little light, easily digested food, mentioning simple things like milk and barley. In practice today that might mean warm, soft, freshly cooked meals: khichdi, soft rice, dal, a little ghee, warm milk, rather than cold, heavy, or leftover food. Warm, simple food tends to sit more easily when the body is already busy.",
+        "Rest is treated as real care here. Both the Ashtanga Hridaya and the Sushruta Samhita describe these days as a time to step back from strain. The Sushruta Samhita lists things to ease away from during the flow, including heavy physical exertion, daytime sleep, and pushing the body hard, and frames this as protecting the body from vata-type disturbance. You can borrow the spirit of this without the literal old customs: lighten your load, say no to the optional, and let yourself lie down when you need to.",
+        "For warmth and calm, simple comforts help. A warm cloth or bottle held against the lower belly, an early and unhurried night's sleep, and a few minutes of slow, quiet breathing can all settle that restless downward energy. The texts repeatedly link calmness of mind with ease in the body during these days, suggesting good, quiet thoughts and a slower pace. None of this is dramatic, and that is the point: gentleness is the approach."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. This is general wellbeing information drawn from tradition, not a substitute for medical care. If your pain is severe, if bleeding is very heavy or very irregular, if you feel faint, or if something simply feels wrong or keeps getting worse, please see a doctor or a qualified vaidya. Listening to your body is not over-reacting, it is wisdom."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Eat warm and light",
+      "description": "Choose warm, soft, freshly cooked meals like khichdi, soft rice, dal, ghee, or warm milk over cold, heavy, or leftover food."
+    },
+    {
+      "title": "Make rest real care",
+      "description": "Lighten your load, say no to the optional, and let yourself lie down when you need to."
+    },
+    {
+      "title": "Add gentle warmth",
+      "description": "Hold a warm cloth or bottle against the lower belly to settle that restless downward energy."
+    },
+    {
+      "title": "Sleep early and quiet",
+      "description": "Take an early, unhurried night's sleep and a few minutes of slow, quiet breathing."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "apana vata.",
+      "definition": "The downward, outward air energy in the body; cramping shows up when it is disturbed."
+    },
+    {
+      "term": "rajas / artava.",
+      "definition": "The classical terms for the monthly menstrual flow."
+    },
+    {
+      "term": "vaidya.",
+      "definition": "A qualified practitioner of Ayurvedic medicine."
+    }
+  ],
+  "sources": "Ashtanga Hridaya, Sharirasthana, Chapter 1, verses 7 and 23-25 · Sushruta Samhita, Sharirasthana, Chapter 2, verses 17 and 25 · Charaka Samhita, Chikitsasthana, Chapter 30, verses 225-226",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

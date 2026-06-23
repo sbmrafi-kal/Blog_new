@@ -1,0 +1,86 @@
+{
+  "handle": "dry-skin-in-winter",
+  "title": "Dry skin in winter",
+  "hindi_title": "सर्दियों में रूखी त्वचा",
+  "excerpt": "Why skin turns dry, tight, and flaky in the cold months, and the simple daily habits Ayurveda suggests to keep it soft and comfortable.",
+  "badge": "Feature",
+  "read_time": "5 min read",
+  "image": "dry-skin-in-winter.webp",
+  "at_a_glance": [
+    "Winter's cold, dry, windy air raises vata, drying out the skin",
+    "Care from two sides: warm-oil massage outside, warm moist food inside",
+    "See a doctor if skin is cracked, bleeding, weeping, or not improving"
+  ],
+  "has_agni": false,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "why winter dries you out",
+      "paragraphs": [
+        "You step out of a warm bath in December, and within minutes your skin feels tight. There are flaky patches on your shins, your hands look papery, and that itch on your back will not settle. If you searched for help with winter dry skin today, you are in the right place, and the good news is that this is one of the most common and most manageable complaints of the cold season.",
+        "Ayurveda sees winter dryness as a very natural shift, not a flaw in your body. The cold, dry, and windy quality of the season increases what the tradition calls vata, the airy, drying force inside us. When vata rises, skin loses its softness and moisture in the same way a riverbed cracks when the water dries up. Older skin and naturally lean, dry-skinned people (a vata constitution, or prakriti) feel this first, which is why the same December air leaves one person glowing and another flaking.",
+        "There is a deeper idea worth knowing too. The classical texts treat skin as a downstream result of good nourishment, not a surface to be patched. The Charaka Samhita (Sutrasthana, Ch. 28) explains that after digestion food splits into an essence part that nourishes the body's tissues and a waste part, and that the health of these tissues is rooted in food itself. In plain terms, well-fed, well-digested bodies tend to show it on the skin. So winter care works best from two directions at once: what you put on the skin, and what you put inside."
+      ],
+      "pullQuote": "skin loses its softness and moisture in the same way a riverbed cracks when the water dries up"
+    },
+    {
+      "heading": "what helps",
+      "paragraphs": [
+        "On the outside, the single most loved habit is the daily warm-oil self-massage (abhyanga). Vagbhata's Ashtanga Hridaya (Sutrasthana, Ch. 2, v.8) lists abhyanga as a daily routine that eases the dryness and aging effect of vata and supports firm, healthy skin, recommending special attention to the head, ears, and feet. To try it today: warm a little plain sesame or coconut oil until it is pleasantly warm, massage it gently into the skin for a few minutes before your bath, and then bathe in lukewarm, not hot, water. Hot water and harsh soap strip the skin's own oils and make winter dryness worse.",
+        "From the inside, the tradition leans on warm, moist, slightly oily, easy-to-digest food in winter: cooked rather than raw, with healthy fats like ghee, and warming spices. Staying well hydrated with warm water through the day helps. Amla (amalaki) is a classical favourite here. The Bhavaprakasha Nighantu describes amla as a foremost age-sustaining and rejuvenating fruit that supports complexion, and modern lab work confirms it is rich in antioxidants, which is the everyday reason people add it to a winter routine as a fresh fruit, juice, or simple murabba. Think of these as supportive habits that nourish the skin from within, not as a cure for any condition.",
+        "A calming practice helps more than it seems, because vata settles with warmth, oil, rhythm, and rest. Keep regular sleep hours, avoid sitting in cold wind, and take a few minutes for slow breathing or a short oil massage of the feet at night, which many people find quietly grounding before sleep."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. If your skin is severely cracked, bleeding, intensely itchy, weeping, spreading, or simply not improving with gentle care, please see a doctor or a qualified vaidya, since conditions like eczema and other skin disorders need proper diagnosis. This article is general information drawn from tradition, not a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Warm-oil self-massage",
+      "description": "Warm plain sesame or coconut oil, massage gently into the skin for a few minutes before your bath."
+    },
+    {
+      "title": "Bathe lukewarm, not hot",
+      "description": "Use lukewarm water and avoid harsh soap, which strip the skin's own oils and worsen dryness."
+    },
+    {
+      "title": "Eat warm and moist",
+      "description": "Favour cooked food with healthy fats like ghee and warming spices; stay hydrated with warm water."
+    },
+    {
+      "title": "Add amla",
+      "description": "Take amla as a fresh fruit, juice, or simple murabba as a supportive winter habit."
+    },
+    {
+      "title": "Calm the vata",
+      "description": "Keep regular sleep, avoid cold wind, and do slow breathing or a nightly foot oil massage."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "vata.",
+      "definition": "The airy, drying force inside us that rises with cold, dry, windy weather."
+    },
+    {
+      "term": "prakriti.",
+      "definition": "A person's natural constitution; lean, dry-skinned people have a vata constitution."
+    },
+    {
+      "term": "abhyanga.",
+      "definition": "Daily warm-oil self-massage that eases vata's dryness and aging effect."
+    },
+    {
+      "term": "amalaki.",
+      "definition": "Amla; a classical age-sustaining, rejuvenating fruit that supports complexion."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana, Ch. 28, v.4 · Ashtanga Hridaya, Sutrasthana, Ch. 2, v.8 · Bhavaprakasha Nighantu, Haritakyadi Varga, amalaki entry · Indian J Clin Biochem, 2009;24(1):70-75",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

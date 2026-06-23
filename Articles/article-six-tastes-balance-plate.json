@@ -1,0 +1,110 @@
+{
+  "handle": "six-tastes-balance-plate",
+  "title": "The six tastes",
+  "hindi_title": "षड्रस",
+  "excerpt": "A simple guide to the six tastes Ayurveda recognizes, and how including all of them can make an everyday meal feel more complete and satisfying.",
+  "badge": "Reading guide",
+  "read_time": "5 min read",
+  "image": "six-tastes-balance-plate.webp",
+  "at_a_glance": [
+    "Ayurveda counts six tastes, not four: sweet, sour, salty, pungent, bitter, astringent.",
+    "Most of us overeat the first three and skip the last three, which can leave a meal feeling incomplete.",
+    "A small presence of each taste, eaten warm and unhurried, makes everyday food more satisfying."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "the missing taste",
+      "paragraphs": [
+        "You finish a meal and somehow still feel like something was missing. Not more food exactly, just something. You reach for a sweet, or a namkeen, or a cup of chai, hunting for a taste your plate did not give you. If this happens often, you are not greedy or undisciplined. Ayurveda would say your plate was simply incomplete, and the fix is gentler than you think.",
+        "The old tradition has a quiet, practical idea here: there are six tastes, not four or five. The Caraka Samhita lays it out plainly in Sutrasthana 26.9, naming them as sweet (madhura), sour (amla), salty (lavana), pungent (katu), bitter (tikta), and astringent (kashaya). Most of us eat a lot of the first three and almost none of the last three. Pungent is the heat of chili and ginger, bitter is karela and methi leaves, astringent is that drying, puckery feel of unripe banana, beans, or a strong cup of tea."
+      ],
+      "pullQuote": "there are six tastes, not four or five"
+    },
+    {
+      "heading": "why all six matter",
+      "paragraphs": [
+        "Why does this matter beyond flavour? Ayurveda sees food as fuel for your inner digestive fire (agni). The same text, in Sutrasthana 27.3, calls properly prepared food the very life of living beings because it is the fuel that keeps that inner fire steady. When a meal leans only on sweet and salty, the tradition holds that the body keeps signalling for the tastes it did not receive, and that nudge often shows up as cravings or a vague unsatisfied feeling.",
+        "The everyday suggestion, then, is gentle variety rather than restriction. A plain Indian thali quietly does this already. Dal brings sweet and a little astringent, a squeeze of lemon or a spoon of curd brings sour, salt is salt, a chili pickle or ginger brings pungent, and a bitter sabzi like karela or a few methi leaves rounds it out. You do not need all six in large amounts. A small presence of each is the idea, so nothing is left calling for attention."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "simple habits to try",
+      "paragraphs": [
+        "A few simple habits the tradition leans on. First, eat warm and unhurried. Caraka, in Vimanasthana 1.24, describes wholesome eating as food taken warm, in proper measure, after the previous meal has digested, and not while talking or laughing, but with attention on the meal. In plain terms: sit down, put the phone away, and let the last meal finish before the next one starts.",
+        "Second, notice what actually suits you. The same chapter, in Vimanasthana 1.25, advises eating with self-awareness, observing which foods agree with you and which do not, because that personal knowledge is the real basis of healthy eating. Bitter and pungent agree more with some people than others, so add them in small amounts and watch how you feel the next morning.",
+        "Third, lean on the kitchen. Fennel (saunf) and ajwain are reviewed in modern research as traditional carminatives, plants long used after meals, and a warm glass of water can be a quieter close to dinner than another sweet. None of this is a remedy for a specific illness. It is simply the unhurried, all-tastes-present way of eating the texts describe."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. If your discomfort is severe, keeps coming back, or genuinely worries you, please see a doctor or a qualified vaidya rather than self-managing. This article is general information drawn from classical texts, not a diagnosis or a substitute for medical care, and your body always gets the final word over any old rule."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Build a balanced thali",
+      "description": "Let dal, a squeeze of lemon or curd, salt, ginger or pickle, and a bitter sabzi cover all six tastes in small amounts."
+    },
+    {
+      "title": "Eat warm and unhurried",
+      "description": "Sit down, put the phone away, and let the last meal digest before starting the next."
+    },
+    {
+      "title": "Notice what suits you",
+      "description": "Add bitter and pungent in small amounts and watch how you feel the next morning."
+    },
+    {
+      "title": "Close with the kitchen",
+      "description": "Use saunf or ajwain, or a warm glass of water, as a quieter end to a meal than another sweet."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "fennel.webp",
+      "name": "Fennel",
+      "sanskrit": "सौंफ",
+      "description": "Traditional carminative taken after meals."
+    },
+    {
+      "image": "ginger.webp",
+      "name": "Ginger",
+      "sanskrit": "अदरक",
+      "description": "Brings pungent heat to a meal."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "The inner digestive fire that food fuels and keeps steady."
+    },
+    {
+      "term": "madhura.",
+      "definition": "Sweet, one of the six tastes."
+    },
+    {
+      "term": "amla.",
+      "definition": "Sour, one of the six tastes."
+    },
+    {
+      "term": "lavana.",
+      "definition": "Salty, one of the six tastes."
+    },
+    {
+      "term": "katu.",
+      "definition": "Pungent, the heat of chili and ginger."
+    },
+    {
+      "term": "kashaya.",
+      "definition": "Astringent, the drying, puckery feel of unripe banana or strong tea."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 26.9 · Caraka Samhita, Sutrasthana 27.3 · Caraka Samhita, Vimanasthana 1.24 · Caraka Samhita, Vimanasthana 1.25 · BioMed Research International, Badgujar et al. 2014;2014:842674 · Pharmacognosy Reviews, 2012 review of Trachyspermum ammi",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

@@ -1,0 +1,117 @@
+{
+  "handle": "recurring-fever-and-weakness",
+  "title": "Recurring fever and weakness",
+  "hindi_title": "बार-बार बुखार और कमजोरी",
+  "excerpt": "In Ayurveda, fever is called jwara, and the classical texts treat it as the king of diseases. Here is the calm, grantha-rooted view of why fevers keep returning, and how to rebuild strength once one passes.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "recurring-fever-and-weakness.webp",
+  "at_a_glance": [
+    "Ayurveda calls fever jwara and treats it as the king of diseases, rooted in weak agni and undigested ama.",
+    "The classical texts advise gentle fasting and light food early, not heavy meals, so the digestive fire can recover.",
+    "Rebuild strength slowly with warm, easy food and rest; recurring or severe fever needs a doctor's evaluation."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "when the fever keeps coming back",
+      "paragraphs": [
+        "You recover from a fever, feel fine for a week, and then it returns: a heavy head, body ache, no appetite, and that hollowed-out tiredness that lingers long after the temperature settles. Many people quietly carry this pattern for months, especially after a change of season or a stretch of poor sleep and skipped meals.",
+        "Ayurveda has a single, central word for fever: jwara, which means the heat or affliction that troubles both the body and the mind at once. The classical texts give it unusual importance. Caraka calls jwara the foremost among diseases and devotes a long chapter to it (Caraka Samhita, Chikitsasthana, Jwara Chikitsa). Madhava Nidana, the great manual of diagnosis, also opens its account of diseases with jwara (Madhava Nidana, Jwara Nidana), which tells you how seriously the tradition took it."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "the ayurvedic view: weak agni and leftover ama",
+      "paragraphs": [
+        "Ayurveda does not see fever only as a number on a thermometer. It sees it as heat that has been pushed out of the digestive fire, the agni, and spread through the body. The classical explanation is that when agni is disturbed, undigested residue called ama forms, the channels get blocked, and that displaced heat surfaces as jwara (Ashtanga Hridaya, Nidanasthana, Jwara). This is why fever so often arrives with a coated tongue, a bitter mouth, and no hunger: the digestion has stalled.",
+        "This view explains the recurring pattern too. If you eat heavy food too soon, before appetite and digestion have truly returned, fresh ama keeps forming, agni stays weak, and the fever finds its way back. The texts are firm that the early days of a fever are not the time to feed the body up. Caraka prescribes langhana, gentle lightening and fasting, in the early stage, precisely so the agni can recover and burn off the ama rather than struggle with new food (Caraka Samhita, Chikitsasthana, Jwara Chikitsa).",
+        "The deep weakness that follows is its own recognised stage. After the heat clears, the body's tissues, the dhatus, have been depleted, and strength has to be rebuilt slowly with warm, light, nourishing food rather than rushed back with rich meals."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "gentle everyday habits while you recover",
+      "paragraphs": [
+        "In the first days, follow the body, not the clock: if there is no appetite, do not force food. Sip warm water through the day, which the texts favour in fever because it helps the digestive fire and keeps the channels moving. As hunger genuinely returns, start with thin rice gruel or a watery khichdi, the classical peya and yavagu, and only later move to fuller meals.",
+        "Rest is treatment, not laziness. Sleep, quiet, and warmth let the body do the rebuilding the granthas describe. Keep meals light and freshly cooked, avoid cold, heavy, oily, and leftover food while strength returns, and let appetite be your signal to add more. A little ginger, cumin, or coriander in warm water or in the cooking gently supports digestion as agni comes back. Step outdoors and resume activity slowly, a short walk before a long day, so you do not relapse into the next round of fever and fatigue."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "Fever that keeps returning needs proper medical evaluation, because the cause may be an infection or another condition that requires testing and treatment. See a doctor or a qualified vaidya promptly if the fever is high, lasts more than a few days, or keeps coming back; if there is severe weakness, breathlessness, chest pain, a stiff neck, a rash, confusion, persistent vomiting, blood in stool or urine, or unexplained weight loss; or if a child, an older person, a pregnant woman, or someone with a chronic illness is affected.",
+        "This article is general information drawn from the classical texts, not a diagnosis or a substitute for medical care. Recurring fever can have many causes, so let a qualified professional examine you and guide any treatment."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Sip warm water through the day",
+      "description": "While feverish or recovering, keep warm water by your side and sip often. The texts favour warm water in fever because it supports the digestive fire and helps keep the channels clear."
+    },
+    {
+      "title": "Let appetite lead your food",
+      "description": "Do not force meals in the early days. When hunger truly returns, begin with thin rice gruel or a watery khichdi, then move to fuller food only as your strength and appetite grow."
+    },
+    {
+      "title": "Make rest part of the cure",
+      "description": "Treat sleep, quiet, and warmth as treatment. Resume activity slowly, a short walk before a busy day, so you do not slip back into another round of fever and fatigue."
+    },
+    {
+      "title": "Add gentle digestive spices",
+      "description": "A little ginger, cumin, or coriander in warm water or in your cooking gently supports digestion as agni comes back. Keep meals light, fresh, and warm while you rebuild."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "ginger.webp",
+      "name": "Ginger",
+      "sanskrit": "अदरक",
+      "description": "Warming and digestion-kindling; a little in warm water gently supports agni as it recovers after fever."
+    },
+    {
+      "image": "cumin.webp",
+      "name": "Cumin",
+      "sanskrit": "जीरा",
+      "description": "A common digestive spice; used in light cooking to ease the return of appetite during recovery."
+    },
+    {
+      "image": "coriander.webp",
+      "name": "Coriander",
+      "sanskrit": "धनिया",
+      "description": "Cooling and settling for the stomach; supports gentle digestion as strength is rebuilt."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "Jwara.",
+      "definition": "Fever; the heat or affliction that troubles both body and mind, called the foremost of diseases in the classical texts."
+    },
+    {
+      "term": "Agni.",
+      "definition": "The digestive fire that governs digestion and metabolism; fever is seen as heat displaced from a disturbed agni."
+    },
+    {
+      "term": "Ama.",
+      "definition": "Undigested residue formed when agni is weak; it blocks the channels and underlies fever and lingering weakness."
+    },
+    {
+      "term": "Langhana.",
+      "definition": "Gentle lightening or fasting, prescribed in the early stage of fever so the digestion can recover."
+    },
+    {
+      "term": "Peya / Yavagu.",
+      "definition": "Thin medicinal rice gruels used to reintroduce food gently as appetite returns."
+    },
+    {
+      "term": "Dhatu.",
+      "definition": "The body tissues; depleted by fever, they are rebuilt slowly with light, nourishing food and rest."
+    }
+  ],
+  "sources": "Caraka Samhita, Chikitsasthana, Jwara Chikitsa (Ch. 3) · Madhava Nidana, Jwara Nidana · Ashtanga Hridaya, Nidanasthana, Jwara",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

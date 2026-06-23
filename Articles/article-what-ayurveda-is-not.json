@@ -1,0 +1,104 @@
+{
+  "handle": "what-ayurveda-is-not",
+  "title": "What Ayurveda is not",
+  "hindi_title": "आयुर्वेद क्या नहीं है",
+  "excerpt": "A plain, honest look at what Ayurveda actually is, what it is not, and how to know when a doctor or qualified vaidya is the right call.",
+  "badge": "Essay",
+  "read_time": "4 min read",
+  "image": "what-ayurveda-is-not.webp",
+  "at_a_glance": [
+    "Ayurveda is mainly a prevention-first, daily-living tradition, not a replacement for emergency or specialist care.",
+    "Its practical advice is gentle and ordinary: warm food, regular sleep, steady routine, calm breath.",
+    "It works best alongside modern medicine, with caution about unsafe products and self-medicating online."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "what it actually is",
+      "paragraphs": [
+        "Maybe you have been told that Ayurveda can fix anything, or maybe you have grown suspicious of all the big promises floating around online. Both reactions are understandable. So let us be honest and clear about what this tradition really is, what it is not, and how it fits alongside the doctor you already see.",
+        "Here is the simplest truth, and it comes straight from the source. The classical texts describe Ayurveda first as a way of keeping a well person well, and only second as a way of easing trouble in someone who is unwell. The Caraka Samhita (Sutrasthana 30.26) puts it as the maintenance of health in the healthy and the quieting of disorders in the ailing. Read in order, that tells you something important: this is mainly a daily-living, prevention-first tradition, not a replacement for emergency or specialist care.",
+        "So what does Ayurveda see when it looks at a person. Its stated aim is balance, a steady body and a steady mind. The Caraka Samhita (Sutrasthana 1.53) describes the goal as equilibrium among the body-elements, what the tradition calls dhatu-samya. To get there it looks at your individual make-up (prakriti) through three working qualities, often called vata, pitta and kapha, and at the strength of your digestion (agni). When digestion runs poorly, the tradition speaks of a kind of undigested residue (ama) that unsettles this balance. These are lenses for thinking about everyday habits, not diagnoses of disease."
+      ],
+      "pullQuote": "The most trustworthy use of this tradition is the quiet one: steady food, steady sleep, steady breath"
+    },
+    {
+      "heading": "what it asks of you",
+      "paragraphs": [
+        "Because the aim is balance through living, the practical advice is gentle and ordinary. The tradition leans on a steady daily rhythm (dinacharya) and on adjusting food and routine with the seasons (ritucharya). A peer-reviewed review in the journal Ayu (Thakkar and colleagues, 2011) describes prevention of disease to maintain health as the first and foremost aim of this holistic approach. In plain terms, that can mean eating warm, freshly cooked food, not overloading a tired stomach, sleeping and waking at regular hours, and matching what you eat to the weather.",
+        "For the mind, the same goal of steadiness is why Ayurveda and Yoga are so often paired in everyday practice. Both lean on breath and gentle movement to settle the body and quiet the mind. Something as small as a few quiet minutes of slow breathing before a meal, or a short walk after eating, sits comfortably within this tradition as a calming, everyday habit."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "the honest limits",
+      "paragraphs": [
+        "Now for the honest limits, because they matter as much as the benefits. Ayurveda is not a stand-alone substitute for modern medicine. A perspective in the Journal of Ayurveda and Integrative Medicine (Patwardhan, 2010) makes the case for integration: traditional practice working alongside modern care, drawing on the strengths of both. And not every product sold under this name is safe. A study in JAMA (Saper and colleagues, 2008) found that about one-fifth of Ayurvedic products bought online contained detectable levels of heavy metals such as lead, mercury or arsenic, which is exactly why sourcing, caution, and a qualified practitioner matter, and why self-medicating from the internet is risky."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "So treat this as general information for everyday well-being, not medical advice. If a symptom is severe, persistent, or simply worrying you, please see a doctor or a qualified vaidya rather than trying to manage it alone. The most trustworthy use of this tradition is the quiet one: steady food, steady sleep, steady breath, with modern medicine firmly in the picture when your health needs it."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Eat warm and fresh",
+      "description": "Favour warm, freshly cooked food and avoid overloading a tired stomach."
+    },
+    {
+      "title": "Keep steady hours",
+      "description": "Sleep and wake at regular times to support a steady daily rhythm."
+    },
+    {
+      "title": "Eat with the season",
+      "description": "Match what you eat to the weather as the seasons change."
+    },
+    {
+      "title": "Breathe before eating",
+      "description": "Take a few quiet minutes of slow breathing before a meal."
+    },
+    {
+      "title": "Walk after eating",
+      "description": "A short walk after eating sits comfortably within this tradition."
+    },
+    {
+      "title": "Source carefully",
+      "description": "Avoid self-medicating from the internet; seek a qualified practitioner and safe sourcing."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "prakriti.",
+      "definition": "Your individual make-up or constitution."
+    },
+    {
+      "term": "vata, pitta, kapha.",
+      "definition": "The three working qualities used to read your constitution."
+    },
+    {
+      "term": "agni.",
+      "definition": "The strength of your digestion."
+    },
+    {
+      "term": "ama.",
+      "definition": "Undigested residue that unsettles balance when digestion runs poorly."
+    },
+    {
+      "term": "dhatu-samya.",
+      "definition": "Equilibrium among the body-elements; the stated goal of balance."
+    },
+    {
+      "term": "dinacharya / ritucharya.",
+      "definition": "A steady daily rhythm, and adjusting food and routine with the seasons."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 1.53 · Caraka Samhita, Sutrasthana 30.26 · Ayu, 2011;32(4):466-471 · Journal of Ayurveda and Integrative Medicine, 2010;1(1):13-15 · JAMA, 2008;300(8):915-923",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

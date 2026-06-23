@@ -1,0 +1,91 @@
+{
+  "handle": "hair-fall",
+  "title": "Hair fall",
+  "hindi_title": "बालों का झड़ना",
+  "excerpt": "A calm, practical look at how Ayurveda supports hair and scalp health through nourishment, daily routine, and head-oiling, with simple habits you can start today.",
+  "badge": "Feature",
+  "read_time": "5 min read",
+  "image": "hair-fall.webp",
+  "at_a_glance": [
+    "Ayurveda treats hair as a downstream result of good digestion and well-formed tissue, not just a surface problem.",
+    "Gentle everyday support: scalp oiling, nourishing food like amla, and calming stress, not a promised cure.",
+    "Sudden, heavy, or patchy hair loss needs a doctor or qualified vaidya, as many causes are medical."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "how ayurveda sees hair",
+      "paragraphs": [
+        "You found a few extra strands on your pillow, more in the comb, a little more going down the shower drain. It is a worry many people quietly carry, and noticing it does not mean something is badly wrong. Hair changes with seasons, stress, diet, and age, and Ayurveda has thought about hair and scalp health for a very long time.",
+        "Here is the first idea that may surprise you. In Ayurveda, hair is not treated as a surface problem to be handled only from the outside. The Caraka Samhita (Sutrasthana, Ch. 28, v.4) describes how food, once digested, splits into a nourishing essence and a waste part, and the essence then feeds the body deeper tissues (dhatus) in sequence: the plasma, blood, muscle, fat, bone, marrow, and reproductive tissue. Scalp hair is counted among the by-products of this process. In plain terms, the tradition sees hair as a downstream result of well-formed blood and tissue, which in turn depend on good food and steady digestion (agni).",
+        "Ayurveda does not have a single modern label for hair fall, so it does not promise a cure for it. What it offers instead is a way of supporting hair and scalp health from the inside out: nourishment, a calm daily rhythm, and care of the head. When hair feels weak or thins more than usual, the classical view points upstream, to digestion, diet, sleep, and stress. Modern life brings irregular meals, poor sleep, and constant rush, which the texts associate with disturbed vata and weaker tissue nourishment. The supportive approach is gentle and everyday, not dramatic."
+      ],
+      "pullQuote": "the tradition sees hair as a downstream result of well-formed blood and tissue"
+    },
+    {
+      "heading": "what helps day to day",
+      "paragraphs": [
+        "A few habits the tradition suggests, offered as general support for hair and scalp, not as a treatment. First, oiling the head. The Ashtanga Hridaya (Sutrasthana, Ch. 2, v.8) recommends abhyanga, daily oil massage, as part of a healthy routine, and says it should be applied especially to the head, ears, and feet. The verse describes it as nourishing and calming, and helpful for restful sleep. A simple warm oil massage of the scalp a couple of times a week, left on for a while before a lukewarm wash, is a soothing place to begin.",
+        "Second, food that nourishes from within. Amla (amalaki) is described in the Bhavaprakasha Nighantu as a foremost age-sustaining, restorative (rasayana) fruit that is gentle on all three doshas. That is a traditional attribution about overall vitality, not a tested remedy for hair fall. Still, eating amla fresh, or as a simple home preparation, is an easy, time-honoured way to support general wellbeing, of which healthy hair is one outward sign.",
+        "Third, the herb bhringaraj (Eclipta alba) carries a long-standing reputation in Ayurveda as hair-supportive, and it appears often in classical hair oils. This is a traditional use passed down through practice, not a proven cure, so hold it lightly. If you want to follow the older custom, look for bhringaraj as an ingredient in plain, unbranded hair oils for your weekly scalp massage.",
+        "Fourth, calm the nervous system. Because the tradition links hair changes to aggravated vata and stress, a few minutes of slow breathing or quiet meditation each day fits naturally alongside diet and oiling. It costs nothing and supports the steady routine (dinacharya) that Ayurveda values so highly."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. If your hair fall is sudden, heavy, patchy, or comes with other symptoms, or if it simply will not settle, please see a doctor or a qualified vaidya. Many causes of hair loss are medical, including thyroid issues, nutritional gaps, and scalp conditions, and they deserve proper diagnosis. This article is general information drawn from tradition, not a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Oil your scalp",
+      "description": "A warm oil massage of the scalp a couple of times a week, left on a while before a lukewarm wash."
+    },
+    {
+      "title": "Eat amla",
+      "description": "Eating amla fresh, or as a simple home preparation, supports general wellbeing of which healthy hair is one sign."
+    },
+    {
+      "title": "Try bhringaraj oil",
+      "description": "Look for bhringaraj as an ingredient in plain, unbranded hair oils for your weekly scalp massage."
+    },
+    {
+      "title": "Calm the nervous system",
+      "description": "A few minutes of slow breathing or quiet meditation each day, alongside diet and oiling."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "Digestive fire; steady digestion that hair health depends on."
+    },
+    {
+      "term": "dhatus.",
+      "definition": "The body's deeper tissues, fed in sequence by digested food's essence."
+    },
+    {
+      "term": "vata.",
+      "definition": "The dosha the texts link to hair changes when disturbed by stress and irregular living."
+    },
+    {
+      "term": "abhyanga.",
+      "definition": "Daily oil massage, applied especially to head, ears, and feet."
+    },
+    {
+      "term": "rasayana.",
+      "definition": "A restorative, age-sustaining substance, like amla, for overall vitality."
+    },
+    {
+      "term": "dinacharya.",
+      "definition": "The steady daily routine Ayurveda values highly."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana, Ch. 28, v.4 · Ashtanga Hridaya, Sutrasthana, Ch. 2, v.8 · Bhavaprakasha Nighantu, Haritakyadi Varga, amalaki entry",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

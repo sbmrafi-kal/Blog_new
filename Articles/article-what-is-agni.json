@@ -1,0 +1,110 @@
+{
+  "handle": "what-is-agni",
+  "title": "Agni: your digestive fire",
+  "hindi_title": "अग्नि",
+  "excerpt": "A plain-language guide to agni, the digestive fire at the centre of Ayurveda, and the simple everyday habits the old texts suggest to keep it steady.",
+  "badge": "Reading guide",
+  "read_time": "5 min read",
+  "image": "what-is-agni.webp",
+  "at_a_glance": [
+    "Agni is your digestive fire: Ayurveda treats it as the engine that turns food into the body you run on.",
+    "When agni runs too low, food leaves a sticky residue called ama: heaviness, a coated tongue, and dull tiredness.",
+    "Eat warm fresh food, take your largest meal at midday, leave gaps between meals, and walk gently after eating."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "the unreliable gut",
+      "paragraphs": [
+        "You eat a normal meal and feel heavy, gassy, or just off for hours afterwards. Some days your stomach runs fast, other days nothing moves. You are not sick exactly, but your digestion feels unreliable, and you wish someone would explain it in plain terms. This is one of the most common things people search for, and Ayurveda has thought about it for a very long time."
+      ],
+      "pullQuote": "Ayurveda treats agni as the engine that turns food into the body you actually run on."
+    },
+    {
+      "heading": "what agni is",
+      "paragraphs": [
+        "At the centre of that thinking sits one idea: digestion (agni), often translated as the digestive fire. Ayurveda treats agni as the engine that turns food into the body you actually run on. The Caraka Samhita goes so far as to say that strength, complexion, nourishment, energy, and vitality (prana) all depend on the state of your agni, and that when it weakens the whole system suffers (Caraka Samhita, Chikitsasthana, Ch. 15, Grahani Chikitsa). That is why a tradition that could be about a thousand things keeps coming back to the gut.",
+        "The old texts also noticed that no two people digest the same way. The Caraka Samhita describes four broad states of agni: sharp and intense (tikshna), low and sluggish (manda), irregular and unpredictable (vishama), and steady and balanced (sama). These line up with a person's constitution (prakriti), so one friend can eat anything while another feels heavy after a small meal (Caraka Samhita, Vimanasthana, Ch. 6, Roganika Vimana). Knowing roughly which pattern sounds like you is more useful than chasing a single perfect diet."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when the fire runs low: ama",
+      "paragraphs": [
+        "When agni runs too low to fully cook a meal, the texts say the food does not finish digesting and leaves a raw, sticky residue called ama. The Ashtanga Hridaya defines ama exactly this way: when the digestive heat is too feeble, the first tissue is left unprocessed and stays in the stomach as undigested matter (Ashtanga Hridaya, Sutrasthana, Ch. 13, Doshopakramaniya). That heaviness, coating on the tongue, and dull tiredness after eating are how ama tends to show up in ordinary life."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what helps every day",
+      "paragraphs": [
+        "So what can you actually do today. Start with how you eat. The Caraka Samhita treats wholesome food as the fuel (indhana) the inner fire burns on, which is a gentle reminder to eat food that is warm, fresh, and genuinely appealing in smell and taste rather than cold and rushed (Caraka Samhita, Sutrasthana, Ch. 27, Annapanavidhi). Eating at a calm pace, sitting down, and stopping a little before completely full all support steadier digestion.",
+        "Routine matters as much as the food. The tradition leans toward eating your largest meal at midday when the fire tends to be strongest, keeping the evening meal lighter, and giving the stomach a real gap between meals instead of constant snacking. A short, unhurried walk after eating and a few slow breaths before a meal, rather than eating at your desk mid-task, are small calming practices that fit a real schedule.",
+        "For that familiar post-meal heaviness, classical nighantu (materia medica) literature describes dried ginger (shunthi) as a warming spice traditionally used to kindle weak agni and help clear ama, which is the old rationale behind taking a little ginger with food (Bhavaprakasha Nighantu, Haritakyadi Varga). Treat it as a supportive everyday habit, not a remedy, and notice how your own body responds."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. If your symptoms are severe, persistent, or worrying, for example ongoing pain, vomiting, blood, unexplained weight loss, or burning that does not settle, please see a doctor or a qualified vaidya rather than self-managing. This article is general information drawn from classical texts, not a diagnosis or a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "eat warm and unhurried",
+      "description": "Choose food that is warm, fresh, and appealing. Sit down, eat at a calm pace, and stop a little before you are completely full."
+    },
+    {
+      "title": "biggest meal at midday",
+      "description": "Eat your largest meal at noon when the fire is strongest, keep the evening meal lighter, and leave a real gap between meals instead of constant snacking."
+    },
+    {
+      "title": "walk and breathe",
+      "description": "Take a short, unhurried walk after eating, and take a few slow breaths before a meal rather than eating at your desk mid-task."
+    },
+    {
+      "title": "a little ginger with food",
+      "description": "Dried ginger is traditionally used to kindle weak agni and help clear ama. Treat it as a supportive habit, not a remedy, and notice how your body responds."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "ginger.webp",
+      "name": "Dried ginger",
+      "sanskrit": "शुण्ठी",
+      "description": "Warming spice traditionally used to kindle weak agni and clear ama."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "The digestive fire; the engine that turns food into the body you run on."
+    },
+    {
+      "term": "ama.",
+      "definition": "Raw, sticky, undigested residue left when agni is too low to fully cook a meal."
+    },
+    {
+      "term": "prakriti.",
+      "definition": "A person's constitution, which shapes how their agni behaves."
+    },
+    {
+      "term": "prana.",
+      "definition": "Vitality or life-energy, said to depend on the state of your agni."
+    },
+    {
+      "term": "tikshna / manda / vishama / sama.",
+      "definition": "The four states of agni: sharp, sluggish, irregular, and steady-balanced."
+    },
+    {
+      "term": "shunthi.",
+      "definition": "Dried ginger, a warming spice used to kindle weak agni."
+    }
+  ],
+  "sources": "Caraka Samhita, Vimanasthana, Ch. 6 (Roganika Vimana) · Caraka Samhita, Chikitsasthana, Ch. 15 (Grahani Chikitsa) · Caraka Samhita, Sutrasthana, Ch. 27 (Annapanavidhi Adhyaya) · Ashtanga Hridaya, Sutrasthana, Ch. 13 (Doshopakramaniya Adhyaya) · Bhavaprakasha Nighantu, Haritakyadi Varga",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

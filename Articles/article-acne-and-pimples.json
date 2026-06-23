@@ -1,0 +1,111 @@
+{
+  "handle": "acne-and-pimples",
+  "title": "Acne and pimples",
+  "hindi_title": "मुंहासे",
+  "excerpt": "Pimples that flare across the face in the teens and twenties have a clear place in Ayurveda: an imbalance of pitta, kapha, and the blood. Here is the classical view, with gentle everyday habits to calm the skin.",
+  "badge": "Feature",
+  "read_time": "3 min read",
+  "image": "acne-and-pimples.webp",
+  "at_a_glance": [
+    "Ayurveda calls youth-acne yauvana-pidaka, the eruptions of youth, centred on the face",
+    "It is seen as heat and congestion (pitta and kapha) settling into the blood, so care begins with cooling and cleansing",
+    "Gentle habits help most (cooling diet, on-time sleep, turmeric or neem paste, no picking), but see a doctor or vaidya if acne is severe, scarring, or cystic"
+  ],
+  "has_agni": false,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "what those pimples really are",
+      "paragraphs": [
+        "Almost everyone meets them at some point: small red bumps on the cheeks and forehead, the occasional sore one near the nose, a fresh crop right before an exam or a wedding. In the teens and twenties they can feel relentless. Ayurveda has a name for exactly this pattern. It calls them yauvana-pidaka, which translates plainly as the eruptions of youth, the pimples that come with the season of growing up.",
+        "The classical texts describe them as small eruptions that appear mainly on the face of young people. Sushruta places them among the minor conditions of the skin and links them to the time of life when the body is changing quickly (Sushruta Samhita, Nidana Sthana). Later writers like Bhavaprakasha and Madhava Nidana keep the same name and the same simple picture: youth, the face, and a vitiated state underneath the surface."
+      ],
+      "pullQuote": "Pitta brings the heat and the redness; you can feel it in a pimple that throbs and looks angry."
+    },
+    {
+      "heading": "the ayurvedic view: heat in the blood",
+      "paragraphs": [
+        "Ayurveda does not look only at the skin. It looks at what is moving underneath. Yauvana-pidaka is understood as a problem of pitta and kapha working together, carried through the rakta, the blood (Sushruta Samhita, Nidana Sthana). Pitta brings the heat and the redness; you can feel it in a pimple that throbs and looks angry. Kapha brings the thickness and the clogging, the whitehead that will not clear. When these settle into the blood and the surface tissue of the face, the small eruptions appear.",
+        "This is why classical care for the skin so often begins with cooling and cleaning the blood, what the texts call rakta prasadana. Bhavaprakasha, in its sections on skin and on simple remedies, leans on bitter and cooling plants for exactly this reason. Neem and turmeric appear again and again because they are seen as cooling, cleansing, and friendly to pitta-aggravated skin (Bhavaprakasha, Nighantu). The logic is consistent: settle the heat inside, and the surface follows.",
+        "Diet matters here in a way that any young reader will recognise. Foods that aggravate pitta, very oily, very spicy, sour, salty, and fried things, are understood to push more heat into the blood (Sushruta Samhita, Sutra Sthana). Late nights, stress, and too much sun do the same. None of this is a moral failing; it is simply the kind of fuel that feeds the pattern."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "gentle everyday habits",
+      "paragraphs": [
+        "The Ayurvedic instinct with young skin is to be gentle, not harsh. Scrubbing hard or picking at a pimple only spreads the heat and can leave a mark, which the texts note as one reason these eruptions are worth treating carefully (Madhava Nidana). A calm routine usually does more than an aggressive one.",
+        "Start from the inside. Lean towards cooling, easy-to-digest food: more vegetables, whole grains, and plenty of water, and ease off the daily fried snacks, very spicy gravies, and sugary drinks during a flare. A handful of cooling additions like coriander and fennel in your cooking sits well with the pitta-pacifying idea. Sleep on time, since late nights are a classic way to stoke pitta.",
+        "On the skin itself, the traditional helpers are simple. A thin paste of turmeric, or of neem, patted on and rinsed off gently, follows the classical cooling-and-cleansing approach (Bhavaprakasha, Nighantu). Wash the face with plain cool water rather than hot, keep oily hair off the forehead, and resist the urge to squeeze. Patience is part of the medicine; the skin of youth tends to settle as the underlying heat does."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "Most ordinary pimples calm down with gentle care and time. But see a doctor or a qualified vaidya if the acne is severe, spreading, deeply painful, or leaving scars and dark marks, if you have large cysts or nodules, if it suddenly worsens or does not improve over several weeks, or if it appears with other changes such as irregular periods or unusual hair growth, which can point to a hormonal cause that needs proper evaluation. This article is general information drawn from classical texts, not a diagnosis or a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "cool the plate during a flare",
+      "description": "For a week, swap fried and very spicy food for cooling, easy meals: more vegetables, whole grains, and water. Ayurveda links oily, spicy, sour and salty food to extra heat in the blood, the soil that pimples grow in."
+    },
+    {
+      "title": "a gentle turmeric or neem paste",
+      "description": "Mix a little turmeric (or neem) into a thin paste, pat it on the spots, leave briefly, and rinse with cool water. These are the classic cooling, cleansing plants for pitta-aggravated skin. Patch-test first and skip if it irritates."
+    },
+    {
+      "title": "do not pick",
+      "description": "Squeezing or scrubbing spreads the heat and can leave a lasting mark. Wash with plain cool water, keep oily hair off the forehead, and let the spot settle on its own."
+    },
+    {
+      "title": "sleep before the heat builds",
+      "description": "Late nights are a classic way to stoke pitta. Going to bed on time is one of the simplest things you can do for clearer skin during a breakout."
+    },
+    {
+      "title": "know when this needs a doctor",
+      "description": "Gentle care suits ordinary pimples. See a doctor or a qualified vaidya if the acne is severe, deeply painful, cystic, scarring, not improving over several weeks, or comes with irregular periods or unusual hair growth, which can point to a hormonal cause."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "coriander.webp",
+      "name": "Coriander",
+      "sanskrit": "धनिया",
+      "description": "A cooling kitchen herb that suits pitta-aggravated skin; an easy cooling addition during a flare."
+    },
+    {
+      "image": "fennel.webp",
+      "name": "Fennel",
+      "sanskrit": "सौंफ",
+      "description": "Mild and cooling, valued in Ayurveda for calming pitta; a gentle everyday helper for heated skin."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "Yauvana-pidaka.",
+      "definition": "The eruptions of youth: the classical Ayurvedic name for acne and pimples on the young face."
+    },
+    {
+      "term": "Pitta.",
+      "definition": "The fire-and-heat principle in the body; when raised it brings redness, warmth, and inflammation."
+    },
+    {
+      "term": "Kapha.",
+      "definition": "The earth-and-water principle; brings heaviness and thickness, here the clogging in a pimple."
+    },
+    {
+      "term": "Rakta.",
+      "definition": "The blood; Ayurveda sees youth-acne as heat carried in the blood, so cooling it is central."
+    },
+    {
+      "term": "Rakta prasadana.",
+      "definition": "Cleansing or settling of the blood, a traditional aim in caring for heated skin."
+    }
+  ],
+  "sources": "Sushruta Samhita, Nidana Sthana, Kshudra Roga (yauvana-pidaka / mukhadushika, eruptions of youth) · Sushruta Samhita, Sutra Sthana (pitta-aggravating diet: oily, spicy, sour, salty, fried) · Bhavaprakasha, Nighantu (cooling, blood-cleansing tikta plants: neem and turmeric) · Madhava Nidana, Kshudra Roga chapter (skin eruptions including mukhadushika)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

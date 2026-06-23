@@ -1,0 +1,96 @@
+{
+  "handle": "how-much-to-eat-portion",
+  "title": "How much should you actually eat",
+  "hindi_title": "कितना खाना चाहिए",
+  "excerpt": "Ayurveda has a precise rule for portion size, called matra, and it has nothing to do with calories. It is simpler, more personal, and surprisingly easy to follow every single day.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "how-much-to-eat-portion.webp",
+  "at_a_glance": [
+    "Fill half the stomach with solid food, one quarter with liquid, and leave one quarter empty for digestion to work properly.",
+    "Eating too much smothers the digestive fire, agni, and creates ama, the undigested residue linked to heaviness and dullness.",
+    "Slow down, eat without distraction, and use the post-meal feeling, light and comfortable, as your personal guide to the right amount."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "the meal that never quite felt right",
+      "paragraphs": [
+        "Most of us have been there: you finish lunch, push the plate away, and within the hour you feel either heavy and slow, or oddly unsatisfied and reaching for a biscuit. Rarely does a meal land in that quiet middle ground where your body simply feels at ease. Ayurveda has a word for what went wrong, and the fix is not a calorie counter or a food scale. It is a concept called matra, which means the right measure or appropriate quantity.",
+        "Modern nutrition talks about portions in grams and macros. Ayurveda talks about your stomach's own capacity. The classical texts understood, several thousand years before bariatric science, that the stomach needs physical space to do its job. Eating too much crowds out that space. Eating too little gives agni, the digestive fire, nothing meaningful to work on. The goal is to find the amount that lets digestion proceed smoothly, without strain in either direction."
+      ],
+      "pullQuote": "Pack the stomach completely solid with food and you smother that fire"
+    },
+    {
+      "heading": "the half-quarter-quarter rule from the granthas",
+      "paragraphs": [
+        "Caraka Samhita, one of the foundational texts of Ayurveda, lays out a clear guideline for how to fill the stomach at a meal (Caraka Samhita, Vimana Sthana, Ch. 2). Half the stomach's capacity should be filled with solid food. One quarter should be taken as liquid, whether that is the natural moisture in food, a warm soup, or water sipped during the meal. The remaining one quarter should be left empty, reserved for the movement of the three doshas: vata, pitta, and kapha, which need room to circulate and assist the digestive process.",
+        "Ashtanga Hridaya, the compact clinical summary of Ayurvedic medicine, echoes this instruction almost exactly (Ashtanga Hridaya, Sutrasthana, Ch. 8). It emphasises that eating beyond this measure is one of the root causes of a long list of digestive and metabolic disorders. The reasoning is physiological, not just philosophical: agni, the digestive fire in the stomach, needs air to burn well. Pack the stomach completely solid with food and you smother that fire, leading to ama, the undigested residue that Ayurveda links to heaviness, dullness, and eventual disease.",
+        "Neither text prescribes a cup measurement or a gram weight, because those numbers would vary enormously from person to person. A small woman doing desk work has a different stomach capacity from a large man doing manual labour. The matra instruction is intentionally relative to the individual. This is one of the places where Ayurveda is more personally calibrated than any universal dietary guideline."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "practical ways to find your own matra",
+      "paragraphs": [
+        "The most reliable indicator the classical tradition points to is the feeling immediately after eating: you should feel light, clear-headed, and able to breathe comfortably. If you feel heavy, sleepy, or need to loosen your waistband, you have gone past your matra. If you feel restless or mentally scattered within an hour of finishing, you may have eaten too little for your agni.",
+        "One traditional pointer is that the stomach's comfortable capacity is roughly equivalent to what you can hold in both hands cupped together. This is not a precise measurement but a useful starting reference, especially when you are eating away from home and cannot rely on a usual serving size.",
+        "Eating speed matters as much as quantity. Both Caraka Samhita and Ashtanga Hridaya emphasise that food should be eaten without distraction, at a moderate pace, with attention to taste (Caraka Samhita, Vimana Sthana, Ch. 1). When you eat fast, the fullness signal from the gut reaches the brain late, and you overshoot your matra without realising it. Slowing down is the single most practical lever most people have.",
+        "Sipping warm water or a light soup during the meal counts toward the liquid quarter and actively supports digestion. Cold drinks, by contrast, are said to dampen agni. The common South Asian tradition of finishing a meal with a small glass of warm water or buttermilk has exactly this rationale behind it.",
+        "The interval between meals matters too. Ayurveda advises eating only when genuinely hungry, which typically means four to six hours after the previous meal for most adults. Eating before the previous meal is fully digested means you are layering new food on top of partially processed food, which disturbs both the quantity equation and the quality of digestion."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor or vaidya",
+      "paragraphs": [
+        "The guidance above is general information drawn from classical Ayurvedic texts and is not a diagnosis or a substitute for personalised medical care. If you experience persistent bloating, pain, or discomfort after meals regardless of how much you eat, or if you notice unexplained weight loss, blood in stools, difficulty swallowing, or a feeling that food is getting stuck, please see a qualified doctor promptly. These can be signs of conditions that need clinical evaluation. A qualified Ayurvedic vaidya can also help you determine your individual constitution and the right dietary approach for your specific situation."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Use the cupped-hands test",
+      "description": "Before serving yourself, cup both hands together. That volume is a rough guide to one comfortable meal's solid food for your body. Adjust up or down based on how you feel afterwards."
+    },
+    {
+      "title": "Sip warm water during the meal",
+      "description": "Keep a small glass of warm water or a light dal broth at the table. Sip it through the meal, not in one go at the end. This counts as the liquid quarter and aids digestion without diluting gastric fire."
+    },
+    {
+      "title": "Put the phone away",
+      "description": "Eating while scrolling or watching something reliably leads to overeating. Even five minutes of screen-free eating lets you notice hunger and fullness cues before you go past your matra."
+    },
+    {
+      "title": "Check in halfway through",
+      "description": "Pause halfway through the meal for thirty seconds. Notice whether you feel satisfied, still genuinely hungry, or already heading toward full. This pause alone helps most people naturally stop closer to their right measure."
+    },
+    {
+      "title": "Wait for real hunger before the next meal",
+      "description": "If the previous meal is still sitting heavy four hours later, that is a sign you exceeded your matra. Let hunger return fully before eating again. Ayurveda treats this waiting as part of the digestive process, not deprivation."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "Matra.",
+      "definition": "The right measure or appropriate quantity, used in Ayurveda specifically for the amount of food suited to an individual at a given meal."
+    },
+    {
+      "term": "Agni.",
+      "definition": "The digestive fire, the transformative energy in the stomach and tissues that converts food into nourishment. Strong, balanced agni is central to health in Ayurveda."
+    },
+    {
+      "term": "Ama.",
+      "definition": "Undigested or improperly processed matter that accumulates when agni is weak or overloaded. Linked in classical texts to heaviness, fatigue, and the early stages of disease."
+    },
+    {
+      "term": "Dosha.",
+      "definition": "One of the three functional principles, vata (movement), pitta (transformation), and kapha (structure), that govern physiology in Ayurvedic medicine."
+    }
+  ],
+  "sources": "Caraka Samhita, Vimana Sthana, Ch. 2 (Trividha Kukshiya) · Caraka Samhita, Vimana Sthana, Ch. 2 (Trividha Kukshiya) · Ashtanga Hridaya, Sutrasthana, Ch. 8 (Annapanavidhi Adhyaya)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

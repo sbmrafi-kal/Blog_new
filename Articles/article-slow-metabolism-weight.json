@@ -1,0 +1,107 @@
+{
+  "handle": "slow-metabolism-weight",
+  "title": "Slow metabolism and weight",
+  "hindi_title": "चयापचय और वज़न",
+  "excerpt": "A calm, plain-English look at how Ayurveda understands weight gain, why a strong appetite and heaviness can go together, and the everyday habits the old texts suggest.",
+  "badge": "Feature",
+  "read_time": "5 min read",
+  "image": "slow-metabolism-weight.webp",
+  "at_a_glance": [
+    "Heaviness isn't a failing; Ayurveda treats it as a constitution to work with, not be ashamed of.",
+    "Carrying extra weight can come with strong hunger, because blocked channels push the digestive fire harder.",
+    "The fixes are steady, not dramatic: regular movement, eat only after the last meal digests, favour warm light food."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "you're not imagining it",
+      "paragraphs": [
+        "You eat carefully, you tell yourself you are not eating that much, and still the weight stays or creeps up. You feel heavy, you tire easily, and you have started to wonder whether your body just runs slow. If that is you, take a breath. This is one of the oldest and most discussed concerns in Ayurveda, and the tradition looks at it with a lot more patience than most modern advice does.",
+        "First, a gentle reframing. Ayurveda does not treat heaviness as a personal failing. In the Charaka Samhita, in the chapter on the eight undesirable body types (Charaka Samhita, Sutrasthana, Ch. 21, Ashtauninditiya Adhyaya, verses 3 to 4), being very heavy is described simply as one of several constitutions a body can fall into, alongside being very lean. It is a state to understand and work with, not to be ashamed of."
+      ],
+      "pullQuote": "a heavy person often digests food quickly and feels hungry again soon"
+    },
+    {
+      "heading": "what ayurveda sees",
+      "paragraphs": [
+        "So what does Ayurveda see behind the weight? The classical view centres on three things in plain terms: your digestion (agni), your fat tissue (meda dhatu), and the way things move through your body. The same text explains that when fat tissue builds up and blocks the body's channels, the result is a kind of paradox. The blockage actually pushes the digestive fire harder, so a heavy person often digests food quickly and feels hungry again soon (Charaka Samhita, Sutrasthana, Ch. 21, verses 5 to 10).",
+        "This is worth sitting with, because it explains something many people feel but cannot name. You can be carrying extra weight and still feel genuinely, strongly hungry. The texts picture agni and the moving energy (vata) working on the body in this state like a fire blazing through a forest. In other words, simply telling yourself to eat less misses what is actually happening inside.",
+        "Ayurveda also places weight gain inside a larger family of over-nourishment patterns. The Charaka Samhita, Sutrasthana, Ch. 23 (Santarpaniya Adhyaya, verses 3 to 7) describes how rich, sweet, heavy, oily food, lots of dairy and sugar, plus a sedentary life and daytime sleep, can lead to heaviness and related conditions. The message is not that any one food is the villain, but that a whole pattern of life slowly shapes the body."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what helps today",
+      "paragraphs": [
+        "Now to the part you can actually use today. The old texts are refreshingly undramatic here. The same chapter on over-nourishment (Charaka Samhita, Sutrasthana, Ch. 23, verses 25 to 26) suggests three everyday supports: regular movement (vyayama), eating your next meal only after the last one has fully digested, and making barley and wheat habitual grains. No magic, no rapid fixes, just steady regulation.",
+        "On movement and rest, the management section of the chapter on body types (Charaka Samhita, Sutrasthana, Ch. 21, verses 20 to 22) points the same way. It suggests staying more active in body and mind, and leaning toward lighter, warming foods rather than heavy, cold, sweet ones. A simple version for today: take a real walk after meals, favour freshly cooked warm food over cold and heavy snacks, and avoid sleeping during the day if you can.",
+        "For a calming practice, the easiest place to start is the gap between meals. Letting yourself feel genuinely hungry before the next meal, and a few slow breaths before eating, lines up directly with that classical idea of eating only after the previous meal is digested. It also slows down the rushed, distracted eating that quietly adds up.",
+        "One honest caution, in the tradition's own spirit. Ayurveda warns that lightening practices have limits. Overdoing them brings their own harms, including weakness, dryness, loss of appetite, and exhaustion (Charaka Samhita, Sutrasthana, Ch. 22, Langhanabrimhaniya Adhyaya, verses 34 to 37). Gentle and consistent beats harsh and fast."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "If your weight change is sudden or severe, or comes with symptoms like extreme fatigue, unusual thirst, or anything that worries you, please see a doctor or a qualified vaidya. This article is general information drawn from classical texts, not a diagnosis or a substitute for medical care, and a real person who can examine you matters."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Walk after meals",
+      "description": "Take a real walk after eating to keep the body and mind active."
+    },
+    {
+      "title": "Let hunger return",
+      "description": "Eat your next meal only after the last one has fully digested."
+    },
+    {
+      "title": "Favour warm, light food",
+      "description": "Lean toward freshly cooked warm food over cold, heavy, sweet snacks."
+    },
+    {
+      "title": "Skip the daytime nap",
+      "description": "Avoid sleeping during the day if you can."
+    },
+    {
+      "title": "Choose barley and wheat",
+      "description": "Make barley and wheat your habitual grains."
+    },
+    {
+      "title": "Breathe before eating",
+      "description": "Take a few slow breaths before meals to slow rushed, distracted eating."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "the digestive fire; how strongly the body digests food."
+    },
+    {
+      "term": "meda dhatu.",
+      "definition": "the body's fat tissue."
+    },
+    {
+      "term": "vata.",
+      "definition": "the moving energy in the body."
+    },
+    {
+      "term": "vyayama.",
+      "definition": "physical exercise or regular movement."
+    },
+    {
+      "term": "langhana.",
+      "definition": "lightening practices, which the texts warn have limits."
+    },
+    {
+      "term": "vaidya.",
+      "definition": "a qualified Ayurvedic physician."
+    }
+  ],
+  "sources": "Charaka Samhita, Sutrasthana, Ch. 21 (Ashtauninditiya Adhyaya), verses 3 to 4, 5 to 10, and 20 to 22 · Charaka Samhita, Sutrasthana, Ch. 22 (Langhanabrimhaniya Adhyaya), verses 34 to 37 · Charaka Samhita, Sutrasthana, Ch. 23 (Santarpaniya Adhyaya), verses 3 to 7 and 25 to 26",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

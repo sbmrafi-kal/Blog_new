@@ -1,0 +1,105 @@
+{
+  "handle": "saunf-ajwain-after-meals",
+  "title": "Saunf and ajwain after meals",
+  "hindi_title": "सौंफ और अजवायन",
+  "excerpt": "Why so many Indian homes reach for fennel and ajwain after a meal, what Ayurveda sees behind that heavy, gassy, bloated feeling, and a few calm habits you can try today.",
+  "badge": "Reading guide",
+  "read_time": "4 min read",
+  "image": "saunf-ajwain-after-meals.webp",
+  "at_a_glance": [
+    "That heavy, gassy feeling after eating is usually about weak digestion, not bad food.",
+    "Saunf and ajwain are traditional carminatives that ease gas and settle the stomach.",
+    "Eat warm, freshly cooked food in sensible amounts, slow down, and take a gentle walk after."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "the after-meal heaviness",
+      "paragraphs": [
+        "You have just finished a good meal, and instead of feeling light you feel heavy, a little bloated, maybe a bit of gas building up. It is one of the most ordinary discomforts there is, and almost every Indian home has the same quiet answer waiting near the door: a small bowl of fennel (saunf) and carom seeds (ajwain) to chew on the way out. If that is what brought you here, you are in good company, and there are gentle reasons behind the habit."
+      ],
+      "pullQuote": "a small bowl of fennel (saunf) and carom seeds (ajwain) to chew on the way out"
+    },
+    {
+      "heading": "what ayurveda sees: agni and ama",
+      "paragraphs": [
+        "Ayurveda would start not with the bloating but with your digestion itself, which it calls agni, the inner digestive fire. The Caraka Samhita (Sutrasthana 27.3) describes food and drink as the very fuel of this inner fire: when the fire is steady, food is properly broken down and you feel light and nourished. When it is weak or overloaded, some of the food is left half-processed. That sluggish, undigested residue is called ama, and it is often behind the heaviness, gas, and dullness that follow a meal.",
+        "So the after-meal discomfort is usually less about the food being bad and more about the meeting between the food and your agni. This is also why the same plate can sit lightly one day and heavily the next. The classical texts ask you to read your own body here: the Caraka Samhita (Vimanasthana 1.25) advises eating with self-awareness, noticing which foods suit you (atma-satmya) and which quietly do not."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "why saunf and ajwain help",
+      "paragraphs": [
+        "This is where saunf and ajwain come in. In Ayurveda both are valued as carminatives, the old word for things that ease gas and settle the stomach. Modern reviews echo the tradition: fennel (Foeniculum vulgare) is described in a 2014 review in BioMed Research International as a carminative and digestive used for gastrointestinal complaints, and ajwain (Trachyspermum ammi) is described in a 2012 Pharmacognosy Reviews paper as having stimulant, antispasmodic and carminative properties traditionally used for flatulence and abdominal discomfort. Chewing a small pinch of each after a meal is a centuries-old way Indian households have helped digestion along."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "calm habits to try",
+      "paragraphs": [
+        "A few other everyday habits the tradition suggests, none of them dramatic. Eat your food warm and freshly cooked rather than cold and heavy, and in a sensible quantity: the Caraka Samhita (Vimanasthana 1.24) lays out simple rules of eating, food taken warm (ushnam), in proper measure (matravat), and after the previous meal has actually digested (jirne). That last point matters most for bloating: giving the last meal time to clear before piling on the next one lets agni reset.",
+        "Slow down at the table too. The same passage advises not eating too fast or too slow, and not while talking or laughing, but with attention on the food. Eating in a calm, unhurried way is itself a digestive practice. After your meal, rather than collapsing onto the sofa, a short, gentle, unhurried walk lets the body settle. And a warm glass of water alongside the meal, instead of an icy drink, keeps the digestive fire from being doused."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. These are supportive everyday habits, not a treatment. If your bloating, gas, or stomach pain is severe, lasting, or worrying you, or if it comes with weight loss, vomiting, blood, or fever, please see a doctor or a qualified vaidya rather than waiting it out. This article is general information drawn from tradition, not a substitute for medical care, and what suits one person may not suit another."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Chew saunf and ajwain",
+      "description": "After a meal, chew a small pinch of fennel and carom seeds to help settle the stomach."
+    },
+    {
+      "title": "Eat warm and fresh",
+      "description": "Choose warm, freshly cooked food over cold, heavy dishes, in a sensible quantity."
+    },
+    {
+      "title": "Let the last meal digest",
+      "description": "Wait until the previous meal has actually digested before eating again, so agni can reset."
+    },
+    {
+      "title": "Slow down at the table",
+      "description": "Eat unhurried, with attention on the food, not too fast and not while talking or laughing."
+    },
+    {
+      "title": "Walk gently after eating",
+      "description": "Take a short, unhurried walk instead of collapsing onto the sofa, to let the body settle."
+    },
+    {
+      "title": "Warm water, not icy drinks",
+      "description": "Sip a warm glass of water with meals instead of an icy drink to keep digestion steady."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "fennel.webp",
+      "name": "Fennel (saunf)",
+      "sanskrit": "सौंफ",
+      "description": "Carminative and digestive, eased post-meal gas for centuries."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "The inner digestive fire; when steady, food is broken down well and you feel light."
+    },
+    {
+      "term": "ama.",
+      "definition": "Sluggish, undigested residue left when agni is weak; often behind post-meal heaviness and gas."
+    },
+    {
+      "term": "atma-satmya.",
+      "definition": "Self-awareness of which foods suit you and which quietly do not."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 27.3 · Caraka Samhita, Vimanasthana 1.24 · Caraka Samhita, Vimanasthana 1.25 · BioMed Research International, Badgujar et al. 2014 · Pharmacognosy Reviews, 2012 review of Trachyspermum ammi",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

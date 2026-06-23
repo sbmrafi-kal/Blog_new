@@ -1,0 +1,95 @@
+{
+  "handle": "simple-morning-routine",
+  "title": "A simple morning routine",
+  "hindi_title": "दिनचर्या",
+  "excerpt": "A calm, beginner-friendly walk through the classical Ayurvedic morning routine (dinacharya), with a few small habits you can start tomorrow.",
+  "badge": "Reading guide",
+  "read_time": "5 min read",
+  "image": "simple-morning-routine.webp",
+  "at_a_glance": [
+    "Dinacharya is a gentle morning routine of small, repeatable habits, not a strict checklist.",
+    "Clear overnight residue (ama) with tongue scraping, oil care for the mouth, and a warm-oil self-massage.",
+    "Start with just one habit tomorrow, do it for a week, then add another."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "why mornings matter",
+      "paragraphs": [
+        "You wake up already feeling behind. The phone is in your hand before your feet touch the floor, breakfast is rushed, and by mid-morning you feel foggy and a little off. If that sounds like your mornings, you are not alone, and the good news is that the fix does not have to be dramatic. Ayurveda has a name for a gentle, repeatable morning routine: dinacharya. It is less a strict checklist and more a set of small, steadying habits.",
+        "The old texts treat the morning as the hour that sets the tone for the whole day. The idea is simple: when you start calm and clean, your digestion, energy, and mood tend to follow. Vagbhata, an ancient author, opens his daily routine by suggesting a healthy person rise at Brahma muhurta, roughly an hour and a half before sunrise, before the world gets loud (Ashtanga Hridaya, Sutrasthana 2.1). You do not have to chase a perfect time. The spirit of it is to wake before the rush, not in the middle of it.",
+        "Ayurveda explains the morning fog in plain terms. Overnight, a kind of residue can settle, on the tongue, in the mouth, and in a sluggish digestion (agni). The tradition calls undigested build-up ama. Much of the morning routine is simply about clearing that residue so your system can start fresh, rather than carrying yesterday into today."
+      ],
+      "pullQuote": "when you start calm and clean, your digestion, energy, and mood tend to follow"
+    },
+    {
+      "heading": "small habits to try",
+      "paragraphs": [
+        "Here are a few everyday habits the classical texts suggest. Treat them as supportive daily care, not as cures.",
+        "Clean your tongue. The Caraka Samhita recommends scraping the tongue each morning with a smooth, curved scraper, noting that the coating at the root of the tongue can cause bad breath (Sutrasthana 5.75-76). This is one of the rare old practices that modern research echoes: a Cochrane systematic review found tongue scrapers give a small but real short-term reduction in the compounds behind oral malodour (Outhouse et al., 2006).",
+        "Care for your mouth with oil. After cleaning your teeth, the texts describe holding or gently swishing oil in the mouth, sometimes called oil pulling today. Caraka links the regular practice to firmer teeth and better taste for food (Sutrasthana 5.78-80), and Vagbhata describes the method of holding the mouth full until the eyes and nose begin to water (Ashtanga Hridaya, Sutrasthana 22.10-11). The modern evidence is modest: a 2022 meta-analysis found oil pulling lowered the count of bacteria in saliva, though it did not show a clear effect on dental plaque, and the authors stressed it is an add-on to normal brushing, not a replacement for standard dentistry (Peng et al., 2022).",
+        "Give yourself a slow oil massage. Perhaps the most loved habit is abhyanga, a daily self-massage with warm oil. Vagbhata suggests doing it every day, with special attention to the head, ears, and feet, and links it to easier sleep and steadier energy (Ashtanga Hridaya, Sutrasthana 2.8-9). Caraka calls daily massage the best thing for the skin and recommends making it a habit (Sutrasthana 5.87-89). Even five quiet minutes with a little warm oil before a bath can feel grounding.",
+        "Build in one calm moment. Before you reach for the phone, sit for a few slow breaths, or step outside for a minute of morning light. The point of dinacharya is rhythm. A few small acts, done in the same order each day, ask very little of you and slowly add up."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "how to start",
+      "paragraphs": [
+        "Start with just one of these tomorrow, not all four. Choose the one that feels easiest, do it for a week, and let it settle before adding another. Routines stick when they are small."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "A gentle but important note. This is general information drawn from classical texts and modern studies, not medical advice, and it is not a substitute for proper care. If something is severe, persistent, or worrying, for example ongoing mouth pain, bad breath that will not clear, or any symptom that troubles you, please see a doctor or a qualified vaidya rather than self-managing."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Clean your tongue",
+      "description": "Scrape your tongue each morning with a smooth, curved scraper to clear the coating at its root."
+    },
+    {
+      "title": "Oil pull",
+      "description": "After brushing, hold or gently swish oil in the mouth, an add-on to brushing, not a replacement."
+    },
+    {
+      "title": "Abhyanga self-massage",
+      "description": "Spend a few quiet minutes with warm oil daily, with attention to the head, ears, and feet."
+    },
+    {
+      "title": "One calm moment",
+      "description": "Before reaching for the phone, sit for a few slow breaths or step into morning light."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "dinacharya.",
+      "definition": "The classical Ayurvedic daily morning routine of small, steadying habits."
+    },
+    {
+      "term": "agni.",
+      "definition": "Digestion, the body's digestive fire."
+    },
+    {
+      "term": "ama.",
+      "definition": "Undigested build-up or residue the body carries over."
+    },
+    {
+      "term": "abhyanga.",
+      "definition": "A daily self-massage with warm oil."
+    },
+    {
+      "term": "Brahma muhurta.",
+      "definition": "The pre-dawn hour, roughly an hour and a half before sunrise, recommended for waking."
+    }
+  ],
+  "sources": "Ashtanga Hridaya, Sutrasthana 2.1 · Ashtanga Hridaya, Sutrasthana 2.8-9 · Ashtanga Hridaya, Sutrasthana 22.10-11 · Caraka Samhita, Sutrasthana 5.75-76 · Caraka Samhita, Sutrasthana 5.78-80 · Caraka Samhita, Sutrasthana 5.87-89 · Peng TR et al., Healthcare (Basel), 2022 · Outhouse TL et al., Cochrane systematic review, 2006",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

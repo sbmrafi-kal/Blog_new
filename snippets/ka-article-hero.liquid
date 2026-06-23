@@ -5,13 +5,13 @@
 
 {%- liquid
   assign hero_article = article
-  assign category_label = hero_article.metafields.custom.category_label | default: hero_article.tags.first
+  assign category_label = hero_article.metafields.custom.hero_badge.value | default: hero_article.metafields.custom.hero_badge | default: hero_article.metafields.custom.category_label | default: hero_article.tags.first
   assign dek = hero_article.metafields.custom.dek | default: hero_article.excerpt_or_content | strip_html | truncate: 200
-  assign read_time = hero_article.metafields.custom.read_time_minutes
+  assign read_time = hero_article.metafields.custom.read_time.value | default: hero_article.metafields.custom.read_time | default: hero_article.metafields.custom.read_time_minutes
   assign author_profile = hero_article.metafields.custom.written_by_profile.value
   assign author_name = author_profile.name | default: hero_article.author
   assign reviewer_profile = hero_article.metafields.custom.reviewed_by.value
-  assign reviewer_name = reviewer_profile.name
+  assign reviewer_name = reviewer_profile.name | default: hero_article.metafields.custom.review_label.value | default: hero_article.metafields.custom.review_label
   assign last_reviewed = hero_article.metafields.custom.last_reviewed_at
   assign hero_image = hero_article.metafields.custom.hero_image | default: hero_article.image
   assign hero_caption = hero_article.metafields.custom.hero_image_caption
@@ -36,15 +36,21 @@
 
     <div class="ka-article-meta-card">
       {%- if author_name != blank -%}
-        <span>By {{ author_name }}</span>
+        {%- unless author_name contains 'Editorial Team' or author_name contains 'Editorial' -%}
+          <span>By {{ author_name }}</span>
+        {%- endunless -%}
       {%- endif -%}
       {%- if read_time -%}
-        <span data-ka-read-time>{{ read_time }} min read</span>
+        {%- if read_time contains 'min' or read_time contains 'read' -%}
+          <span data-ka-read-time>{{ read_time }}</span>
+        {%- else -%}
+          <span data-ka-read-time>{{ read_time }} min read</span>
+        {%- endif -%}
       {%- else -%}
         <span data-ka-read-time></span>
       {%- endif -%}
       {%- if reviewer_name != blank -%}
-        <span>Reviewed by {{ reviewer_name }}</span>
+        <span>Reviewed by {{ reviewer_name | replace: 'Reviewed by ', '' | replace: 'Reviewed by', '' | strip }}</span>
       {%- endif -%}
       {%- if last_reviewed -%}
         <span>Updated {{ last_reviewed | date: "%B %Y" }}</span>

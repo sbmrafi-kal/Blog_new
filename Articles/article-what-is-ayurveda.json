@@ -1,0 +1,108 @@
+{
+  "handle": "what-is-ayurveda",
+  "title": "What is Ayurveda?",
+  "hindi_title": "आयुर्वेद क्या है",
+  "excerpt": "A simple, honest introduction to what Ayurveda is, what the three doshas and your constitution mean, and a few everyday habits the tradition suggests.",
+  "badge": "Reading guide",
+  "read_time": "4 min read",
+  "image": "what-is-ayurveda.webp",
+  "at_a_glance": [
+    "Ayurveda means the knowledge of life, an old Indian system focused on keeping well people well day to day.",
+    "The three doshas (vata, pitta, kapha) and your constitution (prakriti) describe your natural tendencies, not a single symptom.",
+    "Practical advice is gentle: warm freshly cooked food, a big midday meal, a steady daily rhythm, and a quiet calming practice."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "what it is",
+      "paragraphs": [
+        "You have probably heard the word Ayurveda many times. Maybe a relative suggested it, maybe you saw it on a label, and you have been left wondering what it actually means and whether it has anything useful to offer your everyday life. If you came here today looking for a plain answer, you are in the right place. There is nothing mysterious you need to believe in to understand the basics.",
+        "Ayurveda is one of the oldest systems of health and living from India. The name itself means the knowledge (veda) of life (ayu). At its heart it is less about treating illness after it appears and more about helping ordinary people stay well day to day. The classical texts describe its purpose simply: to safeguard the health of the healthy and to ease the troubles of the unwell (Caraka Samhita, Sutrasthana 30.26). So it is as much about good daily habits as it is about remedies."
+      ],
+      "pullQuote": "to safeguard the health of the healthy and to ease the troubles of the unwell"
+    },
+    {
+      "heading": "the three doshas",
+      "paragraphs": [
+        "The most well known idea in Ayurveda is the three doshas. Think of them as three basic working tendencies in the body. Vata governs movement and is light and changeable, pitta governs digestion and heat, and kapha governs structure and steadiness. The old texts list these three: Vata, Pitta and Kapha are described as the bodily doshas (Caraka Samhita, Sutrasthana 1.57). The simple idea is that when they are reasonably balanced the body runs smoothly, and when they are thrown off, discomfort tends to follow.",
+        "Vagbhata, another classical author, puts the same point plainly: the three doshas, when balanced, maintain the body, and when disturbed, harm it (Ashtanga Hridaya, Sutrasthana 1.6). You do not need to memorise any of this. The takeaway is just that Ayurveda looks at patterns and tendencies in a person rather than only at a single symptom."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "your constitution and digestion",
+      "paragraphs": [
+        "This leads to a second idea you will hear often: your constitution (prakriti). Ayurveda holds that each of us is born with a particular natural make-up, with one or two doshas tending to lead. The tradition describes this constitution as set very early, shaped by many factors present from the beginning of life (Caraka Samhita, Vimanasthana 8.95). In everyday terms, this is simply the old observation that people are built differently. Some run hot, some stay cool, some are restless, some are calm, and what suits one person may not suit another.",
+        "Two more plain words help. Digestion (agni) is treated as central, the inner fire that turns food into nourishment. When digestion is weak, the tradition says food is not properly processed and leaves behind a kind of residue (ama) that can make a person feel heavy, dull or off. Much of practical Ayurveda is simply about keeping that digestive fire steady through sensible habits."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what to do today",
+      "paragraphs": [
+        "So what can you actually do today? The tradition leans on a few gentle, unremarkable habits. It generally favours eating freshly cooked, warm food, and eating your largest meal at midday when digestion is considered strongest. It suggests a regular daily rhythm, roughly steady times for waking, eating and sleeping, since the body settles into routine. And it values a daily calming practice, a few quiet minutes of slow breathing or sitting still, to ease a restless mind. These are everyday supportive habits the tradition suggests, not cures, and small and consistent beats dramatic.",
+        "If you take away one thing, let it be this: Ayurveda is mostly an invitation to notice your own patterns and to live in a steady, balanced way. You do not have to adopt all of it at once. Pick one small habit, a warm lunch, an earlier bedtime, five quiet breaths, and let it settle before adding the next."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "a short, honest note",
+      "paragraphs": [
+        "A short, honest note. Ayurveda at this level is about general wellbeing, not a replacement for medical care. If something is severe, persistent or worrying, please see a doctor or a qualified vaidya rather than self-treating. This article is general information only."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "eat warm and fresh",
+      "description": "Favour freshly cooked, warm food rather than cold or heavy leftovers."
+    },
+    {
+      "title": "biggest meal at midday",
+      "description": "Eat your largest meal at noon when digestion is considered strongest."
+    },
+    {
+      "title": "keep a steady rhythm",
+      "description": "Hold roughly steady times for waking, eating and sleeping so the body settles into routine."
+    },
+    {
+      "title": "a few quiet minutes",
+      "description": "Sit still or breathe slowly for a short daily calming practice to ease a restless mind."
+    },
+    {
+      "title": "start with one small habit",
+      "description": "Pick one change and let it settle before adding the next; small and consistent beats dramatic."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "Ayurveda.",
+      "definition": "The knowledge (veda) of life (ayu); an old Indian system of health and living."
+    },
+    {
+      "term": "dosha.",
+      "definition": "One of three basic working tendencies in the body: vata, pitta, kapha."
+    },
+    {
+      "term": "vata.",
+      "definition": "Governs movement; light and changeable."
+    },
+    {
+      "term": "pitta.",
+      "definition": "Governs digestion and heat."
+    },
+    {
+      "term": "kapha.",
+      "definition": "Governs structure and steadiness."
+    },
+    {
+      "term": "prakriti.",
+      "definition": "Your constitution, the natural make-up you are born with, with one or two doshas tending to lead."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 1.57 · Caraka Samhita, Sutrasthana 30.26 · Caraka Samhita, Vimanasthana 8.95 · Ashtanga Hridaya, Sutrasthana 1.6",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

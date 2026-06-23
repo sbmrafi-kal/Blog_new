@@ -1,0 +1,111 @@
+{
+  "handle": "anger-and-irritability",
+  "title": "Quick anger and irritability",
+  "hindi_title": "गुस्सा और चिड़चिड़ापन",
+  "excerpt": "In Ayurveda, a short fuse is rarely just a personality flaw. It is often Pitta, the body's fire, running hot, and there are gentle daily ways to cool it down.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "anger-and-irritability.webp",
+  "at_a_glance": [
+    "Ayurveda links quick anger to Pitta, the body's fire, running too hot in the mind.",
+    "Skipping meals and eating hot, spicy, sour food are two of the biggest triggers.",
+    "Steady mealtimes, cooling foods, slow breathing, and a cool body settle the temper."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "why small things set you off",
+      "paragraphs": [
+        "You skip lunch, sit through one more meeting, and by 4 p.m. a tiny thing, a slow reply, a spilled cup, makes you snap. Later you feel bad about it. This everyday pattern, quick anger that flares and fades, has a name in Ayurveda. Anger is krodha, and irritability is a sign of an overheated mind. The classical texts treat it not as a character problem but as a state of the body and mind that you can settle.",
+        "Ayurveda places anger mainly with Pitta, the dosha made of fire and a little water. Pitta governs digestion, sharpness, and the heat of the body. When it rises too high, that same heat shows up in the mind as a quick temper, impatience, and a tendency to burn over small things. The Caraka Samhita describes how the mind has its own qualities, and that rajas, the quality of restless activity, together with excess heat, tilts a person toward anger and agitation (Caraka Samhita, Sharirasthana). When Pitta and rajas run together, you get that familiar short fuse."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "the ayurvedic view of a heated mind",
+      "paragraphs": [
+        "The granthas are clear that the body and the mind are not separate. Caraka explains that the mind, the senses, and the body constantly affect one another, so what heats the body can heat the temper (Caraka Samhita, Sharirasthana). This is why anger so often arrives with physical heat: a flushed face, a tight chest, a thumping pulse. The fire is literal as well as emotional.",
+        "Two everyday things pour fuel on Pitta. The first is hunger. When you skip meals, the digestive fire, agni, has nothing to work on and the heat turns on the body and mind instead. This is the well-known short temper of an empty stomach. The second is heat itself: hot weather, spicy and sour food, too much sun, and the midday hours, all of which the texts link to Pitta rising (Ashtanga Hridaya, Sutrasthana). The Ashtanga Hridaya counts anger, krodha, among the natural urges that should not be forcibly suppressed but instead calmed and dissolved, because bottling heat up does its own harm (Ashtanga Hridaya, Sutrasthana). The aim is not to swallow anger but to lower the fire that feeds it."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "gentle everyday habits to cool the fire",
+      "paragraphs": [
+        "The simplest medicine is regular meals. Eat at steady times and do not let yourself get ravenous, because an empty stomach is one of the surest triggers of Pitta anger. Favour cooling, sweet, and slightly bitter foods: milk, ghee, rice, cucumber, coriander, sweet fruits, and plenty of water. Go easy on the things that obviously heat you up, very spicy, sour, fried, and salty food, along with too much tea, coffee, and alcohol, all of which the texts connect to aggravated Pitta (Ashtanga Hridaya, Sutrasthana).",
+        "Cool the body and the mind will follow. The hot middle of the day is Pitta's time, so avoid harsh sun, take a cool shower, and rest your eyes. Slow your breath: a few minutes of long, gentle exhalations, or a calm cooling breath through the mouth, settles the heat quickly. Ayurveda also values dhairya, a steady patience, as something you can practise. Caraka praises the deliberate restraint of a settled mind over impulse (Caraka Samhita, Sharirasthana). In plain terms: when you feel the flare, pause, drink some water, step into cooler air, and let the first wave pass before you speak. Early nights and enough sleep matter too, since tiredness lowers your patience the next day."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "This is general information from the classical texts, not a diagnosis or a substitute for medical care. Everyday irritability usually eases with food, rest, and cooling habits. But please see a doctor or a qualified vaidya if the anger is severe, frequent, or out of proportion, if it comes with low mood, sleeplessness that will not lift, or thoughts of harming yourself or others, or if it arrives alongside chest pain, a racing heart, high blood pressure, headaches, or sudden personality changes. Anger that is damaging your relationships, work, or safety deserves proper help, and there is no shame in asking for it."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "don't skip meals",
+      "description": "Eat at steady times and never let yourself get ravenous. An empty stomach is one of the surest triggers of a short temper, so keep a simple, cooling snack on hand for long gaps."
+    },
+    {
+      "title": "eat cooling, ease off heating",
+      "description": "Favour milk, ghee, rice, cucumber, coriander, and sweet fruits. Go light on very spicy, sour, fried, and salty food, and on too much tea, coffee, and alcohol."
+    },
+    {
+      "title": "pause before you speak",
+      "description": "When you feel the flare, stop, drink some water, and step into cooler air. Let the first wave pass before you respond. The heat usually drops within a minute or two."
+    },
+    {
+      "title": "breathe out slowly",
+      "description": "A few minutes of long, gentle exhalations, or a slow cooling breath through the mouth, settles the body's heat and the mind along with it."
+    },
+    {
+      "title": "cool the body at midday",
+      "description": "The hot middle of the day is Pitta's time. Avoid harsh sun, take a cool shower, rest your eyes, and you will feel your patience return."
+    },
+    {
+      "title": "sleep early",
+      "description": "Tiredness quietly lowers your patience the next day. Enough sleep and an earlier night rebuild your tolerance for small annoyances."
+    },
+    {
+      "title": "get help if it is serious",
+      "description": "This is general guidance, not medical care. See a doctor or a qualified vaidya if the anger is severe or frequent, comes with low mood, sleeplessness, or chest pain and a racing heart, or brings any thought of harming yourself or others. There is no shame in asking for help."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "coriander.webp",
+      "name": "Coriander",
+      "sanskrit": "धनिया",
+      "description": "A classic cooling herb for aggravated Pitta; its sweet, slightly bitter quality helps settle the body's heat. Easy to add to food or as cool coriander water."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "Pitta.",
+      "definition": "The dosha made of fire and water; governs digestion, body heat, and sharpness. When too high it shows up as a quick temper."
+    },
+    {
+      "term": "krodha.",
+      "definition": "Anger; in Ayurveda one of the natural urges that should be calmed rather than forcibly suppressed."
+    },
+    {
+      "term": "agni.",
+      "definition": "The digestive fire. When meals are skipped it has nothing to work on, and its heat turns on the body and mind."
+    },
+    {
+      "term": "rajas.",
+      "definition": "The mental quality of restless activity; combined with heat it tilts a person toward anger and agitation."
+    },
+    {
+      "term": "dhairya.",
+      "definition": "Steady patience or composure; a calm of the settled mind that Ayurveda treats as something you can practise."
+    }
+  ],
+  "sources": "Caraka Samhita, Sharirasthana (mind, the doshas of the mind, and rajas) · Ashtanga Hridaya, Sutrasthana (Pitta-aggravating diet and the natural urges, including krodha)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

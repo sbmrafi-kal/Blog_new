@@ -1,0 +1,121 @@
+{
+  "handle": "hangover-and-heavy-feeling",
+  "title": "Heavy-headed, hungover mornings",
+  "hindi_title": "भारी सिर और थकान वाली सुबह",
+  "excerpt": "That heavy, foggy feeling after a late night of rich food or drink has a name in Ayurveda, and a clear, gentle path out. Here is what the classical texts say, and what actually helps.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "hangover-and-heavy-feeling.webp",
+  "at_a_glance": [
+    "Ama buildup from undigested food and alcohol causes the classic heavy, foggy hangover state in Ayurvedic terms.",
+    "Warm water, thin rice congee, and cumin-coriander-fennel tea are the classical first-line reset, not greasy food or coffee.",
+    "Rest and gentle movement support recovery; burdening Agni further with heavy food slows it down."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "that morning-after feeling",
+      "paragraphs": [
+        "You wake up with a dull head, a coated tongue, eyes that feel gritty, and a body that seems heavier than it was the night before. Maybe it was a wedding dinner that ran until midnight, or a few drinks with colleagues, or just a stretch of late nights and rich food. Whatever the cause, the feeling is the same: slow, foggy, and slightly nauseated. In Ayurveda this state has a name: Ama-vikara, the disturbance caused by undigested matter, layered on top of a Pitta imbalance from alcohol and spice.",
+        "Ama (literally 'unripe' or 'unprocessed') is what accumulates when Agni, the digestive fire, is overwhelmed (Caraka Samhita, Sutrasthana). It is not a poetic metaphor but a functional concept: digestion that is rushed, burdened with incompatible foods, or suppressed by alcohol produces a sticky, heavy residue that clogs the channels of the body, called Srotas. The heavy-headed morning is the body's honest report on how the previous evening went."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what the texts say about alcohol and excess",
+      "paragraphs": [
+        "Caraka Samhita devotes a full section to Madatyaya, the disorders arising from excessive alcohol use (Caraka Samhita, Chikitsasthana). The text describes three stages: mild intoxication, moderate excess, and the exhausted, Vata-Pitta-disturbed state that follows a heavy night. That last stage maps almost exactly onto what most people call a hangover: thirst, burning in the stomach, headache, aversion to food, weakness in the limbs.",
+        "Ashtanga Hridaya similarly describes how Pitta is provoked by fermented drinks and pungent food, leading to heat, irritability, and inflammation of the Srotas (Ashtanga Hridaya, Sutrasthana). The remedy the texts converge on is not suppression but gentle restoration: rekindle Agni without burdening it, clear Ama, and cool Pitta. That means light, warm, easy-to-digest food, adequate plain water, and, above all, rest."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "practical habits for the reset day",
+      "paragraphs": [
+        "Start with plain warm water, sipped slowly. Caraka Samhita recommends Ushnodaka (hot water) repeatedly through the day for clearing Ama because warmth supports Agni without adding digestive load (Caraka Samhita, Sutrasthana). A thin rice congee, called Peya, cooked with a small pinch of rock salt and cumin, is the classical first meal after excess: it is warm, hydrating, easy on the stomach, and gently carminative.",
+        "Avoid the instinct to 'fix' a hangover with a large greasy breakfast or another cup of strong coffee. Both push Agni harder when it needs to recover, not perform. A walk in fresh air in the morning, even fifteen minutes, helps Vata move the accumulated stagnation. A gentle self-massage with warm sesame oil on the feet and scalp before a warm shower settles the nervous system and eases the headache that comes from aggravated Vata.",
+        "Through the day, small sips of a cumin-coriander-fennel tea (equal parts, steeped in hot water for five minutes) support digestion and reduce the bloated, heavy feeling. Bhavaprakasha's Nighantu notes the carminative and digestive properties of these three seeds in combination (Bhavaprakasha Nighantu). Keep the day's food simple: soups, cooked vegetables, khichdi. Skip raw salads, cold drinks, and anything fried or very sweet, which all dampen Agni further."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "The advice above is general information for ordinary morning-after tiredness. It is not a diagnosis and cannot replace medical care. If your symptoms include severe or repeated vomiting, confusion, difficulty breathing, chest pain, very dark urine, yellowing of the skin or eyes, or numbness in any part of the body, seek emergency care immediately. These can be signs of alcohol poisoning, liver stress, or another serious condition that needs prompt evaluation.",
+        "If you find that heavy drinking is a regular pattern, or that you need alcohol to function normally, please speak honestly with a doctor or counsellor. Ayurveda supports the body's recovery, but the classical texts are also clear that Madyapana (alcohol use) should be measured, occasional, and appropriate to one's constitution. A qualified vaidya can help you understand your own Prakriti and what your body can and cannot handle well."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Warm water through the day",
+      "description": "Sip plain hot water every 20 to 30 minutes from the time you wake up. This is Ushnodaka, the classical Ama-clearing remedy. Avoid cold water and ice entirely on reset days."
+    },
+    {
+      "title": "Peya: thin rice congee",
+      "description": "Cook 2 tablespoons of white rice in 4 cups of water until very soft and soupy. Add a small pinch of rock salt and a quarter teaspoon of cumin. Eat warm as your first meal. It hydrates, settles the stomach, and is easy on a burdened digestive fire."
+    },
+    {
+      "title": "CCF tea",
+      "description": "Steep half a teaspoon each of cumin, coriander, and fennel seeds in 2 cups of hot water for 5 minutes, then strain. Sip warm after meals. This combination is gently carminative and helps relieve the bloated heaviness."
+    },
+    {
+      "title": "Foot and scalp oil",
+      "description": "Warm a small amount of sesame oil and massage it into your feet and scalp for 5 minutes before a warm shower. This grounds aggravated Vata and is particularly helpful for the dull headache that accompanies heavy nights."
+    },
+    {
+      "title": "Morning walk",
+      "description": "A slow 15-minute walk in open air helps move stagnation and gently stimulates Agni. Skip vigorous exercise; the body needs gentle activation, not a workout, on a reset day."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "cumin.webp",
+      "name": "Cumin",
+      "sanskrit": "जीरा",
+      "description": "Carminative and digestive; central to both CCF tea and the reset congee."
+    },
+    {
+      "image": "coriander.webp",
+      "name": "Coriander",
+      "sanskrit": "धनिया",
+      "description": "Cooling and digestive; helps reduce Pitta heat from alcohol."
+    },
+    {
+      "image": "fennel.webp",
+      "name": "Fennel",
+      "sanskrit": "सौंफ",
+      "description": "Gentle on the stomach; relieves bloating and settles nausea."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "Ama.",
+      "definition": "Undigested residue that accumulates when digestive fire is overwhelmed; associated with heaviness, coating, and sluggishness."
+    },
+    {
+      "term": "Agni.",
+      "definition": "Digestive fire; the body's capacity to transform food into nourishment. Hangover states reflect a temporarily weakened Agni."
+    },
+    {
+      "term": "Madatyaya.",
+      "definition": "The Ayurvedic term for disorders arising from excessive alcohol use, described in Caraka Samhita's Chikitsasthana."
+    },
+    {
+      "term": "Srotas.",
+      "definition": "The body's channels or pathways through which nutrients, fluids, and energy flow. Ama blocks these channels."
+    },
+    {
+      "term": "Ushnodaka.",
+      "definition": "Hot water, recommended repeatedly through the day as a simple and effective Ama-clearing measure."
+    },
+    {
+      "term": "Peya.",
+      "definition": "A thin, soupy rice gruel used as a restorative food after illness, fasting, or excess. The lightest classical post-excess meal."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana (on Agni, Ama, and Ushnodaka) · Caraka Samhita, Chikitsasthana (Madatyaya chapter on alcohol disorders) · Ashtanga Hridaya, Uttarasthana (on Pitta provocation by fermented drinks and Srotas) · Bhavaprakasha Nighantu, On carminative and digestive properties of cumin, coriander, and fennel",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

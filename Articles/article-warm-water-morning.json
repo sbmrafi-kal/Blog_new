@@ -1,0 +1,91 @@
+{
+  "handle": "warm-water-morning",
+  "title": "Warm water in the morning",
+  "hindi_title": "गर्म जल से दिन की शुरुआत",
+  "excerpt": "Learn why the morning matters so much in Ayurveda, what the tradition sees behind a sluggish start, and a few simple habits, warm water, tongue cleaning, oil massage, you can begin today.",
+  "badge": "Reading guide",
+  "read_time": "5 min read",
+  "image": "warm-water-morning.webp",
+  "at_a_glance": [
+    "A slow, foggy start is common; Ayurveda sees it as overnight residue (ama) and weak digestive fire (agni).",
+    "Simple morning habits, warm water, tongue cleaning, oil swishing, oil massage, gently wake the system up.",
+    "None of this cures illness; severe or lasting tiredness means see a doctor or qualified vaidya."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "why mornings feel heavy",
+      "paragraphs": [
+        "You wake up, and the day already feels heavy. The body is stiff, the mouth feels coated, the mind is foggy, and it takes two cups of tea before you feel even half awake. If your mornings often start this way, you are not lazy and there is nothing wrong with you. A slow, dull start is one of the most common things people notice, and the old Ayurvedic routine has gentle, practical things to say about it.",
+        "Ayurveda puts a lot of weight on how you begin the day. There is a whole daily routine (dinacharya) for this, and the classic text Ashtanga Hridaya opens it by suggesting a healthy person rise in the quiet hours before sunrise (Brahma muhurta). The idea is simple: the way you treat the first hour tends to set the tone for the rest.",
+        "So what does the tradition see behind that heavy, foggy feeling? In plain terms, Ayurveda talks about your digestive fire (agni). Overnight, the body has been quietly processing the previous day. If digestion is weak, a kind of sticky residue (ama) is thought to build up, and you feel it as that coated tongue, dullness, and reluctance to move. The morning habits below are really about gently clearing that and waking the system up, not about fixing any illness."
+      ],
+      "pullQuote": "the way you treat the first hour tends to set the tone for the rest"
+    },
+    {
+      "heading": "habits to begin with",
+      "paragraphs": [
+        "A warm start. Here it is worth being honest about the title of this piece. The classical dinacharya passages spell out tongue cleaning, oil swishing and oil massage in detail, but they do not give warm water the same precise injunction. So treat the glass of warm water less as a sourced classical rule and more as a sensible extension of the tradition's own logic: a warming, gentle start is felt to be kinder to a sleepy digestive fire (agni) than something cold. A glass of plain warm water, sipped slowly soon after waking, costs nothing, and you can try it tomorrow.",
+        "Clean the tongue. That coating you can see on your tongue is exactly what Caraka Samhita asks you to deal with. It recommends scraping the tongue daily with a smooth, non-sharp scraper of metal such as gold, silver, or copper, noting that the coating at the root of the tongue can obstruct the breath and cause bad odour. Modern research agrees on the practical point: a Cochrane systematic review found tongue cleaning gives a small but real short-term reduction in the compounds behind bad breath. A few gentle strokes, rinse, done.",
+        "Swish some oil. Both Caraka Samhita and Ashtanga Hridaya describe holding or gently swishing oil in the mouth (gandusha and kavala). The texts link the habit to firmer teeth, a stronger jaw and voice, less throat dryness, and better taste for food. A 2022 meta-analysis of oil pulling studies found it may reduce the count of certain bacteria in the mouth as a helpful add-on to normal brushing, though it does not replace your toothbrush or your dentist.",
+        "A calming touch. If you have ten minutes, the tradition loves a daily self oil massage (abhyanga). Ashtanga Hridaya recommends it every day, with special attention to the head, ears and feet, and connects it to easing fatigue and vata, steadier sleep, and firmer skin. Caraka Samhita calls daily oil massage the best thing for the skin and says oiling the head brings good sleep and ease. Even a quick rub of warm oil into the feet and scalp at night can feel grounding before bed."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "None of this is a cure for anything, and it is not meant to replace medical care. If your tiredness is severe, lasts for weeks, or comes with other worrying symptoms such as unexplained weight loss, breathlessness, or persistent pain, please see a doctor or a qualified vaidya. This article is general information to support everyday wellbeing, nothing more. Start small. Pick one habit, the warm water or the tongue scraper, and let your mornings get a little lighter from there."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Warm water on waking",
+      "description": "Sip a glass of plain warm water slowly soon after waking; gentler on a sleepy digestive fire than something cold."
+    },
+    {
+      "title": "Clean the tongue",
+      "description": "Scrape the tongue daily with a smooth, non-sharp metal scraper, then rinse, to clear the coating at its root."
+    },
+    {
+      "title": "Swish some oil",
+      "description": "Hold or gently swish oil in the mouth as an add-on to normal brushing; it does not replace your toothbrush."
+    },
+    {
+      "title": "A calming oil massage",
+      "description": "If you have ten minutes, do a daily self oil massage with attention to head, ears and feet; warm oil on feet and scalp at night feels grounding."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "dinacharya.",
+      "definition": "The Ayurvedic daily routine for how to begin and order the day."
+    },
+    {
+      "term": "Brahma muhurta.",
+      "definition": "The quiet hours before sunrise recommended for rising."
+    },
+    {
+      "term": "agni.",
+      "definition": "The body's digestive fire that processes food and the previous day."
+    },
+    {
+      "term": "ama.",
+      "definition": "Sticky residue thought to build up from weak digestion, felt as dullness and a coated tongue."
+    },
+    {
+      "term": "gandusha and kavala.",
+      "definition": "Holding or gently swishing oil in the mouth."
+    },
+    {
+      "term": "abhyanga.",
+      "definition": "Daily self oil massage, often of head, ears and feet."
+    }
+  ],
+  "sources": "Ashtanga Hridaya, Sutrasthana 2.1-4 and 2.8-9 (Dinacharya Adhyaya) · Ashtanga Hridaya, Sutrasthana 22 (Gandusha Vidhi Adhyaya) · Caraka Samhita, Sutrasthana 5.74-76, 5.78-80 and 5.83, 5.87-89 (Matrashiteeya Adhyaya)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

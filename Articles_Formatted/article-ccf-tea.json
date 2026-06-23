@@ -1,0 +1,53 @@
+{
+  "title": "CCF tea: cumin, coriander, fennel",
+  "handle": "ccf-tea",
+  "excerpt": "A calm, everyday look at the classic cumin-coriander-fennel brew: what Ayurveda sees behind a heavy, bloated, sluggish belly, and gentle habits you can start sipping today.",
+  "body_html": "<h2>Why you feel heavy after eating</h2>\n<p>You finished lunch an hour ago and you still feel heavy. The belly is a little bloated, there is some gas, and you feel slow and foggy when you should feel fed. If you typed \"why do I feel bloated and heavy after eating\" into your phone today, you are not imagining it, and you are not alone.</p>\n<p>Many homes already keep the answer in the kitchen jar: a warm cup made from three everyday seeds, cumin (jeera), coriander (dhania), and fennel (saunf). People call it CCF tea. It is one of the gentlest, most ordinary things you can sip, and it asks nothing fancy of you.</p>\n<p>Here is how Ayurveda looks at that heavy feeling, in plain terms. The tradition puts a digestive fire (agni) at the centre of health. Food and drink are described as the very fuel of that inner fire (Caraka Samhita, Sutrasthana 27.3): when the fire is steady, food is broken down well; when it is weak or sluggish, food sits half-processed and turns into a sticky residue (ama) that leaves you feeling heavy, gassy, and dull. CCF tea is valued simply as a warm, light drink that supports that fire rather than burdening it.</p>\n<blockquote class=\"ka-article-blockquote\">\n  <p>Closer to the warm water your grandmother offered after a heavy meal.</p>\n</blockquote>\n<h2>The three seeds</h2>\n<p>What about the three seeds themselves? Modern reviews line up with how Indian kitchens have always used them. Fennel is described as a carminative and digestive, the kind of thing traditionally taken for gas and an unsettled stomach (Badgujar et al., 2014). Cumin and coriander belong to the same gentle, warming, settling family of cooking spices. Nothing here is a medicine. It is closer to the warm water your grandmother offered after a heavy meal.</p>\n<h2>Eat in a way that is kind to your fire</h2>\n<p>Eat food warm, in a sensible quantity, and only after the last meal has actually been digested, not on top of it (Caraka Samhita, Vimanasthana 1.24). A cup of CCF between meals fits this rhythm well.</p>\n<p>Eat with a little attention. The texts ask you to eat without rushing, without talking and laughing through the whole meal, with your mind on the food (Caraka Samhita, Vimanasthana 1.24). And they ask you to notice your own body: observe which foods suit you and which leave you heavy, because what agrees with you is the real guide (Caraka Samhita, Vimanasthana 1.25). Treat CCF tea the same way. If it sits well and you feel lighter, keep it. If it does not suit you, let it go.</p>\n<p>Add one calming pause. Before you reach for the next snack, take five slow breaths and ask honestly whether you are hungry or just restless. This small pause is itself part of eating with awareness, and it costs nothing.</p>\n<h2>An honest note</h2>\n<p>CCF tea is a supportive everyday habit, not a treatment. If your bloating, pain, or digestive trouble is severe, persistent, or worrying, or comes with weight loss, fever, blood, or vomiting, please see a doctor or a qualified vaidya. This article is general information and is not a substitute for medical care.</p>\n<h2>Key Ayurvedic Ingredients</h2>\n<div class=\"ka-ingredients-container\">\n  <div class=\"ka-ingredient-card\">\n    <h3>Cumin <span class=\"ka-ingredient-sanskrit\">(जीरा)</span></h3>\n    <p>A warming kitchen seed long used to settle digestion.</p>\n  </div>\n  <div class=\"ka-ingredient-card\">\n    <h3>Coriander <span class=\"ka-ingredient-sanskrit\">(धनिया)</span></h3>\n    <p>Gentle and settling, it rounds out the blend.</p>\n  </div>\n  <div class=\"ka-ingredient-card\">\n    <h3>Fennel <span class=\"ka-ingredient-sanskrit\">(सौंफ)</span></h3>\n    <p>Sweet and soothing, the classic after-meal seed.</p>\n  </div>\n</div>",
+  "tags": [
+    "Digestion",
+    "Feature"
+  ],
+  "metafields": {
+    "topic_handle": "digestion",
+    "topic_title": "Digestion & Gut Health",
+    "category_label": "Digestion",
+    "dek": "A calm, everyday look at the classic cumin-coriander-fennel brew: what Ayurveda sees behind a heavy, bloated, sluggish belly, and gentle habits you can start sipping today.",
+    "read_time_minutes": 4,
+    "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment.",
+    "at_a_glance": [
+      "CCF tea is a simple warm brew of cumin, coriander and fennel seeds, the everyday after-meal drink many Indian kitchens already keep.",
+      "Ayurveda values it as a warm, light drink that supports the digestive fire (agni) rather than burdening it.",
+      "Sip it warm through the day, especially when digestion feels heavy, gassy or slow."
+    ],
+    "glossary_terms": [
+      {
+        "term": "Agni",
+        "definition": "The digestive fire that turns food into nourishment."
+      },
+      {
+        "term": "Ama",
+        "definition": "Sticky, undigested residue left when the fire is weak or sluggish."
+      },
+      {
+        "term": "Carminative",
+        "definition": "A food or herb that helps settle gas and an unsettled stomach."
+      }
+    ],
+    "sources": [
+      "Caraka Samhita, Sutrasthana 27.3",
+      "Caraka Samhita, Vimanasthana 1.24",
+      "Caraka Samhita, Vimanasthana 1.25",
+      "Badgujar et al., BioMed Research International, 2014"
+    ],
+    "faqs": [
+      {
+        "question": "What is the meaning of \"Agni\" in Ayurveda?",
+        "answer": "<p>In the Ayurvedic tradition, <strong>Agni</strong> is defined as: The digestive fire that turns food into nourishment.</p>"
+      },
+      {
+        "question": "What is the benefit of Cumin for this condition?",
+        "answer": "<p>According to classical texts, <strong>Cumin</strong> is highly regarded. A warming kitchen seed long used to settle digestion.</p>"
+      }
+    ]
+  }
+}

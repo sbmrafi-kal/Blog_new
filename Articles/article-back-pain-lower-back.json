@@ -1,0 +1,97 @@
+{
+  "handle": "back-pain-lower-back",
+  "title": "Lower back pain",
+  "hindi_title": "कमर दर्द",
+  "excerpt": "In Ayurveda, the dull ache in your lower back is mostly an aggravated Vata problem, and the old answer is warmth, oil, and gentle movement rather than force.",
+  "badge": "Feature",
+  "read_time": "3 min read",
+  "image": "back-pain-lower-back.webp",
+  "at_a_glance": [
+    "Everyday lower back pain (kati shula) is mostly aggravated Vata: cold, dry, and stiff.",
+    "Answer it with warm sesame oil, mild heat, regular warm meals, and gentle movement, not long bed rest.",
+    "Basti (medicated enema) is the classical deep treatment for stubborn Vata back pain, done only under a trained vaidya."
+  ],
+  "has_agni": false,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "the ache we all know",
+      "paragraphs": [
+        "Almost everyone meets it eventually: that stiff, dragging pain low in the back, worst when you get up from a chair, bend over a bucket, or wake on a cold morning. You straighten slowly, press a fist into the small of your back, and hope it passes. In Ayurveda this is named kati shula, simply pain (shula) in the kati, the lower back and hip region. Naming it plainly is the first step the old vaidyas took before reaching for any remedy.",
+        "Most everyday lower back pain is not mysterious. It is the body telling you something has gone dry, cold, and tight in a place that is meant to stay supple."
+      ],
+      "pullQuote": "a cold, dry, mobile force has lodged in the back, so you answer it with warmth, oiliness, and steadiness"
+    },
+    {
+      "heading": "why Ayurveda blames cold, dry vata",
+      "paragraphs": [
+        "The classical texts treat the body through three doshas, and pain that is sharp, shifting, worse in cold and on movement is the signature of Vata, the principle of air and movement (Caraka Samhita, Sutrasthana, on the nature of Vata). When Vata grows dry and excessive it settles in the bones, joints, and lower back, which the texts count among its natural seats (Ashtanga Hridaya, Sutrasthana, on the seats of Vata). The result is the stiffness, cracking, and catching you feel.",
+        "Sushruta places many back, hip, and sciatica-type complaints under disorders driven by aggravated Vata in the region, and links them to the channels and muscles around the spine (Sushruta Samhita, Nidanasthana, on Vata disorders). The everyday causes are familiar: long sitting, heavy lifting done wrong, skipping meals, late nights, cold and wind, and the general drying of the body with age. All of these are listed in the texts as things that increase Vata (Caraka Samhita, Sutrasthana). So the Ayurvedic logic is direct: a cold, dry, mobile force has lodged in the back, so you answer it with warmth, oiliness, and steadiness."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "warm oil, gentle heat, and not too much rest",
+      "paragraphs": [
+        "The first and most trusted remedy in the granthas for Vata pain is sneha and sweda, oiling and warming (Caraka Samhita, Sutrasthana, on oleation and sudation). For the back this means warming a little sesame oil until it is comfortably hot, rubbing it gently into the lower back and hips, and then applying mild heat: a cloth dipped in warm water and wrung out, a covered hot-water bottle, or simply sitting in the sun. Sesame oil is the classic choice because the texts praise it as warming and Vata-pacifying (Bhavaprakasha, on the qualities of oils).",
+        "On rest versus movement, the texts strike a balance that modern back-care has rediscovered. Pain that is flaring needs you to ease off heavy work, but Vata also hates stillness and long lying-in, which let it grow more dry and stiff. So once the sharpest pain settles, gentle, regular movement is the medicine: slow walking, easy bending and stretching, never forcing. Keep meals warm, cooked, and on time, since irregular and cold food feeds Vata (Ashtanga Hridaya, Sutrasthana). Warm water, a little ghee in food, and an early, settled night all work in the same direction.",
+        "For deeper or stubborn lower back pain, the tradition's main treatment is basti, a medicated enema of oil or decoction, which Caraka calls the foremost therapy for Vata disorders (Caraka Samhita, Siddhisthana, on basti). Chakradatta, the practical handbook, devotes recipes to Vata pain of the back and hips along these lines (Chakradatta, on Vatavyadhi). Basti is not a home remedy: it is done under a trained vaidya, with the right oils and timing, which is exactly why it belongs in a clinic and not in this article's kitchen advice."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "Most simple lower back pain eases with warmth, oil, and gentle movement over a few days. See a doctor or a qualified vaidya if the pain is severe, does not improve in a week or two, or keeps coming back. Get help quickly for any red flags: pain after a fall or accident, pain that shoots down a leg with numbness, tingling, or weakness in the foot, any loss of control over urine or stool, fever with back pain, unexplained weight loss, or night pain that wakes you. These can point to something beyond simple Vata that needs proper examination. This article is general information rooted in the classical texts, not a diagnosis or a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "warm oil rub",
+      "description": "Warm a little sesame oil until comfortably hot, not scalding. Rub it gently into the lower back and hips for a few minutes, then cover the area to keep it warm."
+    },
+    {
+      "title": "moist heat after the oil",
+      "description": "Follow the oil with mild heat: a warm wrung-out cloth, a covered hot-water bottle, or ten minutes in the sun. Heat helps the warmth and oil settle the stiffness."
+    },
+    {
+      "title": "move a little, often",
+      "description": "Once the sharpest pain eases, avoid long bed rest. Take slow short walks and do easy, unforced stretches through the day. Vata dislikes both heavy strain and total stillness."
+    },
+    {
+      "title": "keep meals warm and on time",
+      "description": "Eat warm, cooked food at regular hours and add a little ghee. Skipped meals, cold food, and late nights all increase the dry, cold Vata behind the ache."
+    },
+    {
+      "title": "know when to stop and get checked",
+      "description": "These are for simple, everyday aches. See a doctor or qualified vaidya if the pain is severe, lasts more than a week or two, or comes with leg numbness or weakness, loss of bladder or bowel control, fever, or unexplained weight loss."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "Kati shula.",
+      "definition": "Pain (shula) in the kati, the lower back and hip region."
+    },
+    {
+      "term": "Vata.",
+      "definition": "The dosha of air and movement; when dry and excessive it causes cold, shifting, stiff pain."
+    },
+    {
+      "term": "Sneha.",
+      "definition": "Oleation; applying or taking oil to counter the dryness of Vata."
+    },
+    {
+      "term": "Sweda.",
+      "definition": "Sudation; gentle warming or sweating therapy that loosens stiffness."
+    },
+    {
+      "term": "Basti.",
+      "definition": "A medicated oil or decoction enema, considered the foremost classical therapy for Vata disorders."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana (on the nature of Vata and oleation and sudation) · Caraka Samhita, Siddhisthana (on basti for Vata disorders) · Sushruta Samhita, Nidanasthana (on Vata disorders of the back and hips) · Ashtanga Hridaya, Sutrasthana (on the seats of Vata and regimen) · Bhavaprakasha, on the qualities of oils (sesame oil as warming and Vata-pacifying) · Chakradatta, on Vatavyadhi (treatments for Vata pain of the back and hips)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

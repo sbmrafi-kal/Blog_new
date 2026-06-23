@@ -1,0 +1,105 @@
+{
+  "handle": "eat-for-the-season",
+  "title": "Eating for the season",
+  "hindi_title": "ऋतुचर्या",
+  "excerpt": "Why the same meal sits differently in summer and winter, and the simple seasonal eating habits Ayurveda has suggested for centuries.",
+  "badge": "Feature",
+  "read_time": "5 min read",
+  "image": "eat-for-the-season.webp",
+  "at_a_glance": [
+    "The same meal sits differently across seasons because your digestive fire (agni) naturally shifts through the year.",
+    "Eat warm, nourishing food in winter when digestion is strongest; cooling, light food in summer when heat tires the body.",
+    "Eat only when genuinely hungry, favour fresh warm food, and give meals your full unhurried attention."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "why food feels different by season",
+      "paragraphs": [
+        "You may have noticed that the same plate of food feels different at different times of year. A heavy winter meal that left you warm and satisfied can feel sluggish and uncomfortable in the peak of summer. If you have been wondering why your appetite swings with the weather, you are not imagining it, and you are not doing anything wrong.",
+        "Ayurveda has a name for this kind of seasonal living: ritucharya, the seasonal routine. The basic idea is simple and very old. The year moves through six seasons (ritus), and our bodies quietly move with them. What helps us in one season may not suit us in another, and adjusting how we eat is one gentle way to stay in step."
+      ],
+      "pullQuote": "our bodies quietly move with them"
+    },
+    {
+      "heading": "the digestive fire through the year",
+      "paragraphs": [
+        "Behind this is the idea of digestion (agni), the inner fire that breaks down what we eat. The classical texts describe how this fire naturally changes through the year. The Charaka Samhita explains that our strength is lowest in the rains and high summer, moderate in autumn and spring, and at its peak in winter (Sutrasthana 6.8). In the cold months, when chilly air seals warmth inside the body, that digestive fire is said to grow strong enough to handle heavier, richer food (Sutrasthana 6.9).",
+        "This is why winter cravings for warming, nourishing food make sense, while in summer the body, tired by heat, asks for something lighter and cooling. Eating against the season can leave food half-digested, and Ayurveda links such undigested residue (ama) to that familiar heavy, dull feeling after a meal."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what to eat, season by season",
+      "paragraphs": [
+        "Here are a few everyday habits the tradition suggests, offered as gentle guidance rather than rules.",
+        "In winter, when digestion is considered strongest, the texts favour warm, well-cooked, nourishing meals. Charaka mentions unctuous, slightly sour and salty foods as suited to the cold season (Sutrasthana 6.11 to 12), and Vagbhata's Ashtanga Hridaya echoes this with sweet, sour and salty tastes in Hemanta (Sutrasthana 3.7 to 8). Think soups, ghee, warm milk and slow-cooked grains rather than cold, raw plates.",
+        "In summer, when heat tires the body, the same texts lean the other way. Charaka suggests cooling, sweet and light foods, with plenty of fluids, and advises going easy on very salty, sour, spicy and hot items, and on heavy exertion in the heat (Sutrasthana 6.28 to 29). A cooling drink, sweet seasonal fruit and simpler meals fit this season well.",
+        "In the rainy season, digestion is thought to be at its most delicate. Charaka favours lighter, warm, easy-to-digest food at this time to protect the digestive fire (Sutrasthana 6.33). And in autumn, after the rains, the guidance turns to sweet, light, slightly bitter and cooling food, eaten only when you genuinely feel hungry (Sutrasthana 6.41 to 42)."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "habits that hold all year",
+      "paragraphs": [
+        "A few simple habits hold across every season. Eat when you are actually hungry, not by the clock alone. Favour freshly cooked, warm food over cold leftovers. Sit down, eat without a screen, and give the meal your full attention, even for ten quiet minutes. This small pause is itself a calming practice and lets the body settle into eating."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "None of this is a cure for anything. It is simply a way of cooperating with your body as the seasons turn. If you have ongoing digestive trouble, unexplained weight changes, or any symptom that is severe, persistent or worrying, please see a doctor or a qualified vaidya. This article is general information and not a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Winter: go warm and nourishing",
+      "description": "Lean on soups, ghee, warm milk and slow-cooked grains rather than cold, raw plates."
+    },
+    {
+      "title": "Summer: cool and light",
+      "description": "Choose cooling sweet seasonal fruit, plenty of fluids and simpler meals; ease off very salty, sour, spicy and hot food."
+    },
+    {
+      "title": "Rains: keep it light",
+      "description": "Favour lighter, warm, easy-to-digest food to protect the delicate digestive fire."
+    },
+    {
+      "title": "Autumn: eat only when hungry",
+      "description": "Turn to sweet, light, slightly bitter and cooling food, eaten only when you genuinely feel hungry."
+    },
+    {
+      "title": "Eat by hunger, not the clock",
+      "description": "Eat when you are actually hungry, and favour freshly cooked warm food over cold leftovers."
+    },
+    {
+      "title": "Pause and pay attention",
+      "description": "Sit down, eat without a screen, and give the meal your full attention even for ten quiet minutes."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "ritucharya.",
+      "definition": "The seasonal routine: adjusting daily habits, including diet, as the year moves through its seasons."
+    },
+    {
+      "term": "ritu.",
+      "definition": "A season; Ayurveda counts six in the year."
+    },
+    {
+      "term": "agni.",
+      "definition": "Digestion, the inner fire that breaks down what we eat."
+    },
+    {
+      "term": "ama.",
+      "definition": "Undigested residue, linked to a heavy, dull feeling after a meal."
+    }
+  ],
+  "sources": "Charaka Samhita, Sutrasthana 6.8 · Charaka Samhita, Sutrasthana 6.9 · Charaka Samhita, Sutrasthana 6.11 to 12 · Charaka Samhita, Sutrasthana 6.28 to 29 · Charaka Samhita, Sutrasthana 6.33 · Charaka Samhita, Sutrasthana 6.41 to 42 · Ashtanga Hridaya, Sutrasthana 3.7 to 8",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

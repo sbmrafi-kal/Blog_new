@@ -1,0 +1,102 @@
+{
+  "handle": "why-an-early-dinner",
+  "title": "Why an early, lighter dinner",
+  "hindi_title": "हल्का और जल्दी भोजन",
+  "excerpt": "Why Ayurveda links a heavy, late dinner to morning heaviness, and the simple food and routine habits the tradition suggests for easier digestion.",
+  "badge": "Reading guide",
+  "read_time": "4 min read",
+  "image": "why-an-early-dinner.webp",
+  "at_a_glance": [
+    "A late, heavy dinner meets a weak evening digestive fire, leaving half-digested residue (ama) that shows up as morning heaviness.",
+    "Eat dinner earlier, lighter, and warm so the fire has time to work while you are still upright.",
+    "A little ginger, a slow walk, and quiet breathing help; see a doctor if heaviness or burning is severe or persistent."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "the morning you know",
+      "paragraphs": [
+        "You eat dinner late, often after a long day, and you eat it heavy. Then you wake up feeling dull, a little bloated, with no real appetite for breakfast and a coated tongue. If that sounds like your mornings, you are not imagining it, and you are not alone. Many people search for exactly this, and the good news is that the old texts have a calm, practical way of looking at it."
+      ],
+      "pullQuote": "A late, heavy dinner meets a quieter evening fire"
+    },
+    {
+      "heading": "why it happens",
+      "paragraphs": [
+        "Ayurveda puts your digestion at the centre of everyday wellbeing. It calls your digestive capacity agni, the inner fire that cooks your food. The Caraka Samhita goes as far as to say that your strength, complexion, energy, and vital force all depend on the state of this agni, and that when it works normally it supports a long, healthy life (Caraka Samhita, Chikitsasthana, Ch. 15, verses 3-4). Food itself is described as the very fuel on which this inner fire depends (Caraka Samhita, Sutrasthana, Ch. 27, verse 3).",
+        "So what happens at night? The tradition observes that agni is not the same all day. When the digestive heat is weak and the food sitting in the stomach is too much for it, the food is not properly cooked. That raw, half-digested residue is given a name: ama (Ashtanga Hridaya, Sutrasthana, Ch. 13, verse 25). A late, heavy dinner meets a quieter evening fire, and that morning heaviness, the dull tongue, the lack of appetite, is how ama tends to show up. This is a way of understanding everyday sluggishness, not a diagnosis."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what helps tonight",
+      "paragraphs": [
+        "Here are a few gentle habits the texts point toward, none of them dramatic, all of them doable tonight.",
+        "Eat your last meal earlier and lighter. Give your stomach a few unhurried hours before you lie down, so the fire has time to do its work while you are still upright and awake. This follows simply from the idea that food is fuel and the fire needs room to burn it (Caraka Samhita, Sutrasthana, Ch. 27, verse 3).",
+        "Keep the evening meal warm, simple, and not overloaded. Think a small bowl of khichdi, soupy dal, or cooked vegetables rather than something cold, raw, or very rich. The principle is to match the meal to a fire that is winding down for the day.",
+        "Let ginger be your kitchen friend. Classical nighantu literature describes dried ginger (shunthi) as something that kindles the digestive fire and works on ama, which is the traditional reason a little ginger is a common kitchen choice when there is heaviness or poor appetite (Bhavaprakasha Nighantu, Haritakyadi Varga). Adding a little fresh ginger to your food is an everyday version of this.",
+        "Add a calming pause. A short, slow walk after dinner, then a few minutes of quiet, easy breathing before bed, helps you settle rather than collapsing onto a full stomach. The aim is to end the day gently so the body can rest and digest.",
+        "Start with just one change tonight: dinner a little earlier, a little lighter. Notice how tomorrow morning feels. Small, steady habits are exactly how the tradition expects agni to be cared for, day after day."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. If your heaviness, acidity, or burning is severe, keeps coming back, or genuinely worries you, please see a doctor or a qualified vaidya rather than self-managing. Persistent sour or bitter eructation and burning in the chest and throat were described long ago as a real disorder needing proper care (Madhava Nidana, Ch. 51, verses 1-3), and this article is general information, not a substitute for medical advice."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Eat earlier and lighter",
+      "description": "Have your last meal earlier and lighter, giving your stomach a few unhurried hours before you lie down."
+    },
+    {
+      "title": "Keep it warm and simple",
+      "description": "Choose a small bowl of khichdi, soupy dal, or cooked vegetables rather than cold, raw, or very rich food."
+    },
+    {
+      "title": "Add a little ginger",
+      "description": "Add a little fresh ginger to your food, the everyday version of ginger's traditional use to kindle digestion."
+    },
+    {
+      "title": "Pause after dinner",
+      "description": "Take a short slow walk after dinner, then a few minutes of quiet, easy breathing before bed."
+    },
+    {
+      "title": "Change one thing tonight",
+      "description": "Start with just one change: dinner a little earlier and lighter, and notice how tomorrow morning feels."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "ginger.webp",
+      "name": "Ginger",
+      "sanskrit": "शुण्ठी",
+      "description": "Dried ginger kindles the digestive fire and works on ama."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "The digestive capacity, the inner fire that cooks your food."
+    },
+    {
+      "term": "ama.",
+      "definition": "The raw, half-digested residue left when agni is too weak for the food."
+    },
+    {
+      "term": "vaidya.",
+      "definition": "A qualified traditional Ayurvedic physician."
+    },
+    {
+      "term": "shunthi.",
+      "definition": "Dried ginger, described as kindling the digestive fire and working on ama."
+    }
+  ],
+  "sources": "Caraka Samhita, Chikitsasthana, Ch. 15 (Grahani Chikitsa), verses 3-4 · Caraka Samhita, Sutrasthana, Ch. 27 (Annapanavidhi Adhyaya), verse 3 · Ashtanga Hridaya, Sutrasthana, Ch. 13 (Doshopakramaniya Adhyaya), verse 25 · Madhava Nidana, Ch. 51 (Amlapitta Nidanam), verses 1-3 · Bhavaprakasha Nighantu of Bhavamishra, Haritakyadi Varga (shunthi entry)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

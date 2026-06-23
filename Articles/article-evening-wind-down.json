@@ -1,0 +1,98 @@
+{
+  "handle": "evening-wind-down",
+  "title": "An evening wind-down",
+  "hindi_title": "रात्रिचर्या",
+  "excerpt": "A calm, classical evening routine from Ayurveda: simple food, oil, and wind-down habits the old texts suggest to help you settle into rest at night.",
+  "badge": "Reading guide",
+  "read_time": "5 min read",
+  "image": "evening-wind-down.webp",
+  "at_a_glance": [
+    "The hour before bed matters more than you think; a calm routine helps sleep settle on its own.",
+    "Ayurveda treats sleep as a pillar of health: lighter, earlier dinner, warm oil, and a quiet mind invite rest.",
+    "If sleeplessness is severe or lasts for weeks, see a doctor or qualified vaidya; this is general information, not a diagnosis."
+  ],
+  "has_agni": false,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "Why sleep matters",
+      "paragraphs": [
+        "You lie down tired, but your mind keeps running. The body is heavy, yet sleep stays just out of reach, and you wake up the next morning feeling like you never really rested. If this is your evening, you are not alone, and you are not doing anything wrong. Many people search for exactly this, and the good news is that the way you spend the hour before bed matters more than you might think.",
+        "Ayurveda takes sleep seriously. The Caraka Samhita calls food, sleep, and regulated conduct the three supports of the body (trayopastambha), the everyday pillars that keep our strength, complexion and growth steady through life (Caraka Samhita, Sutrasthana 11.35). It goes further and says that happiness and misery, nourishment and weakness, even clarity and dullness of mind, all rest on how we sleep (Caraka Samhita, Sutrasthana 21.36). So poor sleep is not a small thing to the tradition. It is close to the center of how we feel."
+      ],
+      "pullQuote": "a settled mind is something you can offer yourself tonight, for free"
+    },
+    {
+      "heading": "What a restless night looks like",
+      "paragraphs": [
+        "What does Ayurveda see behind a restless night? In simple terms, the body and mind have three working energies (doshas). Calm, settled sleep is linked to a steadier, heavier quality (kapha), while a mind that races or a body that cannot switch off is often linked to the lighter, more mobile qualities (vata and pitta) stirred up by too much physical or mental exertion during the day. This is how peer-reviewed reviews summarize the classical view as well (Nat Sci Sleep, PMC4448595). The texts also note that simply staying awake late tends to leave the body dry and unsettled (Ashtanga Hridaya, Sutrasthana 7.55). The aim of an evening routine, then, is gentle: let the day's restlessness settle so the calmer, sleep-friendly quality can rise on its own."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "Evening habits the texts suggest",
+      "paragraphs": [
+        "Here are a few everyday habits the tradition points to, framed as support, not as fixes. Keep a regular bedtime. Ayurveda repeatedly favors timely night sleep over late nights and daytime catching-up (Ashtanga Hridaya, Sutrasthana 7.64 to 7.65). A steady hour signals the body that the day is closing.",
+        "Make the last meal lighter and earlier, and let it be warm and easy to digest rather than heavy or very late. A small cup of warm milk (kshira) before bed is one of the oldest soothing customs the texts mention for settling into rest (Caraka Samhita, Sutrasthana 21.52 to 54). If milk does not suit you, simply keep dinner gentle.",
+        "Slow the body down with touch and warmth. A short, unhurried oil massage (abhyanga), even just warm oil on the feet, scalp or hands, sits high on the classical list of things that invite rest, alongside a warm bath, soft sounds, pleasant scents and a comfortable, well-made bed (Caraka Samhita, Sutrasthana 21.52 to 54; Ashtanga Hridaya, Sutrasthana 7.66 to 68). The idea is to make the senses comfortable so the mind has less to hold on to.",
+        "Add one calming practice. Dim the lights, put the phone away, and sit for a few slow breaths or a short, quiet meditation. The texts describe a contented, easy mind (manah-sukha) as itself sleep-promoting (Caraka Samhita, Sutrasthana 21.52 to 54), and a settled mind is something you can offer yourself tonight, for free."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "When to see a doctor",
+      "paragraphs": [
+        "One honest note. Ayurveda also recognizes that some sleeplessness goes with illness or deeper imbalance, not just a busy evening (Caraka Samhita, Sutrasthana 21.58 to 59). If your sleep trouble is severe, lasts for weeks, or is wearing you down during the day, please see a doctor or a qualified vaidya. This article is general information drawn from classical texts, not a diagnosis or a substitute for medical care.",
+        "Start small tonight. Pick one habit, perhaps an earlier, lighter dinner, or five quiet minutes with the lights low, and let it become familiar. The tradition treats good sleep as something you build night after night, not something you chase."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Keep a steady bedtime",
+      "description": "Favor timely night sleep over late nights; a regular hour signals the body the day is closing."
+    },
+    {
+      "title": "Lighter, earlier dinner",
+      "description": "Make the last meal warm, easy to digest and not too late; a small cup of warm milk before bed can soothe."
+    },
+    {
+      "title": "Warm oil massage",
+      "description": "A short, unhurried abhyanga, even just warm oil on feet, scalp or hands, invites rest."
+    },
+    {
+      "title": "One calming practice",
+      "description": "Dim the lights, put the phone away, and sit for a few slow breaths or a short quiet meditation."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "Rātricharyā.",
+      "definition": "The classical Ayurvedic night routine."
+    },
+    {
+      "term": "Trayopastambha.",
+      "definition": "The three supports of the body: food, sleep, and regulated conduct."
+    },
+    {
+      "term": "Dosha.",
+      "definition": "One of the three working energies of body and mind (vata, pitta, kapha)."
+    },
+    {
+      "term": "Kapha.",
+      "definition": "The steadier, heavier quality linked to calm, settled sleep."
+    },
+    {
+      "term": "Abhyanga.",
+      "definition": "A warm oil massage used to slow the body and invite rest."
+    },
+    {
+      "term": "Manah-sukha.",
+      "definition": "A contented, easy mind, described as sleep-promoting."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 11.35 · Caraka Samhita, Sutrasthana 21.36 · Caraka Samhita, Sutrasthana 21.52 to 54 · Caraka Samhita, Sutrasthana 21.58 to 59 · Ashtanga Hridaya, Sutrasthana 7.55 · Ashtanga Hridaya, Sutrasthana 7.64 to 7.65 · Ashtanga Hridaya, Sutrasthana 7.66 to 68 · Nat Sci Sleep, PMC4448595",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

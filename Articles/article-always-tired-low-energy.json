@@ -1,0 +1,104 @@
+{
+  "handle": "always-tired-low-energy",
+  "title": "Always tired",
+  "hindi_title": "थकान और कम ऊर्जा",
+  "excerpt": "If you wake up tired and drag through the day, here is how Ayurveda understands low energy and a few gentle, everyday habits the old texts suggest to help you rest and recover.",
+  "badge": "Feature",
+  "read_time": "5 min read",
+  "image": "always-tired-low-energy.webp",
+  "at_a_glance": [
+    "Ayurveda treats tiredness by asking about your sleep and digestion, not as one fixed problem.",
+    "The classical texts put sleep at the centre: broken rest quietly drains energy from everything else.",
+    "Simple habits like timely night sleep, a calming evening routine and warm, grounding food help you recover."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "what's going on",
+      "paragraphs": [
+        "You sleep, but you wake up tired. By afternoon your body feels heavy, your mind feels foggy, and even small tasks take more effort than they should. If this sounds like your everyday, you are not imagining it, and you are not alone. Many people carry this low, dragging tiredness for months before they stop to ask why.",
+        "Ayurveda has a calm, practical way of looking at low energy. It does not treat tiredness as one single thing. Instead it asks simple questions: How is your sleep? How is your digestion (agni)? Are you running yourself down faster than you are building yourself back up? The old texts place sleep at the very centre of this picture."
+      ],
+      "pullQuote": "when rest is broken, energy quietly leaks away from everything else"
+    },
+    {
+      "heading": "how ayurveda sees it",
+      "paragraphs": [
+        "In the Caraka Samhita, sleep (nidra) is named as one of the three supports of the body, along with food and regulated living (Caraka Samhita, Sutrasthana 11.35). The same text goes further and says that nourishment and emaciation, strength and weakness, even clarity of mind, all depend on sleep (Caraka Samhita, Sutrasthana 21.36). In plain terms: when rest is broken, energy quietly leaks away from everything else.",
+        "Ayurveda also connects this to your inner makeup, the doshas. Healthy, natural sleep is linked to a settled, grounded quality (kapha), while restless or thin sleep is linked to an excess of the lighter, more mobile qualities (vata or pitta), which often build up after physical or mental strain. So if your days are overloaded and your nights are short, the tradition would not be surprised that you feel depleted.",
+        "The good news is that the classical texts spend a lot of attention on restoring rest, and many of their suggestions are simple things you can try today."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what helps",
+      "paragraphs": [
+        "Protect your night sleep first. The texts repeatedly stress sleeping at the proper time, meaning at night rather than staying up late and napping by day (Ashtanga Hridaya, Sutrasthana 7.55). Staying awake at night is described as drying and depleting for the body, while timely night rest is described as nourishing. A regular bedtime, dim light in the evening, and a screen-free wind-down all support this.",
+        "Build a calming evening routine. Caraka lists oil massage (abhyanga), a warm bath, pleasant scents and sounds, gentle stroking of the body, a well-made bed and a comfortable room among the things that invite lost sleep to return (Caraka Samhita, Sutrasthana 21.52 to 54). You do not need all of it. Even a few minutes of warm oil rubbed into the feet and scalp before bed is in the spirit of this advice.",
+        "Eat to feel grounded, not heavy. The same tradition mentions warm milk (kshira), curd (dadhi) and other unctuous, nourishing foods as supportive when someone is run down by lack of rest. A warm, easy-to-digest dinner eaten a little earlier in the evening tends to settle the body better than a heavy late meal.",
+        "Move, but do not exhaust yourself. Fatigue of mind and body is itself listed as a cause of disturbed sleep, so the aim is gentle steadiness: a daily walk, slow stretching, or quiet breathing, rather than draining workouts late at night.",
+        "A calming practice helps too. A few minutes of slow, even breathing or quiet sitting before bed eases the restless, overstimulated quality that the texts link to poor sleep. Keep it short and regular rather than long and occasional."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. Persistent tiredness can also come from real medical causes such as anaemia, thyroid issues, low vitamin levels, sleep disorders, depression or other conditions. If your low energy is severe, lasts for weeks, keeps getting worse, or comes with other symptoms that worry you, please see a doctor or a qualified vaidya. This article is general information drawn from tradition, not a diagnosis or a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Protect night sleep",
+      "description": "Sleep at night rather than staying up late and napping by day; keep a regular bedtime, dim evening light and a screen-free wind-down."
+    },
+    {
+      "title": "Calming evening routine",
+      "description": "Rub a little warm oil into your feet and scalp before bed, in the spirit of abhyanga, a warm bath and a comfortable room."
+    },
+    {
+      "title": "Eat to feel grounded",
+      "description": "Have a warm, easy-to-digest dinner a little earlier; warm milk and curd are mentioned as supportive when you are run down."
+    },
+    {
+      "title": "Move gently",
+      "description": "A daily walk, slow stretching or quiet breathing rather than draining late-night workouts."
+    },
+    {
+      "title": "A short calming practice",
+      "description": "A few minutes of slow, even breathing or quiet sitting before bed, kept short and regular."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "Digestive fire; the body's capacity to digest and process food."
+    },
+    {
+      "term": "nidra.",
+      "definition": "Sleep, named in the texts as one of the three supports of the body."
+    },
+    {
+      "term": "dosha.",
+      "definition": "The inner makeup or constitution: vata, pitta and kapha."
+    },
+    {
+      "term": "kapha.",
+      "definition": "The settled, grounded quality linked to healthy, natural sleep."
+    },
+    {
+      "term": "abhyanga.",
+      "definition": "Oil massage, part of a calming evening routine that invites sleep."
+    },
+    {
+      "term": "vaidya.",
+      "definition": "A qualified Ayurvedic physician."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 11.35 · Caraka Samhita, Sutrasthana 21.36 · Caraka Samhita, Sutrasthana 21.52 to 54 · Ashtanga Hridaya, Sutrasthana 7.55 · Nat Sci Sleep, PMC4448595",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

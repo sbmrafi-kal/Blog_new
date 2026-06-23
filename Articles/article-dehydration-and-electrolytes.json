@@ -1,0 +1,110 @@
+{
+  "handle": "dehydration-and-electrolytes",
+  "title": "Staying hydrated the Ayurvedic way",
+  "hindi_title": "शरीर में पानी का संतुलन",
+  "excerpt": "Ayurveda has thought deeply about water, not just how much to drink but how, when, and what kind. A few simple shifts in how you sip can make a surprising difference to your energy and digestion.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "dehydration-and-electrolytes.webp",
+  "at_a_glance": [
+    "Sip warm water steadily through the day rather than gulping large amounts at once",
+    "Avoid drinking a full glass immediately before or after meals; small sips alongside food is the classical advice",
+    "Cooling drinks like coriander or fennel water suit summer; coconut water fits the Ayurvedic idea of a naturally sweet, cooling fluid"
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "water, but make it Ayurvedic",
+      "paragraphs": [
+        "Most of us have been told to drink eight glasses of water a day. We carry bottles, set reminders, and still feel vaguely parched by afternoon. Yet the real question Ayurveda asks is not just how much, but how. The classical texts approach water, or jala, as something with its own qualities that interact with your body's current state rather than as a neutral fluid you simply pour in.",
+        "The Caraka Samhita describes water in detailed terms, noting that freshly drawn water from a clean source, when processed correctly, supports all the tissues and helps carry nutrients through the channels of the body (Caraka Samhita, Sutrasthana). Ashtanga Hridaya, the compact clinical manual compiled by Vagbhata, adds that the qualities of water change depending on how it is stored and prepared, and that warm or slightly heated water is generally easier for the digestive fire to handle than cold water straight from a pot (Ashtanga Hridaya, Sutrasthana)."
+      ],
+      "pullQuote": "pouring water on a flame weakens it"
+    },
+    {
+      "heading": "the Ayurvedic view on thirst and balance",
+      "paragraphs": [
+        "Ayurveda uses the term trishna for thirst, and the classical view treats it as a meaningful signal rather than an inconvenience. The body is asking for something specific, and flooding it indiscriminately can be as unhelpful as ignoring the signal altogether. Caraka mentions that drinking large amounts of cold water quickly can dampen agni, the digestive fire, in the same way that pouring water on a flame weakens it (Caraka Samhita, Sutrasthana). The advice that follows is intuitive once you understand this logic: sip steadily through the day rather than gulping large quantities at once.",
+        "Vagbhata in the Ashtanga Hridaya is specific about timing. Drinking water before a meal reduces appetite and weakens digestion over time. Drinking a great deal immediately after a meal dilutes the digestive juices. The middle path he recommends is taking small sips alongside food, and waiting a comfortable interval after eating before drinking more (Ashtanga Hridaya, Sutrasthana). For most people, this means sipping warm water through the meal rather than finishing a full glass before or after it.",
+        "The concept of electrolyte balance does not appear in classical Ayurvedic terms, but the texts do recognise that plain water is not always enough, particularly in heat or after exertion. Drinks prepared with cooling herbs, a pinch of rock salt, or natural sugars like raw cane were part of the classical pharmacopoeia. The Bhavaprakasha describes several such preparations using coriander, fennel, and dried ginger as digestive aids that also support fluid retention in the tissues (Bhavaprakasha, Nighantu)."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "practical habits for everyday hydration",
+      "paragraphs": [
+        "The simplest Ayurvedic adjustment most people can make is switching cold or room-temperature water for warm water through most of the day. Warm water, particularly water that has been boiled and allowed to cool to a comfortable drinking temperature, is considered in both Caraka and Ashtanga Hridaya to be lighter on digestion, supportive of the channels, and helpful in clearing mild congestion in the body.",
+        "In summer or during physical exertion, cooling drinks become appropriate. A light coriander-seed water, made by soaking a teaspoon of seeds overnight and straining in the morning, is a traditional way to cool the body without suppressing digestion. Fennel water made the same way is gentle and suitable for most people. These are not dramatic remedies; they are quiet daily habits that the texts present as simply sensible.",
+        "Coconut water, which modern nutrition marks for its electrolytes, fits comfortably within the Ayurvedic understanding of naturally sweet, cooling fluids. The Bhavaprakasha references coconut in its properties, and it has long been used in Kerala and coastal Ayurvedic traditions for heat and dehydration. A glass in the afternoon, when pitta, the fire principle, runs high, is a habit worth borrowing.",
+        "One habit the texts are consistent about is drinking to thirst rather than to a fixed schedule. Thirst is a reliable guide for most healthy adults. If you find you rarely feel thirsty, that can be a sign of a suppressed signal, often from habitually ignoring mild thirst over time. Retraining the habit is as simple as keeping warm water accessible and noticing the early cue before it becomes urgent."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "This article is general information about Ayurvedic perspectives on hydration and is not a diagnosis or a substitute for medical care. If you experience severe thirst that does not resolve with drinking, dark or very infrequent urination, dizziness, confusion, muscle cramps, or any sign of rapid dehydration, seek medical attention promptly. These can indicate conditions such as diabetes, kidney problems, or acute dehydration requiring clinical treatment. Persistent fatigue or swelling despite adequate fluid intake also warrants evaluation by a doctor or qualified vaidya."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Switch to warm water through the day",
+      "description": "Boil water in the morning, let it cool to a comfortable temperature, and carry it in a flask. Drink small amounts steadily rather than large quantities at intervals."
+    },
+    {
+      "title": "Make coriander-seed water",
+      "description": "Soak one teaspoon of coriander seeds in a glass of water overnight. Strain in the morning and sip through the day. Cooling and gentle on digestion, particularly in warm weather."
+    },
+    {
+      "title": "Try fennel water in the evening",
+      "description": "Steep half a teaspoon of fennel seeds in hot water for five minutes, strain, and drink warm. Supports digestion and is traditionally used to settle the stomach after a meal."
+    },
+    {
+      "title": "Sip alongside meals, not before or after",
+      "description": "Take small sips of warm water with food instead of drinking a full glass before or after. Notice whether this changes how settled you feel in the hour after eating."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "coriander.webp",
+      "name": "Coriander",
+      "sanskrit": "धनिया",
+      "description": "Cooling and digestive; used as a seed water to reduce heat in the body"
+    },
+    {
+      "image": "fennel.webp",
+      "name": "Fennel",
+      "sanskrit": "सौंफ",
+      "description": "Gently digestive and calming; suitable as a warm evening drink for most constitutions"
+    },
+    {
+      "image": "ginger.webp",
+      "name": "Ginger",
+      "sanskrit": "अदरक",
+      "description": "Warming and supportive of agni; used in small amounts in spiced waters to aid the digestive channels"
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "Jala.",
+      "definition": "Water; one of the five classical elements, recognised in Ayurveda as having its own qualities that interact with the body"
+    },
+    {
+      "term": "Trishna.",
+      "definition": "Thirst; treated in the classical texts as a meaningful body signal rather than something to suppress or override"
+    },
+    {
+      "term": "Agni.",
+      "definition": "The digestive fire; the functional principle responsible for transforming food and experience into what the body can use"
+    },
+    {
+      "term": "Pitta.",
+      "definition": "The fire-and-water dosha governing heat, transformation, and metabolism; runs highest in summer afternoons"
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana · Ashtanga Hridaya, Sutrasthana · Bhavaprakasha, Nighantu",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

@@ -1,0 +1,96 @@
+{
+  "handle": "know-your-dosha",
+  "title": "Know your dosha",
+  "hindi_title": "अपनी प्रकृति जानें",
+  "excerpt": "A plain-language guide to understanding your Ayurvedic constitution (prakriti), what the three doshas mean, and a few everyday habits the classical texts suggest for staying in balance.",
+  "badge": "Reading guide",
+  "read_time": "5 min read",
+  "image": "know-your-dosha.webp",
+  "at_a_glance": [
+    "The three doshas, Vata, Pitta and Kapha, are present in everyone; your prakriti is the mix natural to you.",
+    "Notice your steady, rested tendencies, not a bad week, to get a sense of your type.",
+    "Favor warm, freshly cooked meals, a regular daily rhythm and a little calm to stay in balance."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "what a dosha is",
+      "paragraphs": [
+        "You have probably come across the word \"dosha\" and wondered what your type is. Maybe a friend said you seem \"very pitta,\" or you saw a quiz online and were not sure how seriously to take it. The good news is that getting a sense of your constitution (prakriti) is not complicated, and you do not need a label to start living a little more in tune with yourself.",
+        "Ayurveda describes three working forces in the body, called doshas. The Caraka Samhita lists them plainly: Vayu (Vata), Pitta and Kapha are the bodily doshas (Caraka Samhita, Sutrasthana 1.57). A simple way to picture them: Vata is the force of movement and lightness, Pitta is the force of heat and transformation (think digestion and metabolism), and Kapha is the force of structure and steadiness. All three are present in everyone. They keep the body running when balanced, and cause trouble when they are disturbed (Ashtanga Hridaya, Sutrasthana 1.6)."
+      ],
+      "pullQuote": "Your prakriti is roughly your baseline, the version of you when you are rested and well."
+    },
+    {
+      "heading": "your prakriti",
+      "paragraphs": [
+        "Your prakriti is the particular mix of these three that is natural to you. According to the tradition, this mix is set very early, around the time you were formed, shaped by factors like the time of conception and your mother's diet and routine during pregnancy (Caraka Samhita, Vimanasthana 8.95). That is why some people are naturally lean and quick (more Vata), some sharp and warm (more Pitta), and some solid and calm (more Kapha), with many of us being a blend of two. Your prakriti is roughly your baseline, the version of you when you are rested and well.",
+        "So how do you get a sense of yours? Notice your natural tendencies, not a bad week. Do you tend to feel cold, dry, restless, and quick to think and move? That leans Vata. Do you run warm, get hungry and irritable if a meal is late, and like things done properly? That leans Pitta. Are you steady, sleep deeply, build muscle easily, and slow to anger but also slow to get going? That leans Kapha. Most people see themselves in one or two of these."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "habits to stay in balance",
+      "paragraphs": [
+        "Once you have a hunch, the tradition suggests gentle, everyday habits to stay in balance rather than dramatic fixes. A widely shared starting point is to favor warm, freshly cooked, easy-to-digest meals and to eat at regular times, since steady digestion (agni) is seen as the root of feeling well. Keeping a consistent daily rhythm, waking, eating, and sleeping at similar hours, is another simple anchor the texts return to often.",
+        "A calming practice helps too. A few quiet minutes of slow breathing before meals, or a short walk after dinner, are easy habits anyone can try today regardless of type. None of this is about strict rules. The aim Ayurveda sets for itself is twofold: to protect the health of the healthy and to ease the troubles of the unwell (Caraka Samhita, Sutrasthana 30.26). Knowing your prakriti simply helps you choose habits that suit you rather than fight you."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a vaidya",
+      "paragraphs": [
+        "Treat any online quiz or this guide as a friendly first sketch, not a diagnosis. A qualified vaidya can read your constitution far more accurately in person, taking your whole history into account. And if you have a symptom that is severe, persistent, or worrying, please see a doctor or qualified vaidya. This is general information meant to help you understand the tradition, not a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Eat warm and regular",
+      "description": "Favor warm, freshly cooked, easy-to-digest meals and eat at regular times to support steady digestion."
+    },
+    {
+      "title": "Keep a daily rhythm",
+      "description": "Wake, eat, and sleep at similar hours each day as a simple anchor."
+    },
+    {
+      "title": "Breathe before meals",
+      "description": "Take a few quiet minutes of slow breathing before you eat."
+    },
+    {
+      "title": "Walk after dinner",
+      "description": "A short walk after dinner is an easy habit anyone can try, regardless of type."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "dosha.",
+      "definition": "One of three working forces in the body: Vata, Pitta and Kapha."
+    },
+    {
+      "term": "prakriti.",
+      "definition": "Your natural constitution, the particular mix of the three doshas set early in life."
+    },
+    {
+      "term": "Vata.",
+      "definition": "The force of movement and lightness."
+    },
+    {
+      "term": "Pitta.",
+      "definition": "The force of heat and transformation, like digestion and metabolism."
+    },
+    {
+      "term": "Kapha.",
+      "definition": "The force of structure and steadiness."
+    },
+    {
+      "term": "agni.",
+      "definition": "Digestion, seen as the root of feeling well."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 1.57 · Caraka Samhita, Sutrasthana 30.26 · Caraka Samhita, Vimanasthana 8.95 · Ashtanga Hridaya, Sutrasthana 1.6",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

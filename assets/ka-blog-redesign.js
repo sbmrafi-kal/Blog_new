@@ -70,9 +70,23 @@
     var articleContent = document.querySelector('.ka-article-content');
     if (!articleContent) return;
 
-    var headings = articleContent.querySelectorAll('h2[id], h3[id]');
+    var headings = articleContent.querySelectorAll('.ka-article-body h2, .ka-article-body h3');
     var sidebarToc = document.querySelector('.ka-article-sidebar');
     var mobileToc = document.querySelector('.ka-article-toc-mobile');
+
+    // Ensure all headings have IDs dynamically if missing
+    headings.forEach(function (heading, index) {
+      if (!heading.id) {
+        var slug = heading.textContent
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+        if (!slug) {
+          slug = 'heading-' + index;
+        }
+        heading.id = slug;
+      }
+    });
 
     if (!headings.length) {
       if (sidebarToc) sidebarToc.style.display = 'none';

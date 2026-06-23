@@ -1,0 +1,90 @@
+{
+  "handle": "how-and-when-to-eat",
+  "title": "How and when to eat",
+  "hindi_title": "आहार-विधि",
+  "excerpt": "A plain guide to the Ayurvedic idea that how and when you eat matters as much as what you eat, with simple habits you can try at your next meal.",
+  "badge": "Reading guide",
+  "read_time": "5 min read",
+  "image": "how-and-when-to-eat.webp",
+  "at_a_glance": [
+    "It's often not what you eat but how and when you eat it, and both are free to change today.",
+    "Keep your digestive fire steady: eat warm food in comfortable amounts, only once the last meal is digested, calmly and without screens.",
+    "See a doctor for severe, recurring, or worrying symptoms, this is general information, not a diagnosis."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "why how and when matter",
+      "paragraphs": [
+        "Maybe you eat well enough, fruits, dal, roti, the usual, and still you feel heavy after meals, bloated by evening, or strangely tired once lunch is done. You have probably wondered if you are eating the wrong foods. Ayurveda offers a gentler and more interesting answer: it is often not just what you eat, but how and when you eat it. That is good news, because the how and the when are things you can change starting today, without buying anything new.",
+        "Ayurveda's view of digestion rests on a simple picture. There is an inner digestive fire (agni) that breaks food down and turns it into nourishment. The Caraka Samhita puts it plainly: properly prepared food and drink are the very life of living beings, because food is the fuel that sustains this inner fire (Caraka Samhita, Sutrasthana 27.3). When the fire is steady, food is digested cleanly. When it is weak or overloaded, food sits half-processed and leaves behind a sticky residue (ama), which the tradition links to that heavy, dull, blocked feeling many of us know well."
+      ],
+      "pullQuote": "it is often not just what you eat, but how and when you eat it"
+    },
+    {
+      "heading": "what the texts advise",
+      "paragraphs": [
+        "So the aim is not to punish yourself with rules, but to keep that fire working with you. Here the classical texts are surprisingly practical. The Caraka Samhita describes a short set of habits for healthy eating: eat food that is warm and a little unctuous, in a comfortable quantity, and importantly, only after the previous meal has actually been digested. It also advises eating neither too fast nor too slow, not while talking or laughing, and with your attention on the food rather than on a screen (Caraka Samhita, Vimanasthana 1.24).",
+        "Try just a few of these and notice the difference. First, the warm and unctuous part: a freshly cooked, lightly oiled or ghee-touched meal is easier on the system than cold, dry, or leftover food. Ayurveda holds ghee in high regard among such substances, valued for the way it carries the qualities of whatever is cooked into it (Caraka Samhita, Sutrasthana 13.13). A small amount on warm food is the everyday spirit of this idea.",
+        "Second, the timing. Waiting until you feel genuinely hungry again, a real sign the last meal has cleared, before eating the next one is one of the most useful habits in this whole tradition. Constant snacking keeps the fire half-busy and never fully done. Many people find that simply spacing their meals, and making the midday meal the largest when hunger tends to be strongest, settles a lot of the heaviness on its own.",
+        "Third, the setting. Sitting down, eating without rush, and giving the meal your attention is treated as part of digestion itself, not a nicety. The texts even ask you to eat with self-awareness, noticing which foods agree with you and which do not, since what suits one person may not suit another (Caraka Samhita, Vimanasthana 1.25). Your own observation, over weeks, is genuine information worth trusting.",
+        "A few kitchen helpers fit naturally here. Warm water sipped through the day, and the familiar after-meal seeds, fennel (saunf) and ajwain, have long been used in Indian homes to ease that full, gassy feeling. Modern reviews describe fennel as a traditional carminative and digestive (Badgujar et al., 2014) and ajwain as carminative and used traditionally for flatulence and mild stomach discomfort (Pharmacognosy Reviews, 2012). None of this is a cure for anything, simply gentle, familiar support that the tradition and many households still lean on."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest note. If your discomfort is severe, keeps coming back, or worries you, for example sharp pain, ongoing vomiting, blood, unexplained weight loss, or trouble that does not pass, please see a doctor or a qualified vaidya rather than waiting it out. This article is general information drawn from classical texts, not a diagnosis or a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Eat it warm",
+      "description": "Choose freshly cooked, lightly oiled or ghee-touched food over cold, dry, or leftover meals."
+    },
+    {
+      "title": "Wait for real hunger",
+      "description": "Eat the next meal only after the last has cleared and genuine hunger returns, instead of constant snacking."
+    },
+    {
+      "title": "Make lunch the biggest meal",
+      "description": "Space your meals and make the midday meal the largest, when hunger tends to be strongest."
+    },
+    {
+      "title": "Sit down and pay attention",
+      "description": "Eat without rush, off screens, neither too fast nor too slow, with your attention on the food."
+    },
+    {
+      "title": "Notice what agrees with you",
+      "description": "Observe which foods suit you and which do not, since what suits one person may not suit another."
+    },
+    {
+      "title": "Keep kitchen helpers handy",
+      "description": "Sip warm water through the day and use after-meal fennel (saunf) and ajwain to ease fullness and gas."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "fennel.webp",
+      "name": "Fennel",
+      "sanskrit": "सौंफ",
+      "description": "After-meal seed, a traditional carminative used to ease fullness and gas."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "The inner digestive fire that breaks food down and turns it into nourishment."
+    },
+    {
+      "term": "ama.",
+      "definition": "The sticky, half-processed residue left when the fire is weak or overloaded, linked to heaviness and dullness."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 27.3 · Caraka Samhita, Sutrasthana 13.13 · Caraka Samhita, Vimanasthana 1.24 · Caraka Samhita, Vimanasthana 1.25 · Badgujar et al., BioMed Research International, 2014 · Pharmacognosy Reviews, 2012 review of Trachyspermum ammi",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

@@ -1,0 +1,98 @@
+{
+  "handle": "headaches-common-causes",
+  "title": "Headaches: common causes",
+  "hindi_title": "सिरदर्द के कारण",
+  "excerpt": "Why everyday tension-type headaches happen, what Ayurveda sees behind the dull throb, and a few simple, calming habits you can try today.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "headaches-common-causes.webp",
+  "at_a_glance": [
+    "Everyday tension headaches often follow a rushed, irregular, under-slept day; Ayurveda links that dry, light, mobile pattern to Vata.",
+    "The gentle approach is adding back the opposite qualities: warmth, moisture, steady regular meals and rest.",
+    "Warm food, warm-oil scalp and foot massage, and a few minutes of quiet breathing can feel grounding; sudden or severe headaches need a doctor."
+  ],
+  "has_agni": false,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "when to see a doctor first",
+      "paragraphs": [
+        "You skipped lunch, slept badly, stared at a screen all day, and now there is a tight, pulling ache behind your eyes or across your forehead. If that sounds like your week, you are not alone. This is general information to help you understand the pattern, not a diagnosis or a remedy for any condition.",
+        "First, an honest note placed up front. If your headache is severe, sudden, unusually intense, persistent over days, or comes with fever, vision changes, weakness, a stiff neck or confusion, please see a doctor or a qualified vaidya without delay. The gentle habits below are only about easing ordinary, tension-type discomfort, the dull tightness that often follows a rushed, irregular day. They are not a treatment for headaches."
+      ],
+      "pullQuote": "a tight, pulling ache behind your eyes or across your forehead"
+    },
+    {
+      "heading": "why it happens",
+      "paragraphs": [
+        "Ayurveda does not name the modern, everyday tension headache as a single condition, so there is no classical cure to point to. What the tradition does offer is a way of reading the hours before the ache arrived. Were you rushing, fasting, cold, dry, under-slept, over-caffeinated? That cluster of dryness, lightness, irregularity and constant movement is what Ayurveda links to Vata, the inner force it describes as governing all movement in the body and mind. This is a general principle, not a diagnosis of why your head hurts.",
+        "The classical texts describe Vata by its qualities. The Caraka Samhita (Sutrasthana 12) lists it as dry (rooksha), light (laghu), cold (sheeta) and rough (khara), and the Ashtanga Hridaya (Sutrasthana 1.11) adds subtle and mobile. The Caraka also notes something simple: a diet and routine made of these same qualities, lots of dry, light, cold, irregular input, tends to increase Vata further. These passages are about Vata in general, not about headaches. In plain terms, skipped meals, cold dry weather, travel, screens and a scattered schedule pile up the very qualities that can leave you feeling wired and tense.",
+        "So the everyday approach is not to chase the pain but to add back the opposite qualities: warmth, moisture, steadiness and rest. None of this fixes a headache. Think of it as gently tilting your day back toward calm so an over-stimulated, irregular routine has less to push against."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what helps",
+      "paragraphs": [
+        "Start with food and water. Vata is said to settle with warm, moist, regular meals, so try not to skip lunch, and favour cooked, slightly oily, warm food over cold, dry, leftover snacks eaten on the run. Sip warm water through the day rather than gulping it cold. Eating at roughly the same times daily gives the body the regularity it quietly craves.",
+        "Next, your routine. The Ashtanga Hridaya, in its chapter on daily routine (Sutrasthana 2.8), recommends abhyanga, a daily self-massage with warm oil, because it is said to subdue Vata and ease fatigue, and it suggests applying oil especially to the head, ears and feet. This is offered as general daily care, not as a headache remedy. As a simple evening habit, warming a little sesame oil and gently massaging the scalp, the soles of the feet and the back of the neck can feel grounding, and is one of the most loved Vata-soothing practices in the tradition.",
+        "Warmth in general can help you feel settled. A warm shower, a wrapped scarf on a cold day, or simply getting out of air conditioning when you feel that dry, tight tension building, all counter the cold and dryness Ayurveda associates with aggravated Vata."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "calm the system, and when to check in",
+      "paragraphs": [
+        "Finally, a calming practice. Because Vata is the force of movement and, as one peer-reviewed systematic review notes, is often described as symbolizing the nervous system, slowing things down matters. A few minutes of quiet, even breathing, eyes closed, jaw and shoulders loosened, gives an overstimulated system somewhere to land. Protecting your sleep and reducing late-night screen time work on the same principle: less restless input, more steadiness. If the discomfort keeps returning, treat that as a reason to check in with a clinician rather than to push through."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Don't skip meals",
+      "description": "Eat warm, cooked, slightly oily food at roughly the same times each day instead of cold, dry snacks on the run."
+    },
+    {
+      "title": "Sip warm water",
+      "description": "Favour warm water sipped through the day over cold water gulped down."
+    },
+    {
+      "title": "Evening oil massage",
+      "description": "Gently massage warm sesame oil into the scalp, soles of the feet and back of the neck to feel grounded."
+    },
+    {
+      "title": "Stay warm",
+      "description": "A warm shower, a scarf, or stepping out of air conditioning counters the cold, dry tightness."
+    },
+    {
+      "title": "Quiet breathing",
+      "description": "A few minutes of even breathing with eyes closed and jaw and shoulders loosened gives an overstimulated system somewhere to land."
+    },
+    {
+      "title": "Protect your sleep",
+      "description": "Reduce late-night screen time to cut restless input and add steadiness."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "Vata.",
+      "definition": "The inner force Ayurveda describes as governing all movement in body and mind; dry, light, cold, rough, subtle and mobile."
+    },
+    {
+      "term": "Abhyanga.",
+      "definition": "A daily self-massage with warm oil, said to subdue Vata and ease fatigue."
+    },
+    {
+      "term": "Dinacharya.",
+      "definition": "Daily routine; the Ashtanga Hridaya chapter recommending warm-oil massage to head, ears and feet."
+    },
+    {
+      "term": "Vaidya.",
+      "definition": "A qualified Ayurvedic practitioner."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 12 · Ashtanga Hridaya, Sutrasthana 1.11 · Ashtanga Hridaya, Sutrasthana 2.8 · PubMed Central, PMC10372387",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

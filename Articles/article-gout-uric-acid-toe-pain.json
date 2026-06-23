@@ -1,0 +1,112 @@
+{
+  "handle": "gout-uric-acid-toe-pain",
+  "title": "Gout and toe joint pain",
+  "hindi_title": "गाउट और अंगूठे का दर्द",
+  "excerpt": "That burning, swollen big toe joint is not just a modern diet problem: Ayurveda called it Vatarakta centuries ago and traced it to the same foods and habits we still overdo today.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "gout-uric-acid-toe-pain.webp",
+  "at_a_glance": [
+    "Gout is called Vatarakta in Ayurveda: vitiated Vata blocked by impure blood, classically traced to heavy, sour, and rich foods.",
+    "A diet of light, bitter, and cooling foods, good hydration, and gentle morning movement are the foundational supports.",
+    "Frequent or severe attacks need medical evaluation; uric acid can damage kidneys and joints if left unmanaged."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "when your big toe wakes you up at night",
+      "paragraphs": [
+        "You go to bed feeling fine, and somewhere around two in the morning a sharp, throbbing pain in your big toe pulls you out of sleep. The joint is red, warm, and so tender that even the weight of a bedsheet feels unbearable. If this has happened to you, or to someone in your family, you already know how suddenly gout can arrive.",
+        "Gout is caused by a buildup of uric acid crystals in the joints. Modern medicine measures the uric acid in your blood; Ayurveda recognised the same condition under the name Vatarakta, which translates roughly as 'vitiated Vata entangled with impure Rakta (blood).' The Caraka Samhita devotes a full chapter to Vatarakta in the Chikitsa (treatment) section, and the Madhava Nidana describes its characteristic signs with striking precision: the pain typically starts in the feet, especially the big toe, and gradually moves upward if left untreated."
+      ],
+      "pullQuote": "the body accumulates metabolic waste faster than it can clear it, and the joints become the site where this accumulation crystallises into pain"
+    },
+    {
+      "heading": "what the classical texts say about the cause",
+      "paragraphs": [
+        "Caraka explains that Vatarakta arises when the movement of Vata (the dosha that governs circulation and nervous activity) is obstructed by aggravated Rakta (blood) that has become heavy and toxic (Caraka Samhita, Chikitsa Sthana). The triggers are very recognisable: excessive intake of sour, salty, pungent, and heavy foods; day sleeping after meals; very little physical movement; and regular consumption of alcohol or meat (Caraka Samhita, Chikitsa Sthana). In effect, the body accumulates metabolic waste faster than it can clear it, and the joints become the site where this accumulation crystallises into pain.",
+        "The Madhava Nidana lists both a superficial form, affecting the skin and shallow tissues, and a deeper form that involves the bone and marrow, making treatment more difficult (Madhava Nidana, Vatarakta Nidana). Catching the condition early, while the pain is still episodic, gives you far more room to work with. The Chakradatta also includes specific formulations for Vatarakta, mostly aimed at clearing the channel obstruction so that Vata can move freely again and the blood is no longer burdened with impurities (Chakradatta, Vatarakta Chikitsa)."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "gentle daily habits that support relief",
+      "paragraphs": [
+        "The dietary direction in all three granthas is consistently toward light, cooling, and easily digestible foods. Heavy proteins, excessive legumes, alcohol, and sour fermented preparations are the main things to reduce. Bitter gourds, ridge gourd, barley, old rice (stored at least a year), and buttermilk diluted with water are specifically mentioned as supportive in the classical tradition (Caraka Samhita, Chikitsa Sthana). The logic is practical: these foods are easier for the digestive fire to process cleanly, leaving less residue to burden the blood.",
+        "A warm decoction of coriander seeds and fennel in water, drunk first thing in the morning, is a gentle way to support digestion and mild detoxification without stressing the kidneys. Keeping yourself well-hydrated through the day is perhaps the simplest and most effective daily habit, because uric acid is cleared through urine and adequate water keeps that clearance moving.",
+        "The classical texts also emphasise that sedentary habits are a direct cause of Vatarakta. A short walk in the morning, before the day heats up, helps keep the circulation active without overloading inflamed joints. During an acute flare, rest is more important. Once the acute phase settles, gradual, gentle movement is far better than complete rest.",
+        "Applying a paste of sandalwood or a cloth soaked in cool water over the inflamed joint can ease the local burning (this topical cooling approach is consistent with the Chakradatta's direction toward soothing Pitta-Rakta aggravation during the acute phase). Avoid hot fomentation directly on the swollen joint: heat typically aggravates an active gout attack."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor or vaidya",
+      "paragraphs": [
+        "This article is general information and is not a diagnosis or a substitute for medical care. If your joint pain is severe, makes it impossible to walk, or comes with fever, see a doctor promptly. Gout that recurs frequently can cause lasting joint damage and kidney stones if uric acid remains high over time. A qualified physician can measure your uric acid levels and assess whether medication is appropriate.",
+        "Similarly, if you have kidney disease, cardiovascular disease, or are on medication for other conditions, please consult your doctor before making significant dietary changes or starting any herbal preparation. A qualified vaidya can tailor an Ayurvedic approach to your specific constitution and health history, which will be far more useful than any general advice."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Morning coriander-fennel water",
+      "description": "Simmer one teaspoon each of coriander seeds and fennel seeds in two cups of water for five minutes. Strain, cool to warm, and drink on an empty stomach. This supports gentle digestion and mild urinary clearance."
+    },
+    {
+      "title": "Cool cloth during a flare",
+      "description": "Soak a clean cloth in cool water, wring it out, and rest it over the inflamed joint for ten to fifteen minutes. Avoid hot fomentation or a heating pad directly on the swollen area."
+    },
+    {
+      "title": "Swap sour and heavy proteins",
+      "description": "During an active episode or a high-uric-acid period, reduce red meat, alcohol, organ meats, and very sour foods like vinegar or fermented pickles. Shift toward barley, moong dal, ridge gourd, and bitter gourd."
+    },
+    {
+      "title": "Drink water through the day",
+      "description": "Aim for eight to ten glasses of plain water spread across the day, not all at once. Staying hydrated is one of the simplest ways to keep uric acid moving out of the body through urine."
+    },
+    {
+      "title": "Short morning walk once the flare settles",
+      "description": "Complete rest during an acute attack is fine, but once the pain eases, a fifteen-minute gentle walk in the morning helps restore circulation and prevents the stagnation that the classics identify as a root cause."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "coriander.webp",
+      "name": "Coriander",
+      "sanskrit": "धनिया",
+      "description": "Cooling and digestive; used in decoction to support mild urinary clearance and ease the Pitta-Rakta burden associated with Vatarakta."
+    },
+    {
+      "image": "fennel.webp",
+      "name": "Fennel",
+      "sanskrit": "सौंफ",
+      "description": "Light and carminative; helps reduce the channel obstruction that underlies Vata stagnation in the joints."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "Vatarakta.",
+      "definition": "The Ayurvedic name for gout: Vata (air/movement energy) obstructed by impure Rakta (blood), causing painful joint inflammation typically starting in the feet."
+    },
+    {
+      "term": "Vata.",
+      "definition": "One of the three doshas, governing movement, circulation, and nervous function; its obstruction is central to the pain of Vatarakta."
+    },
+    {
+      "term": "Rakta.",
+      "definition": "Blood, considered both a tissue (dhatu) and a vehicle of Pitta; when it accumulates impurities, it obstructs Vata and triggers inflammation."
+    },
+    {
+      "term": "Chikitsa.",
+      "definition": "Treatment; the Chikitsa Sthana is the treatment section of the Caraka Samhita where Vatarakta management is described in detail."
+    },
+    {
+      "term": "Nidana.",
+      "definition": "Causation or diagnosis; the Nidana Sthana of a grantha lists the causes, prodromal signs, and features of each disease."
+    }
+  ],
+  "sources": "Caraka Samhita, Chikitsa Sthana, Vatarakta Chikitsa · Madhava Nidana, Vatarakta Nidana · Chakradatta, Vatarakta Chikitsa",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

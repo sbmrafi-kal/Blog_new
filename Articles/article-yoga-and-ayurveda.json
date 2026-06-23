@@ -1,0 +1,101 @@
+{
+  "handle": "yoga-and-ayurveda",
+  "title": "Yoga and Ayurveda",
+  "hindi_title": "योग और आयुर्वेद",
+  "excerpt": "A plain-language guide to how Yoga and Ayurveda share one aim, a steady body and a calm mind, and a few everyday habits the tradition suggests to keep both in balance.",
+  "badge": "Reading guide",
+  "read_time": "5 min read",
+  "image": "yoga-and-ayurveda.webp",
+  "at_a_glance": [
+    "Yoga and Ayurveda are sister sciences aiming at one thing: a steady body and calm mind.",
+    "Ayurveda leads with prevention, daily routine, food, and sleep, where regular yoga takes root.",
+    "Start with safe lifestyle habits; be cautious with bought Ayurvedic products and see a doctor when something is wrong."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "one shared goal",
+      "paragraphs": [
+        "You may have heard that Yoga and Ayurveda are \"sister sciences,\" and wondered what that actually means for you. Maybe you already do a little yoga, or you are curious about Ayurveda, and you want to know whether they fit together or pull in different directions. The short answer is that they share one quiet goal, and understanding that goal makes both of them easier to live with.",
+        "That shared goal is balance. Ayurveda describes its own purpose as keeping a steady, even state inside the body and mind. The classical text Caraka Samhita (Sutrasthana 1.53) puts it plainly: the aim of the science is establishing and maintaining the equilibrium of the body-elements. Yoga reaches for the same steadiness from the other side, by calming a restless mind through breath, posture, and attention. One works mostly with how you live and eat, the other mostly with how you sit and breathe, but both are walking toward the same place.",
+        "Ayurveda also tends to lead with prevention rather than cure. The same text (Caraka Samhita, Sutrasthana 30.26) describes its work as maintaining health in the healthy and only secondly quieting trouble in the unwell. In everyday terms, this is a lifestyle tradition first. It cares about your daily routine, your meals, your sleep, and your seasons, which is exactly the kind of ground where a regular yoga practice can take root."
+      ],
+      "pullQuote": "they share one quiet goal, and understanding that goal makes both of them easier to live with"
+    },
+    {
+      "heading": "constitution and balance",
+      "paragraphs": [
+        "In Ayurveda's own language, each person has a constitution (prakriti) shaped by three qualities or doshas, called vata, pitta, and kapha. A peer-reviewed review in Annals of Neurosciences (2021) describes how Ayurveda reads a person through the dominance of these three, while yoga, as posture with breath and mind control, supports that same constitutional balance. You do not need to memorise the terms. The useful idea is simply that what suits one person may not suit another, so gentle, personal adjustment matters more than any one-size rule."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "everyday habits",
+      "paragraphs": [
+        "Here are a few everyday habits the tradition suggests, offered as supportive routine, not as a fix for any condition. First, keep a steady daily rhythm (dinacharya): waking, eating, and sleeping at roughly the same times. A review in Ayu (2011) on seasonal routine notes that Ayurveda's prime principle is preventive, achieved through changes in diet and daily practice as the climate changes, rather than through medicine.",
+        "Second, let your meals and your movement work together. A short, calm walk or a few gentle stretches after eating, and a lighter meal when your digestion (agni) feels sluggish, are the kind of small, low-risk habits the tradition has always favoured. Third, give the mind a daily pause. A few minutes of slow breathing or quiet sitting, done consistently, is the part of yoga that most directly meets Ayurveda's aim of a settled mind. Consistency helps here far more than intensity."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "a word of caution",
+      "paragraphs": [
+        "A word of honest caution. Be careful with Ayurvedic products you buy on your own. A study in JAMA (2008) tested 193 Ayurvedic medicines sold online and found nearly one in five contained detectable lead, mercury, or arsenic, with metal-based (rasa shastra) products far more likely to be affected. This is why sourcing and a qualified practitioner matter, and why self-medicating is risky. Lifestyle habits like routine, food, and breathing carry no such concern, which is a good reason to start there.",
+        "Please treat this as general information, not a substitute for medical care. If a symptom is severe, persistent, or worrying, see a doctor or a qualified vaidya. The most reliable path is integrative: use these traditions for daily prevention and steadiness, and lean on modern medicine when something is actually wrong, as the medical literature on Ayurveda's appropriate role recommends."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Keep a steady daily rhythm",
+      "description": "Wake, eat, and sleep at roughly the same times each day (dinacharya)."
+    },
+    {
+      "title": "Pair meals with movement",
+      "description": "Take a short calm walk or a few gentle stretches after eating, and eat lighter when digestion feels sluggish."
+    },
+    {
+      "title": "Give the mind a daily pause",
+      "description": "A few minutes of slow breathing or quiet sitting, done consistently, settles the mind."
+    },
+    {
+      "title": "Adjust the season, not just the medicine",
+      "description": "Shift diet and daily practice as the climate changes rather than reaching for remedies."
+    },
+    {
+      "title": "Source carefully",
+      "description": "Be cautious with Ayurvedic products bought on your own; lean on a qualified practitioner."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "prakriti.",
+      "definition": "A person's individual constitution, shaped by the three doshas."
+    },
+    {
+      "term": "dosha.",
+      "definition": "One of three qualities (vata, pitta, kapha) Ayurveda reads a person through."
+    },
+    {
+      "term": "dinacharya.",
+      "definition": "A steady daily routine of waking, eating, and sleeping at regular times."
+    },
+    {
+      "term": "agni.",
+      "definition": "Digestion, or digestive fire, which can feel sluggish at times."
+    },
+    {
+      "term": "vaidya.",
+      "definition": "A qualified Ayurvedic practitioner."
+    },
+    {
+      "term": "rasa shastra.",
+      "definition": "Metal-based Ayurvedic preparations, more likely to carry heavy-metal contamination."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 1.53 · Caraka Samhita, Sutrasthana 30.26 · Annals of Neurosciences, 2021;27(3-4):214-223 · Ayu, 2011;32(4):466-471 · JAMA, 2008;300(8):915-923 · J Ayurveda Integr Med, 2010;1(1):13-15",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

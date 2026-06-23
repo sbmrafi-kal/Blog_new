@@ -1,0 +1,110 @@
+{
+  "handle": "constipation-relief",
+  "title": "Easing constipation",
+  "hindi_title": "कब्ज़ में राहत",
+  "excerpt": "What Ayurveda sees behind constipation, and gentle everyday habits around food, routine, and calm that the tradition suggests for smoother digestion.",
+  "badge": "Feature",
+  "read_time": "5 min read",
+  "image": "constipation-relief.webp",
+  "at_a_glance": [
+    "Ayurveda frames constipation as weak or irregular digestion (agni), not a mysterious problem.",
+    "Warm water, warm freshly-cooked food, warming spices, and a steady routine gently support smoother movement.",
+    "Calm helps too, but if it is severe, lasting, recurring or comes with worrying signs, see a doctor."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "why it happens",
+      "paragraphs": [
+        "If you searched for help with constipation today, you already know how much it can colour a whole day. The bloated, heavy feeling, the straining, the sense that things just are not moving the way they should. You are not alone in this, and it is one of the most common digestive complaints people quietly live with.",
+        "The good news is that Ayurveda approaches this not as a mysterious problem but as a question of digestion. And digestion is something you can support gently, every single day, with small habits.",
+        "In Ayurvedic thinking, the centre of digestion is your digestive fire (agni). The Caraka Samhita places enormous importance on it: in the Chikitsasthana, Grahani Chikitsa chapter, it says that strength, health, nourishment, energy and vitality all depend on the state of agni. When this fire is strong and steady, food is properly digested and waste moves on smoothly.",
+        "When agni is weak or irregular, food is not fully cooked inside us. The same text describes how a struggling digestion leaves behind undigested residue (ama) instead of properly processed food. The Ashtanga Hridaya, in its Sutrasthana, defines ama in just this way: the raw, unprocessed remains of food that sit in the stomach when the digestive heat is too feeble. That heaviness, sluggishness and blockage many people feel is, in this view, a sign of digestion that needs gentle support, not force.",
+        "So the tradition's approach is calm and practical: keep the fire steady, keep things warm and moist, and keep the day regular. Here are a few everyday habits it suggests."
+      ],
+      "pullQuote": "When this fire is strong and steady, food is properly digested and waste moves on smoothly."
+    },
+    {
+      "heading": "everyday habits that help",
+      "paragraphs": [
+        "Start your day with warmth. A glass of plain warm water in the morning is one of the simplest things you can do. Warmth and moisture are friendly to a sluggish system, while cold, dry and leftover foods tend to make heaviness worse.",
+        "Eat food that is genuinely nourishing and easy to digest. The Caraka Samhita, in the Annapanavidhi chapter of its Sutrasthana, calls wholesome food the very fuel on which the inner digestive fire depends. In plain terms: warm, freshly cooked, well-spiced meals with enough good fats, like a little ghee, and plenty of cooked vegetables and fruit, support smoother movement far better than dry, cold or hurried eating.",
+        "Be kind to your agni with warming spices. Classical nighantu literature describes dried ginger (shunthi) as something that kindles digestive fire and helps clear ama, which is why warm spices like ginger, cumin and ajwain have such a long place in Indian kitchens. A little warm spice in your cooking is an everyday, gentle way to support digestion.",
+        "Keep a steady routine. Our bodies like rhythm. Eating at roughly the same times, not skipping meals, sitting down to eat without rushing, and giving yourself a regular unhurried few minutes in the morning all help the body settle into a predictable pattern. Gentle daily movement, even a short walk after meals, supports this too.",
+        "Make space for calm. Tension and digestion are closely linked, and a rushed, anxious state does the gut no favours. A few minutes of slow breathing, a short sit, or any quiet practice that settles you can ease the whole system. This is supportive, not a cure, but many people notice that a calmer mind makes for a calmer belly."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "a gentle reminder",
+      "paragraphs": [
+        "None of this is a quick fix or a miracle. It is a set of gentle, time-tested habits you can begin today: warm water, warm food, warming spices, a steady routine, and a calmer mind. Small things, done kindly and consistently, are exactly how the tradition suggests caring for digestion."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "A small, honest note. Constipation is usually about everyday habits, but not always. If it is severe, lasts a long time, keeps coming back, or comes with pain, bleeding, unexplained weight loss or other worrying signs, please see a doctor or a qualified vaidya. This article is general information drawn from tradition, not a diagnosis or a substitute for medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Start with warm water",
+      "description": "A glass of plain warm water in the morning to ease a sluggish system."
+    },
+    {
+      "title": "Eat warm, nourishing food",
+      "description": "Warm, freshly cooked, well-spiced meals with a little ghee, cooked vegetables and fruit."
+    },
+    {
+      "title": "Cook with warming spices",
+      "description": "Add a little ginger, cumin or ajwain to kindle digestion and clear ama."
+    },
+    {
+      "title": "Keep a steady routine",
+      "description": "Eat at roughly the same times, do not skip meals, and take a short walk after meals."
+    },
+    {
+      "title": "Make space for calm",
+      "description": "A few minutes of slow breathing or a quiet sit to settle the whole system."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "ginger.webp",
+      "name": "Dried ginger",
+      "sanskrit": "शुण्ठी",
+      "description": "Kindles digestive fire and helps clear ama."
+    },
+    {
+      "image": "cumin.webp",
+      "name": "Cumin",
+      "sanskrit": "जीरा",
+      "description": "A warming kitchen spice that supports digestion."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "The digestive fire; when steady, food is properly digested and waste moves smoothly."
+    },
+    {
+      "term": "ama.",
+      "definition": "Raw, undigested residue of food left when the digestive heat is too feeble."
+    },
+    {
+      "term": "shunthi.",
+      "definition": "Dried ginger, described as kindling digestive fire and helping clear ama."
+    },
+    {
+      "term": "vaidya.",
+      "definition": "A qualified practitioner of traditional Ayurvedic medicine."
+    }
+  ],
+  "sources": "Caraka Samhita, Chikitsasthana, Ch. 15 (Grahani Chikitsa), verses 3-4 · Caraka Samhita, Sutrasthana, Ch. 27 (Annapanavidhi Adhyaya), verse 3 · Ashtanga Hridaya, Sutrasthana, Ch. 13 (Doshopakramaniya Adhyaya), verse 25 · Bhavaprakasha Nighantu of Bhavamishra, Haritakyadi Varga (shunthi entry)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

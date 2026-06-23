@@ -1,42 +1,50 @@
 {% comment %}
-  ka-blog-card.liquid — Full-bleed image article card
+  ka-blog-card.liquid — Premium standard article card (content below image)
   Usage: {% render 'ka-blog-card', article: article, show_chip: true %}
 {% endcomment %}
 
 {%- liquid
   assign card_article = article
   assign show_chip = show_chip | default: true
-  assign chip_text = card_article.metafields.custom.category_label | default: card_article.tags.first
-  assign read_time = card_article.metafields.custom.read_time_minutes
+  assign chip_text = card_article.metafields.custom.hero_badge.value | default: card_article.metafields.custom.hero_badge | default: card_article.metafields.custom.category_label | default: card_article.tags.first
+  assign read_time = card_article.metafields.custom.read_time.value | default: card_article.metafields.custom.read_time | default: card_article.metafields.custom.read_time_minutes
   assign dek = card_article.metafields.custom.dek | default: card_article.excerpt_or_content | strip_html | truncate: 120
 -%}
 
-<a class="ka-blog-image-card" href="{{ card_article.url }}">
-  {%- if card_article.image -%}
-    <img
-      class="ka-blog-image-card__bg"
-      src="{{ card_article.image | image_url: width: 800 }}"
-      alt="{{ card_article.image.alt | escape }}"
-      loading="lazy"
-      width="800"
-      height="{{ 800 | divided_by: card_article.image.aspect_ratio | round }}"
-    >
-  {%- endif -%}
-  <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
-  <div class="ka-blog-image-card__content">
+<a class="ka-blog-card" href="{{ card_article.url }}">
+  <div class="ka-blog-card__image-container">
+    {%- if card_article.image -%}
+      <img
+        class="ka-blog-card__img"
+        src="{{ card_article.image | image_url: width: 800 }}"
+        alt="{{ card_article.image.alt | escape }}"
+        loading="lazy"
+        width="800"
+        height="{{ 800 | divided_by: card_article.image.aspect_ratio | round }}"
+      >
+    {%- endif -%}
     {%- if show_chip and chip_text != blank -%}
-      <span class="ka-blog-chip">{{ chip_text }}</span>
+      <span class="ka-blog-card__badge">{{ chip_text }}</span>
     {%- endif -%}
-    <h3>{{ card_article.title }}</h3>
+  </div>
+  <div class="ka-blog-card__content">
+    <h3 class="ka-blog-card__title">{{ card_article.title }}</h3>
     {%- if dek != blank -%}
-      <p>{{ dek }}</p>
+      <p class="ka-blog-card__description">{{ dek }}</p>
     {%- endif -%}
-    <span class="ka-blog-read-more">
-      {%- if read_time -%}
-        {{ read_time }} min read
-      {%- else -%}
-        Read article
-      {%- endif -%}
-    </span>
+    <div class="ka-blog-card__footer">
+      <span class="ka-blog-card__read-more">
+        {%- if read_time -%}
+          {%- if read_time contains 'min' or read_time contains 'read' -%}
+            {{ read_time }}
+          {%- else -%}
+            {{ read_time }} min read
+          {%- endif -%}
+        {%- else -%}
+          Read article
+        {%- endif -%}
+      </span>
+      <span class="ka-blog-card__arrow">→</span>
+    </div>
   </div>
 </a>

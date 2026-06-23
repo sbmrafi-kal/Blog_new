@@ -1,0 +1,57 @@
+{
+  "title": "Vata, Pitta and Kapha",
+  "handle": "vata-pitta-kapha-explained",
+  "excerpt": "A simple, jargon-free guide to what Vata, Pitta and Kapha actually mean, how to get a feel for your own constitution, and small everyday habits the tradition suggests for staying in balance.",
+  "body_html": "<h2>The three doshas</h2>\n<p>You have probably heard a friend say they are \"a Vata type\" or that some food is \"bad for Pitta,\" and walked away more confused than before. The words sound technical and a little mystical, and most explanations online drown you in lists. The good news: the basic idea is simple, and once it clicks, a lot of Ayurveda starts to make sense. This is general information to help you understand the terms, not a diagnosis or a label to box yourself into.</p>\n<p>Ayurveda describes three basic forces working inside every body, called doshas. The oldest texts name them plainly. The Caraka Samhita (Sutrasthana 1.57) lists Vayu (Vata), Pitta and Kapha as the three bodily doshas, and the Ashtanga Hridaya (Sutrasthana 1.6) opens with the same three, adding that when they are balanced they maintain the body and when disturbed they unsettle it. Think of them not as substances you can point to, but as tendencies, patterns of how your body and mind tend to behave.</p>\n<p>Here is the plain-English version. Vata is the moving force: it governs motion, breath, the nervous system, and anything quick or changeable. People with more Vata often feel light, fast, creative, and a little prone to dryness, cold hands, or scattered energy. Pitta is the transforming force: it governs digestion (agni), heat, and sharpness. More Pitta can mean strong appetite, focus, warmth, and a tendency to run hot or intense. Kapha is the steady force: it governs structure, moisture, and calm. More Kapha can mean strength, patience, smooth skin, and a tendency toward heaviness or slowness.</p>\n<blockquote class=\"ka-article-blockquote\">\n  <p>Most people are not one pure type. You are usually a blend, with one or two doshas leading.</p>\n</blockquote>\n<h2>Your constitution (prakriti)</h2>\n<p>Most people are not one pure type. You are usually a blend, with one or two doshas leading. The texts say this basic make-up, your constitution (prakriti), is set early. The Caraka Samhita (Vimanasthana 8.95) explains it is shaped at conception by many factors, including the parents and the mother's diet and conduct, and whichever dosha predominates becomes your lifelong physical constitution. So this is less about a quiz result and more about noticing your natural baseline: are you generally light and quick, warm and sharp, or steady and calm?</p>\n<p>Why does any of this matter for daily life? Because the broad aim of Ayurveda, as the Caraka Samhita (Sutrasthana 30.26) puts it, is to safeguard the health of the healthy and to help those who are unwell. The everyday application is gentle balancing: when a quality is running high, you lean toward its opposite. None of this is a treatment, just supportive habits.</p>\n<h2>Balancing in everyday life</h2>\n<p>A few practical, cautious ideas the tradition points to. If you tend to feel dry, cold and restless (Vata leaning), the texts favour warmth and routine: warm cooked food, regular meal and sleep times, and slowing down. If you tend to run hot and intense (Pitta leaning), they favour cooling and ease: cooler foods, avoiding skipped meals, and not pushing yourself in the midday heat. If you tend toward heaviness or sluggishness (Kapha leaning), they favour lightness and movement: lighter meals, getting up and active, and avoiding too much daytime rest.</p>\n<p>For everyone, a simple calming practice helps: a few minutes of slow breathing or quiet sitting each day, ideally at the same time. The point of all these habits is balance through opposite qualities, applied gently and consistently, not strict rules or quick fixes.</p>\n<h2>An honest note</h2>\n<p>Constitution talk is for understanding yourself, not for self-diagnosis. If you have a symptom that is severe, persistent, or worrying, please see a doctor or a qualified vaidya. This article is general educational information and is not a substitute for proper medical care.</p>",
+  "tags": [
+    "Doshas",
+    "Reading guide"
+  ],
+  "metafields": {
+    "topic_handle": "doshas",
+    "topic_title": "Doshas & Ayurvedic Principles",
+    "category_label": "Doshas",
+    "dek": "A simple, jargon-free guide to what Vata, Pitta and Kapha actually mean, how to get a feel for your own constitution, and small everyday habits the tradition suggests for staying in balance.",
+    "read_time_minutes": 5,
+    "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment.",
+    "at_a_glance": [
+      "Vata, Pitta and Kapha are three functional tendencies that shape how your body moves, digests and holds together.",
+      "Everyone has all three. The particular mix you are born with is your prakriti, your constitution.",
+      "The everyday use is gentle balancing: when one quality runs high, you lean toward its opposite."
+    ],
+    "glossary_terms": [
+      {
+        "term": "Dosha",
+        "definition": "A functional principle in body and mind that can move in and out of balance."
+      },
+      {
+        "term": "Vata",
+        "definition": "Movement: dry, light, cold, mobile."
+      },
+      {
+        "term": "Pitta",
+        "definition": "Transformation: hot, sharp, slightly oily."
+      },
+      {
+        "term": "Kapha",
+        "definition": "Structure: heavy, cool, soft, steady."
+      },
+      {
+        "term": "Prakriti",
+        "definition": "Your inborn constitution, the balance of doshas you are born with."
+      }
+    ],
+    "sources": [
+      "Caraka Samhita, Sutrasthana 1.57",
+      "Caraka Samhita, Vimanasthana 8.95",
+      "Caraka Samhita, Sutrasthana 30.26",
+      "Ashtanga Hridaya, Sutrasthana 1.6"
+    ],
+    "faqs": [
+      {
+        "question": "What is the meaning of \"Dosha\" in Ayurveda?",
+        "answer": "<p>In the Ayurvedic tradition, <strong>Dosha</strong> is defined as: A functional principle in body and mind that can move in and out of balance.</p>"
+      }
+    ]
+  }
+}

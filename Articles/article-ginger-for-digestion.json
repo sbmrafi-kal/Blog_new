@@ -1,0 +1,94 @@
+{
+  "handle": "ginger-for-digestion",
+  "title": "Ginger for digestion",
+  "hindi_title": "अदरक और पाचन",
+  "excerpt": "Learn how Ayurveda understands sluggish digestion and a few simple, everyday ginger and meal habits the classical texts suggest to support a steadier appetite.",
+  "badge": "Feature",
+  "read_time": "5 min read",
+  "image": "ginger-for-digestion.webp",
+  "at_a_glance": [
+    "Ayurveda treats sluggish digestion as ordinary, something everyday habits can gently support.",
+    "Warm, pungent ginger is a traditional kitchen helper to kindle a weak appetite, not a cure.",
+    "Eat warm, freshly cooked food in the right quantity, with attention to what suits you."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "what slow digestion feels like",
+      "paragraphs": [
+        "You finished lunch an hour ago and you still feel heavy, bloated, a little gassy, with no real appetite for the next meal. Maybe there is a dull fullness in the belly, or food just seems to sit there. If you searched for this today, you are not alone, and the good news is that Ayurveda treats slow digestion as something ordinary that everyday habits can gently support."
+      ],
+      "pullQuote": "It is simply one of the kitchen helpers the tradition has leaned on for centuries."
+    },
+    {
+      "heading": "the digestive fire",
+      "paragraphs": [
+        "Ayurveda puts digestion at the centre of health. It uses the idea of a digestive fire (agni), the inner capacity that breaks down whatever you eat. The Caraka Samhita (Sutrasthana 27.3) describes properly prepared food and drink as the very life of living beings, because food is the fuel that sustains this inner fire. When the fire is steady, food is digested well; when it is weak, food is left half-processed and you feel that familiar heaviness and dullness. That undigested residue is what the tradition calls ama.",
+        "Ginger has a long place in this picture. It is warm and pungent in taste, and the tradition turns to such warming, pungent foods to gently kindle a sluggish appetite. Ayurveda recognises exactly six tastes (Caraka Samhita, Sutrasthana 26.9): sweet, sour, salty, pungent, bitter and astringent, and ginger sits firmly in the pungent group. This is not a cure for anything. It is simply one of the kitchen helpers the tradition has leaned on for centuries."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "simple habits to try",
+      "paragraphs": [
+        "Here are a few simple habits you can try today.",
+        "Start meals with a little fresh ginger. A common home practice is a thin slice of fresh ginger with a pinch of salt and a few drops of lemon, taken a short while before eating, to wake up the appetite. Keep it small and skip it if you have acidity or it does not agree with you.",
+        "Eat your food warm and freshly cooked. The Caraka Samhita (Vimanasthana 1.24) lays out simple rules for healthy eating: food taken warm, unctuous, in the right quantity, and only after the previous meal is digested. A cup of warm water or weak ginger-water with meals, instead of cold drinks, follows the same spirit of keeping the digestive fire comfortable.",
+        "Eat with attention, and notice what suits you. The same text (Vimanasthana 1.25) advises eating with self-awareness, observing which foods agree with you and which do not, because what suits one person may not suit another. So treat ginger and every food as a personal experiment, not a rule. Eating without rushing, without talking too much, in a calm place, is part of the tradition's everyday guidance.",
+        "Mind the eight factors behind a meal. Caraka (Vimanasthana 1.21) reminds us that how a food affects you depends on many things together: the food itself, how it is prepared, what it is combined with, the quantity, the place, the season, the way it is eaten, and the person eating it. A small slice of ginger before a heavy winter lunch and the same before a light summer dinner are simply not the same thing.",
+        "A calm note matters too. Eating in a hurry or while tense rarely helps digestion. A few slow breaths before you eat, putting the phone away, and sitting down properly are small, free habits that support the meal as much as any ingredient does."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "One honest caution. This is general information from the Ayurvedic tradition and home practice, not a substitute for medical care. If your digestive trouble is severe, persistent, comes with pain, weight loss, blood, vomiting or fever, or simply will not settle, please see a doctor or a qualified vaidya rather than self-managing it."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "A slice before meals",
+      "description": "Take a thin slice of fresh ginger with a pinch of salt and a few drops of lemon shortly before eating to wake the appetite. Keep it small; skip it if you have acidity."
+    },
+    {
+      "title": "Eat warm and fresh",
+      "description": "Take food warm, unctuous, in the right quantity, and only after the previous meal is digested. Choose warm water or weak ginger-water over cold drinks with meals."
+    },
+    {
+      "title": "Notice what suits you",
+      "description": "Eat with self-awareness, observing which foods agree with you and which do not. Treat ginger and every food as a personal experiment, not a rule."
+    },
+    {
+      "title": "Mind the whole meal",
+      "description": "How a food affects you depends on its preparation, combination, quantity, place, season, manner of eating, and the person. Adjust to season and the meal."
+    },
+    {
+      "title": "Eat calmly",
+      "description": "Take a few slow breaths before you eat, put the phone away, and sit down properly. Avoid eating in a hurry or while tense."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "ginger.webp",
+      "name": "Ginger",
+      "sanskrit": "अदरक",
+      "description": "Warm, pungent; gently kindles a sluggish appetite."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "agni.",
+      "definition": "The digestive fire, the inner capacity that breaks down whatever you eat."
+    },
+    {
+      "term": "ama.",
+      "definition": "The undigested residue left when the digestive fire is weak."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 26.9 · Caraka Samhita, Sutrasthana 27.3 · Caraka Samhita, Vimanasthana 1.21 · Caraka Samhita, Vimanasthana 1.24 · Caraka Samhita, Vimanasthana 1.25",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

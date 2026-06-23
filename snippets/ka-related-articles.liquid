@@ -4,7 +4,7 @@
 {% endcomment %}
 
 {%- liquid
-  assign related = article.metafields.custom.related_articles.value
+  assign related = article.metafields.custom.related_articles.value | default: article.metafields.custom.similar_articles.value
   assign has_explicit_related = false
   if related != blank and related.size > 0
     assign has_explicit_related = true
@@ -21,15 +21,20 @@
   <div class="ka-article-related-grid">
     {%- if has_explicit_related -%}
       {%- for related_article in related limit: 3 -%}
+        {%- assign related_image = related_article.metafields.custom.hero_image.value | default: related_article.metafields.custom.hero_image | default: related_article.image -%}
         <a class="ka-article-related-card" href="{{ related_article.url }}">
-          {%- if related_article.image -%}
+          {%- if related_image -%}
             <div class="ka-article-related-card__image">
               <img
-                src="{{ related_article.image | image_url: width: 600 }}"
-                alt="{{ related_article.image.alt | escape }}"
+                src="{{ related_image | image_url: width: 600 }}"
+                alt="{{ related_image.alt | default: related_article.title | escape }}"
                 loading="lazy"
                 width="600"
-                height="{{ 600 | divided_by: related_article.image.aspect_ratio | round }}"
+                {%- if related_image.aspect_ratio -%}
+                  height="{{ 600 | divided_by: related_image.aspect_ratio | round }}"
+                {%- else -%}
+                  height="400"
+                {%- endif -%}
               >
             </div>
           {%- endif -%}
@@ -52,15 +57,20 @@
             {%- endif -%}
           {%- endfor -%}
           {%- if shares_tag -%}
+            {%- assign related_image = blog_article.metafields.custom.hero_image.value | default: blog_article.metafields.custom.hero_image | default: blog_article.image -%}
             <a class="ka-article-related-card" href="{{ blog_article.url }}">
-              {%- if blog_article.image -%}
+              {%- if related_image -%}
                 <div class="ka-article-related-card__image">
                   <img
-                    src="{{ blog_article.image | image_url: width: 600 }}"
-                    alt="{{ blog_article.image.alt | escape }}"
+                    src="{{ related_image | image_url: width: 600 }}"
+                    alt="{{ related_image.alt | default: blog_article.title | escape }}"
                     loading="lazy"
                     width="600"
-                    height="{{ 600 | divided_by: blog_article.image.aspect_ratio | round }}"
+                    {%- if related_image.aspect_ratio -%}
+                      height="{{ 600 | divided_by: related_image.aspect_ratio | round }}"
+                    {%- else -%}
+                      height="400"
+                    {%- endif -%}
                   >
                 </div>
               {%- endif -%}
@@ -77,15 +87,20 @@
       {%- if shown_count == 0 -%}
         {%- for blog_article in blog.articles limit: 3 -%}
           {%- if blog_article.id != article.id -%}
+            {%- assign related_image = blog_article.metafields.custom.hero_image.value | default: blog_article.metafields.custom.hero_image | default: blog_article.image -%}
             <a class="ka-article-related-card" href="{{ blog_article.url }}">
-              {%- if blog_article.image -%}
+              {%- if related_image -%}
                 <div class="ka-article-related-card__image">
                   <img
-                    src="{{ blog_article.image | image_url: width: 600 }}"
-                    alt="{{ blog_article.image.alt | escape }}"
+                    src="{{ related_image | image_url: width: 600 }}"
+                    alt="{{ related_image.alt | default: blog_article.title | escape }}"
                     loading="lazy"
                     width="600"
-                    height="{{ 600 | divided_by: blog_article.image.aspect_ratio | round }}"
+                    {%- if related_image.aspect_ratio -%}
+                      height="{{ 600 | divided_by: related_image.aspect_ratio | round }}"
+                    {%- else -%}
+                      height="400"
+                    {%- endif -%}
                   >
                 </div>
               {%- endif -%}

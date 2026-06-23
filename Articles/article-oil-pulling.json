@@ -1,0 +1,106 @@
+{
+  "handle": "oil-pulling",
+  "title": "Oil pulling",
+  "hindi_title": "कवल और गण्डूष",
+  "excerpt": "A simple morning habit from Ayurveda, what oil pulling is, how to do it gently, and what it can quietly support for your mouth and breath.",
+  "badge": "Reading guide",
+  "read_time": "4 min read",
+  "image": "oil-pulling.webp",
+  "at_a_glance": [
+    "Oil pulling (kavala/gandusha) is an old daily Ayurvedic habit: swish a spoonful of oil before brushing to loosen the overnight film in the mouth.",
+    "Modern research is cautiously supportive: it lowers saliva bacteria but does not replace brushing, and tongue scraping briefly cuts bad-breath compounds.",
+    "See a dentist or doctor for ongoing pain, bleeding gums, loose teeth, or persistent bad breath; this is general support, not a cure."
+  ],
+  "has_agni": true,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "why try it",
+      "paragraphs": [
+        "You have probably seen people swishing oil in their mouth first thing in the morning and wondered if it actually does anything, or whether it is just an old habit passed down without reason. If you deal with a dry mouth, dull taste, sticky teeth, or breath that does not feel fresh no matter how much you brush, this is a gentle, low-cost morning practice worth understanding. It is not a magic fix, but it is one of the oldest oral-care habits we have, and there is now some modern evidence worth knowing about too.",
+        "In Ayurveda this practice is called kavala and gandusha, and it belongs to the daily routine (dinacharya) that the classical texts lay out for keeping the body in balance. The idea is simple. The mouth is where digestion (agni) begins, and a coating builds up overnight, on the tongue and around the teeth, that the tradition links to stale residue (ama) and to bad taste, dryness and odour. Oil is used because it gathers and loosens this film, and because oiliness is seen as the natural counter to the dryness that vata brings to the mouth and throat."
+      ],
+      "pullQuote": "The mouth is where digestion (agni) begins"
+    },
+    {
+      "heading": "kavala vs gandusha",
+      "paragraphs": [
+        "The texts draw a small but useful distinction. Gandusha means filling the mouth completely with liquid and holding it still, while kavala means taking a smaller, movable amount you can swish and gargle. Vagbhata, in the Ashtanga Hridaya, describes holding the mouth full and motionless until the eyes water and the nose begins to run for gandusha, and says kavala helps the mouth, jaws and voice, eases a dry throat, and clears bad taste and nausea. You do not need to chase the watering eyes, that is the classical marker, not a target to force."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what to do",
+      "paragraphs": [
+        "Here is something you can do today. Take a spoonful of a plain edible oil, sesame is the traditional choice, and swish it gently around your mouth for a few comfortable minutes before brushing, then spit it out, ideally into a bin rather than the sink, and rinse with warm water. Caraka, in the Sutrasthana of the Caraka Samhita, lists holding oil in the mouth (taila gandusha) as a daily habit that supports clean taste perception, relish for food, and teeth that stay firmly rooted. Keep it light and stop if it feels straining, this is a calming, unhurried part of the morning, not an endurance test.",
+        "Pair it with the rest of the simple morning sequence the texts suggest. Caraka describes scraping the tongue with a soft, curved, non-sharp scraper of metal such as copper or silver, noting that the coating at the root of the tongue dulls the breath and causes odour. Vagbhata opens the daily routine with cleaning the teeth (danta dhavana) using a gentle astringent or bitter twig with a softened tip. Together, tongue scraping and oil swishing are a quiet two-minute ritual that many people find leaves the mouth genuinely fresher."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what the evidence says",
+      "paragraphs": [
+        "Modern research offers cautious support, not a cure. A 2022 meta-analysis in the journal Healthcare found that oil pulling reduced the count of bacteria in saliva compared with no oil pulling, though it found no significant difference in dental plaque or gum inflammation scores, and the authors called for more rigorous trials. They frame it as something best used alongside regular brushing rather than as a replacement. A Cochrane systematic review separately found that mechanical tongue cleaning produces a small but real short-term drop in the volatile compounds that cause mouth odour. So treat these habits as helpful daily support, alongside brushing and routine dental care, not instead of them."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see someone",
+      "paragraphs": [
+        "One honest note. If you have ongoing mouth pain, bleeding gums, loose teeth, persistent bad breath, or any symptom that is severe, worsening, or simply worrying you, please see a dentist, doctor, or a qualified vaidya. This article is general information drawn from tradition and published research, and it is not a substitute for professional medical or dental care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Swish before you brush",
+      "description": "Swish a spoonful of plain edible oil, traditionally sesame, gently around the mouth for a few comfortable minutes before brushing."
+    },
+    {
+      "title": "Spit and rinse",
+      "description": "Spit the oil into a bin rather than the sink, then rinse with warm water."
+    },
+    {
+      "title": "Scrape the tongue",
+      "description": "Scrape the tongue with a soft, curved, non-sharp metal scraper such as copper or silver to clear the dulling coating at its root."
+    },
+    {
+      "title": "Clean the teeth",
+      "description": "Begin the morning by cleaning the teeth, traditionally with a gentle astringent or bitter twig with a softened tip."
+    },
+    {
+      "title": "Keep it light",
+      "description": "Stop if it feels straining; this is a calming, unhurried ritual, not an endurance test, and you need not chase watering eyes."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "kavala.",
+      "definition": "Taking a smaller, movable amount of oil you can swish and gargle."
+    },
+    {
+      "term": "gandusha.",
+      "definition": "Filling the mouth completely with liquid and holding it still."
+    },
+    {
+      "term": "dinacharya.",
+      "definition": "The daily routine the classical texts lay out for keeping the body in balance."
+    },
+    {
+      "term": "agni.",
+      "definition": "Digestion, which the tradition says begins in the mouth."
+    },
+    {
+      "term": "ama.",
+      "definition": "Stale residue; the overnight coating in the mouth is linked to it."
+    },
+    {
+      "term": "vata.",
+      "definition": "The dosha whose dryness in the mouth and throat oiliness counters."
+    }
+  ],
+  "sources": "Ashtanga Hridaya, Sutrasthana 2.1-9 · Ashtanga Hridaya, Sutrasthana 22.10-12 · Caraka Samhita, Sutrasthana 5.74-80 · Healthcare (Basel), Peng TR et al. 2022 · Gen Dent, Outhouse TL et al. 2006",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

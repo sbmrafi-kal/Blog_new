@@ -5,9 +5,9 @@
 
 {%- liquid
   assign featured = article
-  assign chip_text = featured.metafields.custom.category_label | default: featured.tags.first
+  assign chip_text = featured.metafields.custom.hero_badge.value | default: featured.metafields.custom.hero_badge | default: featured.metafields.custom.category_label | default: featured.tags.first
   assign dek = featured.metafields.custom.dek | default: featured.excerpt_or_content | strip_html | truncate: 200
-  assign read_time = featured.metafields.custom.read_time_minutes
+  assign read_time = featured.metafields.custom.read_time.value | default: featured.metafields.custom.read_time | default: featured.metafields.custom.read_time_minutes
   assign author_profile = featured.metafields.custom.written_by_profile.value
   assign author_name = author_profile.name | default: featured.author
 -%}
@@ -37,10 +37,16 @@
     {%- endif -%}
     <div class="ka-blog-meta-line">
       {%- if author_name != blank -%}
-        <span>By {{ author_name }}</span>
+        {%- unless author_name contains 'Editorial Team' or author_name contains 'Editorial' -%}
+          <span>By {{ author_name }}</span>
+        {%- endunless -%}
       {%- endif -%}
       {%- if read_time -%}
-        <span>{{ read_time }} min read</span>
+        {%- if read_time contains 'min' or read_time contains 'read' -%}
+          <span>{{ read_time }}</span>
+        {%- else -%}
+          <span>{{ read_time }} min read</span>
+        {%- endif -%}
       {%- endif -%}
       <span>{{ featured.published_at | date: "%B %d, %Y" }}</span>
     </div>

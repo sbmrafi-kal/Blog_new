@@ -1,0 +1,109 @@
+{
+  "handle": "fasting-the-ayurvedic-way",
+  "title": "Fasting (langhana) the Ayurvedic way",
+  "hindi_title": "उपवास का सही तरीका",
+  "excerpt": "Langhana, the Ayurvedic practice of fasting, is not about deprivation. It is a precise tool for clearing ama, the sticky residue of undigested food, and restoring the body's natural lightness.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "fasting-the-ayurvedic-way.webp",
+  "at_a_glance": [
+    "Langhana means 'making light': fasting is Ayurveda's primary tool for clearing ama, the residue of incomplete digestion.",
+    "The classical signal to fast is absent hunger, a coated tongue, and heaviness, not a calendar date.",
+    "Aggressive or prolonged fasting depletes ojas; a single light day or an overnight gap is usually enough."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "that sluggish, heavy feeling after eating too much",
+      "paragraphs": [
+        "Most of us know the feeling: a weekend of rich food, late nights, or stress eating, and by Monday morning the body feels like it is carrying extra weight it did not ask for. Digestion feels sluggish. The tongue has a white coat in the morning. Energy is low even after a full night of sleep. Ayurveda has a precise name for this state and, more usefully, a precise remedy.",
+        "The heaviness is called ama (pronounced ah-mah), which translates roughly as 'unripened matter' or 'toxic residue.' It is what accumulates when agni, the digestive fire, cannot fully process what it receives. The classic antidote to ama is langhana, a word meaning 'to make light.' Fasting, in Ayurveda, is one form of langhana: a deliberate, temporary reduction in food intake that gives agni a chance to burn off what has piled up (Caraka Samhita, Sutrasthana)."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what the granthas actually say about fasting",
+      "paragraphs": [
+        "Caraka Samhita places langhana at the head of all therapeutic measures. It is listed as one of the ten primary treatment approaches, and fasting specifically is recommended whenever ama is present: coating on the tongue, heaviness in the limbs, loss of appetite, and a dull, foggy quality of mind (Caraka Samhita, Sutrasthana, Ch. 22). The test is simple: if you have no genuine hunger, you do not need food yet. Eating without hunger is, in the classical view, one of the main ways ama builds in the first place.",
+        "Ashtanga Hridaya, the compact clinical manual attributed to Vagbhata, echoes this and adds an important nuance. Langhana is appropriate when kapha or ama predominates, but it should be avoided in people who are very thin, elderly, very young, exhausted, or already depleted (Ashtanga Hridaya, Sutrasthana). The granthas are careful to distinguish between therapeutic fasting and mere starvation. The goal is to kindle agni, not to extinguish it.",
+        "Both texts also warn against fasting too aggressively. Skipping several days of food without guidance weakens ojas, the refined essence that supports immunity and vitality. A single missed meal, or a day of warm liquids and light kitchari, is usually sufficient to notice a difference."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "gentle, practical ways to fast the ayurvedic way",
+      "paragraphs": [
+        "The most accessible form of langhana is skipping one meal when you genuinely have no appetite. This is not a rule imposed from outside; it is following the body's own signal. If you wake up with no hunger and a coated tongue, try warm water with a pinch of ginger and skip breakfast. Eat only when real hunger returns, not out of habit or schedule.",
+        "A one-day liquid fast is a common folk practice across India and has clear classical grounding. Warm water, thin rice water (kanji), or a light mung soup are all considered appropriate for a day of rest for the digestive system. These warm liquids support agni rather than dousing it with cold or heavy food.",
+        "Ekadashi, the lunar fasting day observed twice a month, lines up with this principle. Ayurveda notes that digestion tends to be naturally lighter around the eleventh lunar day, making it a good time to reduce food intake rather than fight the body's rhythm (Ashtanga Hridaya, Sutrasthana).",
+        "A few practical habits that support langhana without full fasting: finishing dinner by 7 or 8 in the evening and not eating again until genuine hunger arrives the next morning. This overnight gap, sometimes 14 to 16 hours, gives agni the same reset that a short fast provides. Eating only two to three meals a day, without snacking between them, is another form of daily langhana that the granthas implicitly support through their emphasis on waiting for proper hunger before eating."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "who should not fast, and when to see a doctor",
+      "paragraphs": [
+        "The Ayurvedic tradition is clear that langhana is not for everyone. People who are already very thin, those recovering from illness, pregnant or breastfeeding women, children, and the elderly should not fast without specific guidance from a vaidya. People with diabetes or blood sugar conditions need particular care around any form of meal skipping.",
+        "Please see a doctor or qualified Ayurvedic vaidya if you experience persistent loss of appetite, unexplained weight loss, severe fatigue, nausea or vomiting that does not resolve in a day or two, or any symptom that feels worrying or out of the ordinary. This article is general information about a classical Ayurvedic concept. It is not a diagnosis, a prescription, or a substitute for professional medical care."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "The tongue test",
+      "description": "Each morning before eating, look at your tongue in natural light. A thick white or yellow coat is a classical sign of ama. On those mornings, consider skipping breakfast and starting with warm water instead."
+    },
+    {
+      "title": "Warm water with ginger",
+      "description": "On a light day, sip warm water with a thin slice of fresh ginger throughout the morning. This keeps agni gently active without burdening the digestive system with solid food."
+    },
+    {
+      "title": "The overnight gap",
+      "description": "Finish dinner by 7 or 8 pm and eat breakfast only when genuine hunger arrives. A 12 to 14 hour overnight gap is one of the easiest forms of daily langhana with no counting or restriction required."
+    },
+    {
+      "title": "Light mung soup on a rest day",
+      "description": "Cook a thin soup of yellow mung dal (no tadka, just a pinch of cumin and rock salt) and eat only that for one day when you feel heavy or have no appetite. This is the classical langhana for ama according to Caraka."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "ginger.webp",
+      "name": "Ginger",
+      "sanskrit": "आद्रक",
+      "description": "A warming digestive that kindles agni and helps clear ama; ideal in warm water on a fasting day."
+    },
+    {
+      "image": "cumin.webp",
+      "name": "Cumin",
+      "sanskrit": "जीरा",
+      "description": "Supports digestion and reduces the heaviness associated with ama when added to light broths."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "Langhana.",
+      "definition": "Lightening therapy; the broad category of treatments that reduce excess, of which fasting is one form."
+    },
+    {
+      "term": "Ama.",
+      "definition": "Unripened or undigested matter; the sticky residue that accumulates when agni cannot fully process food."
+    },
+    {
+      "term": "Agni.",
+      "definition": "The digestive fire; the metabolic intelligence that transforms food into nourishment."
+    },
+    {
+      "term": "Ojas.",
+      "definition": "The refined essence of all seven tissues; supports immunity, vitality, and mental clarity."
+    },
+    {
+      "term": "Kanji.",
+      "definition": "Thin rice water or rice gruel, a traditional light food used during fasting and recovery."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana, Ch. 22 (langhana as primary therapy; ama indicators) · Caraka Samhita, Sutrasthana (ten therapeutic measures; langhana listed first) · Ashtanga Hridaya, Sutrasthana (indications and contraindications for langhana)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

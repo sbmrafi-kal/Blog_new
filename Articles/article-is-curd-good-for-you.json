@@ -1,0 +1,105 @@
+{
+  "handle": "is-curd-good-for-you",
+  "title": "Is curd good for you, and when",
+  "hindi_title": "क्या दही आपके लिए अच्छा है",
+  "excerpt": "Curd is one of those foods Indians grow up trusting, yet Ayurveda treats it with real caution. The texts say it depends entirely on how and when you eat it.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "is-curd-good-for-you.webp",
+  "at_a_glance": [
+    "Ayurveda calls curd (dadhi) heavy, sour and heating in effect, valuable in the right setting but easy to misuse.",
+    "The classic rule is to favour curd at midday and avoid plain curd at night, when digestive fire is low.",
+    "For evenings or heavy-feeling days, thin spiced buttermilk (takra) is the lighter, preferred form."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "the everyday question",
+      "paragraphs": [
+        "A bowl of dahi after lunch, a cooling glass of lassi in summer, a spoon of curd-rice on a queasy stomach: for most Indian homes, curd feels like the safest food there is. So it surprises people to learn that the old Ayurvedic texts are unusually wary of it. They never call it simply good or bad. They call it powerful, and they ask you to respect how it behaves inside the body.",
+        "In Sanskrit, curd is dadhi. The granthas describe it as guru (heavy to digest), snigdha (unctuous), ushna (heating in its effect on the body even though it tastes cool), and amla (sour). That last quality, sourness, is the key. Curd is a fermented food, and fermentation is exactly what gives it both its goodness and its trouble (Caraka Samhita, Sutrasthana)."
+      ],
+      "pullQuote": "the body's digestive fire, agni, naturally dips after sunset, and a heavy, channel-clogging food sitting on a slow fire tends to ferment further"
+    },
+    {
+      "heading": "what ayurveda actually says about dahi",
+      "paragraphs": [
+        "The texts are genuinely positive about curd in the right setting. Dadhi is described as appetising, strengthening, and helpful where digestion is weak or where the body needs nourishing and grounding. It is valued in certain conditions of loose, irregular bowels, and it pleases the palate in a way few foods do (Caraka Samhita, Sutrasthana). Bhavaprakasha, in its section on milk and curd, echoes this: well-set curd from good milk builds the body and stokes appetite (Bhavaprakasha, Dadhi Varga).",
+        "But the same texts attach firm conditions. Because curd is heavy and sour, it can aggravate Pitta and Kapha, and its heating, sticky nature is said to block the body's channels (the srotas) when eaten carelessly. Ashtanga Hridaya gives the warning most people have heard in passing: curd should not be taken at night (Ashtanga Hridaya, Sutrasthana). The reasoning is that the body's digestive fire, agni, naturally dips after sunset, and a heavy, channel-clogging food sitting on a slow fire tends to ferment further and create ama, the sticky residue of incomplete digestion.",
+        "The texts also caution against eating curd hot, or eating it daily without thought, and they advise against pairing it with foods it does not sit well with. The classical instruction is to take it with something that offsets its heaviness, a pinch of honey, a little sugar, some ghee, or green gram, rather than plain and in large amounts (Ashtanga Hridaya, Sutrasthana). And there is a gentler form the texts clearly prefer: takra, or buttermilk. Thin, churned, often spiced, buttermilk is light where curd is heavy, and Ayurveda recommends it warmly where plain curd would be too much."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "gentle everyday habits",
+      "paragraphs": [
+        "None of this means giving up dahi. It means eating it the way the texts suggest. Favour curd in the daytime, ideally at the midday meal when your agni is strongest. Keep it to a moderate amount rather than a heaped bowl. If you love it in the evening, switch to spiced buttermilk instead, which carries the same comfort without the heaviness.",
+        "Eat it at room temperature, not straight-cold from the fridge and never heated. A small touch of honey, jaggery, roasted cumin, or rock salt helps balance its sour, heavy nature, which is exactly why raita and chaas are built the way they are. If you tend to run congested, get frequent colds, or feel sluggish and blocked, go easy on plain curd and lean on buttermilk. Used this way, dahi stays the nourishing, friendly food your grandmother always said it was."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "This is general information drawn from classical texts, not a diagnosis or a substitute for medical care. Food sensitivities vary from person to person, and curd is a common trigger for some.",
+        "See a doctor or a qualified vaidya if you get persistent acidity, bloating, loose motions, skin flare-ups, or repeated congestion that seems linked to curd, or if any digestive symptom is severe, lasts more than a few days, or comes with fever, blood in the stool, or significant weight loss. Those are signs to get checked properly rather than to self-adjust your diet alone."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Make it a midday food",
+      "description": "Eat plain curd or raita with your lunch, when agni is strongest, and keep portions moderate rather than a heaped bowl."
+    },
+    {
+      "title": "Swap curd for chaas at night",
+      "description": "If you want something cooling in the evening, choose thin buttermilk spiced with roasted cumin and rock salt instead of plain dahi."
+    },
+    {
+      "title": "Never eat it cold or hot",
+      "description": "Take curd at room temperature. Straight-from-the-fridge cold dulls digestion, and heating it is specifically advised against in the texts."
+    },
+    {
+      "title": "Balance the sourness",
+      "description": "Add a pinch of honey, jaggery, roasted cumin or rock salt to offset curd's heavy, sour quality, which is the logic behind classic raita and chaas."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "cumin.webp",
+      "name": "Cumin",
+      "sanskrit": "जीरा",
+      "description": "Roasted cumin is the classic spice for buttermilk and raita, helping balance curd's heavy, sour nature."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "Dadhi.",
+      "definition": "Sanskrit for curd or set yoghurt."
+    },
+    {
+      "term": "Takra.",
+      "definition": "Buttermilk: curd churned with water, lighter than plain curd and preferred by Ayurveda."
+    },
+    {
+      "term": "Agni.",
+      "definition": "The body's digestive fire, which the texts say weakens after sunset."
+    },
+    {
+      "term": "Ama.",
+      "definition": "The sticky residue of incomplete digestion, thought to form when heavy food meets a weak digestive fire."
+    },
+    {
+      "term": "Srotas.",
+      "definition": "The body's channels; curd's sticky nature is said to block them when eaten carelessly."
+    },
+    {
+      "term": "Guru.",
+      "definition": "Heavy, slow to digest; one of curd's main qualities in the texts."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana (qualities and uses of dadhi) · Ashtanga Hridaya, Sutrasthana (curd not at night; takra and pairings) · Bhavaprakasha, Nighantu, milk-and-curd section (properties of dadhi)",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

@@ -1,0 +1,104 @@
+{
+  "handle": "better-sleep",
+  "title": "Better sleep",
+  "hindi_title": "अच्छी नींद के लिए",
+  "excerpt": "A calm, practical guide to what classical Ayurveda says about restless nights, and the simple everyday habits the tradition suggests for better rest.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "better-sleep.webp",
+  "at_a_glance": [
+    "Ayurveda treats sleep (nidra) as a pillar of health, alongside food and conduct.",
+    "Restless nights often follow overwork and an aggravated, restless quality (vata or pitta).",
+    "Warm oil massage, warm milk, a steady bedtime, and a quiet evening gently support rest."
+  ],
+  "has_agni": false,
+  "agni_desc": "",
+  "body": [
+    {
+      "heading": "the restless night",
+      "paragraphs": [
+        "You lie down tired, but your mind keeps running. You check the time, turn over, and the hours slip by. By morning you feel heavy and foggy, and the next night you start worrying about whether you will sleep at all. If this is you right now, you are not alone, and there is gentle, sensible wisdom you can lean on."
+      ],
+      "pullQuote": "good rest is not separate from good health, it is part of the foundation"
+    },
+    {
+      "heading": "why sleep matters",
+      "paragraphs": [
+        "Ayurveda treats sleep as something serious, not a luxury. The Caraka Samhita lists sleep (nidra) alongside food and regulated conduct as one of the three supports of the body (Sutrasthana 11.35). The same text says that happiness and misery, nourishment and weakness, strength and even clarity of mind all depend on sleep (Sutrasthana 21.36). In other words, good rest is not separate from good health, it is part of the foundation.",
+        "So what does the tradition see behind a restless night? In simple terms, Ayurveda links steady, natural sleep to a calm, settled quality in the body and mind, while a busy, dry, overstimulated state tends to keep you wakeful. Classical writers describe sleep as having different origins, including the natural quietening that night itself brings, what Caraka beautifully calls the nurse of all beings (Sutrasthana 21.58 to 59). Modern Ayurveda research summarising these texts notes that disturbed or insufficient sleep is often connected to an aggravated, restless quality (vata or pitta), frequently following too much physical or mental exertion. When you have pushed yourself hard all day, the system simply does not switch off on cue."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "what helps",
+      "paragraphs": [
+        "Here are a few everyday habits the tradition suggests. None of these are cures, just supportive routines you can try tonight.",
+        "Keep a steady night rhythm. Both the Caraka Samhita and the Ashtanga Hridaya emphasise sleeping at the proper time, especially at night (yathakalam nidra, Ashtanga Hridaya Sutrasthana 7.65). The classical writers warn that sleep taken at the wrong time, in excess, or not at all unsettles wellbeing (Caraka Sutrasthana 21.37 to 38). A regular bedtime, even on slow days, gives the body a signal it can trust.",
+        "Warm and soothe the body before bed. For rest that has been lost to overwork, Caraka lists simple comforts: a gentle oil massage (abhyanga), a warm bath, warm milk (kshira), a well-made bed, a quiet room, and the right night-time hour (Sutrasthana 21.52 to 54). The Ashtanga Hridaya echoes this, suggesting milk, oil massage, and nourishing care of the head and eyes for those depleted by too little sleep (Sutrasthana 7.66 to 68). A few minutes massaging warm oil into your feet and scalp, then a warm drink, is an easy place to begin.",
+        "Wind the mind down, not up. The texts value agreeable sounds, calming scents, and gentle stroking as ways to invite sleep back (Caraka Sutrasthana 21.52 to 54). In practice that means dimming bright screens, slowing your breath, and letting the evening get quiet well before you lie down. Staying up late, the Ashtanga Hridaya notes, leaves the body dry and depleted (Sutrasthana 7.55), so an earlier, softer evening helps."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "start small",
+      "paragraphs": [
+        "Start small tonight. Pick one habit, perhaps a warm foot massage and an earlier, quieter evening, and let your body relearn that night is for rest. The tradition treats sleep as a daily gift to protect, not a battle to win."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "A word of honesty. These habits are gentle support, not a treatment, and they will not fix every restless night. If your sleeplessness is severe, lasts for weeks, or comes with low mood, breathlessness, pain, or anything that frightens you, please see a doctor or a qualified vaidya. This article is general information drawn from classical texts, not a diagnosis or a substitute for medical care. Persistent insomnia can have causes that deserve proper attention."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "Keep a steady night rhythm",
+      "description": "Go to bed at a regular time, even on slow days, so the body gets a signal it can trust."
+    },
+    {
+      "title": "Warm and soothe before bed",
+      "description": "Massage warm oil into your feet and scalp, take a warm bath, then have warm milk."
+    },
+    {
+      "title": "Wind the mind down",
+      "description": "Dim bright screens, slow your breath, and let the evening get quiet well before you lie down."
+    },
+    {
+      "title": "Start small tonight",
+      "description": "Pick one habit, such as a warm foot massage and an earlier, quieter evening, and build from there."
+    }
+  ],
+  "ingredients": [],
+  "words_to_know": [
+    {
+      "term": "nidra.",
+      "definition": "Sleep; in Caraka one of the three supports of the body."
+    },
+    {
+      "term": "vata.",
+      "definition": "The restless, dry, mobile quality that, when aggravated, can keep you wakeful."
+    },
+    {
+      "term": "pitta.",
+      "definition": "The heated, intense quality that, when aggravated, can disturb sleep."
+    },
+    {
+      "term": "abhyanga.",
+      "definition": "A gentle oil massage used to warm and soothe the body before rest."
+    },
+    {
+      "term": "kshira.",
+      "definition": "Warm milk, listed among Caraka's simple comforts for lost sleep."
+    },
+    {
+      "term": "vaidya.",
+      "definition": "A qualified Ayurvedic physician to consult for persistent sleeplessness."
+    }
+  ],
+  "sources": "Caraka Samhita, Sutrasthana 11.35 · Caraka Samhita, Sutrasthana 21.36 · Caraka Samhita, Sutrasthana 21.37 to 38 · Caraka Samhita, Sutrasthana 21.52 to 54 · Caraka Samhita, Sutrasthana 21.58 to 59 · Ashtanga Hridaya, Sutrasthana 7.55 · Ashtanga Hridaya, Sutrasthana 7.65 · Ashtanga Hridaya, Sutrasthana 7.66 to 68 · J Ayurveda Integr Med, PMC8728083 · Nat Sci Sleep, PMC4448595",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}

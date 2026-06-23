@@ -1,0 +1,103 @@
+{
+  "handle": "loose-motions-diarrhea",
+  "title": "Loose motions and what to eat",
+  "hindi_title": "दस्त और क्या खाएं",
+  "excerpt": "Loose motions, called atisara in Ayurveda, are the body flushing out what it cannot digest. The classical texts read them as a sign of weak digestive fire, and the gentle way back is rest, warm fluids, and simple binding foods like rice and buttermilk.",
+  "badge": "Feature",
+  "read_time": "4 min read",
+  "image": "loose-motions-diarrhea.webp",
+  "at_a_glance": [
+    "Loose motions (atisara) are the body flushing out ama, the sticky residue of food it could not digest.",
+    "The aim is to rest digestion and rebuild agni, not to forcibly stop the flow early.",
+    "Warm fluids and simple binding foods like thin buttermilk and rice gruel are the classical settling foods."
+  ],
+  "has_agni": true,
+  "agni_desc": "The goal is a steady, balanced fire (sama). Too low leaves food undigested; too sharp burns through it. An irregular fire (vishama) swings between the two.",
+  "body": [
+    {
+      "heading": "what loose motions actually are",
+      "paragraphs": [
+        "Almost everyone knows the feeling: a heavy meal at a wedding, some roadside chaat, or a stretch of bad water, and within hours the stomach turns. The trips to the bathroom come fast, the stool is thin and watery, and the body feels wrung out. Ayurveda has a name for this, atisara, which simply means an excessive flow downward.",
+        "The classical view is refreshingly practical. When food does not digest properly, it sits in the gut as a half-cooked, sticky residue the texts call ama. The body recognises this ama as a burden and tries to push it out quickly, and the watery channels of the gut get pulled into that rush (Caraka Samhita, Chikitsasthana, the chapter on atisara). So the loose motion itself is not the enemy. It is the body's attempt to clear something it could not handle.",
+        "Madhava Nidana, the classical manual of diagnosis, lists the common triggers in language any of us would recognise: too much heavy, oily or incompatible food, dirty water, grief and fear, and suppressing the natural urge to go (Madhava Nidana, the chapter on atisara). The thread running through all of them is the same, a digestive fire, or agni, that has been knocked off balance."
+      ],
+      "pullQuote": "the loose motion itself is not the enemy. It is the body's attempt to clear something it could not handle."
+    },
+    {
+      "heading": "the ayurvedic view: weak fire, sticky ama",
+      "paragraphs": [
+        "In Ayurveda, agni is the inner fire that cooks your food into something the body can use. When agni is strong, food is digested cleanly and the stool is well formed. When agni is weakened, by overeating, by stress, or by an infection riding in on bad food or water, digestion stays incomplete and ama forms (Caraka Samhita, Sutrasthana, on agni and digestion).",
+        "Because of this, the classical treatment does not begin by plugging the flow. The texts are clear that you should not forcibly stop early loose motions, because that traps the ama inside and makes things worse (Chakradatta, the chapter on atisara). The first job is to let the gut empty what it needs to, while you rest the digestion and rebuild the fire with light, warm, easy food.",
+        "This is why the old remedies lean so heavily on rice and buttermilk. Takra, or buttermilk thinned with water, is praised across the texts for kindling agni and binding loose stool without being heavy (Chakradatta, on atisara). Rice gruel and rice with curd do the same gentle work: they are warm, simple, and ask almost nothing of a tired gut."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "gentle habits while it settles",
+      "paragraphs": [
+        "The single most important thing is fluid. Loose motions drain water and salts fast, and the texts repeatedly favour warm, light drinks over cold heavy ones. Sip warm water through the day, ideally water that has been boiled, which the classical texts recommend for easy digestion. A pinch of salt and a little sugar in that water, or a thin buttermilk with roasted cumin, helps replace what is being lost.",
+        "Keep food small, warm and plain for a day or two. Soft rice, rice gruel, moong dal water, and rice with fresh curd are the classic settling foods. Avoid milk, fried and oily items, raw salads, and anything cold or heavy while the gut is still raw, since these only feed the ama. Rest matters too: lying down, staying warm, and not rushing back to a full plate gives agni room to recover.",
+        "As the motions reduce and the appetite returns, that returning hunger is the body's own signal that agni is reviving. Move back to normal food slowly, starting with the same light rice and dal, and let the stool firm up over a day or two before adding richer meals."
+      ],
+      "pullQuote": ""
+    },
+    {
+      "heading": "when to see a doctor",
+      "paragraphs": [
+        "Most simple loose motions settle in a day or two with rest, fluids and light food. But some need real medical care, not home remedies. See a doctor or a qualified vaidya promptly if the diarrhoea is severe or lasts more than two or three days, if there is blood or mucus in the stool, high fever, persistent vomiting, severe stomach pain, or signs of dehydration such as very little urine, a dry mouth, sunken eyes, dizziness or extreme weakness. For young children, the elderly, and anyone already unwell, get help early, since they lose fluids dangerously fast.",
+        "This article is general information drawn from classical Ayurvedic texts, not a diagnosis or a substitute for medical care. If something feels worrying or is not improving, please have a professional look at you."
+      ],
+      "pullQuote": ""
+    }
+  ],
+  "try_this_today": [
+    {
+      "title": "thin spiced buttermilk (takra)",
+      "description": "Whisk fresh curd with about twice as much boiled, cooled water, add a pinch of salt and a little roasted cumin powder. Sip it slowly through the day. The classical texts favour thinned buttermilk for kindling agni and settling loose stool."
+    },
+    {
+      "title": "warm rice gruel",
+      "description": "Cook rice with extra water until soft and soupy, add a pinch of salt, and eat it warm in small amounts. It asks almost nothing of a tired gut and is the simplest food to restart on."
+    },
+    {
+      "title": "replace what you lose",
+      "description": "In a glass of warm boiled water, add a pinch of salt and a small spoon of sugar, and sip often. This helps replace the water and salts that loose motions drain so quickly."
+    },
+    {
+      "title": "keep meals light and warm",
+      "description": "For a day or two stick to soft rice, moong dal water, and rice with fresh curd. Avoid milk, fried and oily food, raw salads, and anything cold or heavy until the stool firms up."
+    },
+    {
+      "title": "know when to stop home care",
+      "description": "Home remedies are only for mild, short loose motions. See a doctor or qualified vaidya promptly if there is blood or mucus in the stool, high fever, persistent vomiting, severe stomach pain, signs of dehydration such as very little urine or dizziness, or if it lasts more than two or three days. Get help early for young children, the elderly, and anyone already unwell."
+    }
+  ],
+  "ingredients": [
+    {
+      "image": "cumin.webp",
+      "name": "Cumin",
+      "sanskrit": "जीरा",
+      "description": "Roasted cumin in thin buttermilk is a classic settling pairing; it adds warmth and helps a tired gut accept the drink."
+    }
+  ],
+  "words_to_know": [
+    {
+      "term": "atisara.",
+      "definition": "The Ayurvedic term for diarrhoea, literally an excessive downward flow."
+    },
+    {
+      "term": "agni.",
+      "definition": "The digestive fire that cooks food into a form the body can use; weak agni leaves food half-digested."
+    },
+    {
+      "term": "ama.",
+      "definition": "The sticky, half-digested residue that forms when agni is weak, which the body tries to flush out."
+    },
+    {
+      "term": "takra.",
+      "definition": "Buttermilk, usually thinned with water, valued for kindling agni and binding loose stool."
+    }
+  ],
+  "sources": "Caraka Samhita, Chikitsasthana, chapter on atisara · Caraka Samhita, Sutrasthana, on agni and digestion · Madhava Nidana, chapter on atisara · Chakradatta, chapter on atisara",
+  "disclaimer": "Ayurveda guidance on AyurHQ is supportive care, not emergency or diagnostic medical treatment."
+}
