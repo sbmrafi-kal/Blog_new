@@ -56,7 +56,13 @@
       <div class="ka-blog-breadcrumb">
         <a href="{{ blog.url }}">Journal</a>
         <span>/</span>
-        <span>{{ topic_title }}</span>
+        {%- if current_tags.size > 1 -%}
+          <a href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">{{ topic_title }}</a>
+          <span>/</span>
+          <span>{{ current_tags | last }}</span>
+        {%- else -%}
+          <span>{{ topic_title }}</span>
+        {%- endif -%}
       </div>
       <article class="ka-blog-topic-hero">
         <div class="ka-blog-topic-hero__content">
@@ -104,11 +110,18 @@
         {%- comment -%} Filter bar from dynamic related tags {%- endcomment -%}
         {%- if related_tags_array.size > 0 -%}
           <nav class="ka-blog-filter-bar" aria-label="{{ topic_title }} filters">
-            <a class="active" href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">All</a>
+            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">All</a>
             {%- for tag in related_tags_array -%}
               {%- assign trimmed_tag = tag | strip -%}
               {%- if trimmed_tag != blank -%}
-                <a href="{{ blog.url }}/tagged/{{ trimmed_tag | handleize }}">{{ trimmed_tag }}</a>
+                {%- assign is_active = false -%}
+                {%- if current_tags contains trimmed_tag -%}
+                  {%- assign is_active = true -%}
+                {%- endif -%}
+                {%- assign current_tag_handle = current_tag | handleize -%}
+                {%- assign trimmed_tag_handle = trimmed_tag | handleize -%}
+                {%- assign sub_filter_url = blog.url | append: '/tagged/' | append: current_tag_handle | append: '+' | append: trimmed_tag_handle -%}
+                <a class="{% if is_active %}active{% endif %}" href="{{ sub_filter_url }}">{{ trimmed_tag }}</a>
               {%- endif -%}
             {%- endfor -%}
           </nav>
