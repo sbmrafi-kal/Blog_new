@@ -44,6 +44,7 @@
       "settings": {
         "color_scheme": "scheme-1",
         "social_label": "Follow Us",
+        "logo_image": "shopify://shop_images/logo-kerala.png",
         "logo_alt": "Kerala Ayurveda",
         "tagline": "Some Formulas Don't Need Improving.\nThis Is One Of Them.",
         "padding_top": 80,
