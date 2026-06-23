@@ -80,6 +80,19 @@
     <div class="ka-blog-container">
       <a class="ka-blog-small" href="{{ blog.url }}#topics">← All topics</a>
 
+      {%- liquid
+        assign related_tags = ""
+        for article in blog.articles
+          for t in article.tags
+            assign t_clean = t | strip
+            unless t_clean == current_tag
+              assign related_tags = related_tags | append: "," | append: t_clean
+            endunless
+          endfor
+        endfor
+        assign related_tags_array = related_tags | split: "," | uniq
+      -%}
+
       {%- paginate blog.articles by 12 -%}
         <div class="ka-blog-section-head" style="margin-top: 18px;">
           <div>
@@ -88,20 +101,18 @@
           </div>
         </div>
 
-        {%- comment -%} Filter bar from blog tags (current tag highlighted) {%- endcomment -%}
-        <nav class="ka-blog-filter-bar" aria-label="{{ topic_title }} filters">
-          <a class="active" href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">All</a>
-          {%- comment -%}
-            Show sub-filters from other tags on articles in this topic.
-            Since Shopify doesn't support nested tag queries, we show
-            all blog tags as navigation options.
-          {%- endcomment -%}
-          {%- for tag in blog.all_tags -%}
-            {%- unless tag == current_tag -%}
-              <a href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
-            {%- endunless -%}
-          {%- endfor -%}
-        </nav>
+        {%- comment -%} Filter bar from dynamic related tags {%- endcomment -%}
+        {%- if related_tags_array.size > 0 -%}
+          <nav class="ka-blog-filter-bar" aria-label="{{ topic_title }} filters">
+            <a class="active" href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">All</a>
+            {%- for tag in related_tags_array -%}
+              {%- assign trimmed_tag = tag | strip -%}
+              {%- if trimmed_tag != blank -%}
+                <a href="{{ blog.url }}/tagged/{{ trimmed_tag | handleize }}">{{ trimmed_tag }}</a>
+              {%- endif -%}
+            {%- endfor -%}
+          </nav>
+        {%- endif -%}
 
         <div class="ka-blog-article-grid" style="margin-top: 24px;">
           {%- for article in blog.articles -%}
