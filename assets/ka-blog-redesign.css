@@ -7,9 +7,15 @@
  * Breakpoints: mobile < 640px | tablet 640-979px | desktop >= 980px
  */
 
-/* =============================================================
-   CSS CUSTOM PROPERTIES — Brand Tokens
-   ============================================================= */
+:root {
+  --header-height: 72px;
+}
+@media (max-width: 989px) {
+  :root {
+    --header-height: 92px;
+  }
+}
+
 .ka-blog-wrapper {
   --ka-ink: #383938;
   --ka-muted: #575758;

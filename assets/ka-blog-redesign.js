@@ -386,12 +386,12 @@
     var grid = document.querySelector('.ka-blog-article-grid');
     var pagination = document.querySelector('.ka-blog-pagination');
     var filterBar = document.querySelector('.ka-blog-filter-bar');
-    var breadcrumb = document.querySelector('.ka-blog-breadcrumb');
+    var breadcrumbWrap = document.querySelector('.theme-header-custom__breadcrumbs-wrap');
     
     if (grid) grid.style.opacity = '0.35';
     if (pagination) pagination.style.opacity = '0.35';
     if (filterBar) filterBar.style.opacity = '0.35';
-    if (breadcrumb) breadcrumb.style.opacity = '0.35';
+    if (breadcrumbWrap) breadcrumbWrap.style.opacity = '0.35';
 
     fetch(url)
       .then(function (response) {
@@ -405,7 +405,7 @@
         var newGrid = doc.querySelector('.ka-blog-article-grid');
         var newPagination = doc.querySelector('.ka-blog-pagination');
         var newFilterBar = doc.querySelector('.ka-blog-filter-bar');
-        var newBreadcrumb = doc.querySelector('.ka-blog-breadcrumb');
+        var newBreadcrumbWrap = doc.querySelector('.theme-header-custom__breadcrumbs-wrap');
         
         if (grid && newGrid) {
           grid.innerHTML = newGrid.innerHTML;
@@ -431,8 +431,9 @@
           filterBar.innerHTML = newFilterBar.innerHTML;
         }
         
-        if (breadcrumb && newBreadcrumb) {
-          breadcrumb.innerHTML = newBreadcrumb.innerHTML;
+        if (breadcrumbWrap && newBreadcrumbWrap) {
+          breadcrumbWrap.innerHTML = newBreadcrumbWrap.innerHTML;
+          breadcrumbWrap.style.display = newBreadcrumbWrap.style.display;
         }
         
         if (grid) grid.style.opacity = '1';
@@ -441,7 +442,7 @@
         if (currentPagination) currentPagination.style.opacity = '1';
         
         if (filterBar) filterBar.style.opacity = '1';
-        if (breadcrumb) breadcrumb.style.opacity = '1';
+        if (breadcrumbWrap) breadcrumbWrap.style.opacity = '1';
         
         if (!isPopState) {
           history.pushState(null, '', url);

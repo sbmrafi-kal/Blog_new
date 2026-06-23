@@ -51,17 +51,6 @@
   {%- comment -%} ============ BREADCRUMB + TOPIC HERO ============ {%- endcomment -%}
   <section class="ka-blog-section--tight" id="overview">
     <div class="ka-blog-container">
-      <div class="ka-blog-breadcrumb">
-        <a href="{{ blog.url }}">Journal</a>
-        <span>/</span>
-        {%- if current_tags.size > 1 -%}
-          <a href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">{{ topic_title }}</a>
-          <span>/</span>
-          <span>{{ current_tags | last }}</span>
-        {%- else -%}
-          <span>{{ topic_title }}</span>
-        {%- endif -%}
-      </div>
       <article class="ka-blog-topic-hero">
         <div class="ka-blog-topic-hero__content">
           <p class="ka-blog-eyebrow">
