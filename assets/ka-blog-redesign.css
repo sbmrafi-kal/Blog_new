@@ -38,12 +38,12 @@
   --ka-radius-md: 18px;
   --ka-max-width: 1180px;
 
-  --ka-font-heading: 'Amstir-Regular', serif;
-  --ka-font-body: 'Avenir-Roman', sans-serif;
-  --ka-font-medium: 'Avenir-Medium', sans-serif;
-  --ka-font-heavy: 'Avenir-Heavy', sans-serif;
-  --ka-font-black: 'Avenir-Black', sans-serif;
-  --ka-font-light: 'Avenir-Light', sans-serif;
+  --ka-font-heading: 'Amstir-Regular';
+  --ka-font-body: 'Avenir-Roman';
+  --ka-font-medium: 'Avenir-Medium';
+  --ka-font-heavy: 'Avenir-Heavy';
+  --ka-font-black: 'Avenir-Black';
+  --ka-font-light: 'Avenir-Light';
 }
 
 /* =============================================================
@@ -97,7 +97,7 @@
 .ka-blog-wrapper p { margin: 0; }
 
 .ka-blog-eyebrow {
-  color: var(--ka-orange);
+  color: #D27449;
   font-family: var(--ka-font-heavy);
   font-size: 12px;
   font-weight: 800;
@@ -242,7 +242,7 @@
 .ka-blog-subnav a:hover,
 .ka-blog-subnav a.active {
   color: var(--ka-deep-orange);
-  background: #f6f7f2;
+  background: #FFF1DC;
 }
 
 /* =============================================================
@@ -285,7 +285,7 @@
 .ka-blog-care-panel {
   border: 1px solid var(--ka-line);
   border-radius: var(--ka-radius-xl);
-  background: linear-gradient(135deg, #FDFFFB, #FDFFFB);
+  background: #FFF9EE;
   box-shadow: var(--ka-shadow-soft);
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -296,7 +296,7 @@
 .ka-blog-care-intro {
   padding: 26px;
   border-radius: var(--ka-radius-lg);
-  background: #f6f7f2;
+  background: #FFF1DC;
   align-self: start;
   position: sticky;
   top: calc(var(--header-height, 154px) + 70px);
@@ -501,7 +501,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 .ka-blog-consult-card {
   border: 1px solid var(--ka-line);
   border-radius: var(--ka-radius-xl);
-  background: linear-gradient(135deg, #FDFFFB, #FDFFFB);
+  background: #FFF9EE;
   box-shadow: var(--ka-shadow-soft);
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -571,17 +571,32 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
    BREADCRUMBS
    ============================================================= */
 .ka-blog-breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
-  color: var(--ka-muted);
+  background-color: #FFFDF9;
+  border: 1px solid var(--ka-line);
+  padding: 8px 18px;
+  border-radius: var(--ka-radius-md);
+  margin-bottom: 18px;
   font-size: 13px;
   font-weight: 700;
-  margin-bottom: 18px;
+  color: var(--ka-muted);
+  box-shadow: var(--ka-shadow-soft);
 }
 
-.ka-blog-breadcrumb a { color: var(--ka-orange); }
-.ka-blog-breadcrumb a:hover { text-decoration: underline; }
+.ka-blog-breadcrumb span,
+.ka-blog-breadcrumb a {
+  opacity: 0;
+  animation: fadeInBreadcrumb 0.4s ease forwards;
+}
+
+@keyframes fadeInBreadcrumb {
+  to { opacity: 1; }
+}
+
+.ka-blog-breadcrumb a { color: var(--ka-green); font-weight: 800; transition: color 180ms ease; }
+.ka-blog-breadcrumb a:hover { color: #D27449; text-decoration: underline; }
 
 /* =============================================================
    FILTER BAR — Topic page sub-filters
@@ -611,7 +626,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
 .ka-blog-filter-bar a.active,
 .ka-blog-filter-bar a:hover {
-  background: #f6f7f2;
+  background: #FFF1DC;
   color: var(--ka-orange);
   border-color: #b8d29b;
 }
