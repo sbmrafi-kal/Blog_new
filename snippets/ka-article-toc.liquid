@@ -1,0 +1,33 @@
+{% comment %}
+  ka-article-toc.liquid — Desktop sticky + mobile accordion TOC
+  The JS (ka-blog-redesign.js) dynamically builds the TOC links
+  from h2/h3 headings in .ka-article-content
+  Usage: {% render 'ka-article-toc' %}
+{% endcomment %}
+
+{%- comment -%} Desktop sidebar TOC — populated by JS {%- endcomment -%}
+<aside class="ka-article-sidebar" aria-label="Article table of contents">
+  <h3>In this article</h3>
+  <ul class="ka-article-sidebar__list" style="list-style:none;padding:0;margin:0;">
+    {%- comment -%} Links built dynamically by ka-blog-redesign.js {%- endcomment -%}
+  </ul>
+</aside>
+
+{%- comment -%} Mobile TOC accordion — populated by JS {%- endcomment -%}
+<div class="ka-article-toc-mobile">
+  <button
+    class="ka-article-toc-mobile__toggle"
+    aria-expanded="false"
+    aria-controls="ka-mobile-toc-content"
+  >
+    <span>Table of contents</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div id="ka-mobile-toc-content" class="ka-article-toc-mobile__content">
+    <ul class="ka-article-toc-mobile__list">
+      {%- comment -%} Links built dynamically by ka-blog-redesign.js {%- endcomment -%}
+    </ul>
+  </div>
+</div>

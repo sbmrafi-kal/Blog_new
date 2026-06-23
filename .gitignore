@@ -1,0 +1,8 @@
+# Shopify Theme Git Ignore
+Ref/
+Current/
+docs/
+.DS_Store
+.shopify/
+*.log
+node_modules/

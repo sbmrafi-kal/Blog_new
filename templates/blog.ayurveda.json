@@ -1,0 +1,87 @@
+{
+  "name": "Blog — Ayurveda Redesign",
+  "sections": {
+    "main-blog": {
+      "type": "main-blog-redesign",
+      "settings": {
+        "hero_eyebrow": "AYURVEDA LIBRARY",
+        "hero_title": "Kerala Ayurveda Wellness Journal",
+        "hero_subtitle": "Classical Ayurvedic wisdom for herbs, digestion, immunity, skin, hair, stress, sleep, detox, and everyday wellness.",
+        "consult_title": "Need help choosing the right Ayurvedic support?",
+        "consult_button": "WhatsApp consults opening soon"
+      },
+      "blocks": {
+        "care-path-digestion": {
+          "type": "care_path",
+          "settings": {
+            "title": "Digestion & gut",
+            "subtitle": "Acidity, bloating, constipation, appetite, and metabolism support.",
+            "tag": "digestion",
+            "cta_label": "Explore gut health"
+          }
+        },
+        "care-path-herbs": {
+          "type": "care_path",
+          "settings": {
+            "title": "Herbs & formulations",
+            "subtitle": "Classical herbs, single ingredients, and compound formulations.",
+            "tag": "herbs",
+            "cta_label": "Browse herbs"
+          }
+        },
+        "care-path-skin": {
+          "type": "care_path",
+          "settings": {
+            "title": "Skin & hair",
+            "subtitle": "Natural skin care, hair health, and beauty from Ayurveda.",
+            "tag": "skin-hair",
+            "cta_label": "Explore beauty"
+          }
+        },
+        "care-path-sleep": {
+          "type": "care_path",
+          "settings": {
+            "title": "Sleep & stress",
+            "subtitle": "Rest, relaxation, anxiety support, and calming routines.",
+            "tag": "sleep-stress",
+            "cta_label": "Explore calm"
+          }
+        },
+        "care-path-immunity": {
+          "type": "care_path",
+          "settings": {
+            "title": "Immunity & detox",
+            "subtitle": "Seasonal wellness, cleansing, and immune resilience.",
+            "tag": "immunity",
+            "cta_label": "Explore immunity"
+          }
+        },
+        "care-path-joints": {
+          "type": "care_path",
+          "settings": {
+            "title": "Pain & joints",
+            "subtitle": "Joint comfort, muscle support, and mobility guidance.",
+            "tag": "joints",
+            "cta_label": "Explore comfort"
+          }
+        }
+      },
+      "block_order": [
+        "care-path-digestion",
+        "care-path-herbs",
+        "care-path-skin",
+        "care-path-sleep",
+        "care-path-immunity",
+        "care-path-joints"
+      ]
+    },
+    "topic-view": {
+      "type": "main-blog-topic-redesign",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main-blog",
+    "topic-view"
+  ]
+}

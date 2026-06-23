@@ -1,0 +1,102 @@
+{% comment %}
+  ka-related-articles.liquid — Related articles grid
+  Usage: {% render 'ka-related-articles', article: article, blog: blog %}
+{% endcomment %}
+
+{%- liquid
+  assign related = article.metafields.custom.related_articles.value
+  assign has_explicit_related = false
+  if related != blank and related.size > 0
+    assign has_explicit_related = true
+  endif
+-%}
+
+<section class="ka-blog-section--tight" id="related">
+  <div class="ka-blog-section-head">
+    <div>
+      <p class="ka-blog-eyebrow">More from Ayurveda</p>
+      <h2>Continue reading</h2>
+    </div>
+  </div>
+  <div class="ka-article-related-grid">
+    {%- if has_explicit_related -%}
+      {%- for related_article in related limit: 3 -%}
+        <a class="ka-article-related-card" href="{{ related_article.url }}">
+          {%- if related_article.image -%}
+            <div class="ka-article-related-card__image">
+              <img
+                src="{{ related_article.image | image_url: width: 600 }}"
+                alt="{{ related_article.image.alt | escape }}"
+                loading="lazy"
+                width="600"
+                height="{{ 600 | divided_by: related_article.image.aspect_ratio | round }}"
+              >
+            </div>
+          {%- endif -%}
+          <div class="ka-article-related-card__body">
+            <h3>{{ related_article.title }}</h3>
+            <span class="ka-blog-read-more">Read article</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    {%- else -%}
+      {%- comment -%} Fallback: articles from same blog with shared tags {%- endcomment -%}
+      {%- assign shown_count = 0 -%}
+      {%- for blog_article in blog.articles limit: 20 -%}
+        {%- if blog_article.id != article.id and shown_count < 3 -%}
+          {%- assign shares_tag = false -%}
+          {%- for tag in article.tags -%}
+            {%- if blog_article.tags contains tag -%}
+              {%- assign shares_tag = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if shares_tag -%}
+            <a class="ka-article-related-card" href="{{ blog_article.url }}">
+              {%- if blog_article.image -%}
+                <div class="ka-article-related-card__image">
+                  <img
+                    src="{{ blog_article.image | image_url: width: 600 }}"
+                    alt="{{ blog_article.image.alt | escape }}"
+                    loading="lazy"
+                    width="600"
+                    height="{{ 600 | divided_by: blog_article.image.aspect_ratio | round }}"
+                  >
+                </div>
+              {%- endif -%}
+              <div class="ka-article-related-card__body">
+                <h3>{{ blog_article.title }}</h3>
+                <span class="ka-blog-read-more">Read article</span>
+              </div>
+            </a>
+            {%- assign shown_count = shown_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- comment -%} If no shared-tag articles, show recent from blog {%- endcomment -%}
+      {%- if shown_count == 0 -%}
+        {%- for blog_article in blog.articles limit: 3 -%}
+          {%- if blog_article.id != article.id -%}
+            <a class="ka-article-related-card" href="{{ blog_article.url }}">
+              {%- if blog_article.image -%}
+                <div class="ka-article-related-card__image">
+                  <img
+                    src="{{ blog_article.image | image_url: width: 600 }}"
+                    alt="{{ blog_article.image.alt | escape }}"
+                    loading="lazy"
+                    width="600"
+                    height="{{ 600 | divided_by: blog_article.image.aspect_ratio | round }}"
+                  >
+                </div>
+              {%- endif -%}
+              <div class="ka-article-related-card__body">
+                <h3>{{ blog_article.title }}</h3>
+                <span class="ka-blog-read-more">Read article</span>
+              </div>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>

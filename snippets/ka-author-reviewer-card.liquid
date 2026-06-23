@@ -1,0 +1,59 @@
+{% comment %}
+  ka-author-reviewer-card.liquid — Author/reviewer profile card
+  Usage: {% render 'ka-author-reviewer-card', profile: profile, role_label: 'Written by', fallback_name: article.author %}
+{% endcomment %}
+
+{%- liquid
+  assign person = profile
+  assign person_name = person.name | default: fallback_name
+  assign person_role = person.role_label | default: role_label | default: 'Author'
+  assign person_designation = person.designation
+  assign person_degree = person.degree
+  assign person_qualifications = person.qualifications
+  assign person_bio = person.short_bio
+  assign person_photo = person.photo
+  assign person_url = person.profile_url
+  assign person_initials = person_name | split: ' ' | map: 'first' | join: '' | upcase | truncate: 2, ''
+-%}
+
+{%- if person_name != blank -%}
+  <section class="ka-article-author-card" id="{{ role_label | handleize | default: 'author' }}">
+    <div class="ka-article-avatar" aria-hidden="true">
+      {%- if person_photo -%}
+        <img
+          src="{{ person_photo | image_url: width: 176 }}"
+          alt="{{ person_name | escape }}"
+          loading="lazy"
+          width="88"
+          height="88"
+        >
+      {%- else -%}
+        {{ person_initials }}
+      {%- endif -%}
+    </div>
+    <div>
+      <p class="ka-blog-eyebrow">{{ person_role }}</p>
+      <h2>{{ person_name }}</h2>
+      {%- if person_degree != blank or person_qualifications != blank -%}
+        <p class="ka-blog-muted" style="margin-top: 8px;">
+          <b>
+            {%- if person_degree != blank -%}{{ person_degree }}{%- endif -%}
+            {%- if person_degree != blank and person_qualifications != blank -%} · {%- endif -%}
+            {%- if person_qualifications != blank -%}{{ person_qualifications }}{%- endif -%}
+          </b>
+        </p>
+      {%- endif -%}
+      {%- if person_bio != blank -%}
+        <p style="margin-top: 12px;">{{ person_bio }}</p>
+      {%- endif -%}
+      <div class="ka-blog-chip-row" style="margin-top: 16px;">
+        {%- if person_designation != blank -%}
+          <span class="ka-blog-chip ka-blog-chip--neutral">{{ person_designation }}</span>
+        {%- endif -%}
+        {%- if person_url != blank -%}
+          <a href="{{ person_url }}" class="ka-blog-chip ka-blog-chip--green">View profile</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}

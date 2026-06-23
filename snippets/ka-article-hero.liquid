@@ -1,0 +1,74 @@
+{% comment %}
+  ka-article-hero.liquid — Article hero with full metadata
+  Usage: {% render 'ka-article-hero', article: article, blog: blog %}
+{% endcomment %}
+
+{%- liquid
+  assign hero_article = article
+  assign category_label = hero_article.metafields.custom.category_label | default: hero_article.tags.first
+  assign dek = hero_article.metafields.custom.dek | default: hero_article.excerpt_or_content | strip_html | truncate: 200
+  assign read_time = hero_article.metafields.custom.read_time_minutes
+  assign author_profile = hero_article.metafields.custom.written_by_profile.value
+  assign author_name = author_profile.name | default: hero_article.author
+  assign reviewer_profile = hero_article.metafields.custom.reviewed_by.value
+  assign reviewer_name = reviewer_profile.name
+  assign last_reviewed = hero_article.metafields.custom.last_reviewed_at
+  assign hero_image = hero_article.metafields.custom.hero_image | default: hero_article.image
+  assign hero_caption = hero_article.metafields.custom.hero_image_caption
+-%}
+
+<article class="ka-article-hero" aria-label="Article introduction">
+  <div class="ka-article-hero__copy">
+    <div class="ka-blog-chip-row">
+      {%- if category_label != blank -%}
+        <span class="ka-blog-chip">{{ category_label }}</span>
+      {%- endif -%}
+      {%- if reviewer_name != blank -%}
+        <span class="ka-blog-chip ka-blog-chip--green">Doctor-reviewed</span>
+      {%- endif -%}
+    </div>
+
+    <h1>{{ hero_article.title }}</h1>
+
+    {%- if dek != blank -%}
+      <p>{{ dek }}</p>
+    {%- endif -%}
+
+    <div class="ka-article-meta-card">
+      {%- if author_name != blank -%}
+        <span>By {{ author_name }}</span>
+      {%- endif -%}
+      {%- if read_time -%}
+        <span data-ka-read-time>{{ read_time }} min read</span>
+      {%- else -%}
+        <span data-ka-read-time></span>
+      {%- endif -%}
+      {%- if reviewer_name != blank -%}
+        <span>Reviewed by {{ reviewer_name }}</span>
+      {%- endif -%}
+      {%- if last_reviewed -%}
+        <span>Updated {{ last_reviewed | date: "%B %Y" }}</span>
+      {%- else -%}
+        <span>Updated {{ hero_article.updated_at | date: "%B %Y" }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</article>
+
+{%- if hero_image -%}
+  <div class="ka-article-hero-image">
+    <img
+      src="{{ hero_image | image_url: width: 1400 }}"
+      alt="{{ hero_image.alt | default: hero_article.title | escape }}"
+      loading="eager"
+      fetchpriority="high"
+      width="1400"
+      {%- if hero_image.aspect_ratio -%}
+        height="{{ 1400 | divided_by: hero_image.aspect_ratio | round }}"
+      {%- endif -%}
+    >
+    {%- if hero_caption != blank -%}
+      <p class="ka-article-hero-caption">{{ hero_caption }}</p>
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,49 @@
+{% comment %}
+  ka-featured-article-card.liquid — Two-column featured article card
+  Usage: {% render 'ka-featured-article-card', article: article %}
+{% endcomment %}
+
+{%- liquid
+  assign featured = article
+  assign chip_text = featured.metafields.custom.category_label | default: featured.tags.first
+  assign dek = featured.metafields.custom.dek | default: featured.excerpt_or_content | strip_html | truncate: 200
+  assign read_time = featured.metafields.custom.read_time_minutes
+  assign author_profile = featured.metafields.custom.written_by_profile.value
+  assign author_name = author_profile.name | default: featured.author
+-%}
+
+<a class="ka-blog-feature-card" href="{{ featured.url }}">
+  <div class="ka-blog-feature-card__image">
+    {%- if featured.image -%}
+      <img
+        src="{{ featured.image | image_url: width: 1200 }}"
+        alt="{{ featured.image.alt | escape }}"
+        loading="lazy"
+        width="1200"
+        height="{{ 1200 | divided_by: featured.image.aspect_ratio | round }}"
+      >
+    {%- endif -%}
+  </div>
+  <div class="ka-blog-feature-copy">
+    <div class="ka-blog-chip-row">
+      {%- if chip_text != blank -%}
+        <span class="ka-blog-chip">{{ chip_text }}</span>
+      {%- endif -%}
+      <span class="ka-blog-chip--green ka-blog-chip">Featured</span>
+    </div>
+    <h2 style="margin-top: 16px;">{{ featured.title }}</h2>
+    {%- if dek != blank -%}
+      <p>{{ dek }}</p>
+    {%- endif -%}
+    <div class="ka-blog-meta-line">
+      {%- if author_name != blank -%}
+        <span>By {{ author_name }}</span>
+      {%- endif -%}
+      {%- if read_time -%}
+        <span>{{ read_time }} min read</span>
+      {%- endif -%}
+      <span>{{ featured.published_at | date: "%B %d, %Y" }}</span>
+    </div>
+    <span class="ka-blog-read-more">Read full article</span>
+  </div>
+</a>

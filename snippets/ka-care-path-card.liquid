@@ -1,0 +1,33 @@
+{% comment %}
+  ka-care-path-card.liquid — Care path row card
+  Usage: {% render 'ka-care-path-card', care_path: care_path, blog: blog %}
+  care_path = care_path metaobject entry OR block settings
+{% endcomment %}
+
+{%- liquid
+  assign path_title = care_path.title | default: title
+  assign path_subtitle = care_path.subtitle | default: subtitle
+  assign path_cta = care_path.cta_label | default: 'Explore'
+  assign path_url = care_path.link_url
+
+  if path_url == blank and care_path.linked_topic
+    assign topic_tag = care_path.linked_topic.value.article_filter_tag | default: path_title | handleize
+    assign path_url = blog.url | append: '/tagged/' | append: topic_tag
+  endif
+
+  if path_url == blank
+    assign path_url = blog.url | append: '/tagged/' | append: path_title | handleize
+  endif
+-%}
+
+<a class="ka-blog-path-row" href="{{ path_url }}">
+  <div>
+    <h3>{{ path_title }}</h3>
+    {%- if path_subtitle != blank -%}
+      <p class="ka-blog-muted">{{ path_subtitle }}</p>
+    {%- endif -%}
+  </div>
+  <div class="ka-blog-path-tags">
+    <span class="ka-blog-path-cta">{{ path_cta }} →</span>
+  </div>
+</a>

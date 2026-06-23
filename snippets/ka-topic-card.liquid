@@ -1,0 +1,33 @@
+{% comment %}
+  ka-topic-card.liquid — Full-image topic card with gradient overlay
+  Usage: {% render 'ka-topic-card', topic: topic, blog: blog %}
+  topic = blog_topic metaobject entry
+{% endcomment %}
+
+{%- liquid
+  assign topic_title = topic.title | default: topic
+  assign topic_image = topic.image
+  assign topic_tag = topic.article_filter_tag | default: topic_title | handleize
+  assign topic_count_label = topic.cta_label | default: 'Explore topic'
+-%}
+
+<a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag }}">
+  {%- if topic_image -%}
+    <img
+      class="ka-blog-image-card__bg"
+      src="{{ topic_image | image_url: width: 600 }}"
+      alt="{{ topic_title | escape }}"
+      loading="lazy"
+      width="600"
+      height="400"
+    >
+  {%- endif -%}
+  <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
+  <div class="ka-blog-image-card__content">
+    <h3>{{ topic_title }}</h3>
+    {%- if topic.description != blank -%}
+      <p class="ka-blog-topic-count">{{ topic.description | truncate: 80 }}</p>
+    {%- endif -%}
+    <span class="ka-blog-read-more">{{ topic_count_label }}</span>
+  </div>
+</a>

@@ -1,0 +1,42 @@
+{% comment %}
+  ka-blog-card.liquid — Full-bleed image article card
+  Usage: {% render 'ka-blog-card', article: article, show_chip: true %}
+{% endcomment %}
+
+{%- liquid
+  assign card_article = article
+  assign show_chip = show_chip | default: true
+  assign chip_text = card_article.metafields.custom.category_label | default: card_article.tags.first
+  assign read_time = card_article.metafields.custom.read_time_minutes
+  assign dek = card_article.metafields.custom.dek | default: card_article.excerpt_or_content | strip_html | truncate: 120
+-%}
+
+<a class="ka-blog-image-card" href="{{ card_article.url }}">
+  {%- if card_article.image -%}
+    <img
+      class="ka-blog-image-card__bg"
+      src="{{ card_article.image | image_url: width: 800 }}"
+      alt="{{ card_article.image.alt | escape }}"
+      loading="lazy"
+      width="800"
+      height="{{ 800 | divided_by: card_article.image.aspect_ratio | round }}"
+    >
+  {%- endif -%}
+  <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
+  <div class="ka-blog-image-card__content">
+    {%- if show_chip and chip_text != blank -%}
+      <span class="ka-blog-chip">{{ chip_text }}</span>
+    {%- endif -%}
+    <h3>{{ card_article.title }}</h3>
+    {%- if dek != blank -%}
+      <p>{{ dek }}</p>
+    {%- endif -%}
+    <span class="ka-blog-read-more">
+      {%- if read_time -%}
+        {{ read_time }} min read
+      {%- else -%}
+        Read article
+      {%- endif -%}
+    </span>
+  </div>
+</a>

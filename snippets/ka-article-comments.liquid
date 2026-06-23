@@ -1,0 +1,119 @@
+{% comment %}
+  ka-article-comments.liquid — Shopify native comments section
+  Usage: {% render 'ka-article-comments', article: article, blog: blog %}
+{% endcomment %}
+
+{%- liquid
+  assign show_comments = article.metafields.custom.show_comments | default: true
+  assign comments_heading = article.metafields.custom.comments_heading | default: 'Reader discussion'
+-%}
+
+{%- if show_comments and blog.comments_enabled? -%}
+  <section class="ka-article-comments-card" id="comments" aria-labelledby="ka-comments-title">
+    <p class="ka-blog-eyebrow">Comments</p>
+    <div class="ka-article-comments-head">
+      <h2 id="ka-comments-title">{{ comments_heading }}</h2>
+      {%- if article.comments_count > 0 -%}
+        <span class="ka-article-comment-count">
+          {{ article.comments_count }} comment{{ article.comments_count | pluralize: '', 's' }}
+        </span>
+      {%- endif -%}
+    </div>
+
+    {%- if article.comments_count > 0 -%}
+      <div class="ka-article-comment-list">
+        {%- paginate article.comments by 10 -%}
+          {%- for comment in article.comments -%}
+            <article class="ka-article-comment-card">
+              <div class="ka-article-comment-avatar" aria-hidden="true">
+                {{ comment.author | split: ' ' | first | slice: 0 | upcase }}{{ comment.author | split: ' ' | last | slice: 0 | upcase }}
+              </div>
+              <div>
+                <div class="ka-article-comment-meta">
+                  <b>{{ comment.author }}</b>
+                  <span>{{ comment.created_at | date: "%B %d, %Y" }}</span>
+                </div>
+                <p class="ka-blog-muted">{{ comment.content }}</p>
+              </div>
+            </article>
+          {%- endfor -%}
+          {%- if paginate.pages > 1 -%}
+            <div class="ka-blog-pagination">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}">← Previous</a>
+              {%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}">{{ part.title }}</a>
+                {%- else -%}
+                  <span class="current">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}">Next →</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Comment form {%- endcomment -%}
+    {%- form 'new_comment', article -%}
+      <div class="ka-article-comment-form">
+        {%- if form.posted_successfully? -%}
+          <p class="ka-article-form-note">
+            {%- if blog.moderated? -%}
+              Your comment was posted successfully. It will be published after it has been approved.
+            {%- else -%}
+              Your comment was posted successfully. Thank you!
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="ka-article-form-note" style="color: var(--ka-deep-orange);">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div class="ka-article-form-grid">
+          <label>
+            Name
+            <input
+              type="text"
+              name="comment[author]"
+              id="ka-comment-author"
+              placeholder="Your name"
+              value="{{ form.author }}"
+              required
+              autocomplete="name"
+            >
+          </label>
+          <label>
+            Email
+            <input
+              type="email"
+              name="comment[email]"
+              id="ka-comment-email"
+              placeholder="you@example.com"
+              value="{{ form.email }}"
+              required
+              autocomplete="email"
+            >
+          </label>
+        </div>
+        <label>
+          Comment
+          <textarea
+            name="comment[body]"
+            id="ka-comment-body"
+            placeholder="Write a comment..."
+            required
+          >{{ form.body }}</textarea>
+        </label>
+        <button class="ka-blog-btn" type="submit">Post comment</button>
+      </div>
+    {%- endform -%}
+  </section>
+{%- endif -%}

@@ -1,0 +1,36 @@
+{% comment %}
+  ka-article-sources.liquid — Sources list from metaobjects
+  Usage: {% render 'ka-article-sources', article: article %}
+{% endcomment %}
+
+{%- liquid
+  assign sources = article.metafields.custom.sources.value
+-%}
+
+{%- if sources != blank and sources.size > 0 -%}
+  <section class="ka-article-sources" id="sources" style="margin-top: 36px;">
+    <p class="ka-blog-eyebrow">Sources</p>
+    <ol>
+      {%- for source in sources -%}
+        <li>
+          {%- if source.author != blank -%}
+            {{ source.author }}.
+          {%- endif -%}
+          <strong>{{ source.title }}</strong>
+          {%- if source.publisher != blank -%}
+            . {{ source.publisher }}
+          {%- endif -%}
+          {%- if source.published_date -%}
+            ({{ source.published_date | date: "%Y" }})
+          {%- endif -%}
+          {%- if source.url != blank -%}
+            . <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">View source</a>
+          {%- endif -%}
+          {%- if source.note != blank -%}
+            <br><span class="ka-blog-small">{{ source.note }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ol>
+  </section>
+{%- endif -%}

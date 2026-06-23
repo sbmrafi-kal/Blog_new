@@ -1,0 +1,23 @@
+{% comment %}
+  ka-article-faqs.liquid — FAQ accordion using native <details>
+  Usage: {% render 'ka-article-faqs', article: article %}
+{% endcomment %}
+
+{%- liquid
+  assign faqs = article.metafields.custom.faqs.value
+-%}
+
+{%- if faqs != blank and faqs.size > 0 -%}
+  <section class="ka-article-faq ka-blog-section--tight" id="faq">
+    <p class="ka-blog-eyebrow">FAQ</p>
+    <h2>Common questions</h2>
+    {%- for faq_item in faqs -%}
+      <details{% if forloop.first %} open{% endif %}>
+        <summary>{{ faq_item.question }}</summary>
+        <div class="ka-faq-answer">
+          {{ faq_item.answer }}
+        </div>
+      </details>
+    {%- endfor -%}
+  </section>
+{%- endif -%}

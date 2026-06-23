@@ -1,0 +1,28 @@
+{% comment %}
+  ka-article-at-a-glance.liquid — At-a-glance summary grid
+  Usage: {% render 'ka-article-at-a-glance', article: article %}
+{% endcomment %}
+
+{%- liquid
+  assign at_a_glance = article.metafields.custom.at_a_glance.value
+-%}
+
+{%- if at_a_glance != blank and at_a_glance.size > 0 -%}
+  <section class="ka-article-summary-card" id="at-a-glance">
+    <p class="ka-blog-eyebrow">At a glance</p>
+    <h2>What this guide covers</h2>
+    <div class="ka-article-summary-grid">
+      {%- for item in at_a_glance -%}
+        {%- assign parts = item | split: ': ' -%}
+        <div class="ka-article-summary-item">
+          {%- if parts.size > 1 -%}
+            <b>{{ parts.first }}</b>
+            <span>{{ parts | last }}</span>
+          {%- else -%}
+            <span>{{ item }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+{%- endif -%}

@@ -1,0 +1,148 @@
+{% comment %}
+  main-blog-topic-redesign.liquid — Topic/category page section
+  Renders when current_tags is present (tag-filtered blog view)
+  Template: blog.ayurveda.json (conditionally switches to this when tags exist)
+
+  NOTE: In Shopify OS 2.0, both the blog landing and tagged views share the
+  same blog template. Use `current_tags` to conditionally render the topic UI.
+  This section is designed to be included in blog.ayurveda.json as a
+  separate section that only renders when current_tags is present.
+{% endcomment %}
+
+{%- if current_tags -%}
+{{ 'ka-blog-redesign.css' | asset_url | stylesheet_tag }}
+{%- render 'custom-article-font' -%}
+
+{%- liquid
+  assign current_tag = current_tags | first
+  assign topic_metaobject = nil
+
+  comment
+    Try to find matching topic metaobject from blog.metafields.custom.topics
+  endcomment
+  assign topics = blog.metafields.custom.topics.value
+  if topics != blank
+    for topic in topics
+      if topic.article_filter_tag == current_tag or topic.title == current_tag
+        assign topic_metaobject = topic
+        break
+      endif
+    endfor
+  endif
+
+  assign topic_title = topic_metaobject.title | default: current_tag
+  assign topic_description = topic_metaobject.description
+  assign topic_secondary_label = topic_metaobject.secondary_label
+-%}
+
+<div class="ka-blog-wrapper">
+
+  {%- comment -%} ============ SUBNAV ============ {%- endcomment -%}
+  <div class="ka-blog-subnav-wrap">
+    <div class="ka-blog-container">
+      <nav class="ka-blog-subnav" aria-label="Blog section navigation">
+        <a class="active" href="{{ blog.url }}#overview">Overview</a>
+        <a href="{{ blog.url }}#care-paths">Care paths</a>
+        <a href="{{ blog.url }}#topics">Topics</a>
+        <a href="{{ blog.url }}#latest">Latest articles</a>
+        <a href="{{ blog.url }}#consult">Consult</a>
+      </nav>
+    </div>
+  </div>
+
+  {%- comment -%} ============ BREADCRUMB + TOPIC HERO ============ {%- endcomment -%}
+  <section class="ka-blog-section--tight">
+    <div class="ka-blog-container">
+      <div class="ka-blog-breadcrumb">
+        <a href="{{ blog.url }}">Journal</a>
+        <span>/</span>
+        <span>{{ topic_title }}</span>
+      </div>
+      <article class="ka-blog-topic-hero">
+        <div class="ka-blog-topic-hero__content">
+          <p class="ka-blog-eyebrow">
+            Ayurveda
+            {%- if topic_secondary_label != blank -%}
+              <span class="ka-hindi"> · {{ topic_secondary_label }}</span>
+            {%- endif -%}
+          </p>
+          <h1>{{ topic_title }}</h1>
+          {%- if topic_description != blank -%}
+            <p class="ka-blog-lead">{{ topic_description }}</p>
+          {%- endif -%}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  {%- comment -%} ============ ARTICLES IN TOPIC ============ {%- endcomment -%}
+  <section class="ka-blog-section--tight" id="articles">
+    <div class="ka-blog-container">
+      <a class="ka-blog-small" href="{{ blog.url }}#topics">← All topics</a>
+
+      {%- paginate blog.articles by 12 -%}
+        <div class="ka-blog-section-head" style="margin-top: 18px;">
+          <div>
+            <p class="ka-blog-eyebrow">{{ blog.articles_count }} articles</p>
+            <h2>Guides in this topic</h2>
+          </div>
+        </div>
+
+        {%- comment -%} Filter bar from blog tags (current tag highlighted) {%- endcomment -%}
+        <nav class="ka-blog-filter-bar" aria-label="{{ topic_title }} filters">
+          <a class="active" href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">All</a>
+          {%- comment -%}
+            Show sub-filters from other tags on articles in this topic.
+            Since Shopify doesn't support nested tag queries, we show
+            all blog tags as navigation options.
+          {%- endcomment -%}
+          {%- for tag in blog.all_tags -%}
+            {%- unless tag == current_tag -%}
+              <a href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+            {%- endunless -%}
+          {%- endfor -%}
+        </nav>
+
+        <div class="ka-blog-article-grid" style="margin-top: 24px;">
+          {%- for article in blog.articles -%}
+            {%- render 'ka-blog-card', article: article -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="ka-blog-pagination" aria-label="Topic pagination">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}">← Previous</a>
+            {%- endif -%}
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}">{{ part.title }}</a>
+              {%- else -%}
+                <span class="current">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}">Next →</a>
+            {%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </section>
+
+  {%- comment -%} ============ CONSULT CTA ============ {%- endcomment -%}
+  {%- render 'ka-consult-cta', blog: blog, section: section -%}
+</div>
+
+<script src="{{ 'ka-blog-redesign.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Blog Topic — Redesign",
+  "tag": "section",
+  "class": "ka-blog-topic-section",
+  "settings": [],
+  "templates": ["blog"]
+}
+{% endschema %}

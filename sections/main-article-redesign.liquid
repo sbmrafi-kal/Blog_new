@@ -1,0 +1,187 @@
+{% comment %}
+  main-article-redesign.liquid — Full redesigned article section
+  Renders: breadcrumbs, hero, two-column layout (content + TOC sidebar),
+  at-a-glance, article body, products, glossary, sources, disclaimer,
+  FAQ, author/reviewer, related articles, share, comments
+  Template: article.ayurveda.json
+{% endcomment %}
+
+{{ 'ka-blog-redesign.css' | asset_url | stylesheet_tag }}
+{%- render 'custom-article-font' -%}
+
+{%- liquid
+  assign category_label = article.metafields.custom.category_label | default: article.tags.first
+  assign topic = article.metafields.custom.topic.value
+  assign topic_title = topic.title | default: category_label
+  assign topic_tag = topic.article_filter_tag | default: category_label | handleize
+  assign author_profile = article.metafields.custom.written_by_profile.value
+  assign reviewer_profile = article.metafields.custom.reviewed_by.value
+-%}
+
+<div class="ka-blog-wrapper">
+
+  {%- comment -%} ============ SUBNAV ============ {%- endcomment -%}
+  <div class="ka-blog-subnav-wrap">
+    <div class="ka-blog-container">
+      <nav class="ka-blog-subnav" aria-label="Blog section navigation">
+        <a href="{{ blog.url }}#overview">Overview</a>
+        <a href="{{ blog.url }}#care-paths">Care paths</a>
+        <a href="{{ blog.url }}#topics">Topics</a>
+        <a href="{{ blog.url }}#latest">Latest articles</a>
+        <a href="{{ blog.url }}#consult">Consult</a>
+      </nav>
+    </div>
+  </div>
+
+  {%- comment -%} ============ BREADCRUMB + ARTICLE HERO ============ {%- endcomment -%}
+  <section class="ka-blog-section--tight">
+    <div class="ka-blog-container">
+      <div class="ka-blog-breadcrumb">
+        <a href="{{ blog.url }}">Journal</a>
+        <span>/</span>
+        {%- if topic_title != blank -%}
+          <a href="{{ blog.url }}/tagged/{{ topic_tag }}">{{ topic_title }}</a>
+          <span>/</span>
+        {%- endif -%}
+        <span>{{ article.title | truncate: 40 }}</span>
+      </div>
+
+      {%- render 'ka-article-hero', article: article, blog: blog -%}
+    </div>
+  </section>
+
+  {%- comment -%} ============ TWO-COLUMN LAYOUT ============ {%- endcomment -%}
+  <section class="ka-blog-section--tight">
+    <div class="ka-blog-container ka-article-layout">
+
+      {%- comment -%} ===== MAIN CONTENT COLUMN ===== {%- endcomment -%}
+      <article class="ka-article-content">
+
+        {%- comment -%} Mobile TOC (hidden on desktop via CSS) {%- endcomment -%}
+        <div class="ka-article-toc-mobile">
+          <button
+            class="ka-article-toc-mobile__toggle"
+            aria-expanded="false"
+            aria-controls="ka-mobile-toc-content"
+          >
+            <span>Table of contents</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="ka-mobile-toc-content" class="ka-article-toc-mobile__content">
+            <ul class="ka-article-toc-mobile__list">
+              {%- comment -%} Built by JS {%- endcomment -%}
+            </ul>
+          </div>
+        </div>
+
+        {%- comment -%} At a glance {%- endcomment -%}
+        {%- render 'ka-article-at-a-glance', article: article -%}
+
+        {%- comment -%} Article body content {%- endcomment -%}
+        <div class="ka-article-body prose">
+          {{ article.content }}
+        </div>
+
+        {%- comment -%} Product recommendations {%- endcomment -%}
+        {%- render 'ka-product-recommendations', article: article -%}
+
+        {%- comment -%} Glossary {%- endcomment -%}
+        {%- render 'ka-glossary-terms', article: article -%}
+
+        {%- comment -%} Sources {%- endcomment -%}
+        {%- render 'ka-article-sources', article: article -%}
+
+        {%- comment -%} Health disclaimer {%- endcomment -%}
+        {%- render 'ka-article-disclaimer', article: article, section: section -%}
+
+        {%- comment -%} FAQ {%- endcomment -%}
+        {%- render 'ka-article-faqs', article: article -%}
+
+        {%- comment -%} Author card {%- endcomment -%}
+        {%- if author_profile -%}
+          {%- render 'ka-author-reviewer-card',
+            profile: author_profile,
+            role_label: 'Written by',
+            fallback_name: article.author
+          -%}
+        {%- else -%}
+          {%- comment -%} Fallback: show basic author info from article.author {%- endcomment -%}
+          {%- if article.author != blank -%}
+            <section class="ka-article-author-card" id="author">
+              <div class="ka-article-avatar" aria-hidden="true">
+                {{ article.author | split: ' ' | first | slice: 0 | upcase }}{{ article.author | split: ' ' | last | slice: 0 | upcase }}
+              </div>
+              <div>
+                <p class="ka-blog-eyebrow">Written by</p>
+                <h2>{{ article.author }}</h2>
+              </div>
+            </section>
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- comment -%} Reviewer card {%- endcomment -%}
+        {%- if reviewer_profile -%}
+          {%- render 'ka-author-reviewer-card',
+            profile: reviewer_profile,
+            role_label: 'Reviewed by'
+          -%}
+        {%- endif -%}
+
+        {%- comment -%} Related articles {%- endcomment -%}
+        {%- render 'ka-related-articles', article: article, blog: blog -%}
+
+        {%- comment -%} Share row {%- endcomment -%}
+        <section class="ka-article-share-row" aria-label="Share article">
+          <span class="ka-blog-small"><b>Share this guide:</b></span>
+          <a href="mailto:?subject={{ article.title | url_encode }}&body={{ shop.url }}{{ article.url | url_encode }}" aria-label="Share via email">Email</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ shop.url }}{{ article.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ article.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
+          <a href="https://api.whatsapp.com/send?text={{ article.title | url_encode }}%20{{ shop.url }}{{ article.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">WhatsApp</a>
+        </section>
+
+        {%- comment -%} Comments {%- endcomment -%}
+        {%- render 'ka-article-comments', article: article, blog: blog -%}
+
+      </article>
+
+      {%- comment -%} ===== SIDEBAR (Desktop TOC) ===== {%- endcomment -%}
+      <aside class="ka-article-sidebar" aria-label="Article table of contents">
+        <h3>In this article</h3>
+        <ul class="ka-article-sidebar__list" style="list-style: none; padding: 0; margin: 0;">
+          {%- comment -%} Built dynamically by ka-blog-redesign.js {%- endcomment -%}
+        </ul>
+      </aside>
+
+    </div>
+  </section>
+
+  {%- comment -%} ============ FLOATING CTA ============ {%- endcomment -%}
+  <a class="ka-blog-floating-cta" href="{{ blog.url }}#consult">Ask an Ayurvedic doctor</a>
+
+</div>
+
+<script src="{{ 'ka-blog-redesign.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Article — Redesign",
+  "tag": "section",
+  "class": "ka-article-main-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Disclaimer"
+    },
+    {
+      "type": "textarea",
+      "id": "default_disclaimer",
+      "label": "Default health disclaimer",
+      "default": "This content is for informational and educational purposes only. It is not intended as medical advice and should not replace consultation with a qualified healthcare professional. Kerala Ayurveda recommends consulting a doctor or qualified vaidya before beginning any new wellness routine, especially if you have existing health conditions or are on medication."
+    }
+  ],
+  "blocks": [],
+  "templates": ["article"]
+}
+{% endschema %}

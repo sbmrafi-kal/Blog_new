@@ -1,0 +1,29 @@
+{% comment %}
+  ka-glossary-terms.liquid — Glossary grid from metaobjects
+  Usage: {% render 'ka-glossary-terms', article: article %}
+{% endcomment %}
+
+{%- liquid
+  assign glossary = article.metafields.custom.glossary_terms.value
+-%}
+
+{%- if glossary != blank and glossary.size > 0 -%}
+  <section class="ka-article-glossary-card" id="glossary" style="margin-top: 36px;">
+    <p class="ka-blog-eyebrow">Words to know</p>
+    <h2>Ayurveda glossary</h2>
+    <div class="ka-article-glossary-grid">
+      {%- for term in glossary -%}
+        <div>
+          <b>{{ term.term }}</b>
+          {%- if term.secondary_term != blank -%}
+            <span class="ka-blog-muted" style="margin-left: 6px; font-size: 14px;">({{ term.secondary_term }})</span>
+          {%- endif -%}
+          {%- if term.pronunciation != blank -%}
+            <span class="ka-blog-muted" style="display: block; font-size: 13px; font-style: italic;">{{ term.pronunciation }}</span>
+          {%- endif -%}
+          <p class="ka-blog-muted">{{ term.short_definition }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+{%- endif -%}

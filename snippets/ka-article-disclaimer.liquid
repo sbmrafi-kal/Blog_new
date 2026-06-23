@@ -1,0 +1,14 @@
+{% comment %}
+  ka-article-disclaimer.liquid — Health disclaimer with fallback
+  Usage: {% render 'ka-article-disclaimer', article: article, section: section %}
+{% endcomment %}
+
+{%- liquid
+  assign custom_disclaimer = article.metafields.custom.disclaimer
+  assign default_disclaimer = section.settings.default_disclaimer | default: 'This content is for informational and educational purposes only. It is not intended as medical advice and should not replace consultation with a qualified healthcare professional. Kerala Ayurveda recommends consulting a doctor or qualified vaidya before beginning any new wellness routine, especially if you have existing health conditions or are on medication.'
+  assign disclaimer_text = custom_disclaimer | default: default_disclaimer
+-%}
+
+<section class="ka-article-disclaimer" id="disclaimer" style="margin-top: 36px;">
+  <p><b>Health disclaimer:</b> {{ disclaimer_text }}</p>
+</section>
