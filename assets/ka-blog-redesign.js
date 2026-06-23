@@ -21,6 +21,8 @@
     if (!subnav) return;
 
     var links = subnav.querySelectorAll('a[href*="#"]');
+    var isScrollLocked = false;
+
     links.forEach(function (link) {
       link.addEventListener('click', function (e) {
         var hash = link.getAttribute('href');
@@ -35,6 +37,9 @@
         if (!target) return;
 
         e.preventDefault();
+
+        // Lock scroll-spy to prevent it from fighting the smooth scroll
+        isScrollLocked = true;
 
         var headerHeight = parseInt(
           getComputedStyle(document.documentElement).getPropertyValue('--header-height')
@@ -53,11 +58,16 @@
           behavior: 'smooth',
         });
 
-        // Update active state
+        // Update active state immediately
         links.forEach(function (l) {
           l.classList.remove('active');
         });
         link.classList.add('active');
+
+        // Unlock scroll-spy after smooth scroll completes
+        setTimeout(function () {
+          isScrollLocked = false;
+        }, 1200);
       });
     });
 
@@ -79,6 +89,9 @@
     });
 
     function updateActiveLink() {
+      // Skip if scroll is locked (user just clicked a subnav link)
+      if (isScrollLocked) return;
+
       var scrollPos = window.scrollY || window.pageYOffset;
       var headerHeight = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue('--header-height')
@@ -220,15 +233,25 @@
     }
 
     // Desktop active heading tracking via IntersectionObserver
-    if (sidebarToc && 'IntersectionObserver' in window) {
-      var tocLinks = sidebarToc.querySelectorAll('a[href^="#"]');
+    if ('IntersectionObserver' in window) {
+      var tocLinks = sidebarToc ? sidebarToc.querySelectorAll('a[href^="#"]') : [];
+      var mobileTocLinks = mobileToc ? mobileToc.querySelectorAll('a[href^="#"]') : [];
       var observer = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
+              var targetHref = '#' + entry.target.id;
+              // Update desktop TOC
               tocLinks.forEach(function (link) {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + entry.target.id) {
+                if (link.getAttribute('href') === targetHref) {
+                  link.classList.add('active');
+                }
+              });
+              // Update mobile TOC
+              mobileTocLinks.forEach(function (link) {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === targetHref) {
                   link.classList.add('active');
                 }
               });

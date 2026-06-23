@@ -58,14 +58,14 @@
       <div class="ka-blog-section-head">
         <div>
           <p class="ka-blog-eyebrow">Start here <span class="ka-hindi">· शुरू करें</span></p>
-          <h2>Care paths</h2>
+          <h2>{{ selected_blog.metafields.custom.care_paths_title | default: 'Care paths' }}</h2>
         </div>
       </div>
 
       <div class="ka-blog-care-panel">
         <div class="ka-blog-care-intro">
-          <h3>Choose a health concern</h3>
-          <p class="ka-blog-lead">Each path groups Ayurvedic articles around a specific area of wellness, so you can read what matters to you.</p>
+          <h3>{{ selected_blog.metafields.custom.care_paths_intro_title | default: 'Choose a health concern' }}</h3>
+          <p class="ka-blog-lead">{{ selected_blog.metafields.custom.care_paths_intro_text | default: 'Each path groups Ayurvedic articles around a specific area of wellness, so you can read what matters to you.' }}</p>
         </div>
         <div class="ka-blog-path-list">
           {%- liquid
@@ -110,8 +110,8 @@
       <div class="ka-blog-container">
         <div class="ka-blog-section-head">
           <div>
-            <p class="ka-blog-eyebrow">Featured</p>
-            <h2>Editor's pick</h2>
+            <p class="ka-blog-eyebrow">{{ selected_blog.metafields.custom.featured_eyebrow | default: 'Featured' }}</p>
+            <h2>{{ selected_blog.metafields.custom.featured_title | default: "Editor's pick" }}</h2>
           </div>
         </div>
         {%- render 'ka-featured-article-card', article: featured_article -%}
@@ -125,7 +125,7 @@
       <div class="ka-blog-section-head">
         <div>
           <p class="ka-blog-eyebrow">Browse by topic <span class="ka-hindi">· विषय</span></p>
-          <h2>Topics</h2>
+          <h2>{{ selected_blog.metafields.custom.topics_title | default: 'Topics' }}</h2>
         </div>
       </div>
 
@@ -190,10 +190,10 @@
       <div class="ka-blog-section-head">
         <div>
           <p class="ka-blog-eyebrow">{{ selected_blog.articles_count }} articles</p>
-          <h2>Latest from the journal</h2>
+          <h2>{{ selected_blog.metafields.custom.latest_title | default: 'Latest from the journal' }}</h2>
         </div>
         {%- if selected_blog.articles_count > 6 -%}
-          <a class="ka-blog-btn ka-blog-btn--outline" href="#latest">View all</a>
+          <a class="ka-blog-btn ka-blog-btn--outline" href="{{ routes.search_url }}?type=article&q=*&options[prefix]=last">View all</a>
         {%- endif -%}
       </div>
 
@@ -228,8 +228,11 @@
   {%- comment -%} ============ CONSULT CTA ============ {%- endcomment -%}
   {%- render 'ka-consult-cta', blog: selected_blog, section: section -%}
 
-  {%- comment -%} ============ FLOATING CTA ============ {%- endcomment -%}
-  <a class="ka-blog-floating-cta" href="#consult">Ask an Ayurvedic doctor</a>
+  {%- liquid
+    assign floating_cta_label = selected_blog.metafields.custom.floating_cta_label | default: 'Ask an Ayurvedic doctor'
+    assign floating_cta_url = selected_blog.metafields.custom.floating_cta_url | default: '#consult'
+  -%}
+  <a class="ka-blog-floating-cta" href="{{ floating_cta_url }}">{{ floating_cta_label }}</a>
 
 </div>
 

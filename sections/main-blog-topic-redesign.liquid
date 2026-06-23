@@ -90,7 +90,7 @@
         <div class="ka-blog-section-head" style="margin-top: 18px;">
           <div>
             <p class="ka-blog-eyebrow">{{ blog.articles_count }} articles</p>
-            <h2>Guides in this topic</h2>
+            <h2>{{ topic_metaobject.guides_heading | default: 'Guides in this topic' }}</h2>
           </div>
         </div>
 

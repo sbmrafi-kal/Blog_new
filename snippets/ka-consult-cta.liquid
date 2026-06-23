@@ -1,6 +1,7 @@
 {% comment %}
   ka-consult-cta.liquid — Vaidya consultation CTA block
   Usage: {% render 'ka-consult-cta', blog: blog, section: section %}
+  All content is meta-driven with sensible fallbacks.
 {% endcomment %}
 
 {%- liquid
@@ -8,6 +9,14 @@
   assign cta_text = blog.metafields.custom.consult_cta_text | default: section.settings.consult_text | default: 'Speak with a Kerala Ayurveda doctor or explore personalized wellness support. Our vaidyas bring classical training and clinical experience to every consultation.'
   assign cta_button = blog.metafields.custom.consult_cta_button_label | default: section.settings.consult_button | default: 'WhatsApp consults opening soon'
   assign cta_url = blog.metafields.custom.consult_cta_url | default: section.settings.consult_url
+
+  assign steps = blog.metafields.custom.consult_steps.value
+  assign step_1_title = 'Read the guide'
+  assign step_1_text = 'Start with plain-language context and safety signs.'
+  assign step_2_title = 'Browse related support'
+  assign step_2_text = 'Continue to glossary, products, or related articles.'
+  assign step_3_title = 'Choose a next step'
+  assign step_3_text = 'Related products, related articles, or doctor consultation.'
 -%}
 
 <section class="ka-blog-section" id="consult">
@@ -24,27 +33,39 @@
         {%- endif -%}
       </div>
       <div class="ka-blog-steps">
-        <div class="ka-blog-step">
-          <div class="ka-blog-step-number">01</div>
-          <div>
-            <h3>Read the guide</h3>
-            <p class="ka-blog-muted">Start with plain-language context and safety signs.</p>
+        {%- if steps != blank and steps.size > 0 -%}
+          {%- for step in steps -%}
+            <div class="ka-blog-step">
+              <div class="ka-blog-step-number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+              <div>
+                <h3>{{ step.title }}</h3>
+                <p class="ka-blog-muted">{{ step.description }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="ka-blog-step">
+            <div class="ka-blog-step-number">01</div>
+            <div>
+              <h3>{{ step_1_title }}</h3>
+              <p class="ka-blog-muted">{{ step_1_text }}</p>
+            </div>
           </div>
-        </div>
-        <div class="ka-blog-step">
-          <div class="ka-blog-step-number">02</div>
-          <div>
-            <h3>Browse related support</h3>
-            <p class="ka-blog-muted">Continue to glossary, products, or related articles.</p>
+          <div class="ka-blog-step">
+            <div class="ka-blog-step-number">02</div>
+            <div>
+              <h3>{{ step_2_title }}</h3>
+              <p class="ka-blog-muted">{{ step_2_text }}</p>
+            </div>
           </div>
-        </div>
-        <div class="ka-blog-step">
-          <div class="ka-blog-step-number">03</div>
-          <div>
-            <h3>Choose a next step</h3>
-            <p class="ka-blog-muted">Related products, related articles, or doctor consultation.</p>
+          <div class="ka-blog-step">
+            <div class="ka-blog-step-number">03</div>
+            <div>
+              <h3>{{ step_3_title }}</h3>
+              <p class="ka-blog-muted">{{ step_3_text }}</p>
+            </div>
           </div>
-        </div>
+        {%- endif -%}
       </div>
     </div>
   </div>

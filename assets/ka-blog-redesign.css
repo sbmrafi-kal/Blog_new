@@ -305,8 +305,8 @@
   background: #FFF1DC;
   align-self: start;
   position: sticky;
-  top: calc(var(--header-height, 154px) + 70px);
-  z-index: 10;
+  top: calc(var(--header-height, 72px) + 70px);
+  z-index: 5;
 }
 
 .ka-blog-care-intro .ka-blog-lead { margin-top: 16px; }
@@ -796,7 +796,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   font-family: var(--ka-font-medium);
   font-weight: 700;
   border-bottom: 1px solid #b8d29b;
-  transition: color 180ms ease;
+  transition: color 0.3s ease, font-weight 0.3s ease, border-left 0.3s ease, padding-left 0.3s ease, background 0.3s ease;
 }
 
 .ka-article-sidebar a:last-child { border-bottom: 0; }
@@ -805,6 +805,12 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 .ka-article-sidebar a.active {
   color: var(--ka-orange);
   font-family: var(--ka-font-heavy);
+  font-weight: 800;
+  border-left: 3px solid var(--ka-orange);
+  padding-left: 10px;
+  margin-left: -10px;
+  background: rgba(210, 116, 73, 0.06);
+  border-radius: 0 8px 8px 0;
 }
 
 /* Mobile TOC accordion */

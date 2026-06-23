@@ -9,6 +9,7 @@
 
     <link rel="icon" type="image/png" href="{{ 'Favicon.png' | asset_url }}">
 
+    {{ 'theme-dynamic.css.liquid' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>

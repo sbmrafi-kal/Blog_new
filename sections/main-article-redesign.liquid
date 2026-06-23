@@ -79,9 +79,16 @@
         {%- comment -%} At a glance {%- endcomment -%}
         {%- render 'ka-article-at-a-glance', article: article -%}
 
-        {%- comment -%} Article body content {%- endcomment -%}
+        {%- comment -%} Article body content — prefer metafield, fallback to article.content {%- endcomment -%}
         <div class="ka-article-body prose">
-          {{ article.content }}
+          {%- liquid
+            assign meta_body = article.metafields.custom.article_body
+            if meta_body != blank
+              echo meta_body | metafield_tag
+            else
+              echo article.content
+            endif
+          -%}
         </div>
 
         {%- comment -%} Product recommendations {%- endcomment -%}
@@ -178,7 +185,11 @@
   </section>
 
   {%- comment -%} ============ FLOATING CTA ============ {%- endcomment -%}
-  <a class="ka-blog-floating-cta" href="{{ blog.url }}#consult">Ask an Ayurvedic doctor</a>
+  {%- liquid
+    assign floating_cta_label = blog.metafields.custom.floating_cta_label | default: 'Ask an Ayurvedic doctor'
+    assign floating_cta_url = blog.metafields.custom.floating_cta_url | default: blog.url | append: '#consult'
+  -%}
+  <a class="ka-blog-floating-cta" href="{{ floating_cta_url }}">{{ floating_cta_label }}</a>
 
 </div>
 
