@@ -12,17 +12,6 @@
 -%}
 
 <a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag }}">
-  {%- if topic_image -%}
-    <img
-      class="ka-blog-image-card__bg"
-      src="{{ topic_image | image_url: width: 600 }}"
-      alt="{{ topic_title | escape }}"
-      loading="lazy"
-      width="600"
-      height="400"
-    >
-  {%- endif -%}
-  <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
   <div class="ka-blog-image-card__content">
     <h3>{{ topic_title }}</h3>
     {%- if topic.description != blank -%}

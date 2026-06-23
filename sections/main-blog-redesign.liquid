@@ -176,17 +176,17 @@
         {%- if paginate.pages > 1 -%}
           <nav class="ka-blog-pagination" aria-label="Blog pagination">
             {%- if paginate.previous -%}
-              <a href="{{ paginate.previous.url }}">← Previous</a>
+              <a href="{{ paginate.previous.url }}#latest">← Previous</a>
             {%- endif -%}
             {%- for part in paginate.parts -%}
               {%- if part.is_link -%}
-                <a href="{{ part.url }}">{{ part.title }}</a>
+                <a href="{{ part.url }}#latest">{{ part.title }}</a>
               {%- else -%}
                 <span class="current">{{ part.title }}</span>
               {%- endif -%}
             {%- endfor -%}
             {%- if paginate.next -%}
-              <a href="{{ paginate.next.url }}">Next →</a>
+              <a href="{{ paginate.next.url }}#latest">Next →</a>
             {%- endif -%}
           </nav>
         {%- endif -%}
