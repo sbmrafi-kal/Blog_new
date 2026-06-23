@@ -15,8 +15,8 @@
   assign selected_blog = blogs[blog_handle]
 -%}
 
+{%- unless current_tags -%}
 <div class="ka-blog-wrapper">
-
   {%- comment -%} ============ SUBNAV ============ {%- endcomment -%}
   <div class="ka-blog-subnav-wrap">
     <div class="ka-blog-container">
@@ -203,6 +203,7 @@
 </div>
 
 <script src="{{ 'ka-blog-redesign.js' | asset_url }}" defer></script>
+{%- endunless -%}
 
 {% schema %}
 {
