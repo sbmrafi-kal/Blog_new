@@ -8,6 +8,7 @@
  * ------------------------------------------------------------
  */
 {
+  "name": "Blog — Ayurveda Redesign",
   "sections": {
     "main-blog": {
       "type": "main-blog-redesign",
