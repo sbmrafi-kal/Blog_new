@@ -1,24 +1,64 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "t:sections.footer.name",
+  "name": "Footer Group",
   "type": "footer",
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "links_1": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Quick Links",
+            "menu": "footer"
+          }
+        },
+        "links_2": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Policies",
+            "menu": "footer-menu-policies"
+          }
+        },
+        "links_3": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Our Network",
+            "menu": "footer-menu-our-network"
+          }
+        }
+      },
+      "block_order": [
+        "links_1",
+        "links_2",
+        "links_3"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "social_label": "Follow Us",
+        "logo_image": "shopify://shop_images/logo-kerala.png",
+        "logo_alt": "Kerala Ayurveda",
+        "tagline": "Some Formulas Don't Need Improving.\nThis Is One Of Them.",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "facebook_icon": "shopify://shop_images/Icon_FB.png",
+        "facebook_link": "https://www.facebook.com/keralaayurvedaltd/",
+        "instagram_icon": "shopify://shop_images/Icon_Instagram.png",
+        "instagram_link": "https://www.instagram.com/keralaayurvedaltd/?hl=en",
+        "youtube_icon": "shopify://shop_images/Icon_YT.png",
+        "youtube_link": "https://www.youtube.com/@KeralaAyurvedalimited",
+        "linkedin_icon": "shopify://shop_images/Icon_LinkedIn.png",
+        "linkedin_link": "https://in.linkedin.com/company/kerala-ayurveda",
+        "x_icon": "shopify://shop_images/Icon_X.png",
+        "x_link": "https://keralaayurveda.us/?srsltid=AfmBOoq1pl-KFY8kfAAEx7cME6gS0YGCcYL8QLFI_sImIelvlr1iX5Jj"
       }
     }
   },

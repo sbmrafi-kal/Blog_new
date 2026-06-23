@@ -1,0 +1,279 @@
+{{ 'section-header-custom.css' | asset_url | stylesheet_tag }}
+
+<header class="theme-header-custom" role="banner">
+  <div class="theme-header-custom__inner">
+    <div class="theme-header-custom__left">
+      <button class="theme-header-custom__menu-btn" type="button" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <nav class="theme-header-custom__nav" aria-label="Primary">
+        {%- assign nav_1_title = section.settings.nav_1_title | default: '' -%}
+        {%- assign nav_2_title = section.settings.nav_2_title | default: '' -%}
+        {%- assign nav_3_title = section.settings.nav_3_title | default: '' -%}
+        {%- assign nav_4_title = section.settings.nav_4_title | default: '' -%}
+        {%- assign nav_5_title = section.settings.nav_5_title | default: '' -%}
+
+        {%- assign nav_1_url = section.settings.nav_1_url | default: routes.root_url -%}
+        {%- assign nav_2_url = section.settings.nav_2_url | default: routes.root_url -%}
+        {%- assign nav_3_url = section.settings.nav_3_url | default: routes.root_url -%}
+        {%- assign nav_4_url = section.settings.nav_4_url | default: routes.root_url -%}
+        {%- assign nav_5_url = section.settings.nav_5_url | default: routes.root_url -%}
+
+        {%- if nav_1_title != blank -%}
+          <a class="theme-header-custom__nav-link" href="{{ nav_1_url }}">{{ nav_1_title }}</a>
+        {%- endif -%}
+        {%- if nav_2_title != blank -%}
+          <a class="theme-header-custom__nav-link" href="{{ nav_2_url }}">{{ nav_2_title }}</a>
+        {%- endif -%}
+        {%- if nav_3_title != blank -%}
+          <a class="theme-header-custom__nav-link" href="{{ nav_3_url }}">{{ nav_3_title }}</a>
+        {%- endif -%}
+        {%- if nav_4_title != blank -%}
+          <a class="theme-header-custom__nav-link" href="{{ nav_4_url }}">{{ nav_4_title }}</a>
+        {%- endif -%}
+        {%- if nav_5_title != blank -%}
+          <a class="theme-header-custom__nav-link" href="{{ nav_5_url }}">{{ nav_5_title }}</a>
+        {%- endif -%}
+      </nav>
+    </div>
+
+    <div class="theme-header-custom__center">
+      <a class="theme-header-custom__brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        {%- if section.settings.logo_image != blank -%}
+          {{
+            section.settings.logo_image
+            | image_url: width: 600
+            | image_tag: class: 'theme-header-custom__brand-image', loading: 'eager', alt: section.settings.logo_alt
+          }}
+        {%- else -%}
+          {%- assign logo_text = section.settings.logo_text | default: shop.name -%}
+          {%- assign logo_parts = logo_text | split: ' ' -%}
+          {%- assign logo_first = logo_parts[0] | downcase -%}
+          {%- assign logo_rest = logo_parts | slice: 1, logo_parts.size | join: ' ' | downcase -%}
+          <span class="theme-header-custom__brand-text">
+            <span class="brand-line brand-line--top">{{ logo_first }}</span>
+            {%- if logo_rest != blank -%}
+              <span class="brand-line brand-line--bottom">{{ logo_rest }}</span>
+            {%- endif -%}
+          </span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    <div class="theme-header-custom__right">
+      <button class="theme-header-custom__action" type="button" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"></circle>
+          <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        </svg>
+      </button>
+      <a class="theme-header-custom__action theme-header-custom__action--account" href="{{ routes.account_url }}" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="8" r="5" stroke="currentColor" stroke-width="1.8"></circle>
+          <path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        </svg>
+      </a>
+      <a class="theme-header-custom__action" href="{{ routes.cart_url }}" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="8" cy="21" r="1" stroke="currentColor" stroke-width="1.6"></circle>
+          <circle cx="19" cy="21" r="1" stroke="currentColor" stroke-width="1.6"></circle>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="theme-header-custom__cart-count" aria-label="{{ cart.item_count }} items">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+  </div>
+
+  <div class="theme-header-custom__drawer" id="ThemeHeaderDrawer" aria-hidden="true">
+    <div class="theme-header-custom__drawer-overlay"></div>
+    <div class="theme-header-custom__drawer-content">
+      <div class="theme-header-custom__drawer-header">
+        <span class="theme-header-custom__drawer-title">Menu</span>
+        <button class="theme-header-custom__drawer-close" type="button" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+      <nav class="theme-header-custom__drawer-nav">
+        {%- if nav_1_title != blank -%}<a href="{{ nav_1_url }}">{{ nav_1_title }}</a>{%- endif -%}
+        {%- if nav_2_title != blank -%}<a href="{{ nav_2_url }}">{{ nav_2_title }}</a>{%- endif -%}
+        {%- if nav_3_title != blank -%}<a href="{{ nav_3_url }}">{{ nav_3_title }}</a>{%- endif -%}
+        {%- if nav_4_title != blank -%}<a href="{{ nav_4_url }}">{{ nav_4_title }}</a>{%- endif -%}
+        {%- if nav_5_title != blank -%}<a href="{{ nav_5_url }}">{{ nav_5_title }}</a>{%- endif -%}
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var header = document.querySelector('.theme-header-custom');
+      if (!header) return;
+      var menuBtn = header.querySelector('.theme-header-custom__menu-btn');
+      var drawer = header.querySelector('.theme-header-custom__drawer');
+      var closeBtn = header.querySelector('.theme-header-custom__drawer-close');
+      var overlay = header.querySelector('.theme-header-custom__drawer-overlay');
+
+      if (!menuBtn || !drawer) return;
+
+      function openMenu() {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('overflow-hidden');
+      }
+
+      function closeMenu() {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      menuBtn.addEventListener('click', openMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+      if (overlay) overlay.addEventListener('click', closeMenu);
+    })();
+  </script>
+</header>
+
+{%- unless request.page_type == 'index' -%}
+  <div class="theme-header-custom__breadcrumbs-wrap">
+    <div class="theme-header-custom__breadcrumbs" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      {%- assign breadcrumb_label = '' -%}
+      {%- unless request.page_type == 'index' -%}
+        {%- case request.page_type -%}
+          {%- when 'product' -%}
+            {%- if product != blank -%}
+              {%- assign breadcrumb_label = product.title -%}
+            {%- else -%}
+              {%- assign path_parts = request.path | split: '/' | reverse -%}
+              {%- assign prod_handle = path_parts[0] -%}
+              {%- assign candidate_product = all_products[prod_handle] -%}
+              {%- if candidate_product != blank -%}
+                {%- assign breadcrumb_label = candidate_product.title -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- when 'collection' -%}
+            {%- if collection != blank -%}
+              {%- assign breadcrumb_label = collection.title -%}
+            {%- endif -%}
+          {%- when 'page' -%}
+            {%- if page != blank and page.title != 'Home' -%}
+              {%- assign breadcrumb_label = page.title -%}
+            {%- endif -%}
+          {%- when 'article' -%}
+            {%- if article != blank -%}
+              {%- assign breadcrumb_label = article.title -%}
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endunless -%}
+      {%- assign custom_breadcrumb_label = section.settings.breadcrumb_current_label | strip -%}
+      {%- if request.page_type == 'product'
+        and custom_breadcrumb_label != blank
+        and custom_breadcrumb_label != 'Home'
+        and custom_breadcrumb_label != 'Current Page'
+      -%}
+        {%- assign breadcrumb_label = custom_breadcrumb_label -%}
+      {%- endif -%}
+      {%- if breadcrumb_label == blank
+        and custom_breadcrumb_label != blank
+        and custom_breadcrumb_label != 'Home'
+        and custom_breadcrumb_label != 'Current Page'
+      -%}
+        {%- assign breadcrumb_label = custom_breadcrumb_label -%}
+      {%- endif -%}
+      {%- if breadcrumb_label == blank or breadcrumb_label == 'Current Page' or breadcrumb_label == 'Home' -%}
+        {%- assign breadcrumb_label = product.title | default: page_title -%}
+      {%- endif -%}
+      {%- if breadcrumb_label != blank -%}
+        <span class="theme-header-custom__breadcrumb-sep">&gt;</span>
+        <span class="theme-header-custom__breadcrumb-current">{{ breadcrumb_label }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endunless -%}
+
+
+{% schema %}
+{
+  "name": "Header (Custom)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "nav_1_title",
+      "label": "Nav item 1 label",
+      "default": "Shop All"
+    },
+    {
+      "type": "url",
+      "id": "nav_1_url",
+      "label": "Nav item 1 link"
+    },
+    {
+      "type": "text",
+      "id": "nav_2_title",
+      "label": "Nav item 2 label",
+      "default": "Clinics"
+    },
+    {
+      "type": "url",
+      "id": "nav_2_url",
+      "label": "Nav item 2 link"
+    },
+    {
+      "type": "text",
+      "id": "nav_3_title",
+      "label": "Nav item 3 label",
+      "default": "Resorts"
+    },
+    {
+      "type": "url",
+      "id": "nav_3_url",
+      "label": "Nav item 3 link"
+    },
+    {
+      "type": "text",
+      "id": "nav_4_title",
+      "label": "Nav item 4 label",
+      "default": "Hospitals"
+    },
+    {
+      "type": "url",
+      "id": "nav_4_url",
+      "label": "Nav item 4 link"
+    },
+    {
+      "type": "text",
+      "id": "nav_5_title",
+      "label": "Nav item 5 label",
+      "default": "Academy"
+    },
+    {
+      "type": "url",
+      "id": "nav_5_url",
+      "label": "Nav item 5 link"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo alt text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header (Custom)"
+    }
+  ]
+}
+{% endschema %}
