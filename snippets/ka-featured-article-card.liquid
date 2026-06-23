@@ -1,6 +1,7 @@
 {% comment %}
   ka-featured-article-card.liquid — Two-column featured article card
-  Usage: {% render 'ka-featured-article-card', article: article %}
+  Usage: {% render 'ka-featured-article-card', article: article, blog: blog %}
+  All labels meta-driven via blog.metafields.custom.*
 {% endcomment %}
 
 {%- liquid
@@ -10,6 +11,9 @@
   assign read_time = featured.metafields.custom.read_time.value | default: featured.metafields.custom.read_time | default: featured.metafields.custom.read_time_minutes
   assign author_profile = featured.metafields.custom.written_by_profile.value
   assign author_name = author_profile.name | default: featured.author
+  assign read_full_label = blog.metafields.custom.read_full_label | default: 'Read full article'
+  assign by_label = blog.metafields.custom.by_label | default: 'By'
+  assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
 -%}
 
 <a class="ka-blog-feature-card" href="{{ featured.url }}">
@@ -26,19 +30,19 @@
     <div class="ka-blog-meta-line">
       {%- if author_name != blank -%}
         {%- unless author_name contains 'Editorial Team' or author_name contains 'Editorial' -%}
-          <span>By {{ author_name }}</span>
+          <span>{{ by_label }} {{ author_name }}</span>
         {%- endunless -%}
       {%- endif -%}
       {%- if read_time -%}
         {%- if read_time contains 'min' or read_time contains 'read' -%}
           <span>{{ read_time }}</span>
         {%- else -%}
-          <span>{{ read_time }} min read</span>
+          <span>{{ read_time }} {{ min_read_label }}</span>
         {%- endif -%}
       {%- endif -%}
       <span>{{ featured.published_at | date: "%B %d, %Y" }}</span>
     </div>
-    <span class="ka-blog-read-more">Read full article</span>
+    <span class="ka-blog-read-more">{{ read_full_label }}</span>
   </div>
   <div class="ka-blog-feature-card__image">
     {%- if featured.image -%}

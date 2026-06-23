@@ -21,11 +21,18 @@
   <div class="ka-blog-subnav-wrap">
     <div class="ka-blog-container">
       <nav class="ka-blog-subnav" aria-label="Blog section navigation">
-        <a class="active" href="#overview">Overview</a>
-        <a href="#care-paths">Care paths</a>
-        <a href="#topics">Topics</a>
-        <a href="#latest">Latest articles</a>
-        <a href="#consult">Consult</a>
+        {%- liquid
+          assign subnav_overview = selected_blog.metafields.custom.subnav_overview | default: 'Overview'
+          assign subnav_care_paths = selected_blog.metafields.custom.subnav_care_paths | default: 'Care paths'
+          assign subnav_topics = selected_blog.metafields.custom.subnav_topics | default: 'Topics'
+          assign subnav_latest = selected_blog.metafields.custom.subnav_latest | default: 'Latest articles'
+          assign subnav_consult = selected_blog.metafields.custom.subnav_consult | default: 'Consult'
+        -%}
+        <a class="active" href="#overview">{{ subnav_overview }}</a>
+        <a href="#care-paths">{{ subnav_care_paths }}</a>
+        <a href="#topics">{{ subnav_topics }}</a>
+        <a href="#latest">{{ subnav_latest }}</a>
+        <a href="#consult">{{ subnav_consult }}</a>
       </nav>
     </div>
   </div>
@@ -44,8 +51,8 @@
           <h1>{{ hero_title }}</h1>
           <p class="ka-blog-lead">{{ hero_subtitle }}</p>
           <div class="ka-blog-hero-actions">
-            <a class="ka-blog-btn" href="#topics">Explore topics</a>
-            <a class="ka-blog-btn ka-blog-btn--secondary" href="#latest">Latest articles</a>
+            <a class="ka-blog-btn" href="#topics">{{ selected_blog.metafields.custom.hero_cta_1 | default: 'Explore topics' }}</a>
+            <a class="ka-blog-btn ka-blog-btn--secondary" href="#latest">{{ selected_blog.metafields.custom.hero_cta_2 | default: 'Latest articles' }}</a>
           </div>
         </div>
       </div>
@@ -57,7 +64,7 @@
     <div class="ka-blog-container">
       <div class="ka-blog-section-head">
         <div>
-          <p class="ka-blog-eyebrow">Start here <span class="ka-hindi">· शुरू करें</span></p>
+          <p class="ka-blog-eyebrow">{{ selected_blog.metafields.custom.care_paths_eyebrow | default: 'Start here' }} <span class="ka-hindi">{{ selected_blog.metafields.custom.care_paths_eyebrow_hindi | default: '· शुरू करें' }}</span></p>
           <h2>{{ selected_blog.metafields.custom.care_paths_title | default: 'Care paths' }}</h2>
         </div>
       </div>
@@ -124,7 +131,7 @@
     <div class="ka-blog-container">
       <div class="ka-blog-section-head">
         <div>
-          <p class="ka-blog-eyebrow">Browse by topic <span class="ka-hindi">· विषय</span></p>
+          <p class="ka-blog-eyebrow">{{ selected_blog.metafields.custom.topics_eyebrow | default: 'Browse by topic' }} <span class="ka-hindi">{{ selected_blog.metafields.custom.topics_eyebrow_hindi | default: '· विषय' }}</span></p>
           <h2>{{ selected_blog.metafields.custom.topics_title | default: 'Topics' }}</h2>
         </div>
       </div>

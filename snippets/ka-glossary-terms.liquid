@@ -1,16 +1,19 @@
 {% comment %}
   ka-glossary-terms.liquid — Glossary grid from metaobjects
   Usage: {% render 'ka-glossary-terms', article: article %}
+  All labels meta-driven via article.metafields.custom.*
 {% endcomment %}
 
 {%- liquid
   assign glossary = article.metafields.custom.glossary_terms.value
+  assign glossary_eyebrow = article.metafields.custom.glossary_eyebrow | default: blog.metafields.custom.glossary_eyebrow | default: 'Words to know'
+  assign glossary_heading = article.metafields.custom.glossary_heading | default: blog.metafields.custom.glossary_heading | default: 'Ayurveda glossary'
 -%}
 
 {%- if glossary != blank and glossary.size > 0 -%}
   <section class="ka-article-glossary-card" id="glossary" style="margin-top: 36px;">
-    <p class="ka-blog-eyebrow">Words to know</p>
-    <h2>Ayurveda glossary</h2>
+    <p class="ka-blog-eyebrow">{{ glossary_eyebrow }}</p>
+    <h2>{{ glossary_heading }}</h2>
     <div class="ka-article-glossary-grid">
       {%- for term in glossary -%}
         <div>

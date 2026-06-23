@@ -1,17 +1,19 @@
 {% comment %}
   ka-product-recommendations.liquid — Product grid using existing product-card
   Usage: {% render 'ka-product-recommendations', article: article %}
+  All labels meta-driven via article.metafields.custom.*
 {% endcomment %}
 
 {%- liquid
   assign products = article.metafields.custom.recommended_products.value
-  assign heading = article.metafields.custom.recommended_products_heading | default: 'Related Kerala Ayurveda formulations'
-  assign description = article.metafields.custom.recommended_products_description | default: 'Support your wellness routine with classical Ayurvedic formulations.'
+  assign products_eyebrow = article.metafields.custom.products_eyebrow | default: blog.metafields.custom.products_eyebrow | default: 'Helpful next steps'
+  assign heading = article.metafields.custom.recommended_products_heading | default: blog.metafields.custom.recommended_products_heading | default: 'Related Kerala Ayurveda formulations'
+  assign description = article.metafields.custom.recommended_products_description | default: blog.metafields.custom.recommended_products_description | default: 'Support your wellness routine with classical Ayurvedic formulations.'
 -%}
 
 {%- if products != blank and products.size > 0 -%}
   <section class="ka-article-products" id="products" aria-labelledby="ka-products-title">
-    <p class="ka-blog-eyebrow">Helpful next steps</p>
+    <p class="ka-blog-eyebrow">{{ products_eyebrow }}</p>
     <h2 id="ka-products-title">{{ heading }}</h2>
     <p class="ka-blog-muted" style="margin: 12px 0 22px;">{{ description }}</p>
     <div class="ka-article-product-grid">

@@ -1,6 +1,7 @@
 {% comment %}
   ka-related-articles.liquid — Related articles grid
   Usage: {% render 'ka-related-articles', article: article, blog: blog %}
+  All labels meta-driven via article.metafields.custom.*
 {% endcomment %}
 
 {%- liquid
@@ -9,13 +10,17 @@
   if related != blank and related.size > 0
     assign has_explicit_related = true
   endif
+
+  assign related_eyebrow = article.metafields.custom.related_eyebrow | default: blog.metafields.custom.related_eyebrow | default: 'More from Ayurveda'
+  assign related_heading = article.metafields.custom.related_heading | default: blog.metafields.custom.related_heading | default: 'Continue reading'
+  assign read_label = article.metafields.custom.read_article_label | default: blog.metafields.custom.read_article_label | default: 'Read article'
 -%}
 
 <section class="ka-blog-section--tight" id="related">
   <div class="ka-blog-section-head">
     <div>
-      <p class="ka-blog-eyebrow">More from Ayurveda</p>
-      <h2>Continue reading</h2>
+      <p class="ka-blog-eyebrow">{{ related_eyebrow }}</p>
+      <h2>{{ related_heading }}</h2>
     </div>
   </div>
   <div class="ka-article-related-grid">
@@ -40,7 +45,7 @@
           {%- endif -%}
           <div class="ka-article-related-card__body">
             <h3>{{ related_article.title }}</h3>
-            <span class="ka-blog-read-more">Read article</span>
+            <span class="ka-blog-read-more">{{ read_label }}</span>
           </div>
         </a>
       {%- endfor -%}
@@ -76,7 +81,7 @@
               {%- endif -%}
               <div class="ka-article-related-card__body">
                 <h3>{{ blog_article.title }}</h3>
-                <span class="ka-blog-read-more">Read article</span>
+                <span class="ka-blog-read-more">{{ read_label }}</span>
               </div>
             </a>
             {%- assign shown_count = shown_count | plus: 1 -%}
@@ -106,7 +111,7 @@
               {%- endif -%}
               <div class="ka-article-related-card__body">
                 <h3>{{ blog_article.title }}</h3>
-                <span class="ka-blog-read-more">Read article</span>
+                <span class="ka-blog-read-more">{{ read_label }}</span>
               </div>
             </a>
           {%- endif -%}

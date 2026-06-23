@@ -97,25 +97,30 @@
         getComputedStyle(document.documentElement).getPropertyValue('--header-height')
       ) || 60;
       var subnavHeight = subnav.parentElement ? subnav.parentElement.offsetHeight : 50;
-      var threshold = headerHeight + subnavHeight + 40;
+      var threshold = headerHeight + subnavHeight + 20;
 
       var activeLink = null;
+      var maxVisibleHeight = 0;
 
-      for (var i = 0; i < sections.length; i++) {
-        var section = sections[i];
-        var top = section.target.offsetTop - threshold;
-        var bottom = top + section.target.offsetHeight;
+      sections.forEach(function (section) {
+        var rect = section.target.getBoundingClientRect();
+        // Calculate the visible height of this section in the viewport
+        var visibleTop = Math.max(rect.top, threshold);
+        var visibleBottom = Math.min(rect.bottom, window.innerHeight);
+        var visibleHeight = 0;
+        if (visibleTop < visibleBottom) {
+          visibleHeight = visibleBottom - visibleTop;
+        }
 
-        if (scrollPos >= top && scrollPos < bottom) {
+        if (visibleHeight > maxVisibleHeight) {
+          maxVisibleHeight = visibleHeight;
           activeLink = section.link;
         }
-      }
+      });
 
-      // Fallback for extreme scroll positions
+      // Fallback for top of page
       if (scrollPos < 100) {
         activeLink = links[0];
-      } else if ((window.innerHeight + scrollPos) >= document.documentElement.scrollHeight - 60) {
-        activeLink = links[links.length - 1];
       }
 
       if (activeLink) {

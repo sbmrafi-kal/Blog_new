@@ -1,16 +1,19 @@
 {% comment %}
   ka-article-faqs.liquid — FAQ accordion using native <details>
   Usage: {% render 'ka-article-faqs', article: article %}
+  All labels meta-driven via article.metafields.custom.*
 {% endcomment %}
 
 {%- liquid
   assign faqs = article.metafields.custom.faqs.value
+  assign faq_eyebrow = article.metafields.custom.faq_eyebrow | default: blog.metafields.custom.faq_eyebrow | default: 'FAQ'
+  assign faq_heading = article.metafields.custom.faq_heading | default: blog.metafields.custom.faq_heading | default: 'Common questions'
 -%}
 
 {%- if faqs != blank and faqs.size > 0 -%}
   <section class="ka-article-faq ka-blog-section--tight" id="faq">
-    <p class="ka-blog-eyebrow">FAQ</p>
-    <h2>Common questions</h2>
+    <p class="ka-blog-eyebrow">{{ faq_eyebrow }}</p>
+    <h2>{{ faq_heading }}</h2>
     {%- for faq_item in faqs -%}
       <details{% if forloop.first %} open{% endif %}>
         <summary>{{ faq_item.question }}</summary>

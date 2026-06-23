@@ -15,6 +15,11 @@
   assign last_reviewed = hero_article.metafields.custom.last_reviewed_at
   assign hero_image = hero_article.metafields.custom.hero_image | default: hero_article.image
   assign hero_caption = hero_article.metafields.custom.hero_image_caption
+  assign doctor_reviewed_label = blog.metafields.custom.doctor_reviewed_label | default: 'Doctor-reviewed'
+  assign by_label = blog.metafields.custom.by_label | default: 'By'
+  assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
+  assign reviewed_by_prefix = blog.metafields.custom.reviewed_by_label | default: 'Reviewed by'
+  assign updated_prefix = blog.metafields.custom.updated_label | default: 'Updated'
 -%}
 
 <article class="ka-article-hero" aria-label="Article introduction">
@@ -24,7 +29,7 @@
         <span class="ka-blog-chip">{{ category_label }}</span>
       {%- endif -%}
       {%- if reviewer_name != blank -%}
-        <span class="ka-blog-chip ka-blog-chip--green">Doctor-reviewed</span>
+        <span class="ka-blog-chip ka-blog-chip--green">{{ doctor_reviewed_label }}</span>
       {%- endif -%}
     </div>
 
@@ -37,25 +42,25 @@
     <div class="ka-article-meta-card">
       {%- if author_name != blank -%}
         {%- unless author_name contains 'Editorial Team' or author_name contains 'Editorial' -%}
-          <span>By {{ author_name }}</span>
+          <span>{{ by_label }} {{ author_name }}</span>
         {%- endunless -%}
       {%- endif -%}
       {%- if read_time -%}
         {%- if read_time contains 'min' or read_time contains 'read' -%}
           <span data-ka-read-time>{{ read_time }}</span>
         {%- else -%}
-          <span data-ka-read-time>{{ read_time }} min read</span>
+          <span data-ka-read-time>{{ read_time }} {{ min_read_label }}</span>
         {%- endif -%}
       {%- else -%}
         <span data-ka-read-time></span>
       {%- endif -%}
       {%- if reviewer_name != blank -%}
-        <span>Reviewed by {{ reviewer_name | replace: 'Reviewed by ', '' | replace: 'Reviewed by', '' | strip }}</span>
+        <span>{{ reviewed_by_prefix }} {{ reviewer_name | replace: 'Reviewed by ', '' | replace: 'Reviewed by', '' | strip }}</span>
       {%- endif -%}
       {%- if last_reviewed -%}
-        <span>Updated {{ last_reviewed | date: "%B %Y" }}</span>
+        <span>{{ updated_prefix }} {{ last_reviewed | date: "%B %Y" }}</span>
       {%- else -%}
-        <span>Updated {{ hero_article.updated_at | date: "%B %Y" }}</span>
+        <span>{{ updated_prefix }} {{ hero_article.updated_at | date: "%B %Y" }}</span>
       {%- endif -%}
     </div>
   </div>

@@ -9,6 +9,8 @@
   assign chip_text = card_article.metafields.custom.hero_badge.value | default: card_article.metafields.custom.hero_badge | default: card_article.metafields.custom.category_label | default: card_article.tags.first
   assign read_time = card_article.metafields.custom.read_time.value | default: card_article.metafields.custom.read_time | default: card_article.metafields.custom.read_time_minutes
   assign dek = card_article.metafields.custom.dek | default: card_article.excerpt_or_content | strip_html | truncate: 120
+  assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
+  assign read_article_label = blog.metafields.custom.read_article_label | default: 'Read article'
 -%}
 
 <a class="ka-blog-card" href="{{ card_article.url }}">
@@ -57,10 +59,10 @@
           {%- if read_time contains 'min' or read_time contains 'read' -%}
             {{ read_time }}
           {%- else -%}
-            {{ read_time }} min read
+            {{ read_time }} {{ min_read_label }}
           {%- endif -%}
         {%- else -%}
-          Read article
+          {{ read_article_label }}
         {%- endif -%}
         {%- if card_article.published_at -%}
           <span class="ka-blog-card__date-separator"> · </span>

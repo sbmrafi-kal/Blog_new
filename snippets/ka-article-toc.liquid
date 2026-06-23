@@ -2,12 +2,18 @@
   ka-article-toc.liquid — Desktop sticky + mobile accordion TOC
   The JS (ka-blog-redesign.js) dynamically builds the TOC links
   from h2/h3 headings in .ka-article-content
-  Usage: {% render 'ka-article-toc' %}
+  Usage: {% render 'ka-article-toc', blog: blog %}
+  All labels meta-driven via blog.metafields.custom.*
 {% endcomment %}
+
+{%- liquid
+  assign toc_heading = blog.metafields.custom.toc_heading | default: 'In this article'
+  assign toc_mobile_label = blog.metafields.custom.toc_mobile_label | default: 'Table of contents'
+-%}
 
 {%- comment -%} Desktop sidebar TOC — populated by JS {%- endcomment -%}
 <aside class="ka-article-sidebar" aria-label="Article table of contents">
-  <h3>In this article</h3>
+  <h3>{{ toc_heading }}</h3>
   <ul class="ka-article-sidebar__list" style="list-style:none;padding:0;margin:0;">
     {%- comment -%} Links built dynamically by ka-blog-redesign.js {%- endcomment -%}
   </ul>
@@ -20,7 +26,7 @@
     aria-expanded="false"
     aria-controls="ka-mobile-toc-content"
   >
-    <span>Table of contents</span>
+    <span>{{ toc_mobile_label }}</span>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>

@@ -200,8 +200,19 @@
 /* =============================================================
    SECTIONS
    ============================================================= */
-.ka-blog-section { padding: 72px 0; }
-.ka-blog-section--tight { padding: 46px 0; }
+.ka-blog-section {
+  padding: 32px 0;
+}
+
+.ka-blog-section--tight {
+  padding: 20px 0;
+}
+
+.ka-blog-subnav-wrap + .ka-blog-section,
+.ka-blog-subnav-wrap + .ka-blog-section--tight,
+.ka-blog-subnav-wrap + .ka-blog-hero {
+  margin-top: 24px;
+}
 
 .ka-blog-section-head {
   display: flex;
@@ -210,6 +221,9 @@
   gap: 22px;
   margin-bottom: 26px;
 }
+
+
+
 
 /* =============================================================
    SUBNAV — Blog sub-navigation
@@ -254,7 +268,9 @@
 /* =============================================================
    HERO — Blog landing page
    ============================================================= */
-.ka-blog-hero { padding: 34px 0 42px; }
+.ka-blog-hero {
+  padding: 24px 0 22px;
+}
 
 .ka-blog-hero-shell {
   min-height: 480px;
@@ -791,25 +807,29 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
 .ka-article-sidebar a {
   display: block;
-  padding: 9px 0;
+  padding: 9px 12px;
   color: var(--ka-muted);
   font-family: var(--ka-font-medium);
-  font-weight: 700;
-  border-bottom: 1px solid #b8d29b;
-  transition: color 0.3s ease, font-weight 0.3s ease, border-left 0.3s ease, padding-left 0.3s ease, background 0.3s ease;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(184, 210, 155, 0.3);
+  transition: color 0.25s ease, padding-left 0.25s ease, background-color 0.25s ease, border-left-color 0.25s ease;
+  border-left: 3px solid transparent;
+  box-sizing: border-box;
 }
 
 .ka-article-sidebar a:last-child { border-bottom: 0; }
-.ka-article-sidebar a:hover { color: var(--ka-orange); }
+.ka-article-sidebar a:hover {
+  color: var(--ka-orange);
+  background-color: rgba(210, 116, 73, 0.02);
+}
 
 .ka-article-sidebar a.active {
   color: var(--ka-orange);
   font-family: var(--ka-font-heavy);
   font-weight: 800;
-  border-left: 3px solid var(--ka-orange);
-  padding-left: 10px;
-  margin-left: -10px;
-  background: rgba(210, 116, 73, 0.06);
+  border-left-color: var(--ka-orange);
+  padding-left: 16px;
+  background-color: rgba(210, 116, 73, 0.06);
   border-radius: 0 8px 8px 0;
 }
 
@@ -1343,7 +1363,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 @media (max-width: 639px) {
   .ka-blog-container { width: min(100% - 28px, var(--ka-max-width)); }
 
-  .ka-blog-section { padding: 52px 0; }
+  .ka-blog-section { padding: 24px 0; }
   .ka-blog-section-head { display: block; }
   .ka-blog-section-head .ka-blog-btn { margin-top: 18px; }
 

@@ -1,15 +1,18 @@
 {% comment %}
   ka-article-sources.liquid — Sources list from metaobjects
   Usage: {% render 'ka-article-sources', article: article %}
+  All labels meta-driven via article.metafields.custom.*
 {% endcomment %}
 
 {%- liquid
   assign sources = article.metafields.custom.sources.value
+  assign sources_eyebrow = article.metafields.custom.sources_eyebrow | default: blog.metafields.custom.sources_eyebrow | default: 'Sources'
+  assign view_source_label = article.metafields.custom.view_source_label | default: blog.metafields.custom.view_source_label | default: 'View source'
 -%}
 
 {%- if sources != blank and sources.size > 0 -%}
   <section class="ka-article-sources" id="sources" style="margin-top: 36px;">
-    <p class="ka-blog-eyebrow">Sources</p>
+    <p class="ka-blog-eyebrow">{{ sources_eyebrow }}</p>
     <ol>
       {%- for source in sources -%}
         <li>
@@ -24,7 +27,7 @@
             ({{ source.published_date | date: "%Y" }})
           {%- endif -%}
           {%- if source.url != blank -%}
-            . <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">View source</a>
+            . <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ view_source_label }}</a>
           {%- endif -%}
           {%- if source.note != blank -%}
             <br><span class="ka-blog-small">{{ source.note }}</span>

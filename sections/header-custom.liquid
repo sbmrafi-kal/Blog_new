@@ -163,9 +163,9 @@
   endif
 -%}
 
-<div class="theme-header-custom__breadcrumbs-wrap" {% unless show_breadcrumbs %}style="display: none;"{% endunless %}>
+{%- if show_breadcrumbs -%}
+<div class="theme-header-custom__breadcrumbs-wrap">
   <div class="theme-header-custom__breadcrumbs" aria-label="Breadcrumb">
-    {%- if show_breadcrumbs -%}
       {%- if request.page_type == 'blog' or request.page_type == 'article' -%}
         <div class="ka-blog-breadcrumb" style="display: flex; align-items: center; gap: 8px; margin: 0; background: transparent; padding: 0; border: 0; box-shadow: none;">
           <a href="{{ blog.url }}">Journal</a>
@@ -242,9 +242,9 @@
           <span class="theme-header-custom__breadcrumb-current">{{ breadcrumb_label }}</span>
         {%- endif -%}
       {%- endif -%}
-    {%- endif -%}
   </div>
 </div>
+{%- endif -%}
 
 
 {% schema %}

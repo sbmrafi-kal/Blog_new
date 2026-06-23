@@ -14,6 +14,7 @@
   assign person_photo = person.photo
   assign person_url = person.profile_url
   assign person_initials = person_name | split: ' ' | map: 'first' | join: '' | upcase | truncate: 2, ''
+  assign view_profile_label = blog.metafields.custom.view_profile_label | default: 'View profile'
 -%}
 
 {%- if person_name != blank -%}
@@ -51,7 +52,7 @@
           <span class="ka-blog-chip ka-blog-chip--neutral">{{ person_designation }}</span>
         {%- endif -%}
         {%- if person_url != blank -%}
-          <a href="{{ person_url }}" class="ka-blog-chip ka-blog-chip--green">View profile</a>
+          <a href="{{ person_url }}" class="ka-blog-chip ka-blog-chip--green">{{ view_profile_label }}</a>
         {%- endif -%}
       </div>
     </div>

@@ -41,9 +41,14 @@
   <div class="ka-blog-subnav-wrap">
     <div class="ka-blog-container">
       <nav class="ka-blog-subnav" aria-label="Blog section navigation">
-        <a class="active" href="#overview">Overview</a>
-        <a href="#articles">Guides</a>
-        <a href="#consult">Consult</a>
+        {%- liquid
+          assign topic_subnav_overview = blog.metafields.custom.topic_subnav_overview | default: 'Overview'
+          assign topic_subnav_guides = blog.metafields.custom.topic_subnav_guides | default: 'Guides'
+          assign topic_subnav_consult = blog.metafields.custom.topic_subnav_consult | default: 'Consult'
+        -%}
+        <a class="active" href="#overview">{{ topic_subnav_overview }}</a>
+        <a href="#articles">{{ topic_subnav_guides }}</a>
+        <a href="#consult">{{ topic_subnav_consult }}</a>
       </nav>
     </div>
   </div>
@@ -54,7 +59,7 @@
       <article class="ka-blog-topic-hero">
         <div class="ka-blog-topic-hero__content">
           <p class="ka-blog-eyebrow">
-            Ayurveda
+            {{ blog.metafields.custom.topic_hero_eyebrow | default: 'Ayurveda' }}
             {%- if topic_secondary_label != blank -%}
               <span class="ka-hindi"> · {{ topic_secondary_label }}</span>
             {%- endif -%}
@@ -71,7 +76,7 @@
   {%- comment -%} ============ ARTICLES IN TOPIC ============ {%- endcomment -%}
   <section class="ka-blog-section--tight" id="articles">
     <div class="ka-blog-container">
-      <a class="ka-blog-small" href="{{ blog.url }}#topics">← All topics</a>
+      <a class="ka-blog-small" href="{{ blog.url }}#topics">{{ blog.metafields.custom.all_topics_label | default: '← All topics' }}</a>
 
       {%- liquid
         assign related_tags = ""
@@ -97,7 +102,7 @@
         {%- comment -%} Filter bar from dynamic related tags {%- endcomment -%}
         {%- if related_tags_array.size > 0 -%}
           <nav class="ka-blog-filter-bar" aria-label="{{ topic_title }} filters">
-            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">All</a>
+            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">{{ blog.metafields.custom.filter_all_label | default: 'All' }}</a>
             {%- for tag in related_tags_array -%}
               {%- assign trimmed_tag = tag | strip -%}
               {%- if trimmed_tag != blank -%}

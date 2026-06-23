@@ -16,6 +16,18 @@
   assign topic_tag = topic.article_filter_tag | default: category_label | handleize
   assign author_profile = article.metafields.custom.written_by_profile.value
   assign reviewer_profile = article.metafields.custom.reviewed_by.value
+
+  assign breadcrumb_home = blog.metafields.custom.breadcrumb_home_label | default: 'Journal'
+  assign subnav_overview = blog.metafields.custom.subnav_overview | default: 'Overview'
+  assign subnav_care_paths = blog.metafields.custom.subnav_care_paths | default: 'Care paths'
+  assign subnav_topics = blog.metafields.custom.subnav_topics | default: 'Topics'
+  assign subnav_latest = blog.metafields.custom.subnav_latest | default: 'Latest articles'
+  assign subnav_consult = blog.metafields.custom.subnav_consult | default: 'Consult'
+  assign toc_heading = blog.metafields.custom.toc_heading | default: 'In this article'
+  assign toc_mobile_label = blog.metafields.custom.toc_mobile_label | default: 'Table of contents'
+  assign share_label = blog.metafields.custom.share_label | default: 'Share this guide:'
+  assign written_by_label = blog.metafields.custom.written_by_label | default: 'Written by'
+  assign reviewed_by_label = blog.metafields.custom.reviewed_by_label | default: 'Reviewed by'
 -%}
 
 <div class="ka-blog-wrapper">
@@ -24,11 +36,11 @@
   <div class="ka-blog-subnav-wrap">
     <div class="ka-blog-container">
       <nav class="ka-blog-subnav" aria-label="Blog section navigation">
-        <a href="{{ blog.url }}#overview">Overview</a>
-        <a href="{{ blog.url }}#care-paths">Care paths</a>
-        <a href="{{ blog.url }}#topics">Topics</a>
-        <a href="{{ blog.url }}#latest">Latest articles</a>
-        <a href="{{ blog.url }}#consult">Consult</a>
+        <a href="{{ blog.url }}#overview">{{ subnav_overview }}</a>
+        <a href="{{ blog.url }}#care-paths">{{ subnav_care_paths }}</a>
+        <a href="{{ blog.url }}#topics">{{ subnav_topics }}</a>
+        <a href="{{ blog.url }}#latest">{{ subnav_latest }}</a>
+        <a href="{{ blog.url }}#consult">{{ subnav_consult }}</a>
       </nav>
     </div>
   </div>
@@ -36,16 +48,6 @@
   {%- comment -%} ============ BREADCRUMB + ARTICLE HERO ============ {%- endcomment -%}
   <section class="ka-blog-section--tight">
     <div class="ka-blog-container">
-      <div class="ka-blog-breadcrumb">
-        <a href="{{ blog.url }}">Journal</a>
-        <span>/</span>
-        {%- if topic_title != blank -%}
-          <a href="{{ blog.url }}/tagged/{{ topic_tag }}">{{ topic_title }}</a>
-          <span>/</span>
-        {%- endif -%}
-        <span>{{ article.title | truncate: 40 }}</span>
-      </div>
-
       {%- render 'ka-article-hero', article: article, blog: blog -%}
     </div>
   </section>
@@ -64,7 +66,7 @@
             aria-expanded="false"
             aria-controls="ka-mobile-toc-content"
           >
-            <span>Table of contents</span>
+            <span>{{ toc_mobile_label }}</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -116,7 +118,7 @@
           {%- if author_profile -%}
             {%- render 'ka-author-reviewer-card',
               profile: author_profile,
-              role_label: 'Written by',
+              role_label: written_by_label,
               fallback_name: article.author
             -%}
           {%- else -%}
@@ -127,7 +129,7 @@
                   {{ article.author | split: ' ' | first | slice: 0 | upcase }}{{ article.author | split: ' ' | last | slice: 0 | upcase }}
                 </div>
                 <div>
-                  <p class="ka-blog-eyebrow">Written by</p>
+                  <p class="ka-blog-eyebrow">{{ written_by_label }}</p>
                   <h2>{{ article.author }}</h2>
                 </div>
               </section>
@@ -139,7 +141,7 @@
         {%- if reviewer_profile -%}
           {%- render 'ka-author-reviewer-card',
             profile: reviewer_profile,
-            role_label: 'Reviewed by'
+            role_label: reviewed_by_label
           -%}
         {%- else -%}
           {%- assign review_label = article.metafields.custom.review_label.value | default: article.metafields.custom.review_label -%}
@@ -149,7 +151,7 @@
                 RV
               </div>
               <div>
-                <p class="ka-blog-eyebrow">Reviewed by</p>
+                <p class="ka-blog-eyebrow">{{ reviewed_by_label }}</p>
                 <h2>{{ review_label | replace: 'Reviewed by ', '' | replace: 'Reviewed by', '' | strip }}</h2>
               </div>
             </section>
@@ -161,7 +163,7 @@
 
         {%- comment -%} Share row {%- endcomment -%}
         <section class="ka-article-share-row" aria-label="Share article">
-          <span class="ka-blog-small"><b>Share this guide:</b></span>
+          <span class="ka-blog-small"><b>{{ share_label }}</b></span>
           <a href="mailto:?subject={{ article.title | url_encode }}&body={{ shop.url }}{{ article.url | url_encode }}" aria-label="Share via email">Email</a>
           <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ shop.url }}{{ article.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
           <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ article.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
@@ -175,7 +177,7 @@
 
       {%- comment -%} ===== SIDEBAR (Desktop TOC) ===== {%- endcomment -%}
       <aside class="ka-article-sidebar" aria-label="Article table of contents">
-        <h3>In this article</h3>
+        <h3>{{ toc_heading }}</h3>
         <ul class="ka-article-sidebar__list" style="list-style: none; padding: 0; margin: 0;">
           {%- comment -%} Built dynamically by ka-blog-redesign.js {%- endcomment -%}
         </ul>

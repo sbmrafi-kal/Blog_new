@@ -1,16 +1,27 @@
 {% comment %}
   ka-article-comments.liquid — Shopify native comments section
   Usage: {% render 'ka-article-comments', article: article, blog: blog %}
+  All labels meta-driven via article/blog metafields.
 {% endcomment %}
 
 {%- liquid
   assign show_comments = article.metafields.custom.show_comments | default: true
-  assign comments_heading = article.metafields.custom.comments_heading | default: 'Reader discussion'
+  assign comments_eyebrow = article.metafields.custom.comments_eyebrow | default: blog.metafields.custom.comments_eyebrow | default: 'Comments'
+  assign comments_heading = article.metafields.custom.comments_heading | default: blog.metafields.custom.comments_heading | default: 'Reader discussion'
+  assign form_name_label = blog.metafields.custom.form_name_label | default: 'Name'
+  assign form_email_label = blog.metafields.custom.form_email_label | default: 'Email'
+  assign form_comment_label = blog.metafields.custom.form_comment_label | default: 'Comment'
+  assign form_name_placeholder = blog.metafields.custom.form_name_placeholder | default: 'Your name'
+  assign form_email_placeholder = blog.metafields.custom.form_email_placeholder | default: 'you@example.com'
+  assign form_comment_placeholder = blog.metafields.custom.form_comment_placeholder | default: 'Write a comment...'
+  assign form_submit_label = blog.metafields.custom.form_submit_label | default: 'Post comment'
+  assign comment_success_moderated = blog.metafields.custom.comment_success_moderated | default: 'Your comment was posted successfully. It will be published after it has been approved.'
+  assign comment_success = blog.metafields.custom.comment_success | default: 'Your comment was posted successfully. Thank you!'
 -%}
 
 {%- if show_comments and blog.comments_enabled? -%}
   <section class="ka-article-comments-card" id="comments" aria-labelledby="ka-comments-title">
-    <p class="ka-blog-eyebrow">Comments</p>
+    <p class="ka-blog-eyebrow">{{ comments_eyebrow }}</p>
     <div class="ka-article-comments-head">
       <h2 id="ka-comments-title">{{ comments_heading }}</h2>
       {%- if article.comments_count > 0 -%}
@@ -40,7 +51,7 @@
           {%- if paginate.pages > 1 -%}
             <div class="ka-blog-pagination">
               {%- if paginate.previous -%}
-                <a href="{{ paginate.previous.url }}">← Previous</a>
+                <a href="{{ paginate.previous.url }}">← </a>
               {%- endif -%}
               {%- for part in paginate.parts -%}
                 {%- if part.is_link -%}
@@ -50,7 +61,7 @@
                 {%- endif -%}
               {%- endfor -%}
               {%- if paginate.next -%}
-                <a href="{{ paginate.next.url }}">Next →</a>
+                <a href="{{ paginate.next.url }}"> →</a>
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -64,9 +75,9 @@
         {%- if form.posted_successfully? -%}
           <p class="ka-article-form-note">
             {%- if blog.moderated? -%}
-              Your comment was posted successfully. It will be published after it has been approved.
+              {{ comment_success_moderated }}
             {%- else -%}
-              Your comment was posted successfully. Thank you!
+              {{ comment_success }}
             {%- endif -%}
           </p>
         {%- endif -%}
@@ -79,24 +90,24 @@
 
         <div class="ka-article-form-grid">
           <label>
-            Name
+            {{ form_name_label }}
             <input
               type="text"
               name="comment[author]"
               id="ka-comment-author"
-              placeholder="Your name"
+              placeholder="{{ form_name_placeholder }}"
               value="{{ form.author }}"
               required
               autocomplete="name"
             >
           </label>
           <label>
-            Email
+            {{ form_email_label }}
             <input
               type="email"
               name="comment[email]"
               id="ka-comment-email"
-              placeholder="you@example.com"
+              placeholder="{{ form_email_placeholder }}"
               value="{{ form.email }}"
               required
               autocomplete="email"
@@ -104,15 +115,15 @@
           </label>
         </div>
         <label>
-          Comment
+          {{ form_comment_label }}
           <textarea
             name="comment[body]"
             id="ka-comment-body"
-            placeholder="Write a comment..."
+            placeholder="{{ form_comment_placeholder }}"
             required
           >{{ form.body }}</textarea>
         </label>
-        <button class="ka-blog-btn" type="submit">Post comment</button>
+        <button class="ka-blog-btn" type="submit">{{ form_submit_label }}</button>
       </div>
     {%- endform -%}
   </section>
