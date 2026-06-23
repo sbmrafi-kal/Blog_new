@@ -51,8 +51,8 @@
         height="{{ 1200 | divided_by: featured.image.aspect_ratio | round }}"
       >
     {%- else -%}
-      {%- comment -%} Fallback to a mock image based on article ID modulo {%- endcomment -%}
-      {%- assign fallback_num = featured.id | modulo: 4 -%}
+      {%- comment -%} Fallback to a mock image based on article title length modulo {%- endcomment -%}
+      {%- assign fallback_num = featured.title.size | modulo: 4 -%}
       {%- if fallback_num == 0 -%}
         {%- assign fallback_img = 'ginger.webp' -%}
       {%- elsif fallback_num == 1 -%}
