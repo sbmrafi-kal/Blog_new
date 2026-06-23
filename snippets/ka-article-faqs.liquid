@@ -15,7 +15,7 @@
       <details{% if forloop.first %} open{% endif %}>
         <summary>{{ faq_item.question }}</summary>
         <div class="ka-faq-answer">
-          {{ faq_item.answer }}
+          {{ faq_item.answer | metafield_tag }}
         </div>
       </details>
     {%- endfor -%}

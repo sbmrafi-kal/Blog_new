@@ -13,17 +13,6 @@
 -%}
 
 <a class="ka-blog-feature-card" href="{{ featured.url }}">
-  <div class="ka-blog-feature-card__image">
-    {%- if featured.image -%}
-      <img
-        src="{{ featured.image | image_url: width: 1200 }}"
-        alt="{{ featured.image.alt | escape }}"
-        loading="lazy"
-        width="1200"
-        height="{{ 1200 | divided_by: featured.image.aspect_ratio | round }}"
-      >
-    {%- endif -%}
-  </div>
   <div class="ka-blog-feature-copy">
     <div class="ka-blog-chip-row">
       {%- if chip_text != blank -%}
@@ -51,5 +40,34 @@
       <span>{{ featured.published_at | date: "%B %d, %Y" }}</span>
     </div>
     <span class="ka-blog-read-more">Read full article</span>
+  </div>
+  <div class="ka-blog-feature-card__image">
+    {%- if featured.image -%}
+      <img
+        src="{{ featured.image | image_url: width: 1200 }}"
+        alt="{{ featured.image.alt | escape }}"
+        loading="lazy"
+        width="1200"
+        height="{{ 1200 | divided_by: featured.image.aspect_ratio | round }}"
+      >
+    {%- else -%}
+      {%- comment -%} Fallback to a mock image based on article ID modulo {%- endcomment -%}
+      {%- assign fallback_num = featured.id | modulo: 4 -%}
+      {%- if fallback_num == 0 -%}
+        {%- assign fallback_img = 'ginger.webp' -%}
+      {%- elsif fallback_num == 1 -%}
+        {%- assign fallback_img = 'cumin.webp' -%}
+      {%- elsif fallback_num == 2 -%}
+        {%- assign fallback_img = 'fennel.webp' -%}
+      {%- else -%}
+        {%- assign fallback_img = 'coriander.webp' -%}
+      {%- endif -%}
+      <img
+        src="{{ fallback_img | asset_url }}"
+        alt="{{ featured.title | escape }}"
+        loading="lazy"
+        width="1200"
+      >
+    {%- endif -%}
   </div>
 </a>
