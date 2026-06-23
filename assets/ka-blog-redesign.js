@@ -314,6 +314,222 @@
   }
 
   // ============================================================
+  // 5. TOPIC CAROUSEL — Wheel scroll translation & dots sync
+  // ============================================================
+  function initTopicCarousel() {
+    var outer = document.querySelector('.ka-blog-topic-carousel-outer');
+    if (!outer) return;
+
+    var container = outer.querySelector('.ka-blog-topic-carousel-container');
+    var dots = outer.querySelectorAll('.ka-blog-topic-carousel-dots .dot');
+    var decks = outer.querySelectorAll('.ka-blog-topic-deck');
+    if (!container || !decks.length) return;
+
+    // Handle dot clicks
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var index = parseInt(dot.getAttribute('data-deck-target'));
+        if (isNaN(index)) return;
+        
+        var targetDeck = decks[index];
+        if (targetDeck) {
+          container.scrollTo({
+            left: targetDeck.offsetLeft,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Sync dots on scroll
+    function syncDots() {
+      var scrollLeft = container.scrollLeft;
+      var containerWidth = container.clientWidth || 1;
+      
+      // Calculate which deck is currently most visible
+      var activeIndex = Math.round(scrollLeft / containerWidth);
+      if (activeIndex < 0) activeIndex = 0;
+      if (activeIndex >= decks.length) activeIndex = decks.length - 1;
+
+      dots.forEach(function (dot, i) {
+        if (i === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    container.addEventListener('scroll', syncDots);
+
+    // Intercept wheel events on desktop to translate vertical scroll to horizontal
+    var isScrolling = false;
+    container.addEventListener('wheel', function (e) {
+      if (window.innerWidth < 980) return;
+
+      var deltaY = e.deltaY;
+      if (Math.abs(deltaY) < 10) return; // ignore minor scrolls
+
+      var scrollLeft = container.scrollLeft;
+      var maxScroll = container.scrollWidth - container.clientWidth;
+      var scrollDirection = deltaY > 0 ? 1 : -1;
+
+      var atStart = (scrollLeft <= 2 && scrollDirection === -1);
+      var atEnd = (scrollLeft >= maxScroll - 2 && scrollDirection === 1);
+
+      if (!atStart && !atEnd) {
+        e.preventDefault();
+        if (isScrolling) return;
+
+        var containerWidth = container.clientWidth || 1;
+        var currentIndex = Math.round(scrollLeft / containerWidth);
+        var targetIndex = currentIndex + scrollDirection;
+
+        if (targetIndex >= 0 && targetIndex < decks.length) {
+          isScrolling = true;
+          var targetDeck = decks[targetIndex];
+          container.scrollTo({
+            left: targetDeck.offsetLeft,
+            behavior: 'smooth'
+          });
+          
+          setTimeout(function() {
+            isScrolling = false;
+          }, 600); // 600ms matching transition time
+        }
+      }
+    }, { passive: false });
+  }
+
+  // ============================================================
+  // 6. AJAX FILTERING & PAGINATION
+  // ============================================================
+  function loadAjaxContent(url, scrollToId, isPopState) {
+    var grid = document.querySelector('.ka-blog-article-grid');
+    var pagination = document.querySelector('.ka-blog-pagination');
+    var filterBar = document.querySelector('.ka-blog-filter-bar');
+    var breadcrumb = document.querySelector('.ka-blog-breadcrumb');
+    
+    if (grid) grid.style.opacity = '0.35';
+    if (pagination) pagination.style.opacity = '0.35';
+    if (filterBar) filterBar.style.opacity = '0.35';
+    if (breadcrumb) breadcrumb.style.opacity = '0.35';
+
+    fetch(url)
+      .then(function (response) {
+        if (!response.ok) throw new Error('Network response not ok');
+        return response.text();
+      })
+      .then(function (html) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(html, 'text/html');
+        
+        var newGrid = doc.querySelector('.ka-blog-article-grid');
+        var newPagination = doc.querySelector('.ka-blog-pagination');
+        var newFilterBar = doc.querySelector('.ka-blog-filter-bar');
+        var newBreadcrumb = doc.querySelector('.ka-blog-breadcrumb');
+        
+        if (grid && newGrid) {
+          grid.innerHTML = newGrid.innerHTML;
+        } else if (grid && !newGrid) {
+          grid.innerHTML = '';
+        }
+        
+        if (pagination && newPagination) {
+          pagination.innerHTML = newPagination.innerHTML;
+          pagination.style.display = 'flex';
+        } else if (pagination) {
+          pagination.innerHTML = '';
+          pagination.style.display = 'none';
+        } else if (!pagination && newPagination) {
+          var pagContainer = document.createElement('nav');
+          pagContainer.className = 'ka-blog-pagination';
+          pagContainer.setAttribute('aria-label', 'Blog pagination');
+          pagContainer.innerHTML = newPagination.innerHTML;
+          grid.parentNode.insertBefore(pagContainer, grid.nextSibling);
+        }
+        
+        if (filterBar && newFilterBar) {
+          filterBar.innerHTML = newFilterBar.innerHTML;
+        }
+        
+        if (breadcrumb && newBreadcrumb) {
+          breadcrumb.innerHTML = newBreadcrumb.innerHTML;
+        }
+        
+        if (grid) grid.style.opacity = '1';
+        
+        var currentPagination = document.querySelector('.ka-blog-pagination');
+        if (currentPagination) currentPagination.style.opacity = '1';
+        
+        if (filterBar) filterBar.style.opacity = '1';
+        if (breadcrumb) breadcrumb.style.opacity = '1';
+        
+        if (!isPopState) {
+          history.pushState(null, '', url);
+        }
+        
+        if (scrollToId) {
+          var targetEl = document.getElementById(scrollToId);
+          if (targetEl) {
+            var headerHeight = parseInt(
+              getComputedStyle(document.documentElement).getPropertyValue('--header-height')
+            ) || 60;
+            var subnav = document.querySelector('.ka-blog-subnav');
+            var subnavHeight = subnav ? subnav.offsetHeight : 50;
+            
+            var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+            var offsetPosition = targetPosition - headerHeight - subnavHeight - 20;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      })
+      .catch(function (err) {
+        console.error('AJAX Load failed:', err);
+        window.location.href = url;
+      });
+  }
+
+  function initAjaxFiltering() {
+    document.addEventListener('click', function (e) {
+      var target = e.target;
+      var isFilterLink = target.closest('.ka-blog-filter-bar a');
+      var isPaginationLink = target.closest('.ka-blog-pagination a');
+      
+      if (!isFilterLink && !isPaginationLink) return;
+      
+      var link = isFilterLink || isPaginationLink;
+      var url = link.getAttribute('href');
+      if (!url) return;
+      
+      e.preventDefault();
+      
+      var scrollToId = null;
+      if (isFilterLink) {
+        scrollToId = 'articles';
+      } else if (isPaginationLink) {
+        if (url.indexOf('#articles') !== -1) {
+          scrollToId = 'articles';
+        } else if (url.indexOf('#latest') !== -1) {
+          scrollToId = 'latest';
+        } else {
+          scrollToId = 'latest';
+        }
+      }
+      
+      loadAjaxContent(url, scrollToId, false);
+    });
+
+    window.addEventListener('popstate', function () {
+      loadAjaxContent(window.location.href, null, true);
+    });
+  }
+
+  // ============================================================
   // INIT — Run all on DOMContentLoaded
   // ============================================================
   function init() {
@@ -321,6 +537,8 @@
     initArticleTOC();
     initFAQ();
     initReadTime();
+    initTopicCarousel();
+    initAjaxFiltering();
   }
 
   if (document.readyState === 'loading') {

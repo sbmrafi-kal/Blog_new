@@ -129,26 +129,60 @@
         </div>
       </div>
 
-      <div class="ka-blog-topic-grid">
-        {%- liquid
-          assign topics = selected_blog.metafields.custom.topics.value
-        -%}
-        {%- if topics != blank and topics.size > 0 -%}
-          {%- for topic in topics -%}
-            {%- render 'ka-topic-card', topic: topic, blog: selected_blog -%}
-          {%- endfor -%}
-        {%- else -%}
-          {%- comment -%} Fallback: render from blog tags {%- endcomment -%}
-          {%- for tag in selected_blog.all_tags limit: 8 -%}
-            <a class="ka-blog-image-card" href="{{ selected_blog.url }}/tagged/{{ tag | handleize }}">
-              <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
-              <div class="ka-blog-image-card__content">
-                <h3>{{ tag }}</h3>
-                <span class="ka-blog-read-more">Explore topic</span>
-              </div>
-            </a>
-          {%- endfor -%}
-        {%- endif -%}
+      <div class="ka-blog-topic-carousel-outer">
+        <div class="ka-blog-topic-carousel-container">
+          {%- liquid
+            assign topics = selected_blog.metafields.custom.topics.value
+            assign total_topics = topics.size
+            assign batch_size = 8
+          -%}
+          {%- if topics != blank and total_topics > 0 -%}
+            {%- for i in (0..2) -%}
+              {%- assign offset = i | times: batch_size -%}
+              {%- if offset < total_topics -%}
+                <div class="ka-blog-topic-deck" data-deck-index="{{ i }}">
+                  {%- for j in (0..7) -%}
+                    {%- assign index = offset | plus: j -%}
+                    {%- if index < total_topics -%}
+                      {%- render 'ka-topic-card', topic: topics[index], blog: selected_blog -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- comment -%} Fallback: render from blog tags grouped by 8 {%- endcomment -%}
+            {%- assign fallback_tags = selected_blog.all_tags -%}
+            {%- assign total_fallbacks = fallback_tags.size -%}
+            {%- for i in (0..2) -%}
+              {%- assign offset = i | times: batch_size -%}
+              {%- if offset < total_fallbacks -%}
+                <div class="ka-blog-topic-deck" data-deck-index="{{ i }}">
+                  {%- for j in (0..7) -%}
+                    {%- assign index = offset | plus: j -%}
+                    {%- if index < total_fallbacks -%}
+                      {%- assign tag = fallback_tags[index] -%}
+                      <a class="ka-blog-image-card" href="{{ selected_blog.url }}/tagged/{{ tag | handleize }}">
+                        <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
+                        <div class="ka-blog-image-card__content">
+                          <h3>{{ tag }}</h3>
+                          <span class="ka-blog-read-more">Explore topic</span>
+                        </div>
+                      </a>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+        
+        {%- comment -%} Navigation indicators {%- endcomment -%}
+        <div class="ka-blog-topic-carousel-dots">
+          <span class="dot active" data-deck-target="0"></span>
+          <span class="dot" data-deck-target="1"></span>
+          <span class="dot" data-deck-target="2"></span>
+        </div>
       </div>
     </div>
   </section>

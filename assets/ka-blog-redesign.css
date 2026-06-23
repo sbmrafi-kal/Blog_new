@@ -516,6 +516,9 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   border-radius: var(--ka-radius-lg);
   overflow: hidden;
   border: 1px solid #b8d29b;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .ka-blog-step {
@@ -524,6 +527,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   gap: 18px;
   padding: 22px;
   border-bottom: 1px solid var(--ka-line);
+  flex: 1;
+  align-content: center;
 }
 
 .ka-blog-step:last-child { border-bottom: 0; }
@@ -1252,7 +1257,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
    ============================================================= */
 .ka-blog-floating-cta {
   position: fixed;
-  right: 24px;
+  right: 16px;
   bottom: 24px;
   z-index: 90;
   border-radius: 999px;
@@ -1513,4 +1518,113 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 #consult {
   padding-top: 32px;
+}
+
+/* =============================================================
+   TOPICS HORIZONTAL CAROUSEL
+   ============================================================= */
+.ka-blog-topic-carousel-outer {
+  position: relative;
+  width: 100%;
+}
+
+.ka-blog-topic-carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 0;
+  width: 100%;
+}
+
+.ka-blog-topic-carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.ka-blog-topic-deck {
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 22px;
+  padding: 10px 0 20px 0;
+}
+
+.ka-blog-topic-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.ka-blog-topic-carousel-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ka-line, #b8d29b);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.ka-blog-topic-carousel-dots .dot.active {
+  background: #D27449;
+  transform: scale(1.2);
+}
+
+/* =============================================================
+   FLUID MOBILE TRANSITIONS & OVERRIDES
+   ============================================================= */
+@media (max-width: 979px) {
+  .ka-blog-topic-carousel-container {
+    scroll-snap-type: none;
+  }
+  .ka-blog-topic-deck {
+    flex: 0 0 auto;
+    width: auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 16px;
+    padding: 0 15px;
+  }
+  .ka-blog-topic-carousel-dots {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .ka-blog-topic-deck {
+    grid-template-columns: 1fr;
+  }
+
+  /* Premium animations on mobile */
+  .ka-blog-hero-content,
+  .ka-blog-care-panel,
+  .ka-blog-feature-card,
+  .ka-blog-image-card,
+  .ka-blog-card {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: kaFadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Stagger delays for topic and article cards */
+  .ka-blog-topic-deck > :nth-child(1) { animation-delay: 0.05s; }
+  .ka-blog-topic-deck > :nth-child(2) { animation-delay: 0.1s; }
+  .ka-blog-topic-deck > :nth-child(3) { animation-delay: 0.15s; }
+  .ka-blog-topic-deck > :nth-child(4) { animation-delay: 0.2s; }
+
+  .ka-blog-article-grid > :nth-child(1) { animation-delay: 0.05s; }
+  .ka-blog-article-grid > :nth-child(2) { animation-delay: 0.1s; }
+  .ka-blog-article-grid > :nth-child(3) { animation-delay: 0.15s; }
+}
+
+@keyframes kaFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

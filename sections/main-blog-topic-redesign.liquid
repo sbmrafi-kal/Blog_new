@@ -41,17 +41,15 @@
   <div class="ka-blog-subnav-wrap">
     <div class="ka-blog-container">
       <nav class="ka-blog-subnav" aria-label="Blog section navigation">
-        <a class="active" href="{{ blog.url }}#overview">Overview</a>
-        <a href="{{ blog.url }}#care-paths">Care paths</a>
-        <a href="{{ blog.url }}#topics">Topics</a>
-        <a href="{{ blog.url }}#latest">Latest articles</a>
-        <a href="{{ blog.url }}#consult">Consult</a>
+        <a class="active" href="#overview">Overview</a>
+        <a href="#articles">Guides</a>
+        <a href="#consult">Consult</a>
       </nav>
     </div>
   </div>
 
   {%- comment -%} ============ BREADCRUMB + TOPIC HERO ============ {%- endcomment -%}
-  <section class="ka-blog-section--tight">
+  <section class="ka-blog-section--tight" id="overview">
     <div class="ka-blog-container">
       <div class="ka-blog-breadcrumb">
         <a href="{{ blog.url }}">Journal</a>
