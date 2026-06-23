@@ -320,85 +320,63 @@
     var outer = document.querySelector('.ka-blog-topic-carousel-outer');
     if (!outer) return;
 
-    var container = outer.querySelector('.ka-blog-topic-carousel-container');
-    var dots = outer.querySelectorAll('.ka-blog-topic-carousel-dots .dot');
+    var track = outer.querySelector('.ka-blog-topic-carousel-track');
     var decks = outer.querySelectorAll('.ka-blog-topic-deck');
-    if (!container || !decks.length) return;
+    if (!track || !decks.length) return;
 
-    // Handle dot clicks
-    dots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
-        var index = parseInt(dot.getAttribute('data-deck-target'));
-        if (isNaN(index)) return;
-        
-        var targetDeck = decks[index];
-        if (targetDeck) {
-          container.scrollTo({
-            left: targetDeck.offsetLeft,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
+    function handleScroll() {
+      if (window.innerWidth < 980) {
+        track.style.transform = '';
+        decks.forEach(function (deck) {
+          deck.classList.remove('active');
+        });
+        return;
+      }
 
-    // Sync dots on scroll
-    function syncDots() {
-      var scrollLeft = container.scrollLeft;
-      var containerWidth = container.clientWidth || 1;
-      
-      // Calculate which deck is currently most visible
-      var activeIndex = Math.round(scrollLeft / containerWidth);
-      if (activeIndex < 0) activeIndex = 0;
+      var rect = outer.getBoundingClientRect();
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var outerTop = rect.top + scrollTop;
+      var outerHeight = outer.offsetHeight;
+      var viewportHeight = window.innerHeight;
+
+      // Pin starts when container top meets top: 170px of viewport
+      var stickyOffset = 170;
+      var startScroll = outerTop - stickyOffset;
+      var endScroll = outerTop + outerHeight - viewportHeight;
+      var totalScrollRange = endScroll - startScroll;
+
+      if (totalScrollRange <= 0) return;
+
+      var currentScroll = scrollTop - startScroll;
+      var pct = currentScroll / totalScrollRange;
+
+      if (pct < 0) pct = 0;
+      if (pct > 1) pct = 1;
+
+      // Translate by percentage
+      var maxTranslate = (decks.length - 1) * 100;
+      var translateAmt = pct * maxTranslate;
+      track.style.transform = 'translate3d(-' + translateAmt + '%, 0, 0)';
+
+      // Set active deck for CSS transitions
+      var activeIndex = Math.floor(pct * decks.length);
       if (activeIndex >= decks.length) activeIndex = decks.length - 1;
+      if (pct === 1) activeIndex = decks.length - 1;
 
-      dots.forEach(function (dot, i) {
-        if (i === activeIndex) {
-          dot.classList.add('active');
+      decks.forEach(function (deck, index) {
+        if (index === activeIndex) {
+          deck.classList.add('active');
         } else {
-          dot.classList.remove('active');
+          deck.classList.remove('active');
         }
       });
     }
 
-    container.addEventListener('scroll', syncDots);
-
-    // Intercept wheel events on desktop to translate vertical scroll to horizontal
-    var isScrolling = false;
-    container.addEventListener('wheel', function (e) {
-      if (window.innerWidth < 980) return;
-
-      var deltaY = e.deltaY;
-      if (Math.abs(deltaY) < 10) return; // ignore minor scrolls
-
-      var scrollLeft = container.scrollLeft;
-      var maxScroll = container.scrollWidth - container.clientWidth;
-      var scrollDirection = deltaY > 0 ? 1 : -1;
-
-      var atStart = (scrollLeft <= 2 && scrollDirection === -1);
-      var atEnd = (scrollLeft >= maxScroll - 2 && scrollDirection === 1);
-
-      if (!atStart && !atEnd) {
-        e.preventDefault();
-        if (isScrolling) return;
-
-        var containerWidth = container.clientWidth || 1;
-        var currentIndex = Math.round(scrollLeft / containerWidth);
-        var targetIndex = currentIndex + scrollDirection;
-
-        if (targetIndex >= 0 && targetIndex < decks.length) {
-          isScrolling = true;
-          var targetDeck = decks[targetIndex];
-          container.scrollTo({
-            left: targetDeck.offsetLeft,
-            behavior: 'smooth'
-          });
-          
-          setTimeout(function() {
-            isScrolling = false;
-          }, 600); // 600ms matching transition time
-        }
-      }
-    }, { passive: false });
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    
+    // Initial run
+    handleScroll();
   }
 
   // ============================================================
