@@ -28,21 +28,16 @@
       {%- for related_article in related limit: 3 -%}
         {%- assign related_image = related_article.metafields.custom.hero_image.value | default: related_article.metafields.custom.hero_image | default: related_article.image -%}
         <a class="ka-article-related-card" href="{{ related_article.url }}">
-          {%- if related_image -%}
-            <div class="ka-article-related-card__image">
+          <div class="ka-article-related-card__image">
+            {%- if related_image != blank -%}
               <img
                 src="{{ related_image | image_url: width: 600 }}"
                 alt="{{ related_image.alt | default: related_article.title | escape }}"
                 loading="lazy"
                 width="600"
-                {%- if related_image.aspect_ratio -%}
-                  height="{{ 600 | divided_by: related_image.aspect_ratio | round }}"
-                {%- else -%}
-                  height="400"
-                {%- endif -%}
               >
-            </div>
-          {%- endif -%}
+            {%- endif -%}
+          </div>
           <div class="ka-article-related-card__body">
             <h3>{{ related_article.title }}</h3>
             <span class="ka-blog-read-more">{{ read_label }}</span>
@@ -64,21 +59,16 @@
           {%- if shares_tag -%}
             {%- assign related_image = blog_article.metafields.custom.hero_image.value | default: blog_article.metafields.custom.hero_image | default: blog_article.image -%}
             <a class="ka-article-related-card" href="{{ blog_article.url }}">
-              {%- if related_image -%}
-                <div class="ka-article-related-card__image">
+              <div class="ka-article-related-card__image">
+                {%- if related_image != blank -%}
                   <img
                     src="{{ related_image | image_url: width: 600 }}"
                     alt="{{ related_image.alt | default: blog_article.title | escape }}"
                     loading="lazy"
                     width="600"
-                    {%- if related_image.aspect_ratio -%}
-                      height="{{ 600 | divided_by: related_image.aspect_ratio | round }}"
-                    {%- else -%}
-                      height="400"
-                    {%- endif -%}
                   >
-                </div>
-              {%- endif -%}
+                {%- endif -%}
+              </div>
               <div class="ka-article-related-card__body">
                 <h3>{{ blog_article.title }}</h3>
                 <span class="ka-blog-read-more">{{ read_label }}</span>
@@ -94,21 +84,16 @@
           {%- if blog_article.id != article.id -%}
             {%- assign related_image = blog_article.metafields.custom.hero_image.value | default: blog_article.metafields.custom.hero_image | default: blog_article.image -%}
             <a class="ka-article-related-card" href="{{ blog_article.url }}">
-              {%- if related_image -%}
-                <div class="ka-article-related-card__image">
+              <div class="ka-article-related-card__image">
+                {%- if related_image != blank -%}
                   <img
                     src="{{ related_image | image_url: width: 600 }}"
                     alt="{{ related_image.alt | default: blog_article.title | escape }}"
                     loading="lazy"
                     width="600"
-                    {%- if related_image.aspect_ratio -%}
-                      height="{{ 600 | divided_by: related_image.aspect_ratio | round }}"
-                    {%- else -%}
-                      height="400"
-                    {%- endif -%}
                   >
-                </div>
-              {%- endif -%}
+                {%- endif -%}
+              </div>
               <div class="ka-article-related-card__body">
                 <h3>{{ blog_article.title }}</h3>
                 <span class="ka-blog-read-more">{{ read_label }}</span>

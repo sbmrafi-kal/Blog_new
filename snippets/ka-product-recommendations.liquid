@@ -15,7 +15,7 @@
   <section class="ka-article-products" id="products" aria-labelledby="ka-products-title">
     <p class="ka-blog-eyebrow">{{ products_eyebrow }}</p>
     <h2 id="ka-products-title">{{ heading }}</h2>
-    <p class="ka-blog-muted" style="margin: 12px 0 22px;">{{ description }}</p>
+    <p class="ka-blog-muted" style="margin: 6px 0 10px;">{{ description }}</p>
     <div class="ka-article-product-grid">
       {%- for product in products limit: 3 -%}
         {%- render 'product-card', product: product, is_alternative: true -%}

@@ -5,18 +5,21 @@
 {% endcomment %}
 
 {%- liquid
-  assign topic_title = topic.title | default: topic
-  assign topic_image = topic.image
-  assign topic_tag = topic.article_filter_tag | default: topic_title | handleize
-  assign topic_count_label = topic.cta_label | default: 'Explore topic'
+  assign topic_title = topic.title.value | default: topic.title | default: topic
+  assign topic_image = topic.image.value | default: topic.image
+  assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title | handleize
+  assign topic_count_label = topic.cta_label.value | default: topic.cta_label | default: 'Explore topic'
 -%}
 
 <a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag }}">
+  {%- if topic_image != blank -%}
+    <div class="ka-blog-image-card__bg" style="background-image: url('{{ topic_image | image_url: width: 600 }}');"></div>
+  {%- else -%}
+    <div class="ka-blog-image-card__bg" style="background-image: url('https://stage.dhyanhq.com/art/ayurveda/{{ topic.system.handle }}.webp');"></div>
+  {%- endif -%}
+  <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
   <div class="ka-blog-image-card__content">
     <h3>{{ topic_title }}</h3>
-    {%- if topic.description != blank -%}
-      <p class="ka-blog-topic-count">{{ topic.description | truncate: 80 }}</p>
-    {%- endif -%}
     <span class="ka-blog-read-more">{{ topic_count_label }}</span>
   </div>
 </a>

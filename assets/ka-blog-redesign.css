@@ -1,11 +1,55 @@
 /*
  * ka-blog-redesign.css
  * Kerala Ayurveda Blog Redesign — Scoped styles
- * Uses Current/ brand tokens: Amstir-Regular, Avenir, #1e4b3c, #FDFFFB
+ * Uses Current/ brand tokens: Marcellus, Figtree, #1e4b3c, #FDFFFB
  * All classes prefixed with .ka-blog- to avoid theme conflicts
  *
  * Breakpoints: mobile < 640px | tablet 640-979px | desktop >= 980px
  */
+
+@font-face {
+  font-family: "Marcellus";
+  src: url('//keralaayurveda.com/cdn/shop/files/Marcellus-Regular.woff2?v=11203931607446778887') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//keralaayurveda.com/cdn/fonts/figtree/figtree_n4.3c0838aba1701047e60be6a99a1b0a40ce9b8419.woff2") format("woff2"),
+       url("//keralaayurveda.com/cdn/fonts/figtree/figtree_n4.c0575d1db21fc3821f17fd6617d3dee552312137.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Figtree";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("//keralaayurveda.com/cdn/fonts/figtree/figtree_i4.89f7a4275c064845c304a4cf8a4a586060656db2.woff2") format("woff2"),
+       url("//keralaayurveda.com/cdn/fonts/figtree/figtree_i4.6f955aaaafc55a22ffc1f32ecf3756859a5ad3e2.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Figtree";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//keralaayurveda.com/cdn/fonts/figtree/figtree_n7.2fd9bfe01586148e644724096c9d75e8c7a90e55.woff2") format("woff2"),
+       url("//keralaayurveda.com/cdn/fonts/figtree/figtree_n7.ea05de92d862f9594794ab281c4c3a67501ef5fc.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Figtree";
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("//keralaayurveda.com/cdn/fonts/figtree/figtree_i7.06add7096a6f2ab742e09ec7e498115904eda1fe.woff2") format("woff2"),
+       url("//keralaayurveda.com/cdn/fonts/figtree/figtree_i7.ee584b5fcaccdbb5518c0228158941f8df81b101.woff") format("woff");
+}
 
 :root {
   --header-height: 72px;
@@ -31,9 +75,9 @@
   --ka-orange-2: #2f5d3d;
   --ka-deep-orange: #1e4b3c;
   --ka-gold: #b8d29b;
-  --ka-cta-bg: #FBBF24;
-  --ka-cta-bg-hover: #e0a91c;
-  --ka-cta-text: #191D18;
+  --ka-cta-bg: #b8d29b;
+  --ka-cta-bg-hover: #a7c18a;
+  --ka-cta-text: #1e4b3c;
   --ka-body-text: #383938;
   --ka-callout-bg: #f6f7f2;
   --ka-callout-border: #b8d29b;
@@ -44,12 +88,12 @@
   --ka-radius-md: 18px;
   --ka-max-width: 1180px;
 
-  --ka-font-heading: 'Amstir-Regular';
-  --ka-font-body: 'Avenir-Roman';
-  --ka-font-medium: 'Avenir-Medium';
-  --ka-font-heavy: 'Avenir-Heavy';
-  --ka-font-black: 'Avenir-Black';
-  --ka-font-light: 'Avenir-Light';
+  --ka-font-heading: 'Marcellus', serif;
+  --ka-font-body: 'Figtree', sans-serif;
+  --ka-font-medium: 'Figtree', sans-serif;
+  --ka-font-heavy: 'Figtree', sans-serif;
+  --ka-font-black: 'Figtree', sans-serif;
+  --ka-font-light: 'Figtree', sans-serif;
 }
 
 /* =============================================================
@@ -742,9 +786,19 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
 .ka-article-content {
   max-width: 790px;
+  font-family: var(--ka-font-body);
 }
 
 .ka-article-content > * + * { margin-top: 26px; }
+
+.ka-article-content h1,
+.ka-article-content h2,
+.ka-article-content h3,
+.ka-article-content h4,
+.ka-article-content h5,
+.ka-article-content h6 {
+  font-family: var(--ka-font-heading);
+}
 
 .ka-article-content h2 {
   font-size: clamp(28px, 3vw, 40px);
@@ -756,6 +810,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   color: var(--ka-body-text);
   font-size: 18px;
   line-height: 1.78;
+  font-family: var(--ka-font-body);
 }
 
 .ka-article-content ul { padding-left: 24px; }
@@ -793,6 +848,9 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 .ka-article-sidebar {
   position: sticky;
   top: calc(var(--header-height, 60px) + 80px);
+}
+
+.ka-article-toc-card {
   border: 1px solid var(--ka-line);
   background: #FDFFFB;
   border-radius: var(--ka-radius-lg);
@@ -1579,44 +1637,60 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     width: 100%;
     position: relative;
   }
-
   .ka-blog-topic-carousel-track {
-    display: flex;
+    position: relative;
+    display: block !important;
     width: 100%;
-    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 630px !important;
   }
 
   .ka-blog-topic-deck {
-    flex: 0 0 100%;
-    width: 100%;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 22px;
     padding: 10px 0 20px 0;
     box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 1;
   }
 
+  .ka-blog-topic-deck.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 2;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
   /* Card stagger animations within decks */
   .ka-blog-topic-deck .ka-blog-image-card {
-    opacity: 0.15;
-    transform: translate3d(70px, 0, 0) scale(0.96);
-    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s ease;
+    opacity: 0;
+    transform: translate3d(40px, 0, 0) scale(0.97);
+    transition: none; /* Instant hide/reset when inactive to prevent overlap */
   }
 
   .ka-blog-topic-deck.active .ka-blog-image-card {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
   }
 
-  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(1) { transition-delay: 0s; }
-  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(2) { transition-delay: 0.04s; }
-  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(3) { transition-delay: 0.08s; }
-  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(4) { transition-delay: 0.12s; }
-  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(5) { transition-delay: 0.16s; }
-  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(6) { transition-delay: 0.2s; }
-  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(7) { transition-delay: 0.24s; }
-  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(8) { transition-delay: 0.28s; }
+  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(1) { transition-delay: 0.05s; }
+  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(2) { transition-delay: 0.09s; }
+  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(3) { transition-delay: 0.13s; }
+  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(4) { transition-delay: 0.17s; }
+  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(5) { transition-delay: 0.21s; }
+  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(6) { transition-delay: 0.25s; }
+  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(7) { transition-delay: 0.29s; }
+  .ka-blog-topic-deck.active .ka-blog-image-card:nth-child(8) { transition-delay: 0.33s; }
 }
 
 /* =============================================================
@@ -1666,6 +1740,45 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     transform: none !important;
     transition: none !important;
   }
+
+  /* Care paths grid overrides */
+  .ka-blog-path-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    border: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
+  .ka-blog-path-row {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: white !important;
+    border: 1px solid var(--ka-line) !important;
+    border-radius: var(--ka-radius-lg) !important;
+    padding: 18px !important;
+    height: 100% !important;
+    grid-template-columns: none !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid var(--ka-line) !important;
+  }
+
+  .ka-blog-path-row h3 {
+    font-size: 16px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .ka-blog-path-row .ka-blog-muted {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+
+  .ka-blog-path-tags {
+    margin-top: 12px !important;
+    text-align: left !important;
+  }
 }
 
 @media (max-width: 639px) {
@@ -1702,3 +1815,182 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
 }
 
+/* Editorial Callout styling */
+.editor-callout {
+  border-left: 4px solid #D27449 !important;
+  background: #FFF9EE !important;
+  padding: 22px !important;
+  border-radius: 18px !important;
+  margin: 30px 0 !important;
+}
+.editor-callout b {
+  font-family: var(--ka-font-heavy) !important;
+  color: #D27449 !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+}
+.editor-callout p {
+  margin: 0 !important;
+  color: var(--ka-ink) !important;
+  font-family: var(--ka-font-body) !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+/* Dates and Share row styling (High-contrast for dark background) */
+.ka-article-dates-share {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .ka-article-dates-share {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.ka-article-dates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ka-article-dates span b {
+  color: #ffffff;
+}
+
+.ka-article-date-sep {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: normal;
+}
+
+.ka-article-share {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ka-article-share a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.ka-article-share a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.ka-article-share svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Two-column Hero Card Grid layout */
+.ka-article-hero__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  width: 100%;
+  align-items: center;
+}
+
+@media (min-width: 980px) {
+  .ka-article-hero__content {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.ka-article-hero__image-container {
+  width: 100%;
+  border-radius: var(--ka-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ka-article-hero__image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 380px;
+}
+
+.ka-article-hero__image-caption {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+  margin: 8px 12px;
+  text-align: left;
+}
+
+/* FAQ wrapper overrides */
+.ka-article-faq-wrapper {
+  display: block !important;
+  margin-top: 32px !important;
+}
+
+/* Redesign Spacing Adjustments */
+
+/* Reduce gap after titles for each section in individual article page */
+.ka-article-summary-grid {
+  margin-top: 8px !important;
+}
+.ka-article-glossary-grid {
+  margin-top: 8px !important;
+}
+.ka-article-sources ol {
+  margin-top: 6px !important;
+}
+.ka-article-faq details:first-of-type {
+  margin-top: 8px !important;
+}
+.ka-article-product-grid {
+  margin-top: 8px !important;
+}
+
+/* Increase gap slightly after a heading in paragraph content of article */
+.ka-article-body h2 {
+  margin-top: 48px !important;
+  margin-bottom: 28px !important;
+}
+.ka-article-body h3 {
+  margin-top: 36px !important;
+  margin-bottom: 22px !important;
+}
+.ka-article-body h4 {
+  margin-top: 28px !important;
+  margin-bottom: 18px !important;
+}
+.ka-article-body h2 + *,
+.ka-article-body h3 + *,
+.ka-article-body h4 + * {
+  margin-top: 0 !important;
+}
+
+/* Spacing adjustments for related articles ("More from Ayurveda") */
+#related.ka-blog-section--tight {
+  padding: 0 !important;
+  margin-top: 24px !important;
+  margin-bottom: 0 !important;
+}
+#related .ka-blog-section-head {
+  margin-bottom: 10px !important;
+}

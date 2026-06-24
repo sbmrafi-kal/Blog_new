@@ -82,23 +82,6 @@
             {%- for care_path in care_paths -%}
               {%- render 'ka-care-path-card', care_path: care_path, blog: selected_blog -%}
             {%- endfor -%}
-          {%- else -%}
-            {%- comment -%} Fallback: render from section blocks {%- endcomment -%}
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'care_path' -%}
-                <a class="ka-blog-path-row" href="{{ selected_blog.url }}/tagged/{{ block.settings.tag | handleize }}" {{ block.shopify_attributes }}>
-                  <div>
-                    <h3>{{ block.settings.title }}</h3>
-                    {%- if block.settings.subtitle != blank -%}
-                      <p class="ka-blog-muted">{{ block.settings.subtitle }}</p>
-                    {%- endif -%}
-                  </div>
-                  <div class="ka-blog-path-tags">
-                    <span class="ka-blog-path-cta">{{ block.settings.cta_label | default: 'Explore' }} →</span>
-                  </div>
-                </a>
-              {%- endif -%}
-            {%- endfor -%}
           {%- endif -%}
         </div>
       </div>
@@ -107,10 +90,7 @@
 
   {%- comment -%} ============ FEATURED ARTICLE ============ {%- endcomment -%}
   {%- liquid
-    assign featured_article = selected_blog.metafields.custom.featured_article
-    if featured_article == blank
-      assign featured_article = selected_blog.articles.first
-    endif
+    assign featured_article = selected_blog.metafields.custom.featured_article.value | default: selected_blog.metafields.custom.featured_article
   -%}
   {%- if featured_article -%}
     <section class="ka-blog-section--tight">
@@ -129,57 +109,32 @@
   {%- comment -%} ============ TOPICS GRID ============ {%- endcomment -%}
   <section class="ka-blog-section" id="topics">
     <div class="ka-blog-container">
-      <div class="ka-blog-section-head">
-        <div>
-          <p class="ka-blog-eyebrow">{{ selected_blog.metafields.custom.topics_eyebrow | default: 'Browse by topic' }} <span class="ka-hindi">{{ selected_blog.metafields.custom.topics_eyebrow_hindi | default: '· विषय' }}</span></p>
-          <h2>{{ selected_blog.metafields.custom.topics_title | default: 'Topics' }}</h2>
-        </div>
-      </div>
-
       <div class="ka-blog-topic-carousel-outer">
         <div class="ka-blog-topic-sticky-wrap">
+          <div class="ka-blog-section-head" style="margin-bottom: 24px;">
+            <div>
+              <p class="ka-blog-eyebrow">{{ selected_blog.metafields.custom.topics_eyebrow | default: 'Browse by topic' }} <span class="ka-hindi">{{ selected_blog.metafields.custom.topics_eyebrow_hindi | default: '· विषय' }}</span></p>
+              <h2>{{ selected_blog.metafields.custom.topics_title | default: 'Topics' }}</h2>
+            </div>
+          </div>
           <div class="ka-blog-topic-carousel-container">
             <div class="ka-blog-topic-carousel-track">
               {%- liquid
                 assign topics = selected_blog.metafields.custom.topics.value
-                assign total_topics = topics.size
                 assign batch_size = 8
               -%}
-              {%- if topics != blank and total_topics > 0 -%}
-                {%- for i in (0..2) -%}
-                  {%- assign offset = i | times: batch_size -%}
-                  {%- if offset < total_topics -%}
-                    <div class="ka-blog-topic-deck" data-deck-index="{{ i }}">
-                      {%- for j in (0..7) -%}
-                        {%- assign index = offset | plus: j -%}
-                        {%- if index < total_topics -%}
-                          {%- render 'ka-topic-card', topic: topics[index], blog: selected_blog -%}
-                        {%- endif -%}
-                      {%- endfor -%}
-                    </div>
+              {%- if topics != blank and topics.size > 0 -%}
+                {%- for topic in topics -%}
+                  {%- assign modulo = forloop.index0 | modulo: batch_size -%}
+                  {%- if modulo == 0 -%}
+                    {%- assign deck_index = forloop.index0 | divided_by: batch_size -%}
+                    {%- if forloop.index0 > 0 -%}
+                      </div>
+                    {%- endif -%}
+                    <div class="ka-blog-topic-deck" data-deck-index="{{ deck_index }}">
                   {%- endif -%}
-                {%- endfor -%}
-              {%- else -%}
-                {%- comment -%} Fallback: render from blog tags grouped by 8 {%- endcomment -%}
-                {%- assign fallback_tags = selected_blog.all_tags -%}
-                {%- assign total_fallbacks = fallback_tags.size -%}
-                {%- for i in (0..2) -%}
-                  {%- assign offset = i | times: batch_size -%}
-                  {%- if offset < total_fallbacks -%}
-                    <div class="ka-blog-topic-deck" data-deck-index="{{ i }}">
-                      {%- for j in (0..7) -%}
-                        {%- assign index = offset | plus: j -%}
-                        {%- if index < total_fallbacks -%}
-                          {%- assign tag = fallback_tags[index] -%}
-                          <a class="ka-blog-image-card" href="{{ selected_blog.url }}/tagged/{{ tag | handleize }}">
-                            <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
-                            <div class="ka-blog-image-card__content">
-                              <h3>{{ tag }}</h3>
-                              <span class="ka-blog-read-more">Explore topic</span>
-                            </div>
-                          </a>
-                        {%- endif -%}
-                      {%- endfor -%}
+                  {%- render 'ka-topic-card', topic: topic, blog: selected_blog -%}
+                  {%- if forloop.last -%}
                     </div>
                   {%- endif -%}
                 {%- endfor -%}

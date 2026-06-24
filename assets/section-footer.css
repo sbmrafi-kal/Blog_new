@@ -233,9 +233,7 @@
 }
 
 .theme-footer-tagline-p br {
-  display: block;
-  content: "";
-  margin-bottom: 0.35em;
+  display: inline;
 }
 
 .theme-footer-decoration {
@@ -702,4 +700,36 @@
     padding-left: 48px !important;
     padding-right: 48px !important;
   }
+}
+
+/* Centering and font family overrides for custom footer */
+.theme-footer,
+.theme-footer-column__title,
+.theme-footer-list a,
+.theme-footer-social__label,
+.theme-footer-bottom__copy,
+.theme-footer-bottom__links a {
+  font-family: 'Avenir', sans-serif !important;
+}
+
+.theme-footer-tagline-wrapper,
+.theme-footer-tagline-content {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+}
+
+.theme-footer-tagline-empty {
+  display: none !important;
+}
+
+.theme-footer-tagline-p {
+  font-family: 'Amstir', serif !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  display: block !important;
+  max-width: 800px !important;
+  width: 100% !important;
 }

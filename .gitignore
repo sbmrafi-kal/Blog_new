@@ -7,3 +7,4 @@ docs/
 *.log
 node_modules/
 Insertion/
+scratch/

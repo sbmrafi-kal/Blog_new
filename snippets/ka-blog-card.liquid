@@ -11,18 +11,20 @@
   assign dek = card_article.metafields.custom.dek | default: card_article.excerpt_or_content | strip_html | truncate: 120
   assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
   assign read_article_label = blog.metafields.custom.read_article_label | default: 'Read article'
+
+  # Image resolution order: metafield custom.hero_image, standard article image, or fallback
+  assign card_image = card_article.metafields.custom.hero_image.value | default: card_article.metafields.custom.hero_image | default: card_article.image
 -%}
 
 <a class="ka-blog-card" href="{{ card_article.url }}">
   <div class="ka-blog-card__image-container">
-    {%- if card_article.image -%}
+    {%- if card_image != blank -%}
       <img
         class="ka-blog-card__img"
-        src="{{ card_article.image | image_url: width: 800 }}"
-        alt="{{ card_article.image.alt | escape }}"
+        src="{{ card_image | image_url: width: 800 }}"
+        alt="{{ card_image.alt | default: card_article.title | escape }}"
         loading="lazy"
         width="800"
-        height="{{ 800 | divided_by: card_article.image.aspect_ratio | round }}"
       >
     {%- else -%}
       {%- comment -%} Fallback to a mock image based on article title length modulo {%- endcomment -%}

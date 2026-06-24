@@ -158,7 +158,7 @@
     assign show_breadcrumbs = false
   elsif request.page_type == 'blog' and current_tags == blank
     assign show_breadcrumbs = false
-  elsif request.page_type == 'article'
+  elsif request.page_type == 'search'
     assign show_breadcrumbs = false
   endif
 -%}
@@ -168,7 +168,7 @@
   <div class="theme-header-custom__breadcrumbs" aria-label="Breadcrumb">
       {%- if request.page_type == 'blog' or request.page_type == 'article' -%}
         <div class="ka-blog-breadcrumb" style="display: flex; align-items: center; gap: 8px; margin: 0; background: transparent; padding: 0; border: 0; box-shadow: none;">
-          <a href="{{ blog.url }}">Journal</a>
+          <a href="{{ blog.url }}">journal</a>
           <span>/</span>
           {%- if request.page_type == 'blog' and current_tags -%}
             {%- liquid
@@ -185,14 +185,23 @@
               endif
             -%}
             {%- if current_tags.size > 1 -%}
-              <a href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">{{ topic_title }}</a>
+              <a href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">{{ topic_title | downcase }}</a>
               <span>/</span>
-              <span class="theme-header-custom__breadcrumb-current">{{ current_tags | last }}</span>
+              <span class="theme-header-custom__breadcrumb-current">{{ current_tags | last | downcase }}</span>
             {%- else -%}
-              <span class="theme-header-custom__breadcrumb-current">{{ topic_title }}</span>
+              <span class="theme-header-custom__breadcrumb-current">{{ topic_title | downcase }}</span>
             {%- endif -%}
           {%- elsif request.page_type == 'article' -%}
-            <span class="theme-header-custom__breadcrumb-current">{{ article.title }}</span>
+            {%- liquid
+              assign topic = article.metafields.custom.topic.value
+              assign topic_title = topic.title.value | default: topic.title | default: article.metafields.custom.category_label.value | default: article.metafields.custom.category_label | default: article.tags.first
+              assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title | handleize
+            -%}
+            {%- if topic_title != blank -%}
+              <a href="{{ blog.url }}/tagged/{{ topic_tag }}">{{ topic_title | downcase }}</a>
+              <span>/</span>
+            {%- endif -%}
+            <span class="theme-header-custom__breadcrumb-current">{{ article.title | downcase }}</span>
           {%- endif -%}
         </div>
       {%- else -%}

@@ -369,7 +369,7 @@
 
       // Pin starts when container top meets top: 170px of viewport
       var stickyOffset = 170;
-      var startScroll = outerTop - stickyOffset;
+      var startScroll = outerTop - stickyOffset - 50;
       var endScroll = outerTop + outerHeight - viewportHeight;
       var totalScrollRange = endScroll - startScroll;
 
@@ -381,10 +381,8 @@
       if (pct < 0) pct = 0;
       if (pct > 1) pct = 1;
 
-      // Translate by percentage
-      var maxTranslate = (decks.length - 1) * 100;
-      var translateAmt = pct * maxTranslate;
-      track.style.transform = 'translate3d(-' + translateAmt + '%, 0, 0)';
+      // No horizontal translation on desktop (cross-fade handles deck switching)
+      track.style.transform = 'none';
 
       // Set active deck for CSS transitions
       var activeIndex = Math.floor(pct * decks.length);

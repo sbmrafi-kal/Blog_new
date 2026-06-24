@@ -14,6 +14,9 @@
   assign read_full_label = blog.metafields.custom.read_full_label | default: 'Read full article'
   assign by_label = blog.metafields.custom.by_label | default: 'By'
   assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
+
+  # Image resolution order: metafield custom.hero_image, standard article image, or fallback
+  assign featured_image = featured.metafields.custom.hero_image.value | default: featured.metafields.custom.hero_image | default: featured.image
 -%}
 
 <a class="ka-blog-feature-card" href="{{ featured.url }}">
@@ -45,13 +48,12 @@
     <span class="ka-blog-read-more">{{ read_full_label }}</span>
   </div>
   <div class="ka-blog-feature-card__image">
-    {%- if featured.image -%}
+    {%- if featured_image != blank -%}
       <img
-        src="{{ featured.image | image_url: width: 1200 }}"
-        alt="{{ featured.image.alt | escape }}"
+        src="{{ featured_image | image_url: width: 1200 }}"
+        alt="{{ featured_image.alt | default: featured.title | escape }}"
         loading="lazy"
         width="1200"
-        height="{{ 1200 | divided_by: featured.image.aspect_ratio | round }}"
       >
     {%- else -%}
       {%- comment -%} Fallback to a mock image based on article title length modulo {%- endcomment -%}

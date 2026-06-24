@@ -2,6 +2,7 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-search.css' | asset_url | stylesheet_tag }}
+{{ 'ka-blog-redesign.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
   {{ 'component-facets.css' | asset_url | stylesheet_tag }}
@@ -21,7 +22,7 @@
 
   .template-search__search {
     margin: 0 auto 3.5rem;
-    max-width: 74.1rem;
+    max-width: 600px !important;
   }
 
   .template-search__search .search {
@@ -40,6 +41,104 @@
 
   .search__button .icon {
     height: 1.8rem;
+  }
+
+  /* Redesign Search Page Styles */
+  .template-search__header h1 {
+    font-family: var(--ka-font-heading) !important;
+    color: var(--ka-green) !important;
+    font-size: clamp(32px, 5vw, 48px) !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+  }
+
+  .template-search__search .search .field {
+    border-radius: 99px !important;
+    border: 1px solid var(--ka-line) !important;
+    background: #FDFFFB !important;
+    box-shadow: var(--ka-shadow-soft) !important;
+    overflow: hidden;
+    height: 52px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .template-search__search .search .field:after,
+  .template-search__search .search .field:before {
+    display: none !important;
+  }
+
+  .template-search__search .search .field__input {
+    font-family: var(--ka-font-body) !important;
+    color: var(--ka-ink) !important;
+    font-size: 16px !important;
+    padding-left: 24px !important;
+    padding-right: 80px !important;
+    height: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  .template-search__search .search .field__label {
+    left: 24px !important;
+    font-family: var(--ka-font-body) !important;
+    font-size: 14px !important;
+    color: var(--ka-muted) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    transition: all 0.2s ease !important;
+    pointer-events: none !important;
+  }
+
+  .template-search__search .search .field__input:focus ~ .field__label,
+  .template-search__search .search .field__input:not(:placeholder-shown) ~ .field__label {
+    top: 15% !important;
+    font-size: 10px !important;
+    opacity: 0.7 !important;
+  }
+
+  .template-search__search .search .field__button {
+    background: var(--ka-cta-bg) !important;
+    color: var(--ka-cta-text) !important;
+    border-radius: 0 !important;
+    transition: background 0.2s !important;
+    height: 100% !important;
+    width: 60px !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    border: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .template-search__search .search .field__button:hover {
+    background: var(--ka-cta-bg-hover) !important;
+  }
+
+  .template-search__search .search .field__button svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: var(--ka-cta-text) !important;
+    fill: currentColor !important;
+  }
+
+  .template-search__search .search .reset__button {
+    right: 60px !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    border: none !important;
+    color: var(--ka-muted) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
   }
 </style>
 
@@ -64,15 +163,16 @@
 {%- endstyle -%}
 
 {% paginate search.results by 24 %}
-  <div class="template-search{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding">
-    <div class="template-search__header page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      <h1 class="h2 center">
-        {%- if search.performed -%}
-          {{- 'templates.search.title' | t -}}
-        {%- else -%}
-          {{- 'general.search.search' | t -}}
-        {%- endif -%}
-      </h1>
+  <div class="template-search{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding ka-blog-wrapper">
+    <div class="ka-blog-container">
+      <div class="template-search__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}" style="text-align: center; margin-bottom: 40px;">
+        <h1 style="margin-bottom: 12px; font-family: var(--ka-font-heading); color: var(--ka-green);">
+          {%- if search.performed -%}
+            {{- 'templates.search.title' | t -}}
+          {%- else -%}
+            {{- 'general.search.search' | t -}}
+          {%- endif -%}
+        </h1>
       <div class="template-search__search">
         {%- if settings.predictive_search_enabled -%}
           <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
@@ -252,74 +352,91 @@
               data-id="{{ section.id }}"
             >
               <div class="loading-overlay gradient"></div>
-              <ul
-                class="grid product-grid  grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
-                role="list"
-              >
-                {%- assign skip_card_product_styles = false -%}
-                {%- for item in search.results -%}
-                  {% assign lazy_load = false %}
-                  {%- if forloop.index > 2 -%}
-                    {%- assign lazy_load = true -%}
-                  {%- endif -%}
 
-                  <li
-                    class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                    {% if settings.animations_reveal_on_scroll %}
-                      data-cascade
-                    {% endif %}
-                  >
-                    {%- case item.object_type -%}
-                      {%- when 'product' -%}
-                        {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
-                        {% render 'card-product',
-                          card_product: item,
-                          media_aspect_ratio: section.settings.image_ratio,
-                          image_shape: section.settings.image_shape,
-                          show_secondary_image: section.settings.show_secondary_image,
-                          show_vendor: section.settings.show_vendor,
-                          show_rating: section.settings.show_rating,
-                          lazy_load: lazy_load,
-                          skip_styles: skip_card_product_styles,
-                          product_view_context: 'search'
-                        %}
-                        {%- assign skip_card_product_styles = true -%}
-                      {%- when 'article' -%}
-                        {% render 'article-card',
-                          article: item,
-                          show_image: true,
-                          show_date: section.settings.article_show_date,
-                          show_author: section.settings.article_show_author,
-                          show_badge: true,
-                          media_aspect_ratio: 1,
-                          lazy_load: lazy_load
-                        %}
-                      {%- when 'page' -%}
-                        <div class="article-card-wrapper card-wrapper underline-links-hover">
-                          <div
-                            class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}"
-                            style="--ratio-percent: 100%;"
-                          >
-                            <div class="card__content">
-                              <div class="card__information">
-                                <h3 class="card__heading">
-                                  <a href="{{ item.url }}" class="full-unstyled-link">
-                                    {{ item.title | truncate: 50 | escape }}
-                                  </a>
-                                </h3>
-                              </div>
-                              <div class="card__badge {{ settings.badge_position }}">
-                                <span class="badge color-{{ settings.color_schemes | first }}">
-                                  {{- 'templates.search.page' | t -}}
-                                </span>
+              {%- liquid
+                assign has_articles = false
+                assign has_others = false
+                for item in search.results
+                  if item.object_type == 'article'
+                    assign has_articles = true
+                  else
+                    assign has_others = true
+                  endif
+                endfor
+              -%}
+
+              {%- if has_articles -%}
+                <div class="ka-blog-article-grid" style="margin-bottom: 40px;">
+                  {%- for item in search.results -%}
+                    {%- if item.object_type == 'article' -%}
+                      {%- render 'ka-blog-card', article: item -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+
+              {%- if has_others -%}
+                <ul
+                  class="grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
+                  role="list"
+                >
+                  {%- assign skip_card_product_styles = false -%}
+                  {%- for item in search.results -%}
+                    {%- if item.object_type != 'article' -%}
+                      {% assign lazy_load = false %}
+                      {%- if forloop.index > 2 -%}
+                        {%- assign lazy_load = true -%}
+                      {%- endif -%}
+
+                      <li
+                        class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                        {% if settings.animations_reveal_on_scroll %}
+                          data-cascade
+                        {% endif %}
+                      >
+                        {%- case item.object_type -%}
+                          {%- when 'product' -%}
+                            {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
+                            {% render 'card-product',
+                              card_product: item,
+                              media_aspect_ratio: section.settings.image_ratio,
+                              image_shape: section.settings.image_shape,
+                              show_secondary_image: section.settings.show_secondary_image,
+                              show_vendor: section.settings.show_vendor,
+                              show_rating: section.settings.show_rating,
+                              lazy_load: lazy_load,
+                              skip_styles: skip_card_product_styles,
+                              product_view_context: 'search'
+                            %}
+                            {%- assign skip_card_product_styles = true -%}
+                          {%- when 'page' -%}
+                            <div class="article-card-wrapper card-wrapper underline-links-hover">
+                              <div
+                                class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}"
+                                style="--ratio-percent: 100%;"
+                              >
+                                <div class="card__content">
+                                  <div class="card__information">
+                                    <h3 class="card__heading">
+                                      <a href="{{ item.url }}" class="full-unstyled-link">
+                                        {{ item.title | truncate: 50 | escape }}
+                                      </a>
+                                    </h3>
+                                  </div>
+                                  <div class="card__badge {{ settings.badge_position }}">
+                                    <span class="badge color-{{ settings.color_schemes | first }}">
+                                      {{- 'templates.search.page' | t -}}
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                    {%- endcase -%}
-                  </li>
-                {%- endfor -%}
-              </ul>
+                        {%- endcase -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
               {%- if paginate.pages > 1 -%}
                 {% render 'pagination', paginate: paginate %}
               {%- endif -%}
@@ -328,6 +445,7 @@
         </div>
       </div>
     {%- endif -%}
+    </div>
   </div>
 {% endpaginate %}
 {% if section.settings.image_shape == 'arch' %}

@@ -1,21 +1,20 @@
 {% comment %}
-  ka-article-hero.liquid — Article hero with full metadata
+  ka-article-hero.liquid — Individual article hero layout
   Usage: {% render 'ka-article-hero', article: article, blog: blog %}
 {% endcomment %}
 
 {%- liquid
   assign hero_article = article
-  assign category_label = hero_article.metafields.custom.hero_badge.value | default: hero_article.metafields.custom.hero_badge | default: hero_article.metafields.custom.category_label | default: hero_article.tags.first
-  assign dek = hero_article.metafields.custom.dek | default: hero_article.excerpt_or_content | strip_html | truncate: 200
-  assign read_time = hero_article.metafields.custom.read_time.value | default: hero_article.metafields.custom.read_time | default: hero_article.metafields.custom.read_time_minutes
+  assign category_label = hero_article.metafields.custom.category_label.value | default: hero_article.metafields.custom.category_label
+  assign dek = hero_article.metafields.custom.dek.value | default: hero_article.metafields.custom.dek | default: hero_article.excerpt_or_content | strip_html | truncate: 180
   assign author_profile = hero_article.metafields.custom.written_by_profile.value
   assign author_name = author_profile.name | default: hero_article.author
-  assign reviewer_profile = hero_article.metafields.custom.reviewed_by.value
-  assign reviewer_name = reviewer_profile.name | default: hero_article.metafields.custom.review_label.value | default: hero_article.metafields.custom.review_label
+  assign reviewer_profile = hero_article.metafields.custom.reviewed_by_profile.value
+  assign reviewer_name = reviewer_profile.name | default: hero_article.metafields.custom.reviewed_by
+  assign read_time = hero_article.metafields.custom.read_time.value | default: hero_article.metafields.custom.read_time | default: hero_article.metafields.custom.read_time_minutes
   assign last_reviewed = hero_article.metafields.custom.last_reviewed_at
   assign hero_image = hero_article.metafields.custom.hero_image | default: hero_article.image
   assign hero_caption = hero_article.metafields.custom.hero_image_caption
-  assign doctor_reviewed_label = blog.metafields.custom.doctor_reviewed_label | default: 'Doctor-reviewed'
   assign by_label = blog.metafields.custom.by_label | default: 'By'
   assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
   assign reviewed_by_prefix = blog.metafields.custom.reviewed_by_label | default: 'Reviewed by'
@@ -23,63 +22,66 @@
 -%}
 
 <article class="ka-article-hero" aria-label="Article introduction">
-  <div class="ka-article-hero__copy">
-    <div class="ka-blog-chip-row">
-      {%- if category_label != blank -%}
-        <span class="ka-blog-chip">{{ category_label }}</span>
-      {%- endif -%}
-      {%- if reviewer_name != blank -%}
-        <span class="ka-blog-chip ka-blog-chip--green">{{ doctor_reviewed_label }}</span>
-      {%- endif -%}
-    </div>
-
-    <h1>{{ hero_article.title }}</h1>
-
-    {%- if dek != blank -%}
-      <p>{{ dek }}</p>
-    {%- endif -%}
-
-    <div class="ka-article-meta-card">
-      {%- if author_name != blank -%}
-        {%- unless author_name contains 'Editorial Team' or author_name contains 'Editorial' -%}
-          <span>{{ by_label }} {{ author_name }}</span>
-        {%- endunless -%}
-      {%- endif -%}
-      {%- if read_time -%}
-        {%- if read_time contains 'min' or read_time contains 'read' -%}
-          <span data-ka-read-time>{{ read_time }}</span>
-        {%- else -%}
-          <span data-ka-read-time>{{ read_time }} {{ min_read_label }}</span>
+  <div class="ka-article-hero__content">
+    <div class="ka-article-hero__copy">
+      <div class="ka-blog-chip-row">
+        {%- if category_label != blank -%}
+          <span class="ka-blog-chip">{{ category_label }}</span>
         {%- endif -%}
-      {%- else -%}
-        <span data-ka-read-time></span>
+      </div>
+
+      <h1>{{ hero_article.title }}</h1>
+
+      {%- if dek != blank -%}
+        <p>{{ dek }}</p>
       {%- endif -%}
-      {%- if reviewer_name != blank -%}
-        <span>{{ reviewed_by_prefix }} {{ reviewer_name | replace: 'Reviewed by ', '' | replace: 'Reviewed by', '' | strip }}</span>
-      {%- endif -%}
-      {%- if last_reviewed -%}
-        <span>{{ updated_prefix }} {{ last_reviewed | date: "%B %Y" }}</span>
-      {%- else -%}
-        <span>{{ updated_prefix }} {{ hero_article.updated_at | date: "%B %Y" }}</span>
-      {%- endif -%}
+
+      {%- assign modified_date = hero_article.metafields.custom.last_reviewed_at | default: hero_article.updated_at -%}
+      {%- assign published_date = hero_article.published_at | default: hero_article.created_at -%}
+      <div class="ka-article-dates-share">
+        <div class="ka-article-dates">
+          <span><b>Last Modified Date:</b> {{ modified_date | date: "%d %b, %Y" }}</span>
+          <span class="ka-article-date-sep">|</span>
+          <span><b>Published Date:</b> {{ published_date | date: "%d %b, %Y" }}</span>
+        </div>
+        <div class="ka-article-share">
+          <span>Share</span>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ hero_article.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.8z"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ shop.url }}{{ hero_article.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ hero_article.url | url_encode }}&text={{ hero_article.title | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://api.whatsapp.com/send?text={{ hero_article.title | url_encode }}%20{{ shop.url }}{{ hero_article.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.761.459 3.479 1.332 5.006l-1.354 5.01 5.12-1.341c1.472.802 3.125 1.225 4.88 1.225 5.506 0 9.988-4.482 9.988-9.988S17.518 2 12.012 2zm-.008 17.98a7.935 7.935 0 0 1-4.04-1.103l-.29-.172-3.003.788.802-2.966-.19-.302a7.94 7.94 0 0 1-1.217-4.237c0-4.394 3.576-7.97 7.974-7.97 4.398 0 7.974 3.576 7.974 7.97s-3.576 7.97-7.974 7.97zm4.568-6.24c-.25-.124-1.478-.73-1.707-.813-.23-.083-.396-.124-.563.124-.166.25-.645.812-.79 1-.146.167-.293.188-.543.063-.25-.125-1.054-.388-2.008-1.238-.742-.662-1.243-1.48-1.389-1.73-.146-.25-.015-.385.11-.51.113-.113.25-.292.375-.438.125-.146.167-.25.25-.417.083-.167.042-.313-.02-.438-.063-.125-.563-1.354-.77-1.854-.203-.49-.41-.424-.563-.43-.146-.007-.313-.008-.479-.008-.167 0-.438.062-.667.312-.23.25-.875.855-.875 2.083s.896 2.417.996 2.55c.104.136 1.761 2.69 4.266 3.774.596.257 1.06.41 1.423.526.6.19 1.144.164 1.575.1.48-.073 1.479-.604 1.688-1.188.208-.583.208-1.083.146-1.188-.063-.104-.23-.167-.48-.292z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
+    {%- if hero_image -%}
+      <div class="ka-article-hero__image-container">
+        <img
+          src="{{ hero_image | image_url: width: 800 }}"
+          alt="{{ hero_image.alt | default: hero_article.title | escape }}"
+          loading="eager"
+          fetchpriority="high"
+          width="800"
+        >
+        {%- if hero_caption != blank -%}
+          <p class="ka-article-hero__image-caption">{{ hero_caption }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
   </div>
 </article>
-
-{%- if hero_image -%}
-  <div class="ka-article-hero-image">
-    <img
-      src="{{ hero_image | image_url: width: 1400 }}"
-      alt="{{ hero_image.alt | default: hero_article.title | escape }}"
-      loading="eager"
-      fetchpriority="high"
-      width="1400"
-      {%- if hero_image.aspect_ratio -%}
-        height="{{ 1400 | divided_by: hero_image.aspect_ratio | round }}"
-      {%- endif -%}
-    >
-    {%- if hero_caption != blank -%}
-      <p class="ka-article-hero-caption">{{ hero_caption }}</p>
-    {%- endif -%}
-  </div>
-{%- endif -%}
