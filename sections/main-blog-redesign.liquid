@@ -37,7 +37,6 @@
     </div>
   </div>
 
-  {%- comment -%} ============ HERO ============ {%- endcomment -%}
   <section class="ka-blog-hero" id="overview">
     <div class="ka-blog-container">
       <div class="ka-blog-hero-shell">
@@ -46,14 +45,43 @@
             assign hero_eyebrow = selected_blog.metafields.custom.hero_eyebrow | default: section.settings.hero_eyebrow | default: 'AYURVEDA LIBRARY'
             assign hero_title = selected_blog.metafields.custom.hero_title | default: section.settings.hero_title | default: selected_blog.title
             assign hero_subtitle = selected_blog.metafields.custom.hero_subtitle | default: section.settings.hero_subtitle | default: 'Classical Ayurvedic wisdom for herbs, digestion, immunity, skin, hair, stress, sleep, detox, and everyday wellness.'
+            assign hero_image = selected_blog.metafields.custom.hero_image.value | default: selected_blog.metafields.custom.hero_image
           -%}
           <p class="ka-blog-eyebrow">{{ hero_eyebrow }}</p>
           <h1>{{ hero_title }}</h1>
           <p class="ka-blog-lead">{{ hero_subtitle }}</p>
+          
+          {%- comment -%} Search Bar {%- endcomment -%}
+          <form action="{{ routes.search_url }}" method="get" role="search" class="ka-blog-hero-search">
+            <input type="hidden" name="type" value="article">
+            <div class="ka-blog-hero-search__field">
+              <input
+                type="search"
+                name="q"
+                placeholder="Search articles, herbs, health concerns..."
+                aria-label="Search articles"
+                required
+              >
+              <button type="submit" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+            </div>
+          </form>
+
           <div class="ka-blog-hero-actions">
             <a class="ka-blog-btn" href="#topics">{{ selected_blog.metafields.custom.hero_cta_1 | default: 'Explore topics' }}</a>
             <a class="ka-blog-btn ka-blog-btn--secondary" href="#latest">{{ selected_blog.metafields.custom.hero_cta_2 | default: 'Latest articles' }}</a>
           </div>
+        </div>
+        <div class="ka-blog-hero-image-wrap">
+          {%- if hero_image != blank -%}
+            <img src="{{ hero_image | image_url: width: 800 }}" alt="{{ hero_title | escape }}">
+          {%- else -%}
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="{{ hero_title | escape }}">
+          {%- endif -%}
         </div>
       </div>
     </div>
@@ -133,7 +161,7 @@
                     {%- endif -%}
                     <div class="ka-blog-topic-deck" data-deck-index="{{ deck_index }}">
                   {%- endif -%}
-                  {%- render 'ka-topic-card', topic: topic, blog: selected_blog -%}
+                  {%- render 'ka-topic-card', topic: topic, blog: selected_blog, index: forloop.index0 -%}
                   {%- if forloop.last -%}
                     </div>
                   {%- endif -%}

@@ -149,7 +149,10 @@
     var articleContent = document.querySelector('.ka-article-content');
     if (!articleContent) return;
 
-    var headings = articleContent.querySelectorAll('.ka-article-body h2, .ka-article-body h3');
+    var rawHeadings = articleContent.querySelectorAll('.ka-article-body h2, .ka-article-body h3');
+    var headings = Array.prototype.slice.call(rawHeadings).filter(function (heading) {
+      return !heading.closest('.ka-ingredients-container') && !heading.closest('.ka-ingredient-card');
+    });
     var sidebarToc = document.querySelector('.ka-article-sidebar');
     var mobileToc = document.querySelector('.ka-article-toc-mobile');
 
@@ -244,6 +247,11 @@
     if ('IntersectionObserver' in window) {
       var tocLinks = sidebarToc ? sidebarToc.querySelectorAll('a[href^="#"]') : [];
       var mobileTocLinks = mobileToc ? mobileToc.querySelectorAll('a[href^="#"]') : [];
+      
+      // Highlight first link as active by default
+      if (tocLinks.length > 0) tocLinks[0].classList.add('active');
+      if (mobileTocLinks.length > 0) mobileTocLinks[0].classList.add('active');
+
       var observer = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
@@ -648,7 +656,7 @@
       if (isCollapsed) {
         list.classList.remove('ka-collapsed');
         if (card) card.classList.remove('toc-is-collapsed');
-        icon.textContent = '-';
+        icon.textContent = '▼';
         list.style.maxHeight = list.scrollHeight + 'px';
         setTimeout(function () {
           list.style.maxHeight = '';
@@ -659,10 +667,81 @@
         list.offsetHeight;
         list.classList.add('ka-collapsed');
         if (card) card.classList.add('toc-is-collapsed');
-        icon.textContent = '+';
+        icon.textContent = '▲';
         list.style.maxHeight = '0px';
       }
     });
+  }
+
+  // ============================================================
+  // 11. COMMENTS — Expanding composer, formatting, popup fields
+  // ============================================================
+  function initComments() {
+    var textarea = document.getElementById('ka-comment-body');
+    var container = document.querySelector('.ka-comment-textarea-container');
+    var cancelBtn = document.querySelector('.ka-comment-btn-cancel');
+    var nextBtn = document.querySelector('.ka-comment-btn-next');
+    var popupCard = document.querySelector('.ka-comment-popup-card');
+    var popupClose = document.querySelector('.ka-comment-popup-close');
+    var formatBtns = document.querySelectorAll('.ka-comment-format-btn');
+
+    if (!textarea || !container) return;
+
+    // 1. Focus expansion
+    textarea.addEventListener('focus', function () {
+      container.classList.add('is-expanded');
+    });
+
+    // 2. Formatting Bold & Italic
+    formatBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var format = btn.getAttribute('data-format');
+        var start = textarea.selectionStart;
+        var end = textarea.selectionEnd;
+        var text = textarea.value;
+        var selected = text.substring(start, end);
+        
+        var openTag = format === 'bold' ? '<b>' : '<i>';
+        var closeTag = format === 'bold' ? '</b>' : '</i>';
+        
+        textarea.value = text.substring(0, start) + openTag + selected + closeTag + text.substring(end);
+        textarea.focus();
+        textarea.setSelectionRange(start + openTag.length, start + openTag.length + selected.length);
+      });
+    });
+
+    // 3. Cancel button action
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        textarea.value = '';
+        container.classList.remove('is-expanded');
+        if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
+      });
+    }
+
+    // 4. Next/Comment button action (triggers name/email popup)
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!textarea.value.trim()) {
+          textarea.reportValidity();
+          return;
+        }
+        if (popupCard) {
+          popupCard.classList.remove('ka-comment-popup-hidden');
+          popupCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
+
+    // 5. Popup Close action
+    if (popupClose) {
+      popupClose.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
+      });
+    }
   }
 
   // ============================================================
@@ -678,6 +757,7 @@
     initFloatingCTA();
     initAuthorReviewerToggle();
     initTocToggle();
+    initComments();
   }
 
   if (document.readyState === 'loading') {

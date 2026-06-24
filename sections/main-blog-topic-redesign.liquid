@@ -37,7 +37,6 @@
 
 <div class="ka-blog-wrapper">
 
-  {%- comment -%} ============ BREADCRUMB + TOPIC HERO ============ {%- endcomment -%}
   <section class="ka-blog-section--tight" id="overview">
     <div class="ka-blog-container">
       <article class="ka-blog-topic-hero">
@@ -51,6 +50,14 @@
           <h1>{{ topic_title }}</h1>
           {%- if topic_description != blank -%}
             <p class="ka-blog-lead">{{ topic_description }}</p>
+          {%- endif -%}
+        </div>
+        <div class="ka-blog-topic-hero__image-wrap">
+          {%- assign topic_image = topic_metaobject.image.value | default: topic_metaobject.image -%}
+          {%- if topic_image != blank -%}
+            <img src="{{ topic_image | image_url: width: 800 }}" alt="{{ topic_title | escape }}">
+          {%- else -%}
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="{{ topic_title | escape }}">
           {%- endif -%}
         </div>
       </article>

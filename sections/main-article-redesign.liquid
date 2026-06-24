@@ -120,13 +120,6 @@
           reviewed_by_label: reviewed_by_label
         -%}
 
-        {%- comment -%} Related articles {%- endcomment -%}
-        {%- render 'ka-related-articles', article: article, blog: blog -%}
-
-
-        {%- comment -%} Comments {%- endcomment -%}
-        {%- render 'ka-article-comments', article: article, blog: blog -%}
-
       </article>
 
       {%- comment -%} ===== SIDEBAR (Desktop TOC) ===== {%- endcomment -%}
@@ -134,7 +127,7 @@
         <div class="ka-article-toc-card">
           <h3 class="ka-article-toc-toggle">
             <span>{{ toc_heading }}</span>
-            <span class="ka-article-toc-icon" aria-hidden="true">-</span>
+            <span class="ka-article-toc-icon" aria-hidden="true">▼</span>
           </h3>
           <ul class="ka-article-sidebar__list" style="list-style: none; padding: 0; margin: 0;">
             {%- comment -%} Built dynamically by ka-blog-redesign.js {%- endcomment -%}
@@ -144,6 +137,16 @@
 
     </div>
   </section>
+
+  {%- comment -%} ============ RELATED ARTICLES ============ {%- endcomment -%}
+  <div class="ka-blog-container">
+    {%- render 'ka-related-articles', article: article, blog: blog -%}
+  </div>
+
+  {%- comment -%} ============ COMMENTS ============ {%- endcomment -%}
+  <div class="ka-blog-container">
+    {%- render 'ka-article-comments', article: article, blog: blog -%}
+  </div>
 
   {%- comment -%} ============ FLOATING CTA ============ {%- endcomment -%}
   {%- liquid

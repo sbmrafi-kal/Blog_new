@@ -125,7 +125,7 @@
 .ka-blog-container {
   max-width: var(--ka-max-width);
   margin: 0 auto;
-  padding-left: 16px;
+  padding-left: 18px;
   padding-right: 16px;
   width: 100%;
   box-sizing: border-box;
@@ -133,15 +133,23 @@
 
 @media screen and (min-width: 640px) {
   .ka-blog-container {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 18px;
+    padding-right: 16px;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 990px) {
   .ka-blog-container {
-    padding-left: 16px;
-    padding-right: 16px;
+    --ka-max-width: 1440px;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+  .ka-blog-container {
+    padding-left: 4px;
+    padding-right: 8px;
   }
 }
 
@@ -823,12 +831,12 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 .ka-article-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 290px;
-  gap: 44px;
+  gap: 60px;
   align-items: start;
 }
 
 .ka-article-content {
-  max-width: 790px;
+  max-width: 100%;
   font-family: var(--ka-font-body);
 }
 
@@ -2208,4 +2216,501 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   .ka-blog-container {
     --ka-max-width: 1520px;
   }
+}
+
+/* =============================================================
+   REFINEMENTS & COMPONENT OVERRIDES
+   ============================================================= */
+
+/* 1. Main News Page Hero 2-Column Desktop layout & Search */
+@media (min-width: 980px) {
+  .ka-blog-hero-shell {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 0;
+    align-items: stretch;
+    padding: 0 !important;
+    min-height: 420px;
+    background: linear-gradient(135deg, var(--ka-green), #2c5445) !important;
+  }
+
+  .ka-blog-hero-content {
+    width: 100% !important;
+    padding: 48px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white !important;
+  }
+
+  .ka-blog-hero-content h1 {
+    color: white !important;
+  }
+
+  .ka-blog-hero-content .ka-blog-lead {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .ka-blog-hero-image-wrap {
+    display: block !important;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .ka-blog-hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.ka-blog-hero-image-wrap {
+  display: none;
+}
+
+.ka-blog-hero-search {
+  margin-top: 20px;
+  max-width: 480px;
+  width: 100%;
+}
+
+.ka-blog-hero-search__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ka-blog-hero-search__field input {
+  width: 100%;
+  padding: 12px 48px 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-family: var(--ka-font-body);
+  font-size: 15px;
+  backdrop-filter: blur(4px);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.ka-blog-hero-search__field input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ka-blog-hero-search__field input:focus {
+  background: white;
+  color: var(--ka-ink);
+  border-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ka-blog-hero-search__field input:focus::placeholder {
+  color: var(--ka-muted);
+}
+
+.ka-blog-hero-search__field button {
+  position: absolute;
+  right: 6px;
+  background: var(--ka-cta-bg, #b8d29b);
+  border: none;
+  color: var(--ka-cta-text, #1e4b3c);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.ka-blog-hero-search__field button:hover {
+  background: var(--ka-cta-bg-hover, #a7c18a);
+  transform: scale(1.05);
+}
+
+.ka-blog-hero-search__field button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ka-blog-hero-search__field input:focus ~ button {
+  background: var(--ka-green);
+  color: white;
+}
+
+/* 2. Topic/Category Page Hero 2-Column Desktop layout */
+@media (min-width: 980px) {
+  .ka-blog-topic-hero {
+    display: grid !important;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 0;
+    align-items: stretch;
+    padding: 0 !important;
+    min-height: 400px;
+    background: linear-gradient(135deg, var(--ka-green), #2c5445) !important;
+  }
+
+  .ka-blog-topic-hero__content {
+    width: 100% !important;
+    padding: 48px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: white !important;
+  }
+
+  .ka-blog-topic-hero__content h1 {
+    color: white !important;
+  }
+
+  .ka-blog-topic-hero__content .ka-blog-lead {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .ka-blog-topic-hero__image-wrap {
+    display: block !important;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .ka-blog-topic-hero__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.ka-blog-topic-hero__image-wrap {
+  display: none;
+}
+
+/* 3. Latest Article Card Margin */
+.ka-blog-card__title {
+  margin-bottom: 16px !important;
+}
+
+/* 4. Consult CTA step numbers 3x size */
+.ka-blog-step-number {
+  font-size: 48px !important;
+  line-height: 1 !important;
+}
+
+/* 5. Article page dates-share top vertical alignment, same-line dates & social icon sizing */
+.ka-article-hero__content {
+  align-items: start !important;
+}
+
+.ka-article-dates-share {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+
+.ka-article-share svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* 6. Formatting inside article content */
+.ka-article-body h2::first-letter,
+.ka-article-body h3::first-letter,
+.ka-article-body h4::first-letter,
+.ka-article-content h2::first-letter,
+.ka-article-content h3::first-letter,
+.ka-article-content h4::first-letter {
+  text-transform: uppercase !important;
+}
+
+.ka-article-body p,
+.ka-article-content p {
+  margin-bottom: 14px !important;
+}
+
+.ka-article-glossary-grid b::before {
+  content: "▸ ";
+  color: var(--ka-orange);
+  margin-right: 4px;
+}
+
+/* 7. Key Ayurvedic Ingredients Counter numbering */
+.ka-ingredients-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+  counter-reset: ingredient-counter;
+}
+
+.ka-ingredient-card {
+  background: var(--ka-card);
+  border: 1px solid var(--ka-line);
+  border-radius: var(--ka-radius-md);
+  padding: 20px;
+  box-shadow: var(--ka-shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ka-ingredient-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ka-shadow);
+}
+
+.ka-ingredient-card h3 {
+  font-size: 18px !important;
+  color: var(--ka-green) !important;
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+}
+
+.ka-ingredient-card h3::before {
+  counter-increment: ingredient-counter;
+  content: counter(ingredient-counter) ". ";
+  color: #D27449; /* Var orange */
+  font-family: var(--ka-font-heading);
+}
+
+.ka-ingredient-sanskrit {
+  font-size: 14px;
+  color: var(--ka-muted);
+  font-weight: normal;
+  margin-left: 6px;
+}
+
+.ka-ingredient-card p {
+  margin: 0 !important;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ka-ink);
+}
+
+/* 8. Sources Spacing & Boldness to 500 */
+.ka-article-sources li,
+.ka-article-sources li strong {
+  font-weight: 500 !important;
+}
+
+/* 9. Redesigned comments section with desktop 2-column layout */
+@media (min-width: 980px) {
+  .ka-article-comments-card {
+    display: grid !important;
+    grid-template-columns: 420px 1fr !important;
+    gap: 40px !important;
+    align-items: start !important;
+  }
+}
+
+.ka-article-comment-form {
+  border-top: none !important;
+  padding-top: 0 !important;
+  margin-top: 16px !important;
+}
+
+.ka-comment-textarea-container {
+  border: 1px solid var(--ka-line);
+  border-radius: 16px;
+  background: #FDFFFB;
+  padding: 12px 14px !important;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ka-comment-textarea-container textarea {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  resize: none !important;
+  font-size: 15px;
+  line-height: 1.5;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ka-comment-textarea-container textarea:focus {
+  box-shadow: none !important;
+}
+
+.ka-comment-textarea-container.is-expanded {
+  border-color: #b8d29b !important;
+  box-shadow: 0 0 0 4px rgba(30, 75, 60, 0.12) !important;
+}
+
+.ka-comment-textarea-container.is-expanded textarea {
+  height: 220px !important; /* 5x height */
+}
+
+/* Comment controls visible when expanded */
+.ka-comment-controls {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(30, 75, 60, 0.08);
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+.ka-comment-textarea-container.is-expanded .ka-comment-controls {
+  display: flex !important;
+}
+
+.ka-comment-format-btn {
+  background: none;
+  border: none;
+  color: var(--ka-muted);
+  font-family: var(--ka-font-medium);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ka-comment-format-btn:hover {
+  background: var(--ka-soft-2);
+  color: var(--ka-green);
+}
+
+.ka-comment-format-btn[data-format="bold"] {
+  font-weight: 800;
+}
+
+.ka-comment-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ka-comment-btn-cancel {
+  background: none;
+  border: none;
+  color: var(--ka-muted);
+  font-family: var(--ka-font-heavy);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.ka-comment-btn-cancel:hover {
+  color: var(--ka-green);
+}
+
+.ka-comment-btn-next {
+  background: var(--ka-green);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--ka-font-heavy);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.ka-comment-btn-next:hover {
+  background: var(--ka-green-2);
+  transform: translateY(-1px);
+}
+
+/* Name & Email Popup Form */
+.ka-comment-popup-card {
+  margin-top: 16px;
+  background: white;
+  border: 1px solid var(--ka-line);
+  border-radius: var(--ka-radius-lg);
+  padding: 24px;
+  box-shadow: var(--ka-shadow);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.ka-comment-popup-card h4 {
+  font-size: 16px !important;
+  color: var(--ka-green) !important;
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+  font-family: var(--ka-font-heading);
+}
+
+.ka-comment-popup-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 639px) {
+  .ka-comment-popup-inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ka-comment-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ka-comment-field label {
+  font-family: var(--ka-font-heavy);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ka-ink);
+}
+
+.ka-comment-field input {
+  width: 100%;
+  border: 1px solid var(--ka-line);
+  border-radius: 12px;
+  background: #FDFFFB;
+  color: var(--ka-ink);
+  font-family: var(--ka-font-body);
+  padding: 10px 12px;
+  outline: 0;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ka-comment-field input:focus {
+  border-color: #b8d29b;
+  box-shadow: 0 0 0 3px rgba(30, 75, 60, 0.08);
+}
+
+.ka-comment-popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  align-items: center;
+}
+
+.ka-comment-popup-close {
+  background: none;
+  border: none;
+  color: var(--ka-muted);
+  font-family: var(--ka-font-heavy);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.ka-comment-popup-close:hover {
+  color: var(--ka-green);
+}
+
+.ka-comment-popup-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
 }
