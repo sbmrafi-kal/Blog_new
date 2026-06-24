@@ -11,7 +11,7 @@
   assign topic_count_label = topic.cta_label.value | default: topic.cta_label | default: 'Explore topic'
 
   # Try to match the handle for custom dark image
-  assign topic_handle = topic.handle | default: topic_tag | default: topic_title | handleize
+  assign topic_handle = topic.system.handle | default: topic.handle | default: topic_tag | default: topic_title | handleize
   
   assign asset_name = ''
   if topic_handle contains 'digestion'
@@ -71,9 +71,47 @@
   if topic_handle contains 'sleep' or topic_handle contains 'circadian'
     assign topic_img_url = ''
   endif
+
+  # Map topic handles to the actual tag handles that exist on the Shopify store to avoid 404
+  assign topic_tag_mapped = topic_handle
+  if topic_handle contains 'digestion'
+    assign topic_tag_mapped = 'digestion'
+  elsif topic_handle contains 'herbs'
+    assign topic_tag_mapped = 'herbs'
+  elsif topic_handle contains 'sleep' or topic_handle contains 'circadian'
+    assign topic_tag_mapped = 'sleep'
+  elsif topic_handle contains 'women'
+    assign topic_tag_mapped = 'womens-health'
+  elsif topic_handle contains 'joints' or topic_handle contains 'pain' or topic_handle contains 'body'
+    assign topic_tag_mapped = 'pain-joints'
+  elsif topic_handle contains 'immunity' or topic_handle contains 'detox'
+    assign topic_tag_mapped = 'detox'
+  elsif topic_handle contains 'seasons' or topic_handle contains 'routine'
+    assign topic_tag_mapped = 'doshas'
+  elsif topic_handle contains 'mind' or topic_handle contains 'calm'
+    assign topic_tag_mapped = 'doshas'
+  elsif topic_handle contains 'elder' or topic_handle contains 'old-age'
+    assign topic_tag_mapped = 'doshas'
+  elsif topic_handle contains 'basics' or topic_handle contains 'ayurveda'
+    assign topic_tag_mapped = 'doshas'
+  elsif topic_handle contains 'habits'
+    assign topic_tag_mapped = 'skin-hair'
+  elsif topic_handle contains 'senses' or topic_handle contains 'eyes' or topic_handle contains 'ears' or topic_handle contains 'mouth'
+    assign topic_tag_mapped = 'doshas'
+  elsif topic_handle contains 'men'
+    assign topic_tag_mapped = 'sleep'
+  elsif topic_handle contains 'kids' or topic_handle contains 'children'
+    assign topic_tag_mapped = 'digestion'
+  elsif topic_handle contains 'skin' or topic_handle contains 'hair' or topic_handle contains 'glow'
+    assign topic_tag_mapped = 'skin-hair'
+  elsif topic_handle contains 'food'
+    assign topic_tag_mapped = 'digestion'
+  elsif topic_handle contains 'weight' or topic_handle contains 'cravings'
+    assign topic_tag_mapped = 'digestion'
+  endif
 -%}
 
-<a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag }}">
+<a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag_mapped }}?topic={{ topic_handle }}">
   {%- if topic_img_url contains 'cdn.shopify.com' -%}
     <img class="ka-blog-image-card__bg" src="{{ topic_img_url }}" alt="{{ topic_title | escape }}" loading="lazy" width="600" height="400">
   {%- else -%}

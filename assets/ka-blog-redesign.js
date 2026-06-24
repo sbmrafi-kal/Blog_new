@@ -486,6 +486,8 @@
 
     var track = outer.querySelector('.ka-blog-topic-carousel-track');
     var decks = outer.querySelectorAll('.ka-blog-topic-deck');
+    var container = outer.querySelector('.ka-blog-topic-carousel-container');
+    var dots = outer.querySelectorAll('.ka-blog-topic-dot');
     if (!track || !decks.length) return;
 
     var targetPct = 0;
@@ -516,7 +518,6 @@
         }
       });
 
-      var dots = outer.querySelectorAll('.ka-blog-topic-dot');
       dots.forEach(function (dot, index) {
         if (index === activeIndex) {
           dot.classList.add('active');
@@ -529,9 +530,6 @@
     function handleScroll() {
       if (window.innerWidth < 980) {
         track.style.transform = '';
-        decks.forEach(function (deck) {
-          deck.classList.remove('active');
-        });
         if (animFrameId) {
           cancelAnimationFrame(animFrameId);
           animFrameId = null;
@@ -576,6 +574,83 @@
         updateAnimation();
       }
     }
+
+    // Mobile scroll-snapping pagination sync
+    if (container) {
+      container.addEventListener('scroll', function () {
+        if (window.innerWidth < 980) {
+          var scrollLeft = container.scrollLeft;
+          var slideWidth = container.clientWidth;
+          if (slideWidth > 0) {
+            var activeIndex = Math.round(scrollLeft / slideWidth);
+            var decksCount = decks.length;
+            if (activeIndex >= decksCount) activeIndex = decksCount - 1;
+            if (activeIndex < 0) activeIndex = 0;
+
+            dots.forEach(function (dot, idx) {
+              if (idx === activeIndex) {
+                dot.classList.add('active');
+              } else {
+                dot.classList.remove('active');
+              }
+            });
+
+            decks.forEach(function (deck, idx) {
+              if (idx === activeIndex) {
+                deck.classList.add('active');
+              } else {
+                deck.classList.remove('active');
+              }
+            });
+          }
+        }
+      });
+    }
+
+    // Dot click triggers
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function (e) {
+        e.preventDefault();
+        var index = parseInt(dot.getAttribute('data-index'));
+        if (window.innerWidth < 980) {
+          if (container) {
+            var slideWidth = container.clientWidth;
+            container.scrollTo({
+              left: index * slideWidth,
+              behavior: 'smooth'
+            });
+          }
+        } else {
+          // On desktop, jump window scroll position to match the deck index
+          var rect = outer.getBoundingClientRect();
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          var outerTop = rect.top + scrollTop;
+          var outerHeight = outer.offsetHeight;
+          var viewportHeight = window.innerHeight;
+
+          var headerHeight = parseInt(
+            getComputedStyle(document.documentElement).getPropertyValue('--theme-header-height')
+          ) || 72;
+          var subnavHeight = 55;
+          var stickyOffset = headerHeight + subnavHeight;
+
+          var startScroll = outerTop - stickyOffset - 20;
+          var endScroll = outerTop + outerHeight - viewportHeight;
+          var totalScrollRange = endScroll - startScroll;
+
+          if (totalScrollRange > 0) {
+            var decksCount = decks.length;
+            // Map target index to window scroll position
+            var targetScrollFraction = index / (decksCount - 1);
+            var targetScroll = startScroll + targetScrollFraction * totalScrollRange;
+            window.scrollTo({
+              top: targetScroll,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleScroll);
@@ -1109,6 +1184,101 @@
   }
 
   // ============================================================
+  // PREMIUM SCROLL ACTIONS (Progress bar, Parallax, reveals)
+  // ============================================================
+  function initScrollAnimations() {
+    // 1. Create and inject scroll progress bar if not exists
+    var progressBar = document.querySelector('.ka-scroll-progress-bar');
+    if (!progressBar) {
+      progressBar = document.createElement('div');
+      progressBar.className = 'ka-scroll-progress-bar';
+      document.body.appendChild(progressBar);
+    }
+
+    // 2. Track scroll to update progress bar width and apply parallax zoom to hero images
+    var ticking = false;
+    var heroImages = document.querySelectorAll('.ka-blog-hero__bg, .ka-blog-topic-hero__image-wrap img, .ka-blog-article-hero__image-wrap img');
+
+    function updateScrollEffects() {
+      // Update progress bar
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = scrollPercent + '%';
+
+      // Parallax zoom for heroes
+      heroImages.forEach(function (img) {
+        var rect = img.getBoundingClientRect();
+        if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+          var scrolledFromTop = window.pageYOffset;
+          img.style.transform = 'translate3d(0, ' + (scrolledFromTop * 0.12) + 'px, 0) scale(' + (1 + scrolledFromTop * 0.00015) + ')';
+        }
+      });
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollEffects);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial update
+    updateScrollEffects();
+
+    // 3. Scroll reveals via IntersectionObserver
+    if ('IntersectionObserver' in window) {
+      var revealTargets = document.querySelectorAll(
+        '.ka-blog-container section, ' +
+        '.ka-blog-section, ' +
+        '.ka-blog-section--tight, ' +
+        '.ka-blog-topic-deck, ' +
+        '.ka-blog-article-grid, ' +
+        '.ka-blog-card, ' +
+        '.ka-blog-topic-hero, ' +
+        '.ka-blog-hero-shell, ' +
+        '.ka-article-content-wrapper, ' +
+        '.ka-article-sidebar'
+      );
+
+      var grids = document.querySelectorAll('.ka-blog-article-grid, .ka-blog-topic-deck');
+      grids.forEach(function (grid) {
+        var children = grid.children;
+        for (var i = 0; i < children.length; i++) {
+          var child = children[i];
+          child.classList.add('reveal-on-scroll');
+          var delayClass = 'reveal-delay-' + ((i % 5) + 1);
+          child.classList.add(delayClass);
+        }
+      });
+
+      revealTargets.forEach(function (el) {
+        if (!el.classList.contains('ka-blog-article-grid') && !el.classList.contains('ka-blog-topic-deck')) {
+          el.classList.add('reveal-on-scroll');
+        }
+      });
+
+      var revealObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal-on-scroll').forEach(function (el) {
+        revealObserver.observe(el);
+      });
+    }
+  }
+
+  // ============================================================
   // INIT — Run all on DOMContentLoaded
   // ============================================================
   function init() {
@@ -1122,6 +1292,7 @@
     initChatbot();
     initTocToggle();
     initComments();
+    initScrollAnimations();
   }
 
   if (document.readyState === 'loading') {

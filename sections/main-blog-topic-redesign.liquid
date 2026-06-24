@@ -17,23 +17,42 @@
   assign current_tag = current_tags | first
   assign topic_metaobject = nil
 
-  comment
-    Try to find matching topic metaobject from blog.metafields.custom.topics
-  endcomment
+  # Parse topic query parameter from canonical_url to distinguish topics sharing the same article tag
+  assign topic_param = ''
+  if canonical_url contains 'topic='
+    assign query_parts = canonical_url | split: 'topic=' | last | split: '&' | first | split: '?' | first | split: '#' | first
+    assign topic_param = query_parts | url_decode | handleize
+  endif
+
   assign topics = blog.metafields.custom.topics.value
   if topics != blank
-    for topic in topics
-      if topic.article_filter_tag == current_tag or topic.title == current_tag
-        assign topic_metaobject = topic
-        break
-      endif
-    endfor
+    if topic_param != blank
+      for topic in topics
+        assign temp_handle = topic.system.handle | default: topic.handle | default: topic.title | handleize
+        if temp_handle == topic_param
+          assign topic_metaobject = topic
+          break
+        endif
+      endfor
+    endif
+
+    # Fallback to current_tag match if not found by query param
+    if topic_metaobject == nil
+      for topic in topics
+        if topic.article_filter_tag == current_tag or topic.title == current_tag
+          assign topic_metaobject = topic
+          break
+        endif
+      endfor
+    endif
   endif
 
   assign topic_title = topic_metaobject.title | default: current_tag
+  assign topic_handle = topic_metaobject.system.handle | default: topic_metaobject.handle | default: topic_param | default: topic_title | handleize
+
+  # Map description overrides
   assign topic_description = topic_metaobject.description
   if topic_description == blank
-    assign topic_handle = topic_title | handleize
     if topic_handle contains 'sleep'
       assign topic_description = 'Restore your body’s natural rhythms with classical Ayurvedic sleep wisdom, herbal remedies, and soothing evening routines.'
     elsif topic_handle contains 'digest' or topic_handle contains 'agni'
@@ -74,6 +93,68 @@
       assign topic_description = 'Explore classical Ayurvedic wisdom, custom diet guidelines, and holistic wellness practices for everyday balance and health.'
     endif
   endif
+
+  # Retrieve/Map the same dark fallback images as on the main news page
+  assign asset_name = ''
+  if topic_handle contains 'digestion'
+    assign asset_name = 'topic-digestion.jpg'
+  elsif topic_handle contains 'food'
+    assign asset_name = 'topic-food.jpg'
+  elsif topic_handle contains 'herbs'
+    assign asset_name = 'topic-herbs.jpg'
+  elsif topic_handle contains 'weight' or topic_handle contains 'cravings'
+    assign asset_name = 'topic-weight.jpg'
+  elsif topic_handle contains 'immunity'
+    assign asset_name = 'topic-immunity.jpg'
+  elsif topic_handle contains 'seasons' or topic_handle contains 'routine'
+    assign asset_name = 'topic-seasons.jpg'
+  elsif topic_handle contains 'sleep' or topic_handle contains 'circadian'
+    assign asset_name = 'topic-sleep.jpg'
+  elsif topic_handle contains 'mind' or topic_handle contains 'calm'
+    assign asset_name = 'topic-mind.jpg'
+  elsif topic_handle contains 'habits'
+    assign asset_name = 'topic-habits.jpg'
+  elsif topic_handle contains 'joints' or topic_handle contains 'body' or topic_handle contains 'pain'
+    assign asset_name = 'topic-joints.jpg'
+  elsif topic_handle contains 'skin' or topic_handle contains 'glow'
+    assign asset_name = 'topic-skin.jpg'
+  elsif topic_handle contains 'hair' or topic_handle contains 'scalp'
+    assign asset_name = 'topic-hair.jpg'
+  elsif topic_handle contains 'senses' or topic_handle contains 'eyes' or topic_handle contains 'ears' or topic_handle contains 'mouth'
+    assign asset_name = 'topic-senses.jpg'
+  elsif topic_handle contains 'women'
+    assign asset_name = 'topic-women.jpg'
+  elsif topic_handle contains 'men'
+    assign asset_name = 'topic-men.jpg'
+  elsif topic_handle contains 'kids' or topic_handle contains 'children'
+    assign asset_name = 'topic-kids.jpg'
+  elsif topic_handle contains 'elder'
+    assign asset_name = 'topic-elders.jpg'
+  elsif topic_handle contains 'basics' or topic_handle contains 'ayurveda'
+    assign asset_name = 'topic-basics.jpg'
+  endif
+
+  assign fallback_img = ''
+  if asset_name != blank
+    assign fallback_img = asset_name | asset_url
+  else
+    assign fallback_img = 'topic-basics.jpg' | asset_url
+  endif
+
+  assign topic_image = topic_metaobject.image.value | default: topic_metaobject.image
+  assign topic_img_url = ''
+  if topic_image != blank
+    assign topic_img_url = topic_image | image_url: width: 800
+  endif
+
+  # Force fallback dark assets for Seasons and Sleep
+  if topic_handle contains 'seasons' or topic_handle contains 'routine'
+    assign topic_img_url = ''
+  endif
+  if topic_handle contains 'sleep' or topic_handle contains 'circadian'
+    assign topic_img_url = ''
+  endif
+
   assign topic_secondary_label = topic_metaobject.secondary_label
 -%}
 
@@ -95,11 +176,10 @@
           {%- endif -%}
         </div>
         <div class="ka-blog-topic-hero__image-wrap">
-          {%- assign topic_image = topic_metaobject.image.value | default: topic_metaobject.image -%}
-          {%- if topic_image != blank -%}
-            <img src="{{ topic_image | image_url: width: 800 }}" alt="{{ topic_title | escape }}">
+          {%- if topic_img_url != blank -%}
+            <img src="{{ topic_img_url }}" alt="{{ topic_title | escape }}">
           {%- else -%}
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="{{ topic_title | escape }}">
+            <img src="{{ fallback_img }}" alt="{{ topic_title | escape }}">
           {%- endif -%}
         </div>
       </article>
@@ -135,7 +215,12 @@
         {%- comment -%} Filter bar from dynamic related tags {%- endcomment -%}
         {%- if related_tags_array.size > 0 -%}
           <nav class="ka-blog-filter-bar" aria-label="{{ topic_title }} filters">
-            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">{{ blog.metafields.custom.filter_all_label | default: 'All' }}</a>
+            {%- assign current_tag_handle = current_tag | handleize -%}
+            {%- assign all_filter_url = blog.url | append: '/tagged/' | append: current_tag_handle -%}
+            {%- if topic_handle != blank -%}
+              {%- assign all_filter_url = all_filter_url | append: '?topic=' | append: topic_handle -%}
+            {%- endif -%}
+            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ all_filter_url }}">{{ blog.metafields.custom.filter_all_label | default: 'All' }}</a>
             {%- for tag in related_tags_array -%}
               {%- assign trimmed_tag = tag | strip -%}
               {%- if trimmed_tag != blank -%}
@@ -143,9 +228,11 @@
                 {%- if current_tags contains trimmed_tag -%}
                   {%- assign is_active = true -%}
                 {%- endif -%}
-                {%- assign current_tag_handle = current_tag | handleize -%}
                 {%- assign trimmed_tag_handle = trimmed_tag | handleize -%}
                 {%- assign sub_filter_url = blog.url | append: '/tagged/' | append: current_tag_handle | append: '+' | append: trimmed_tag_handle -%}
+                {%- if topic_handle != blank -%}
+                  {%- assign sub_filter_url = sub_filter_url | append: '?topic=' | append: topic_handle -%}
+                {%- endif -%}
                 <a class="{% if is_active %}active{% endif %}" href="{{ sub_filter_url }}">{{ trimmed_tag }}</a>
               {%- endif -%}
             {%- endfor -%}
@@ -161,17 +248,41 @@
         {%- if paginate.pages > 1 -%}
           <nav class="ka-blog-pagination" aria-label="Topic pagination">
             {%- if paginate.previous -%}
-              <a href="{{ paginate.previous.url }}#articles">← Previous</a>
+              {%- assign prev_url = paginate.previous.url -%}
+              {%- if topic_handle != blank -%}
+                {%- if prev_url contains '?' -%}
+                  {%- assign prev_url = prev_url | append: '&topic=' | append: topic_handle -%}
+                {%- else -%}
+                  {%- assign prev_url = prev_url | append: '?topic=' | append: topic_handle -%}
+                {%- endif -%}
+              {%- endif -%}
+              <a href="{{ prev_url }}#articles">← Previous</a>
             {%- endif -%}
             {%- for part in paginate.parts -%}
               {%- if part.is_link -%}
-                <a href="{{ part.url }}#articles">{{ part.title }}</a>
+                {%- assign part_url = part.url -%}
+                {%- if topic_handle != blank -%}
+                  {%- if part_url contains '?' -%}
+                    {%- assign part_url = part_url | append: '&topic=' | append: topic_handle -%}
+                  {%- else -%}
+                    {%- assign part_url = part_url | append: '?topic=' | append: topic_handle -%}
+                  {%- endif -%}
+                {%- endif -%}
+                <a href="{{ part_url }}#articles">{{ part.title }}</a>
               {%- else -%}
                 <span class="current">{{ part.title }}</span>
               {%- endif -%}
             {%- endfor -%}
             {%- if paginate.next -%}
-              <a href="{{ paginate.next.url }}#articles">Next →</a>
+              {%- assign next_url = paginate.next.url -%}
+              {%- if topic_handle != blank -%}
+                {%- if next_url contains '?' -%}
+                  {%- assign next_url = next_url | append: '&topic=' | append: topic_handle -%}
+                {%- else -%}
+                  {%- assign next_url = next_url | append: '?topic=' | append: topic_handle -%}
+                {%- endif -%}
+              {%- endif -%}
+              <a href="{{ next_url }}#articles">Next →</a>
             {%- endif -%}
           </nav>
         {%- endif -%}

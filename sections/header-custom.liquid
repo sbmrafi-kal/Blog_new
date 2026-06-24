@@ -213,15 +213,33 @@
             {%- if request.page_type == 'blog' and current_tags -%}
               {%- liquid
                 assign current_tag = current_tags | first
+                assign topic_param = ''
+                if canonical_url contains 'topic='
+                  assign query_parts = canonical_url | split: 'topic=' | last | split: '&' | first | split: '?' | first | split: '#' | first
+                  assign topic_param = query_parts | url_decode | handleize
+                endif
+
                 assign topics = blog.metafields.custom.topics.value
                 assign topic_title = current_tag
                 if topics != blank
-                  for topic in topics
-                    if topic.article_filter_tag == current_tag or topic.title == current_tag
-                      assign topic_title = topic.title
-                      break
-                    endif
-                  endfor
+                  if topic_param != blank
+                    for topic in topics
+                      assign temp_handle = topic.system.handle | default: topic.handle | default: topic.title | handleize
+                      if temp_handle == topic_param
+                        assign topic_title = topic.title
+                        break
+                      endif
+                    endfor
+                  endif
+
+                  if topic_title == current_tag
+                    for topic in topics
+                      if topic.article_filter_tag == current_tag or topic.title == current_tag
+                        assign topic_title = topic.title
+                        break
+                      endif
+                    endfor
+                  endif
                 endif
               -%}
               {%- if current_tags.size > 1 -%}
@@ -230,7 +248,7 @@
                   assign rest_chars = topic_title | slice: 1, 255
                   assign formatted_topic_title = first_char | append: rest_chars
                 -%}
-                <a href="{{ blog.url }}/tagged/{{ current_tag | handleize }}">{{ formatted_topic_title }}</a>
+                <a href="{{ blog.url }}/tagged/{{ current_tag | handleize }}{% if topic_param != blank %}?topic={{ topic_param }}{% endif %}">{{ formatted_topic_title }}</a>
                 <span>&gt;</span>
                 <span class="theme-header-custom__breadcrumb-current">{{ current_tags | last }}</span>
               {%- else -%}
