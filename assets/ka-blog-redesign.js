@@ -17,10 +17,16 @@
   // 1. BLOG SUBNAV — Smooth scroll for anchor links
   // ============================================================
   function initSubnav() {
-    var subnav = document.querySelector('.ka-blog-subnav');
-    if (!subnav) return;
+    var subnavContainers = document.querySelectorAll('.ka-blog-subnav, .ka-blog-breadcrumb-subnav');
+    if (subnavContainers.length === 0) return;
 
-    var links = subnav.querySelectorAll('a[href*="#"]');
+    var links = [];
+    subnavContainers.forEach(function (container) {
+      container.querySelectorAll('a[href*="#"]').forEach(function (link) {
+        links.push(link);
+      });
+    });
+
     var isScrollLocked = false;
 
     links.forEach(function (link) {
@@ -28,7 +34,6 @@
         var hash = link.getAttribute('href');
         if (!hash) return;
 
-        // Extract the hash part
         var hashIndex = hash.indexOf('#');
         if (hashIndex === -1) return;
 
@@ -38,16 +43,14 @@
 
         e.preventDefault();
 
-        // Lock scroll-spy to prevent it from fighting the smooth scroll
         isScrollLocked = true;
 
         var headerHeight = parseInt(
           getComputedStyle(document.documentElement).getPropertyValue('--header-height')
         ) || 60;
 
-        var subnavHeight = subnav.parentElement
-          ? subnav.parentElement.offsetHeight
-          : 50;
+        var breadcrumbsWrap = document.querySelector('.theme-header-custom__breadcrumbs-wrap');
+        var subnavHeight = breadcrumbsWrap ? breadcrumbsWrap.offsetHeight : 50;
 
         var targetPosition =
           target.getBoundingClientRect().top + window.pageYOffset;
@@ -58,13 +61,15 @@
           behavior: 'smooth',
         });
 
-        // Update active state immediately
+        var targetHref = link.getAttribute('href');
         links.forEach(function (l) {
-          l.classList.remove('active');
+          if (l.getAttribute('href') === targetHref) {
+            l.classList.add('active');
+          } else {
+            l.classList.remove('active');
+          }
         });
-        link.classList.add('active');
 
-        // Unlock scroll-spy after smooth scroll completes
         setTimeout(function () {
           isScrollLocked = false;
         }, 1200);
@@ -81,30 +86,34 @@
       var targetId = hash.substring(hashIndex + 1);
       var target = document.getElementById(targetId);
       if (target) {
-        sections.push({
-          link: link,
-          target: target
-        });
+        var existing = sections.find(function (s) { return s.target === target; });
+        if (existing) {
+          existing.links.push(link);
+        } else {
+          sections.push({
+            links: [link],
+            target: target
+          });
+        }
       }
     });
 
     function updateActiveLink() {
-      // Skip if scroll is locked (user just clicked a subnav link)
       if (isScrollLocked) return;
 
       var scrollPos = window.scrollY || window.pageYOffset;
       var headerHeight = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue('--header-height')
       ) || 60;
-      var subnavHeight = subnav.parentElement ? subnav.parentElement.offsetHeight : 50;
-      var threshold = headerHeight + subnavHeight + 20;
+      var breadcrumbsWrap = document.querySelector('.theme-header-custom__breadcrumbs-wrap');
+      var subnavHeight = breadcrumbsWrap ? breadcrumbsWrap.offsetHeight : 50;
+      var threshold = headerHeight + subnavHeight + 25;
 
-      var activeLink = null;
+      var activeSection = null;
       var maxVisibleHeight = 0;
 
       sections.forEach(function (section) {
         var rect = section.target.getBoundingClientRect();
-        // Calculate the visible height of this section in the viewport
         var visibleTop = Math.max(rect.top, threshold);
         var visibleBottom = Math.min(rect.bottom, window.innerHeight);
         var visibleHeight = 0;
@@ -114,22 +123,28 @@
 
         if (visibleHeight > maxVisibleHeight) {
           maxVisibleHeight = visibleHeight;
-          activeLink = section.link;
+          activeSection = section;
         }
       });
 
       // Fallback for top of page
-      if (scrollPos < 100) {
-        activeLink = links[0];
-      }
-
-      if (activeLink) {
+      if (scrollPos < 100 && sections.length > 0) {
         links.forEach(function (l) {
-          if (l === activeLink) {
+          if (l.getAttribute('href') === '#overview') {
             l.classList.add('active');
           } else {
             l.classList.remove('active');
           }
+        });
+        return;
+      }
+
+      if (activeSection) {
+        links.forEach(function (l) {
+          l.classList.remove('active');
+        });
+        activeSection.links.forEach(function (l) {
+          l.classList.add('active');
         });
       }
     }
@@ -138,7 +153,7 @@
     window.addEventListener('load', function () {
       setTimeout(updateActiveLink, 100);
     });
-    updateActiveLink(); // Run on init
+    updateActiveLink();
   }
 
   // ============================================================
@@ -151,12 +166,24 @@
 
     var rawHeadings = articleContent.querySelectorAll('.ka-article-body h2, .ka-article-body h3');
     var headings = Array.prototype.slice.call(rawHeadings).filter(function (heading) {
-      return !heading.closest('.ka-ingredients-container') && !heading.closest('.ka-ingredient-card');
+      if (heading.closest('.ka-ingredients-container') || heading.closest('.ka-ingredient-card')) {
+        return false;
+      }
+      var text = heading.textContent.toLowerCase().trim();
+      if (text.indexOf('try this today') > -1 || 
+          text.indexOf('key ayurvedic ingredients') > -1 || 
+          text.indexOf('ayurveda glossary') > -1 || 
+          text.indexOf('words to know') > -1 ||
+          text.indexOf('faq') > -1) {
+        return false;
+      }
+      return true;
     });
     var sidebarToc = document.querySelector('.ka-article-sidebar');
     var mobileToc = document.querySelector('.ka-article-toc-mobile');
 
-    // Ensure all headings have IDs dynamically if missing
+    // Ensure all headings have IDs dynamically if missing and avoid duplicate IDs
+    var seenIds = {};
     headings.forEach(function (heading, index) {
       if (!heading.id) {
         var slug = heading.textContent
@@ -164,9 +191,18 @@
           .replace(/[^a-z0-9]+/g, '-')
           .replace(/(^-|-$)/g, '');
         if (!slug) {
-          slug = 'heading-' + index;
+          slug = 'heading';
         }
-        heading.id = slug;
+        var uniqueSlug = slug;
+        var count = 1;
+        while (seenIds[uniqueSlug] || document.getElementById(uniqueSlug)) {
+          uniqueSlug = slug + '-' + count;
+          count++;
+        }
+        heading.id = uniqueSlug;
+        seenIds[uniqueSlug] = true;
+      } else {
+        seenIds[heading.id] = true;
       }
     });
 
@@ -175,6 +211,10 @@
       if (mobileToc) mobileToc.style.display = 'none';
       return;
     }
+
+    var isTOCScrollLocked = false;
+    var tocLinks = [];
+    var mobileTocLinks = [];
 
     // Build TOC links from headings (for sidebar and mobile)
     function buildTocLinks(container, listSelector) {
@@ -197,7 +237,36 @@
         a.href = '#' + heading.id;
         a.addEventListener('click', function (e) {
           e.preventDefault();
+
+          // Lock scrollspy updates during smooth scroll
+          isTOCScrollLocked = true;
+
+          // Update active highlights immediately
+          var targetHref = '#' + heading.id;
+          if (tocLinks && tocLinks.length) {
+            tocLinks.forEach(function (link) {
+              if (link.getAttribute('href') === targetHref) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+          if (mobileTocLinks && mobileTocLinks.length) {
+            mobileTocLinks.forEach(function (link) {
+              if (link.getAttribute('href') === targetHref) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+
           scrollToHeading(heading);
+
+          setTimeout(function () {
+            isTOCScrollLocked = false;
+          }, 1000);
 
           // Close mobile accordion after nav
           if (mobileToc) {
@@ -223,10 +292,12 @@
 
     if (sidebarToc) {
       buildTocLinks(sidebarToc, '.ka-article-sidebar__list');
+      tocLinks = sidebarToc.querySelectorAll('a[href^="#"]');
     }
 
     if (mobileToc) {
       buildTocLinks(mobileToc, '.ka-article-toc-mobile__list');
+      mobileTocLinks = mobileToc.querySelectorAll('a[href^="#"]');
 
       // Mobile toggle
       var toggle = mobileToc.querySelector('.ka-article-toc-mobile__toggle');
@@ -245,15 +316,13 @@
 
     // Desktop active heading tracking via IntersectionObserver
     if ('IntersectionObserver' in window) {
-      var tocLinks = sidebarToc ? sidebarToc.querySelectorAll('a[href^="#"]') : [];
-      var mobileTocLinks = mobileToc ? mobileToc.querySelectorAll('a[href^="#"]') : [];
-      
       // Highlight first link as active by default
       if (tocLinks.length > 0) tocLinks[0].classList.add('active');
       if (mobileTocLinks.length > 0) mobileTocLinks[0].classList.add('active');
 
       var observer = new IntersectionObserver(
         function (entries) {
+          if (isTOCScrollLocked) return;
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               var targetHref = '#' + entry.target.id;
@@ -373,6 +442,7 @@
 
       if (Math.abs(targetPct - currentPct) < 0.001) {
         currentPct = targetPct;
+        animFrameId = null;
       } else {
         animFrameId = requestAnimationFrame(updateAnimation);
       }
@@ -597,12 +667,11 @@
         });
       }, {
         root: null,
-        rootMargin: '0px 0px 80px 0px', // trigger slightly before footer overlaps CTA
+        rootMargin: '0px 0px 80px 0px',
         threshold: 0
       });
       observer.observe(footer);
     } else {
-      // Fallback
       var checkVisibility = function () {
         var footerRect = footer.getBoundingClientRect();
         if (footerRect.top < window.innerHeight + 80) {
@@ -618,28 +687,237 @@
   }
 
   // ============================================================
-  // 8. AUTHOR REVIEWER TOGGLE — Swap Written by to Reviewed by on scroll
+  // 7.1. ASK GURUJI CHATBOT WIDGET LOGIC
   // ============================================================
-  function initAuthorReviewerToggle() {
-    var card = document.querySelector('.ka-article-author-reviewer-card.has-both-scroll-toggle');
-    if (!card) return;
+  function initChatbot() {
+    var trigger = document.getElementById('ka-chatbot-trigger');
+    var windowEl = document.getElementById('ka-chatbot-window');
+    var closeBtn = document.getElementById('ka-chatbot-close');
+    var messagesContainer = document.getElementById('ka-chatbot-messages');
+    var form = document.getElementById('ka-chatbot-form');
+    var input = document.getElementById('ka-chatbot-input');
 
-    function checkScroll() {
-      var rect = card.getBoundingClientRect();
-      var viewportHeight = window.innerHeight;
-      
-      // Swap when the card is in the lower 65% of the screen
-      if (rect.top < viewportHeight * 0.65) {
-        card.classList.add('show-reviewer');
+    if (!trigger || !windowEl || !closeBtn || !messagesContainer || !form || !input) return;
+
+    var backupQuestions = [
+      "What is Agni?",
+      "Cooling recipes for Pitta",
+      "How to balance Vata?",
+      "How to balance Kapha?",
+      "What is Ashwagandha?",
+      "How does stress affect health?",
+      "What is tongue scraping?",
+      "Is warm milk good before bed?",
+      "What are viruddha ahara?",
+      "What is Dinacharya daily routine?",
+      "What is Ojas in Ayurveda?",
+      "How to improve appetite?",
+      "Is ghee good for cooking?",
+      "What is Triphala?",
+      "How to detox at home?",
+      "How to care for joints?",
+      "What herbs support memory?",
+      "What is Abhyanga massage?",
+      "How to prevent dry skin?",
+      "How to grow hair faster?",
+      "What causes morning grogginess?",
+      "How to treat acidity naturally?",
+      "What are seasonal guidelines?",
+      "Is fasting recommended?",
+      "What is panchakarma?",
+      "How to practice mindful eating?"
+    ];
+    var backupIndex = 0;
+
+    var botResponses = {
+      "what is this page about?": "This page is the Kerala Ayurveda Wellness Journal, a dedicated portal for classical Ayurvedic wisdom, custom diet guidelines, care paths, and holistic health updates.",
+      "how useful is it?": "It provides verified Ayurvedic guidelines, expert-reviewed articles, dynamic wellness topics, and self-care routines to help you achieve long-term balance.",
+      "how can i improve sleep?": "For restful sleep, favor a calming evening routine: massage your feet with warm oil, avoid screen time after 9 PM, and drink a cup of warm milk with nutmeg.",
+      "i want to speak with a vaidya.": "We can connect you with an expert Ayurvedic Vaidya for a personalized wellness plan. WhatsApp consultations are opening soon!",
+      "what is agni?": "Agni is the digestive fire. To steady your agni, eat warm cooked meals at consistent times daily, and try a pre-meal slice of fresh ginger with rock salt.",
+      "cooling recipes for pitta": "To soothe Pitta (heat), favor sweet ripe fruits, coriander, fennel, and coconut water. Limit hot spices, chillies, sour pickles, and fried foods.",
+      "how to balance vata?": "Vata dosha represents air and space. When out of balance, it brings dryness, coldness, and anxiety. Favour warm, moist, grounding foods, and regular routines.",
+      "how to balance kapha?": "Kapha dosha represents earth and water. When out of balance, it brings heaviness, congestion, and lethargy. Favour warm, light, spicy foods and active exercise.",
+      "what is ashwagandha?": "Ashwagandha is a renowned adaptogen that supports energy levels, reduces stress, and calms the nervous system.",
+      "how does stress affect health?": "Stress raises cortisol and disrupts Vata dosha, leading to poor digestion, sleep issues, and fatigue. Meditation and herbal support help restore balance.",
+      "what is tongue scraping?": "Tongue scraping (Jihwa Nirlekhana) in the morning removes toxins (Ama), improves taste perception, and supports digestive and oral health.",
+      "is warm milk good before bed?": "Yes! Warm milk acts as a natural sedative. Adding a pinch of nutmeg or cardamom aids digestion and sleep quality.",
+      "what are viruddha ahara?": "Viruddha Ahara refers to incompatible food combinations (e.g., milk with fruit or fish) that disrupt digestion and accumulate toxins.",
+      "what is dinacharya daily routine?": "Dinacharya is the daily Ayurvedic routine, including early waking, tongue scraping, self-massage (Abhyanga), and structured meal times to align with nature.",
+      "what is ojas in ayurveda?": "Ojas is the vital energy or essence of all bodily tissues, representing immunity, strength, vigor, and overall radiant health.",
+      "how to improve appetite?": "Improve your appetite by drinking warm ginger-water, chewing ginger with salt before meals, and eating only when your previous meal is digested.",
+      "is ghee good for cooking?": "Yes! Ghee (clarified butter) has a high smoke point, stimulates Agni (digestive fire), nourishes tissues, and improves absorption of fat-soluble nutrients.",
+      "what is triphala?": "Triphala is a classical formula of three fruits (Amalaki, Bibhitaki, Haritaki) that acts as a gentle bowel tonic and rich antioxidant.",
+      "how to detox at home?": "Do a gentle home detox by drinking warm water, sipping cumin-coriander-fennel tea, and eating light, warm Kitchari for a day or two.",
+      "how to care for joints?": "Nourish your joints by massaging them with warm sesame or Mahanarayan oil, keeping active, and avoiding dry, cold foods that aggravate Vata.",
+      "what herbs support memory?": "Medhya Rasayana (cognitive herbs) like Brahmi, Shankhapushpi, and Gotu Kola are highly praised for memory, focus, and brain health.",
+      "what is abhyanga massage?": "Abhyanga is self-massage using warm herbal oil. It calms the nervous system, supports skin tone, increases circulation, and grounds Vata.",
+      "how to prevent dry skin?": "Address dry skin from within: drink warm water, consume healthy fats (ghee, olive oil), and perform daily oil massage (Abhyanga).",
+      "how to grow hair faster?": "Promote hair growth by oiling the scalp with Bhringraj or coconut oil, eating nutrient-rich foods, and reducing stress to balance Pitta.",
+      "what causes morning grogginess?": "Morning grogginess is often due to Ama (undigested waste) or late dinners. Try eating a light dinner by 7 PM and sleeping before 10 PM.",
+      "how to treat acidity naturally?": "Soothe acidity with cooling herbs like Amalaki, Shatavari, or licorice. Drink coconut water, and avoid spicy, fried, or sour foods.",
+      "what are seasonal guidelines?": "Ayurvedic seasonal routine (Ritucharya) adjusts your diet and lifestyle to balance the environmental shifts in Vata, Pitta, and Kapha.",
+      "is fasting recommended?": "Ayurveda recommends light fasting (sips of warm water or ginger tea) during congestion or low appetite to help burn toxins (Ama).",
+      "what is panchakarma?": "Panchakarma is a deep Ayurvedic detoxification process of five therapies (like Vamana, Virechana, Basti) managed under medical supervision.",
+      "how to practice mindful eating?": "Eat in a calm environment, chew your food thoroughly, avoid distractions like phones, and eat until you are about 75% full."
+    };
+
+    // Toggle Chatbot Window
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      var isHidden = windowEl.classList.contains('ka-chatbot-hidden');
+      if (isHidden) {
+        windowEl.classList.remove('ka-chatbot-hidden');
+        windowEl.setAttribute('aria-hidden', 'false');
+        input.focus();
       } else {
-        card.classList.remove('show-reviewer');
+        windowEl.classList.add('ka-chatbot-hidden');
+        windowEl.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    closeBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      windowEl.classList.add('ka-chatbot-hidden');
+      windowEl.setAttribute('aria-hidden', 'true');
+    });
+
+    // Close on clicking outside
+    document.addEventListener('click', function (e) {
+      if (!windowEl.classList.contains('ka-chatbot-hidden')) {
+        if (!windowEl.contains(e.target) && !trigger.contains(e.target)) {
+          windowEl.classList.add('ka-chatbot-hidden');
+          windowEl.setAttribute('aria-hidden', 'true');
+        }
+      }
+    });
+
+    // Scroll to bottom helper
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Add message bubble
+    function addMessage(text, sender) {
+      var msgDiv = document.createElement('div');
+      msgDiv.classList.add('ka-chatbot-message');
+      msgDiv.classList.add('ka-chatbot-message-' + sender);
+      
+      var p = document.createElement('p');
+      p.textContent = text;
+      msgDiv.appendChild(p);
+      
+      // Insert before quick options if they exist
+      var quickOpts = messagesContainer.querySelector('.ka-chatbot-quick-options');
+      if (quickOpts) {
+        messagesContainer.insertBefore(msgDiv, quickOpts);
+      } else {
+        messagesContainer.appendChild(msgDiv);
+      }
+      
+      scrollToBottom();
+    }
+
+    // Simulate typing indicator
+    function showTypingIndicator() {
+      var bubble = document.createElement('div');
+      bubble.classList.add('ka-chatbot-typing-bubble');
+      bubble.id = 'ka-chatbot-typing-indicator';
+      
+      for (var i = 0; i < 3; i++) {
+        var dot = document.createElement('div');
+        dot.classList.add('ka-chatbot-typing-dot');
+        bubble.appendChild(dot);
+      }
+      
+      var quickOpts = messagesContainer.querySelector('.ka-chatbot-quick-options');
+      if (quickOpts) {
+        messagesContainer.insertBefore(bubble, quickOpts);
+      } else {
+        messagesContainer.appendChild(bubble);
+      }
+      scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+      var indicator = document.getElementById('ka-chatbot-typing-indicator');
+      if (indicator) {
+        indicator.parentNode.removeChild(indicator);
       }
     }
 
-    window.addEventListener('scroll', checkScroll);
-    window.addEventListener('resize', checkScroll);
-    checkScroll();
+    // Keyword responder mapping
+    function getBotResponse(userMsg, isTyped) {
+      if (isTyped) {
+        return "We'll be live soon!";
+      }
+
+      var msg = userMsg.toLowerCase().trim();
+      
+      if (botResponses[msg]) {
+        return botResponses[msg];
+      }
+      
+      // Fallback searches
+      if (msg.indexOf('sleep') > -1) {
+        return botResponses["how can i improve sleep?"];
+      }
+      if (msg.indexOf('agni') > -1 || msg.indexOf('digest') > -1) {
+        return botResponses["what is agni?"];
+      }
+      if (msg.indexOf('pitta') > -1) {
+        return botResponses["cooling recipes for pitta"];
+      }
+      if (msg.indexOf('vaidya') > -1 || msg.indexOf('doctor') > -1 || msg.indexOf('speak') > -1) {
+        return botResponses["i want to speak with a vaidya."];
+      }
+      
+      return "Pranam! Ayurveda teaches us to seek balance through custom diet, herbs, and daily routines. Try selecting one of our quick questions for verified Ayurvedic guides.";
+    }
+
+    // Process question helper
+    function processQuestion(questionText, isTyped) {
+      addMessage(questionText, 'user');
+      showTypingIndicator();
+      
+      setTimeout(function () {
+        removeTypingIndicator();
+        var response = getBotResponse(questionText, isTyped);
+        addMessage(response, 'bot');
+      }, 2000);
+    }
+
+    // Form submit handler
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var text = input.value.trim();
+      if (!text) return;
+      
+      input.value = '';
+      processQuestion(text, true);
+    });
+
+    // Quick option clicks
+    messagesContainer.addEventListener('click', function (e) {
+      if (e.target.classList.contains('ka-chatbot-option-btn')) {
+        var question = e.target.getAttribute('data-question');
+        if (question) {
+          var siblings = Array.prototype.slice.call(e.target.parentNode.children);
+          var btnIndex = siblings.indexOf(e.target);
+          if (btnIndex >= 0 && btnIndex < 3) {
+            if (backupQuestions.length > 0) {
+              var nextQ = backupQuestions[backupIndex % backupQuestions.length];
+              backupIndex++;
+              e.target.textContent = nextQ;
+              e.target.setAttribute('data-question', nextQ);
+            }
+          }
+          processQuestion(question, false);
+        }
+      }
+    });
   }
+
 
   // ============================================================
   // 9. TOC TOGGLE — Drop down and collapse sidebar Table of Contents
@@ -755,7 +1033,7 @@
     initTopicCarousel();
     initAjaxFiltering();
     initFloatingCTA();
-    initAuthorReviewerToggle();
+    initChatbot();
     initTocToggle();
     initComments();
   }

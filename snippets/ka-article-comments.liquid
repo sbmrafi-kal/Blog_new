@@ -25,13 +25,8 @@
     {%- comment -%} Left side: Title + Form Composer {%- endcomment -%}
     <div class="ka-article-comments-left">
       <div class="ka-article-comments-sidebar-head">
-        <p class="ka-blog-eyebrow">{{ comments_eyebrow }}</p>
-        <h2 id="ka-comments-title">
-          Comments
-          <span class="ka-article-comment-count">
-            ({{ article.comments_count }})
-          </span>
-        </h2>
+        <p class="ka-blog-eyebrow">{{ comments_eyebrow | replace: ' (0)', '' | replace: '(0)', '' }}</p>
+        <h2 id="ka-comments-title">{{ comments_heading }}</h2>
       </div>
 
       {%- comment -%} Comment Form {%- endcomment -%}

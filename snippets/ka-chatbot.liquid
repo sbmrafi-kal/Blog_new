@@ -1,0 +1,48 @@
+{% comment %}
+  ka-chatbot.liquid — Reusable Ask Guruji chatbot popup widget
+  Usage: {% render 'ka-chatbot', blog: blog %}
+{% endcomment %}
+
+<div class="ka-chatbot-container">
+  <button class="ka-blog-floating-cta ka-chatbot-trigger" id="ka-chatbot-trigger" aria-label="Ask Guruji Chatbot">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-chatbot-trigger-icon" style="margin-right: 8px; display: inline-block; vertical-align: middle;">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span style="vertical-align: middle;">Ask Guruji</span>
+  </button>
+  
+  <div class="ka-chatbot-window ka-chatbot-hidden" id="ka-chatbot-window" aria-hidden="true">
+    <div class="ka-chatbot-header">
+      <div class="ka-chatbot-header-info">
+        <div class="ka-chatbot-avatar-small">G</div>
+        <div>
+          <h3>Ask Guruji</h3>
+          <p>Ayurvedic Wisdom Bot</p>
+        </div>
+      </div>
+      <button class="ka-chatbot-close" id="ka-chatbot-close" aria-label="Close Chat">&times;</button>
+    </div>
+    
+    <div class="ka-chatbot-messages" id="ka-chatbot-messages">
+      <div class="ka-chatbot-message ka-chatbot-message-bot">
+        <p>Pranam! I am Guruji, your Ayurvedic guide. How can I help you find balance today?</p>
+      </div>
+      <div class="ka-chatbot-quick-options">
+        <button type="button" class="ka-chatbot-option-btn" data-question="What is this page about?">What is this page about?</button>
+        <button type="button" class="ka-chatbot-option-btn" data-question="How useful is it?">How useful is it?</button>
+        <button type="button" class="ka-chatbot-option-btn" data-question="How can I improve sleep?">How can I improve sleep?</button>
+        <button type="button" class="ka-chatbot-option-btn" data-question="I want to speak with a Vaidya.">Connect with Vaidya</button>
+      </div>
+    </div>
+    
+    <form class="ka-chatbot-input-form" id="ka-chatbot-form">
+      <input type="text" id="ka-chatbot-input" placeholder="Ask Guruji a question..." required autocomplete="off">
+      <button type="submit" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>

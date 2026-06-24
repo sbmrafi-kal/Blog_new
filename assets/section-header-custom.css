@@ -98,24 +98,30 @@
 
 .theme-header-custom__nav-link {
   position: relative;
-  padding: 0 6px;
+  padding: 0;
   color: #1e4b3c;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
+  font-size: 17px;
+  font-weight: 400 !important;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
 }
 
-.theme-header-custom__nav-link:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: -1px;
-  top: 50%;
-  width: 1px;
-  height: 14px;
-  transform: translateY(-50%);
-  background: rgba(30, 75, 60, 0.15);
+.theme-header-custom__nav-link::after {
+  content: '|';
+  margin-left: 12px !important;
+  margin-right: 12px !important;
+  color: #1e4b3c;
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+.theme-header-custom__nav-link:last-child::after,
+.theme-header-custom__nav-link:last-of-type::after {
+  display: none !important;
+  content: none !important;
 }
 
 .theme-header-custom__brand { display: flex; align-items: center; justify-content: center; }
@@ -259,7 +265,7 @@
 
   .theme-header-custom__breadcrumbs {
     padding: 8px 18px 4px 18px !important;
-    font-size: 15px !important;
+    font-size: 11px !important;
     gap: 6px;
     overflow-x: auto;
     white-space: nowrap;
@@ -390,6 +396,14 @@ body.overflow-hidden {
 }
 
 @media screen and (min-width: 990px) {
+  .theme-header-custom__brand,
+  .theme-header-custom__brand-image {
+    width: 65px !important;
+    height: 65px !important;
+    max-width: 65px !important;
+    max-height: 65px !important;
+    object-fit: contain !important;
+  }
   .theme-header-custom__nav-link:first-child {
     padding-left: 0px !important;
   }
@@ -515,7 +529,7 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
 .ka-blog-breadcrumb a,
 .ka-blog-breadcrumb span {
   font-family: 'Avenir-Heavy', 'Avenir', 'Figtree', sans-serif !important;
-  font-size: 16px !important;
+  font-size: 13px !important;
   color: #2A4D3380 !important;
   font-weight: 500 !important;
   text-transform: uppercase !important; /* All segments except current article title capitalized */
@@ -532,9 +546,22 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
 .theme-header-custom__breadcrumbs .theme-header-custom__breadcrumb-current,
 .ka-blog-breadcrumb .theme-header-custom__breadcrumb-current {
   font-family: 'Avenir-Heavy', 'Avenir', 'Figtree', sans-serif !important;
-  font-size: 16px !important;
+  font-size: 13px !important;
   color: #2A4A3D !important;
   font-weight: 500 !important;
   text-transform: none !important; /* Keep article title case exact */
   letter-spacing: normal !important;
+}
+
+.ka-blog-breadcrumb-subnav a {
+  color: #2A4D3380 !important;
+  transition: color 0.2s ease;
+}
+.ka-blog-breadcrumb-subnav a.active {
+  color: #2A4A3D !important;
+  font-weight: 600 !important;
+}
+.ka-blog-breadcrumb-subnav a:hover {
+  color: #2A4A3D !important;
+  text-decoration: underline !important;
 }

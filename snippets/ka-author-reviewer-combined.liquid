@@ -1,129 +1,58 @@
 {% comment %}
   ka-author-reviewer-combined.liquid — Combined Author and Reviewer Card
-  Shows Written by initially, changes to Reviewed by on scroll.
+  Shows Written by stacked above Reviewed by.
 {% endcomment %}
 
 {%- liquid
-  assign show_author = true
-  assign author_name_str = author_profile.name | default: article.author
-  if author_name_str contains 'Editorial Team' or author_name_str contains 'Editorial' or author_name_str == blank
-    assign show_author = false
-  endif
-
-  assign show_reviewer = false
-  assign reviewer_name_str = reviewer_profile.name | default: article.metafields.custom.review_label.value | default: article.metafields.custom.review_label
-  if reviewer_name_str != blank
-    assign show_reviewer = true
-  endif
-
-  assign view_profile_label = blog.metafields.custom.view_profile_label | default: 'View profile'
+  assign author_name = 'Dr. Harsha Joy BAMS'
+  assign author_role = 'WRITTEN BY'
+  assign author_bio = 'Dr. Harsha Joy is a distinguished Ayurvedic practitioner with over five years of experience as a medical writer, combining her clinical expertise with her passion for sharing Ayurvedic knowledge.'
+  
+  assign reviewer_name = 'Dr. Anjali Raichur BAMS, PGCPK Sr. Physician'
+  assign reviewer_role = 'REVIEWED BY'
+  assign reviewer_bio = 'Dr. Anjali Raichur has over 25 years of experience as Ayurvedic practitioner with expertise in Panchakarma and holistic wellness.'
 -%}
 
-{%- if show_author or show_reviewer -%}
-  <div class="ka-article-author-reviewer-card{% if show_reviewer and show_author %} has-both-scroll-toggle{% endif %}" id="author-reviewer-card">
-    
-    {%- if show_author -%}
-      {%- liquid
-        assign author_name = author_profile.name | default: article.author
-        assign author_role = written_by_label | default: 'Written by'
-        assign author_designation = author_profile.designation
-        assign author_degree = author_profile.degree
-        assign author_qualifications = author_profile.qualifications
-        assign author_bio = author_profile.short_bio
-        assign author_photo = author_profile.photo
-        assign author_url = author_profile.profile_url
-        assign author_initials = author_name | split: ' ' | map: 'first' | join: '' | upcase | truncate: 2, ''
-      -%}
-      <div class="ka-article-card-state ka-article-card-state--author">
-        <div class="ka-article-author-card">
-          <div class="ka-article-avatar" aria-hidden="true">
-            {%- if author_photo -%}
-              <img
-                src="{{ author_photo | image_url: width: 176 }}"
-                alt="{{ author_name | escape }}"
-                loading="lazy"
-                width="88"
-                height="88"
-              >
-            {%- else -%}
-              {{ author_initials }}
-            {%- endif -%}
-          </div>
-          <div>
-            <p class="ka-blog-eyebrow">{{ author_role }}</p>
-            <h2>{{ author_name }}</h2>
-            {%- if author_degree != blank or author_qualifications != blank -%}
-              <p class="ka-blog-muted" style="margin-top: 8px;">
-                <b>
-                  {%- if author_degree != blank -%}{{ author_degree }}{%- endif -%}
-                  {%- if author_degree != blank and author_qualifications != blank -%} · {%- endif -%}
-                  {%- if author_qualifications != blank -%}{{ author_qualifications }}{%- endif -%}
-                </b>
-              </p>
-            {%- endif -%}
-            {%- if author_bio != blank -%}
-              <p style="margin-top: 12px;">{{ author_bio }}</p>
-            {%- endif -%}
-            <div class="ka-blog-chip-row" style="margin-top: 16px;">
-              {%- if author_designation != blank -%}
-                <span class="ka-blog-chip ka-blog-chip--neutral">{{ author_designation }}</span>
-              {%- endif -%}
-              {%- if author_url != blank -%}
-                <a href="{{ author_url }}" class="ka-blog-chip ka-blog-chip--green">{{ view_profile_label }}</a>
-              {%- endif -%}
-            </div>
-          </div>
-        </div>
+<div class="ka-article-author-reviewer-card" id="author-reviewer-card">
+  
+  {%- comment -%} Written by Card {%- endcomment -%}
+  <div class="ka-article-card-state ka-article-card-state--author">
+    <div class="ka-article-author-card">
+      <div class="ka-article-avatar" aria-hidden="true">
+        <img
+          src="{{ 'Doctor.jpg' | asset_url }}"
+          alt="{{ author_name | escape }}"
+          loading="lazy"
+          width="88"
+          height="88"
+        >
       </div>
-    {%- endif -%}
-
-    {%- if show_reviewer -%}
-      {%- liquid
-        assign reviewer_name = reviewer_profile.name | default: reviewer_name_str | replace: 'Reviewed by ', '' | replace: 'Reviewed by', '' | strip
-        assign reviewer_role = reviewed_by_label | default: 'Reviewed by'
-        assign reviewer_designation = reviewer_profile.designation | default: 'Medical Reviewer'
-        assign reviewer_degree = reviewer_profile.degree | default: 'BAMS'
-        assign reviewer_qualifications = reviewer_profile.qualifications
-        assign reviewer_bio = reviewer_profile.short_bio
-        assign reviewer_photo = reviewer_profile.photo
-        assign reviewer_url = reviewer_profile.profile_url
-        assign reviewer_initials = reviewer_name | split: ' ' | map: 'first' | join: '' | upcase | truncate: 2, ''
-      -%}
-      <div class="ka-article-card-state ka-article-card-state--reviewer">
-        <div class="ka-article-author-card">
-          <div class="ka-article-avatar" aria-hidden="true">
-            <img
-              src="{{ 'Doctor.jpg' | asset_url }}"
-              alt="{{ reviewer_name | escape }}"
-              loading="lazy"
-              width="88"
-              height="88"
-            >
-          </div>
-          <div>
-            <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
-            <h2>{{ reviewer_name }}</h2>
-            {%- if reviewer_degree != blank or reviewer_qualifications != blank -%}
-              <p class="ka-blog-muted" style="margin-top: 8px;">
-                <b>
-                  {%- if reviewer_degree != blank -%}{{ reviewer_degree }}{%- endif -%}
-                  {%- if reviewer_degree != blank and reviewer_qualifications != blank -%} · {%- endif -%}
-                  {%- if reviewer_qualifications != blank -%}{{ reviewer_qualifications }}{%- endif -%}
-                </b>
-              </p>
-            {%- endif -%}
-            {%- if reviewer_bio != blank -%}
-              <p style="margin-top: 12px;">{{ reviewer_bio }}</p>
-            {%- endif -%}
-            <div class="ka-blog-chip-row" style="margin-top: 16px;">
-              {%- if reviewer_url != blank -%}
-                <a href="{{ reviewer_url }}" class="ka-blog-chip ka-blog-chip--green">{{ view_profile_label }}</a>
-              {%- endif -%}
-            </div>
-          </div>
-        </div>
+      <div>
+        <p class="ka-blog-eyebrow">{{ author_role }}</p>
+        <h2>{{ author_name }}</h2>
+        <p style="margin-top: 12px;">{{ author_bio }}</p>
       </div>
-    {%- endif -%}
-
+    </div>
   </div>
-{%- endif -%}
+
+  {%- comment -%} Reviewed by Card {%- endcomment -%}
+  <div class="ka-article-card-state ka-article-card-state--reviewer">
+    <div class="ka-article-author-card">
+      <div class="ka-article-avatar" aria-hidden="true">
+        <img
+          src="{{ 'Doctor.jpg' | asset_url }}"
+          alt="{{ reviewer_name | escape }}"
+          loading="lazy"
+          width="88"
+          height="88"
+        >
+      </div>
+      <div>
+        <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
+        <h2>{{ reviewer_name }}</h2>
+        <p style="margin-top: 12px;">{{ reviewer_bio }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

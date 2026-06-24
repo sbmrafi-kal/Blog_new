@@ -23,20 +23,46 @@
         {%- assign nav_4_url = section.settings.nav_4_url | default: routes.root_url -%}
         {%- assign nav_5_url = section.settings.nav_5_url | default: routes.root_url -%}
 
+        {%- liquid
+          assign active_links = 0
+          if nav_1_title != blank
+            assign active_links = active_links | plus: 1
+          endif
+          if nav_2_title != blank
+            assign active_links = active_links | plus: 1
+          endif
+          if nav_3_title != blank
+            assign active_links = active_links | plus: 1
+          endif
+          if nav_4_title != blank
+            assign active_links = active_links | plus: 1
+          endif
+          if nav_5_title != blank
+            assign active_links = active_links | plus: 1
+          endif
+
+          assign rendered_index = 0
+        -%}
+
         {%- if nav_1_title != blank -%}
-          <a class="theme-header-custom__nav-link" href="{{ nav_1_url }}">{{ nav_1_title }}</a>
+          {%- assign rendered_index = rendered_index | plus: 1 -%}
+          <a class="theme-header-custom__nav-link{% if rendered_index == active_links %} theme-header-custom__nav-link--last{% endif %}" href="{{ nav_1_url }}">{{ nav_1_title }}</a>
         {%- endif -%}
         {%- if nav_2_title != blank -%}
-          <a class="theme-header-custom__nav-link" href="{{ nav_2_url }}">{{ nav_2_title }}</a>
+          {%- assign rendered_index = rendered_index | plus: 1 -%}
+          <a class="theme-header-custom__nav-link{% if rendered_index == active_links %} theme-header-custom__nav-link--last{% endif %}" href="{{ nav_2_url }}">{{ nav_2_title }}</a>
         {%- endif -%}
         {%- if nav_3_title != blank -%}
-          <a class="theme-header-custom__nav-link" href="{{ nav_3_url }}">{{ nav_3_title }}</a>
+          {%- assign rendered_index = rendered_index | plus: 1 -%}
+          <a class="theme-header-custom__nav-link{% if rendered_index == active_links %} theme-header-custom__nav-link--last{% endif %}" href="{{ nav_3_url }}">{{ nav_3_title }}</a>
         {%- endif -%}
         {%- if nav_4_title != blank -%}
-          <a class="theme-header-custom__nav-link" href="{{ nav_4_url }}">{{ nav_4_title }}</a>
+          {%- assign rendered_index = rendered_index | plus: 1 -%}
+          <a class="theme-header-custom__nav-link{% if rendered_index == active_links %} theme-header-custom__nav-link--last{% endif %}" href="{{ nav_4_url }}">{{ nav_4_title }}</a>
         {%- endif -%}
         {%- if nav_5_title != blank -%}
-          <a class="theme-header-custom__nav-link" href="{{ nav_5_url }}">{{ nav_5_title }}</a>
+          {%- assign rendered_index = rendered_index | plus: 1 -%}
+          <a class="theme-header-custom__nav-link{% if rendered_index == active_links %} theme-header-custom__nav-link--last{% endif %}" href="{{ nav_5_url }}">{{ nav_5_title }}</a>
         {%- endif -%}
       </nav>
     </div>
@@ -166,8 +192,25 @@
   <div class="theme-header-custom__breadcrumbs" aria-label="Breadcrumb">
       {%- if request.page_type == 'blog' or request.page_type == 'article' -%}
         <div class="ka-blog-breadcrumb" style="display: flex; align-items: center; gap: 8px; margin: 0; background: transparent; padding: 0; border: 0; box-shadow: none;">
-          {%- if request.page_type == 'blog' and current_tags == blank -%}
-            <span class="theme-header-custom__breadcrumb-current">Journal</span>
+          {%- if request.page_type == 'blog' and current_tags == blank or current_tags == empty or current_tags.size == 0 or current_tags == nil -%}
+            <div class="ka-blog-breadcrumb-subnav" style="display: flex; align-items: center; gap: 24px; margin: 0; padding: 0; list-style: none;">
+              {%- liquid
+                assign subnav_overview = blog.metafields.custom.subnav_overview | default: 'Overview'
+                assign subnav_care_paths = blog.metafields.custom.subnav_care_paths | default: 'Care paths'
+                assign subnav_topics = blog.metafields.custom.subnav_topics | default: 'Topics'
+                assign subnav_latest = blog.metafields.custom.subnav_latest | default: 'Latest articles'
+                assign subnav_consult = blog.metafields.custom.subnav_consult | default: 'Consult'
+              -%}
+              <a class="active" href="#overview">{{ subnav_overview }}</a>
+              <span class="subnav-separator">|</span>
+              <a href="#care-paths">{{ subnav_care_paths }}</a>
+              <span class="subnav-separator">|</span>
+              <a href="#topics">{{ subnav_topics }}</a>
+              <span class="subnav-separator">|</span>
+              <a href="#latest">{{ subnav_latest }}</a>
+              <span class="subnav-separator">|</span>
+              <a href="#consult">{{ subnav_consult }}</a>
+            </div>
           {%- else -%}
             <a href="{{ blog.url }}">Journal</a>
             <span>&gt;</span>

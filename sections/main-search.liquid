@@ -471,6 +471,10 @@
   {{ 'mask-arch.svg' | inline_asset_content }}
 {%- endif -%}
 
+{%- comment -%} ============ CHATBOT ============ {%- endcomment -%}
+{%- render 'ka-chatbot' -%}
+<script src="{{ 'ka-blog-redesign.js' | asset_url }}" defer></script>
+
 {% schema %}
 {
   "name": "t:sections.main-search.name",

@@ -1,40 +1,14 @@
 {
+  "name": "Article — Ayurveda Redesign",
   "sections": {
-    "main": {
-      "type": "main-article",
-      "blocks": {
-        "featured_image": {
-          "type": "featured_image",
-          "settings": {
-            "image_height": "adapt"
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "blog_show_date": true,
-            "blog_show_author": false
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        },
-        "content": {
-          "type": "content"
-        }
-      },
-      "block_order": [
-        "featured_image",
-        "title",
-        "share",
-        "content"
-      ]
+    "main-article": {
+      "type": "main-article-redesign",
+      "settings": {
+        "default_disclaimer": "This content is for informational and educational purposes only. It is not intended as medical advice and should not replace consultation with a qualified healthcare professional. Kerala Ayurveda recommends consulting a doctor or qualified vaidya before beginning any new wellness routine, especially if you have existing health conditions or are on medication."
+      }
     }
   },
   "order": [
-    "main"
+    "main-article"
   ]
 }

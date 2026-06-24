@@ -148,12 +148,8 @@
     {%- render 'ka-article-comments', article: article, blog: blog -%}
   </div>
 
-  {%- comment -%} ============ FLOATING CTA ============ {%- endcomment -%}
-  {%- liquid
-    assign floating_cta_label = blog.metafields.custom.floating_cta_label | default: 'Ask an Ayurvedic doctor'
-    assign floating_cta_url = blog.metafields.custom.floating_cta_url | default: blog.url | append: '#consult'
-  -%}
-  <a class="ka-blog-floating-cta" href="{{ floating_cta_url }}">{{ floating_cta_label }}</a>
+  {%- comment -%} ============ CHATBOT ============ {%- endcomment -%}
+  {%- render 'ka-chatbot', blog: blog -%}
 
 </div>
 

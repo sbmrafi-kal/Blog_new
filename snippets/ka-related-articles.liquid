@@ -23,26 +23,10 @@
       <h2>{{ related_heading }}</h2>
     </div>
   </div>
-  <div class="ka-article-related-grid">
+  <div class="ka-blog-article-grid">
     {%- if has_explicit_related -%}
       {%- for related_article in related limit: 3 -%}
-        {%- assign related_image = related_article.metafields.custom.hero_image.value | default: related_article.metafields.custom.hero_image | default: related_article.image -%}
-        <a class="ka-article-related-card" href="{{ related_article.url }}">
-          <div class="ka-article-related-card__image">
-            {%- if related_image != blank -%}
-              <img
-                src="{{ related_image | image_url: width: 600 }}"
-                alt="{{ related_image.alt | default: related_article.title | escape }}"
-                loading="lazy"
-                width="600"
-              >
-            {%- endif -%}
-          </div>
-          <div class="ka-article-related-card__body">
-            <h3>{{ related_article.title }}</h3>
-            <span class="ka-blog-read-more">{{ read_label }}</span>
-          </div>
-        </a>
+        {%- render 'ka-blog-card', article: related_article -%}
       {%- endfor -%}
     {%- else -%}
       {%- comment -%} Fallback: articles from same blog with shared tags {%- endcomment -%}
@@ -57,23 +41,7 @@
             {%- endif -%}
           {%- endfor -%}
           {%- if shares_tag -%}
-            {%- assign related_image = blog_article.metafields.custom.hero_image.value | default: blog_article.metafields.custom.hero_image | default: blog_article.image -%}
-            <a class="ka-article-related-card" href="{{ blog_article.url }}">
-              <div class="ka-article-related-card__image">
-                {%- if related_image != blank -%}
-                  <img
-                    src="{{ related_image | image_url: width: 600 }}"
-                    alt="{{ related_image.alt | default: blog_article.title | escape }}"
-                    loading="lazy"
-                    width="600"
-                  >
-                {%- endif -%}
-              </div>
-              <div class="ka-article-related-card__body">
-                <h3>{{ blog_article.title }}</h3>
-                <span class="ka-blog-read-more">{{ read_label }}</span>
-              </div>
-            </a>
+            {%- render 'ka-blog-card', article: blog_article -%}
             {%- assign shown_count = shown_count | plus: 1 -%}
           {%- endif -%}
         {%- endif -%}
@@ -82,23 +50,7 @@
       {%- if shown_count == 0 -%}
         {%- for blog_article in blog.articles limit: 3 -%}
           {%- if blog_article.id != article.id -%}
-            {%- assign related_image = blog_article.metafields.custom.hero_image.value | default: blog_article.metafields.custom.hero_image | default: blog_article.image -%}
-            <a class="ka-article-related-card" href="{{ blog_article.url }}">
-              <div class="ka-article-related-card__image">
-                {%- if related_image != blank -%}
-                  <img
-                    src="{{ related_image | image_url: width: 600 }}"
-                    alt="{{ related_image.alt | default: blog_article.title | escape }}"
-                    loading="lazy"
-                    width="600"
-                  >
-                {%- endif -%}
-              </div>
-              <div class="ka-article-related-card__body">
-                <h3>{{ blog_article.title }}</h3>
-                <span class="ka-blog-read-more">{{ read_label }}</span>
-              </div>
-            </a>
+            {%- render 'ka-blog-card', article: blog_article -%}
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}

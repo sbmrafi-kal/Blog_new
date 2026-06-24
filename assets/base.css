@@ -232,7 +232,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 }
 
 .skip-to-content-link:focus {
-  z-index: 9999;
+  z-index: 100001 !important;
   position: inherit;
   overflow: auto;
   width: auto;

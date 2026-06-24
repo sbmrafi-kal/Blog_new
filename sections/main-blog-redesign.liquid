@@ -48,7 +48,14 @@
             assign hero_image = selected_blog.metafields.custom.hero_image.value | default: selected_blog.metafields.custom.hero_image
           -%}
           <p class="ka-blog-eyebrow">{{ hero_eyebrow }}</p>
-          <h1>{{ hero_title }}</h1>
+          <h1>
+            {%- assign hero_title_stripped = hero_title | strip -%}
+            {%- if hero_title_stripped == "Kerala Ayurveda Wellness Journal" -%}
+              Kerala Ayurveda<br>Wellness Journal
+            {%- else -%}
+              {{ hero_title }}
+            {%- endif -%}
+          </h1>
           <p class="ka-blog-lead">{{ hero_subtitle }}</p>
           
           {%- comment -%} Search Bar {%- endcomment -%}
@@ -78,7 +85,11 @@
         </div>
         <div class="ka-blog-hero-image-wrap">
           {%- if hero_image != blank -%}
-            <img src="{{ hero_image | image_url: width: 800 }}" alt="{{ hero_title | escape }}">
+            {%- assign hero_img_url = hero_image | image_url: width: 800 -%}
+            {%- unless hero_img_url contains 'http' -%}
+              {%- assign hero_img_url = 'https://cdn.shopify.com' | append: hero_img_url -%}
+            {%- endunless -%}
+            <img src="{{ hero_img_url }}" alt="{{ hero_title | escape }}">
           {%- else -%}
             <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="{{ hero_title | escape }}">
           {%- endif -%}
@@ -159,7 +170,7 @@
                     {%- if forloop.index0 > 0 -%}
                       </div>
                     {%- endif -%}
-                    <div class="ka-blog-topic-deck" data-deck-index="{{ deck_index }}">
+                    <div class="ka-blog-topic-deck{% if deck_index == 0 %} active{% endif %}" data-deck-index="{{ deck_index }}">
                   {%- endif -%}
                   {%- render 'ka-topic-card', topic: topic, blog: selected_blog, index: forloop.index0 -%}
                   {%- if forloop.last -%}
@@ -218,11 +229,7 @@
   {%- comment -%} ============ CONSULT CTA ============ {%- endcomment -%}
   {%- render 'ka-consult-cta', blog: selected_blog, section: section -%}
 
-  {%- liquid
-    assign floating_cta_label = selected_blog.metafields.custom.floating_cta_label | default: 'Ask an Ayurvedic doctor'
-    assign floating_cta_url = selected_blog.metafields.custom.floating_cta_url | default: '#consult'
-  -%}
-  <a class="ka-blog-floating-cta" href="{{ floating_cta_url }}">{{ floating_cta_label }}</a>
+  {%- render 'ka-chatbot', blog: selected_blog -%}
 
 </div>
 

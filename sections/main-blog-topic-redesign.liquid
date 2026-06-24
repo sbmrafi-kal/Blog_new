@@ -32,6 +32,48 @@
 
   assign topic_title = topic_metaobject.title | default: current_tag
   assign topic_description = topic_metaobject.description
+  if topic_description == blank
+    assign topic_handle = topic_title | handleize
+    if topic_handle contains 'sleep'
+      assign topic_description = 'Restore your body’s natural rhythms with classical Ayurvedic sleep wisdom, herbal remedies, and soothing evening routines.'
+    elsif topic_handle contains 'digest' or topic_handle contains 'agni'
+      assign topic_description = 'Kindle your inner fire (Agni) and eliminate toxins (Ama) with time-tested Ayurvedic diets, spices, and digestive guidelines.'
+    elsif topic_handle contains 'herb'
+      assign topic_description = 'Discover the healing properties, traditional uses, and modern benefits of classical Ayurvedic herbs like Ashwagandha, Turmeric, and Ginger.'
+    elsif topic_handle contains 'detox'
+      assign topic_description = 'Rejuvenate your body and clear seasonal congestion with gentle Ayurvedic detoxification practices, herbal drinks, and light foods.'
+    elsif topic_handle contains 'skin' or topic_handle contains 'hair' or topic_handle contains 'beauty'
+      assign topic_description = 'Nurture your natural beauty from within with cooling Ayurvedic remedies, herbal face packs, and nourishing hair oils.'
+    elsif topic_handle contains 'womens-health' or topic_handle contains 'women'
+      assign topic_description = 'Support feminine balance, monthly cycles, and hormonal harmony through life’s transitions using nature-based Ayurvedic care.'
+    elsif topic_handle contains 'pain-joints' or topic_handle contains 'joints'
+      assign topic_description = 'Relieve muscle stiffness, support bone density, and promote flexible joints with classical Ayurvedic massage oils and remedies.'
+    elsif topic_handle contains 'dosha' or topic_handle contains 'basics' or topic_handle contains 'prakriti'
+      assign topic_description = 'Learn the foundations of Ayurveda, including the three doshas (Vata, Pitta, Kapha) and how to align daily living with your constitution.'
+    elsif topic_handle contains 'food' or topic_handle contains 'kitchen'
+      assign topic_description = 'Transform your kitchen into a pharmacy with Ayurvedic cooking tips, optimal food combinations, and seasonal recipes.'
+    elsif topic_handle contains 'weight' or topic_handle contains 'cravings'
+      assign topic_description = 'Achieve healthy weight management and curb strong cravings by balancing your metabolism, portion sizes, and digestive fire.'
+    elsif topic_handle contains 'immunity' or topic_handle contains 'resilience'
+      assign topic_description = 'Build deep physical resilience and vital energy (Ojas) with traditional Ayurvedic immune-boosting formulations and daily rituals.'
+    elsif topic_handle contains 'season' or topic_handle contains 'routine'
+      assign topic_description = 'Align your body with nature’s cycles using seasonal routines (Ritucharya) for transitions in cold, hot, and wet climates.'
+    elsif topic_handle contains 'mind' or topic_handle contains 'calm' or topic_handle contains 'stress'
+      assign topic_description = 'Calm an overactive nervous system, reduce stress, and improve clarity using Ayurvedic herbs, breathing (Pranayama), and meditation.'
+    elsif topic_handle contains 'habit' or topic_handle contains 'daily'
+      assign topic_description = 'Establish a powerful daily routine (Dinacharya) with classic practices like oil pulling, tongue scraping, and daily body massage.'
+    elsif topic_handle contains 'special-senses' or topic_handle contains 'eye' or topic_handle contains 'ear' or topic_handle contains 'mouth' or topic_handle contains 'sensory'
+      assign topic_description = 'Protect and rejuvenate your eyes, ears, nose, and mouth with time-tested Ayurvedic sensory therapies.'
+    elsif topic_handle contains 'men'
+      assign topic_description = 'Enhance male vitality, endurance, reproductive wellness, and physical strength with traditional Ayurvedic herbs and active lifestyle tips.'
+    elsif topic_handle contains 'kid' or topic_handle contains 'child'
+      assign topic_description = 'Support your child’s growth, natural immunity, and appetite with gentle Ayurvedic herbs and nourishing meals.'
+    elsif topic_handle contains 'elder' or topic_handle contains 'old-age'
+      assign topic_description = 'Promote longevity, memory retention, joint mobility, and comfortable digestion in the golden years with supportive vata-balancing care.'
+    else
+      assign topic_description = 'Explore classical Ayurvedic wisdom, custom diet guidelines, and holistic wellness practices for everyday balance and health.'
+    endif
+  endif
   assign topic_secondary_label = topic_metaobject.secondary_label
 -%}
 
@@ -55,7 +97,11 @@
         <div class="ka-blog-topic-hero__image-wrap">
           {%- assign topic_image = topic_metaobject.image.value | default: topic_metaobject.image -%}
           {%- if topic_image != blank -%}
-            <img src="{{ topic_image | image_url: width: 800 }}" alt="{{ topic_title | escape }}">
+            {%- assign topic_hero_url = topic_image | image_url: width: 800 -%}
+            {%- unless topic_hero_url contains 'http' -%}
+              {%- assign topic_hero_url = 'https://cdn.shopify.com' | append: topic_hero_url -%}
+            {%- endunless -%}
+            <img src="{{ topic_hero_url }}" alt="{{ topic_title | escape }}">
           {%- else -%}
             <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="{{ topic_title | escape }}">
           {%- endif -%}
@@ -139,6 +185,9 @@
 
   {%- comment -%} ============ CONSULT CTA ============ {%- endcomment -%}
   {%- render 'ka-consult-cta', blog: blog, section: section -%}
+
+  {%- comment -%} ============ CHATBOT ============ {%- endcomment -%}
+  {%- render 'ka-chatbot', blog: blog -%}
 </div>
 
 <script src="{{ 'ka-blog-redesign.js' | asset_url }}" defer></script>

@@ -19,9 +19,13 @@
 <a class="ka-blog-card" href="{{ card_article.url }}">
   <div class="ka-blog-card__image-container">
     {%- if card_image != blank -%}
+      {%- assign card_img_url = card_image | image_url: width: 800 -%}
+      {%- unless card_img_url contains 'http' -%}
+        {%- assign card_img_url = 'https://cdn.shopify.com' | append: card_img_url -%}
+      {%- endunless -%}
       <img
         class="ka-blog-card__img"
-        src="{{ card_image | image_url: width: 800 }}"
+        src="{{ card_img_url }}"
         alt="{{ card_image.alt | default: card_article.title | escape }}"
         loading="lazy"
         width="800"

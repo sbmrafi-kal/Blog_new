@@ -631,8 +631,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
 .ka-blog-step {
   display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 18px;
+  grid-template-columns: 72px 1fr !important;
+  gap: 32px !important;
   padding: 22px;
   border-bottom: 1px solid var(--ka-line);
   flex: 1;
@@ -982,6 +982,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-article-toc-mobile__toggle svg {
+  width: 18px !important;
+  height: 18px !important;
   transition: transform 300ms ease;
 }
 
@@ -990,12 +992,15 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-article-toc-mobile__content {
-  display: none;
-  padding: 0 20px 16px;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: max-height 0.35s ease, padding 0.35s ease;
 }
 
 .ka-article-toc-mobile__content.is-open {
-  display: block;
+  max-height: 600px;
+  padding: 0 20px 16px;
 }
 
 .ka-article-toc-mobile__list {
@@ -1216,12 +1221,12 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
    COMMENTS
    ============================================================= */
 .ka-article-comments-card {
-  border: 1px solid var(--ka-line);
-  border-radius: var(--ka-radius-xl);
-  background: linear-gradient(135deg, #FDFFFB, #FDFFFB);
-  box-shadow: var(--ka-shadow-soft);
-  padding: 28px;
-  margin-top: 36px;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: 36px !important;
 }
 
 .ka-article-comments-head {
@@ -1254,10 +1259,27 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   display: grid;
   grid-template-columns: 54px 1fr;
   gap: 14px;
-  border: 1px solid #b8d29b;
-  background: #f6f7f2;
-  border-radius: 20px;
-  padding: 18px;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 14px 0 !important;
+  border-bottom: 1px solid var(--ka-line) !important;
+}
+.ka-article-comment-card:last-child {
+  border-bottom: none !important;
+}
+
+.ka-article-comments-empty {
+  text-align: center !important;
+  color: var(--ka-muted);
+  font-size: 15px;
+  padding: 20px 0;
+  min-height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--ka-line);
+  border-radius: var(--ka-radius-md);
 }
 
 .ka-article-comment-avatar {
@@ -1733,7 +1755,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     visibility: hidden;
     pointer-events: none;
     z-index: 1;
-    transition: none !important;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
   }
 
   .ka-blog-topic-deck.active {
@@ -1747,7 +1769,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   .ka-blog-topic-deck .ka-blog-image-card {
     opacity: 0;
     transform: translate3d(40px, 0, 0) scale(0.97);
-    transition: none; /* Instant hide/reset when inactive to prevent overlap */
+    transition: transform 0.4s ease, opacity 0.4s ease; /* Smooth exit transition */
   }
 
   .ka-blog-topic-deck.active .ka-blog-image-card {
@@ -1797,15 +1819,21 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     transform: none !important;
     transition: none !important;
     width: auto !important;
+    height: auto !important;
   }
 
   .ka-blog-topic-deck {
-    flex: 0 0 auto;
-    width: auto;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    gap: 16px;
-    padding: 0 15px;
+    position: static !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: auto !important;
+    gap: 16px !important;
+    padding: 0 15px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
 
   .ka-blog-topic-deck .ka-blog-image-card {
@@ -2087,48 +2115,16 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   align-self: flex-start !important;
 }
 
-/* Combined Author & Reviewer scroll-toggle card */
+/* Combined Author & Reviewer card layout */
 .ka-article-author-reviewer-card {
-  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
   width: 100%;
-}
-.ka-article-author-reviewer-card.has-both-scroll-toggle {
-  min-height: 220px;
+  margin-top: 36px !important;
 }
 .ka-article-author-reviewer-card .ka-article-card-state {
-  transition: opacity 350ms ease, transform 350ms ease, visibility 350ms ease;
   width: 100%;
-}
-.ka-article-author-reviewer-card.has-both-scroll-toggle .ka-article-card-state--reviewer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(15px);
-  pointer-events: none;
-}
-.ka-article-author-reviewer-card.has-both-scroll-toggle .ka-article-card-state--author {
-  position: relative;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-.ka-article-author-reviewer-card.has-both-scroll-toggle.show-reviewer .ka-article-card-state--author {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-15px);
-  pointer-events: none;
-}
-.ka-article-author-reviewer-card.has-both-scroll-toggle.show-reviewer .ka-article-card-state--reviewer {
-  position: relative;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 
 /* Slightly lower the circle of the doctor image in Reviewed by section */
@@ -2156,7 +2152,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-article-toc-icon {
-  font-size: 22px !important;
+  font-size: 18px !important;
   font-weight: bold !important;
   color: #616161 !important;
 }
@@ -2223,6 +2219,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
    ============================================================= */
 
 /* 1. Main News Page Hero 2-Column Desktop layout & Search */
+/* Hero background restored to original gradient */
+
 @media (min-width: 980px) {
   .ka-blog-hero-shell {
     display: grid;
@@ -2230,25 +2228,15 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     gap: 0;
     align-items: stretch;
     padding: 0 !important;
-    min-height: 420px;
-    background: linear-gradient(135deg, var(--ka-green), #2c5445) !important;
+    min-height: 440px !important;
   }
 
   .ka-blog-hero-content {
     width: 100% !important;
-    padding: 48px !important;
+    padding: 32px 48px !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: white !important;
-  }
-
-  .ka-blog-hero-content h1 {
-    color: white !important;
-  }
-
-  .ka-blog-hero-content .ka-blog-lead {
-    color: rgba(255, 255, 255, 0.9) !important;
   }
 
   .ka-blog-hero-image-wrap {
@@ -2284,25 +2272,24 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   width: 100%;
   padding: 12px 48px 12px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
+  border: 1px solid rgba(30, 75, 60, 0.2);
+  background: rgba(253, 255, 251, 0.8);
+  color: var(--ka-ink);
   font-family: var(--ka-font-body);
   font-size: 15px;
-  backdrop-filter: blur(4px);
   outline: none;
   transition: all 0.2s ease;
 }
 
 .ka-blog-hero-search__field input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ka-muted);
 }
 
 .ka-blog-hero-search__field input:focus {
   background: white;
   color: var(--ka-ink);
-  border-color: white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--ka-green);
+  box-shadow: 0 4px 20px rgba(30, 75, 60, 0.15);
 }
 
 .ka-blog-hero-search__field input:focus::placeholder {
@@ -2444,17 +2431,17 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-ingredient-card {
-  background: var(--ka-card);
-  border: 1px solid var(--ka-line);
-  border-radius: var(--ka-radius-md);
-  padding: 20px;
-  box-shadow: var(--ka-shadow-soft);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transition: none !important;
 }
 
 .ka-ingredient-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--ka-shadow);
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .ka-ingredient-card h3 {
@@ -2713,4 +2700,261 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   margin: 0;
   border: none;
   box-shadow: none;
+}
+
+/* =============================================================
+   ASK GURUJI INTERACTIVE CHATBOT
+   ============================================================= */
+.ka-chatbot-container {
+  position: relative;
+  z-index: 10000;
+}
+
+.ka-chatbot-trigger {
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 14px 22px !important;
+  font-size: 15px !important;
+  box-shadow: 0 10px 30px rgba(210, 116, 73, 0.3) !important;
+}
+
+.ka-chatbot-window {
+  position: fixed;
+  right: 24px;
+  bottom: 95px;
+  width: 380px;
+  height: 520px;
+  max-height: calc(100vh - 130px);
+  max-width: calc(100vw - 48px);
+  background: rgba(253, 255, 251, 0.98);
+  border: 1px solid rgba(184, 210, 155, 0.5);
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(30, 75, 60, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10001;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 220ms ease, visibility 220ms ease;
+}
+
+.ka-chatbot-window.ka-chatbot-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(30px) scale(0.95);
+}
+
+.ka-chatbot-header {
+  background: var(--ka-green);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(184, 210, 155, 0.2);
+}
+
+.ka-chatbot-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ka-chatbot-avatar-small {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ka-orange);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-family: var(--ka-font-heavy);
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.ka-chatbot-header h3 {
+  color: white !important;
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-family: var(--ka-font-heavy) !important;
+  line-height: 1.2 !important;
+}
+
+.ka-chatbot-header p {
+  color: rgba(255, 255, 255, 0.75) !important;
+  margin: 2px 0 0 0 !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+}
+
+.ka-chatbot-close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.ka-chatbot-close:hover {
+  color: white;
+}
+
+.ka-chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scrollbar-width: thin;
+}
+
+.ka-chatbot-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.ka-chatbot-messages::-webkit-scrollbar-thumb {
+  background: rgba(184, 210, 155, 0.4);
+  border-radius: 2px;
+}
+
+.ka-chatbot-message {
+  max-width: 80%;
+  padding: 12px 16px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.ka-chatbot-message p {
+  margin: 0 !important;
+}
+
+.ka-chatbot-message-bot {
+  align-self: flex-start;
+  background: #f6f7f2;
+  border: 1px solid var(--ka-line);
+  color: var(--ka-ink);
+  border-radius: 18px 18px 18px 4px;
+}
+
+.ka-chatbot-message-user {
+  align-self: flex-end;
+  background: var(--ka-orange);
+  color: white;
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 4px 12px rgba(210, 116, 73, 0.15);
+}
+
+.ka-chatbot-quick-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.ka-chatbot-option-btn {
+  background: transparent;
+  border: 1px solid var(--ka-line);
+  color: var(--ka-green);
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.ka-chatbot-option-btn:hover {
+  background: rgba(30, 75, 60, 0.05);
+  border-color: var(--ka-green);
+}
+
+.ka-chatbot-input-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--ka-line);
+  background: #FDFFFB;
+}
+
+.ka-chatbot-input-form input {
+  flex: 1;
+  border: 1px solid var(--ka-line);
+  border-radius: 18px;
+  padding: 10px 14px;
+  outline: none;
+  font-size: 14px;
+  background: #fffdfc;
+  color: var(--ka-ink);
+}
+
+.ka-chatbot-input-form input:focus {
+  border-color: var(--ka-green);
+}
+
+.ka-chatbot-input-form button {
+  background: var(--ka-green);
+  color: white;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.ka-chatbot-input-form button:hover {
+  background: #15342a;
+}
+
+/* Typing bubble animation */
+.ka-chatbot-typing-bubble {
+  display: flex;
+  gap: 4px;
+  padding: 12px 18px;
+  align-self: flex-start;
+  background: #f6f7f2;
+  border: 1px solid var(--ka-line);
+  border-radius: 18px 18px 18px 4px;
+}
+
+.ka-chatbot-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ka-muted);
+  animation: ka-typing-bounce 1s infinite ease-in-out;
+}
+
+.ka-chatbot-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.ka-chatbot-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes ka-typing-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (max-width: 639px) {
+  .ka-chatbot-window {
+    right: 14px;
+    bottom: 80px;
+    max-width: calc(100vw - 28px);
+    height: 460px;
+  }
 }
