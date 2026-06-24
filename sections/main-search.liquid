@@ -144,7 +144,12 @@
 
 {%- liquid
   assign sort_by = search.sort_by | default: search.default_sort_by
-  assign terms = search.terms | escape
+  assign raw_terms = search.terms
+  assign display_terms = raw_terms
+  if raw_terms == '*' or raw_terms == 'author:*' or raw_terms == 'tag:*'
+    assign display_terms = ''
+  endif
+  assign terms = display_terms | escape
   assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
 -%}
 
@@ -185,7 +190,7 @@
                 id="Search-In-Template"
                 type="search"
                 name="q"
-                value="{{ search.terms | escape }}"
+                value="{{ display_terms | escape }}"
                 placeholder="{{ 'general.search.search' | t }}"
                 {%- if settings.predictive_search_enabled -%}
                   role="combobox"
@@ -213,7 +218,7 @@
 
               <button
                 type="reset"
-                class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+                class="reset__button field__button{% if display_terms == blank %} hidden{% endif %}"
                 aria-label="{{ 'general.search.reset' | t }}"
               >
                 <span class="svg-wrapper">
@@ -236,12 +241,22 @@
         {%- unless section.settings.enable_filtering or section.settings.enable_sorting -%}
           {%- if search.results_count > 0 -%}
             <p role="status">
-              {{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}
+              {%- if display_terms != blank -%}
+                {{ 'templates.search.results_with_count_and_term' | t: terms: display_terms, count: search.results_count }}
+              {%- else -%}
+                {{ 'templates.search.results_with_count' | t: terms: '', count: search.results_count | replace: 'for ""', '' | replace: '""', '' }}
+              {%- endif -%}
             </p>
           {%- endif -%}
         {%- endunless -%}
         {%- if search.results_count == 0 and search.filters == empty -%}
-          <p role="status">{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+          <p role="status">
+            {%- if display_terms != blank -%}
+              {{ 'templates.search.no_results' | t: terms: display_terms }}
+            {%- else -%}
+              {{ 'templates.search.no_results' | t: terms: '' | replace: 'for ""', '' | replace: '""', '' }}
+            {%- endif -%}
+          </p>
         {%- endif -%}
       {%- endif -%}
     </div>
@@ -287,7 +302,11 @@
               <h2 class="product-count__text text-body">
                 <span id="ProductCountDesktop">
                   {%- if search.results_count -%}
-                    {{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+                    {%- if display_terms != blank -%}
+                      {{ 'templates.search.results_with_count' | t: terms: display_terms, count: search.results_count }}
+                    {%- else -%}
+                      {{ 'templates.search.results_with_count' | t: terms: '', count: search.results_count | replace: 'for ""', '' | replace: '""', '' }}
+                    {%- endif -%}
                   {%- elsif search.products_count == search.all_products_count -%}
                     {{ 'products.facets.product_count_simple' | t: count: search.products_count }}
                   {%- else -%}

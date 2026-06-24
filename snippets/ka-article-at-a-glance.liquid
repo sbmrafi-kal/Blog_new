@@ -19,10 +19,13 @@
         {%- assign parts = item | split: ': ' -%}
         <div class="ka-article-summary-item">
           {%- if parts.size > 1 -%}
-            <b>{{ parts.first }}</b>
-            <span>{{ parts | last }}</span>
+            {%- assign heading_text = parts.first -%}
+            {%- assign heading_with_sep = heading_text | append: ': ' -%}
+            {%- assign body_text = item | remove_first: heading_with_sep -%}
+            <h3 class="ka-article-summary-item__heading">{{ heading_text }}</h3>
+            <p class="ka-article-summary-item__body">{{ body_text }}</p>
           {%- else -%}
-            <span>{{ item }}</span>
+            <p class="ka-article-summary-item__body">{{ item }}</p>
           {%- endif -%}
         </div>
       {%- endfor -%}

@@ -37,22 +37,6 @@
 
 <div class="ka-blog-wrapper">
 
-  {%- comment -%} ============ SUBNAV ============ {%- endcomment -%}
-  <div class="ka-blog-subnav-wrap">
-    <div class="ka-blog-container">
-      <nav class="ka-blog-subnav" aria-label="Blog section navigation">
-        {%- liquid
-          assign topic_subnav_overview = blog.metafields.custom.topic_subnav_overview | default: 'Overview'
-          assign topic_subnav_guides = blog.metafields.custom.topic_subnav_guides | default: 'Guides'
-          assign topic_subnav_consult = blog.metafields.custom.topic_subnav_consult | default: 'Consult'
-        -%}
-        <a class="active" href="#overview">{{ topic_subnav_overview }}</a>
-        <a href="#articles">{{ topic_subnav_guides }}</a>
-        <a href="#consult">{{ topic_subnav_consult }}</a>
-      </nav>
-    </div>
-  </div>
-
   {%- comment -%} ============ BREADCRUMB + TOPIC HERO ============ {%- endcomment -%}
   <section class="ka-blog-section--tight" id="overview">
     <div class="ka-blog-container">

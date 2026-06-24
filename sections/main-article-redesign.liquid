@@ -23,7 +23,7 @@
   assign subnav_topics = blog.metafields.custom.subnav_topics | default: 'Topics'
   assign subnav_latest = blog.metafields.custom.subnav_latest | default: 'Latest articles'
   assign subnav_consult = blog.metafields.custom.subnav_consult | default: 'Consult'
-  assign toc_heading = blog.metafields.custom.toc_heading | default: 'In this article'
+  assign toc_heading = blog.metafields.custom.toc_heading | default: 'Table of content'
   assign toc_mobile_label = blog.metafields.custom.toc_mobile_label | default: 'Table of contents'
   assign share_label = blog.metafields.custom.share_label | default: 'Share this guide:'
   assign written_by_label = blog.metafields.custom.written_by_label | default: 'Written by'
@@ -31,19 +31,6 @@
 -%}
 
 <div class="ka-blog-wrapper">
-
-  {%- comment -%} ============ SUBNAV ============ {%- endcomment -%}
-  <div class="ka-blog-subnav-wrap">
-    <div class="ka-blog-container">
-      <nav class="ka-blog-subnav" aria-label="Blog section navigation">
-        <a href="{{ blog.url }}#overview">{{ subnav_overview }}</a>
-        <a href="{{ blog.url }}#care-paths">{{ subnav_care_paths }}</a>
-        <a href="{{ blog.url }}#topics">{{ subnav_topics }}</a>
-        <a href="{{ blog.url }}#latest">{{ subnav_latest }}</a>
-        <a href="{{ blog.url }}#consult">{{ subnav_consult }}</a>
-      </nav>
-    </div>
-  </div>
 
   {%- comment -%} ============ BREADCRUMB + ARTICLE HERO ============ {%- endcomment -%}
   <section class="ka-blog-section--tight">
@@ -123,55 +110,15 @@
           {%- render 'ka-article-faqs', article: article -%}
         </div>
 
-        {%- comment -%} Author card {%- endcomment -%}
-        {%- assign show_author = true -%}
-        {%- assign author_name_str = author_profile.name | default: article.author -%}
-        {%- if author_name_str contains 'Editorial Team' or author_name_str contains 'Editorial' -%}
-          {%- assign show_author = false -%}
-        {%- endif -%}
-        {%- if show_author -%}
-          {%- if author_profile -%}
-            {%- render 'ka-author-reviewer-card',
-              profile: author_profile,
-              role_label: written_by_label,
-              fallback_name: article.author
-            -%}
-          {%- else -%}
-            {%- comment -%} Fallback: show basic author info from article.author {%- endcomment -%}
-            {%- if article.author != blank -%}
-              <section class="ka-article-author-card" id="author">
-                <div class="ka-article-avatar" aria-hidden="true">
-                  {{ article.author | split: ' ' | first | slice: 0 | upcase }}{{ article.author | split: ' ' | last | slice: 0 | upcase }}
-                </div>
-                <div>
-                  <p class="ka-blog-eyebrow">{{ written_by_label }}</p>
-                  <h2>{{ article.author }}</h2>
-                </div>
-              </section>
-            {%- endif -%}
-          {%- endif -%}
-        {%- endif -%}
-
-        {%- comment -%} Reviewer card {%- endcomment -%}
-        {%- if reviewer_profile -%}
-          {%- render 'ka-author-reviewer-card',
-            profile: reviewer_profile,
-            role_label: reviewed_by_label
-          -%}
-        {%- else -%}
-          {%- assign review_label = article.metafields.custom.review_label.value | default: article.metafields.custom.review_label -%}
-          {%- if review_label != blank -%}
-            <section class="ka-article-author-card" id="reviewer">
-              <div class="ka-article-avatar" aria-hidden="true">
-                RV
-              </div>
-              <div>
-                <p class="ka-blog-eyebrow">{{ reviewed_by_label }}</p>
-                <h2>{{ review_label | replace: 'Reviewed by ', '' | replace: 'Reviewed by', '' | strip }}</h2>
-              </div>
-            </section>
-          {%- endif -%}
-        {%- endif -%}
+        {%- comment -%} Combined Author & Reviewer Card {%- endcomment -%}
+        {%- render 'ka-author-reviewer-combined',
+          article: article,
+          blog: blog,
+          author_profile: author_profile,
+          reviewer_profile: reviewer_profile,
+          written_by_label: written_by_label,
+          reviewed_by_label: reviewed_by_label
+        -%}
 
         {%- comment -%} Related articles {%- endcomment -%}
         {%- render 'ka-related-articles', article: article, blog: blog -%}
@@ -185,7 +132,10 @@
       {%- comment -%} ===== SIDEBAR (Desktop TOC) ===== {%- endcomment -%}
       <aside class="ka-article-sidebar" aria-label="Article table of contents">
         <div class="ka-article-toc-card">
-          <h3>{{ toc_heading }}</h3>
+          <h3 class="ka-article-toc-toggle">
+            <span>{{ toc_heading }}</span>
+            <span class="ka-article-toc-icon" aria-hidden="true">-</span>
+          </h3>
           <ul class="ka-article-sidebar__list" style="list-style: none; padding: 0; margin: 0;">
             {%- comment -%} Built dynamically by ka-blog-redesign.js {%- endcomment -%}
           </ul>

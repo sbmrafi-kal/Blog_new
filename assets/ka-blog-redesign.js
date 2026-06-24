@@ -185,9 +185,12 @@
         var text = heading.textContent.trim();
         if (!text) return;
 
+        // Capitalize the first letter of the heading text
+        var capitalizedText = text.charAt(0).toUpperCase() + text.slice(1);
+
         var li = document.createElement('li');
         var a = document.createElement('a');
-        a.textContent = text;
+        a.textContent = capitalizedText;
         a.href = '#' + heading.id;
         a.addEventListener('click', function (e) {
           e.preventDefault();
@@ -352,12 +355,44 @@
     var decks = outer.querySelectorAll('.ka-blog-topic-deck');
     if (!track || !decks.length) return;
 
+    var targetPct = 0;
+    var currentPct = 0;
+    var animFrameId = null;
+
+    function updateAnimation() {
+      // Linear interpolation (lerp) for liquid smooth transitions
+      currentPct += (targetPct - currentPct) * 0.12;
+
+      if (Math.abs(targetPct - currentPct) < 0.001) {
+        currentPct = targetPct;
+      } else {
+        animFrameId = requestAnimationFrame(updateAnimation);
+      }
+
+      var decksCount = decks.length;
+      var activeIndex = Math.floor(currentPct * decksCount);
+      if (activeIndex >= decksCount) activeIndex = decksCount - 1;
+      if (currentPct === 1) activeIndex = decksCount - 1;
+
+      decks.forEach(function (deck, index) {
+        if (index === activeIndex) {
+          deck.classList.add('active');
+        } else {
+          deck.classList.remove('active');
+        }
+      });
+    }
+
     function handleScroll() {
       if (window.innerWidth < 980) {
         track.style.transform = '';
         decks.forEach(function (deck) {
           deck.classList.remove('active');
         });
+        if (animFrameId) {
+          cancelAnimationFrame(animFrameId);
+          animFrameId = null;
+        }
         return;
       }
 
@@ -367,9 +402,15 @@
       var outerHeight = outer.offsetHeight;
       var viewportHeight = window.innerHeight;
 
-      // Pin starts when container top meets top: 170px of viewport
-      var stickyOffset = 170;
-      var startScroll = outerTop - stickyOffset - 50;
+      // Measure header height dynamically
+      var headerHeight = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--theme-header-height')
+      ) || 72;
+      var subnavHeight = 55;
+      var stickyOffset = headerHeight + subnavHeight;
+
+      // Trigger animation just before it touches the subnav
+      var startScroll = outerTop - stickyOffset - 20;
       var endScroll = outerTop + outerHeight - viewportHeight;
       var totalScrollRange = endScroll - startScroll;
 
@@ -381,21 +422,16 @@
       if (pct < 0) pct = 0;
       if (pct > 1) pct = 1;
 
-      // No horizontal translation on desktop (cross-fade handles deck switching)
+      // Set target percentage
+      targetPct = pct;
+
+      // Ensure horizontal transform is reset on desktop
       track.style.transform = 'none';
 
-      // Set active deck for CSS transitions
-      var activeIndex = Math.floor(pct * decks.length);
-      if (activeIndex >= decks.length) activeIndex = decks.length - 1;
-      if (pct === 1) activeIndex = decks.length - 1;
-
-      decks.forEach(function (deck, index) {
-        if (index === activeIndex) {
-          deck.classList.add('active');
-        } else {
-          deck.classList.remove('active');
-        }
-      });
+      // Start the animation loop if it's not running
+      if (!animFrameId) {
+        updateAnimation();
+      }
     }
 
     window.addEventListener('scroll', handleScroll);
@@ -535,6 +571,101 @@
   }
 
   // ============================================================
+  // 7. FLOATING CTA — Hide when approaching the footer
+  // ============================================================
+  function initFloatingCTA() {
+    var cta = document.querySelector('.ka-blog-floating-cta');
+    var footer = document.querySelector('.theme-footer');
+    if (!cta || !footer) return;
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            cta.classList.add('ka-blog-floating-cta--hidden');
+          } else {
+            cta.classList.remove('ka-blog-floating-cta--hidden');
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px 80px 0px', // trigger slightly before footer overlaps CTA
+        threshold: 0
+      });
+      observer.observe(footer);
+    } else {
+      // Fallback
+      var checkVisibility = function () {
+        var footerRect = footer.getBoundingClientRect();
+        if (footerRect.top < window.innerHeight + 80) {
+          cta.classList.add('ka-blog-floating-cta--hidden');
+        } else {
+          cta.classList.remove('ka-blog-floating-cta--hidden');
+        }
+      };
+      window.addEventListener('scroll', checkVisibility);
+      window.addEventListener('resize', checkVisibility);
+      checkVisibility();
+    }
+  }
+
+  // ============================================================
+  // 8. AUTHOR REVIEWER TOGGLE — Swap Written by to Reviewed by on scroll
+  // ============================================================
+  function initAuthorReviewerToggle() {
+    var card = document.querySelector('.ka-article-author-reviewer-card.has-both-scroll-toggle');
+    if (!card) return;
+
+    function checkScroll() {
+      var rect = card.getBoundingClientRect();
+      var viewportHeight = window.innerHeight;
+      
+      // Swap when the card is in the lower 65% of the screen
+      if (rect.top < viewportHeight * 0.65) {
+        card.classList.add('show-reviewer');
+      } else {
+        card.classList.remove('show-reviewer');
+      }
+    }
+
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+    checkScroll();
+  }
+
+  // ============================================================
+  // 9. TOC TOGGLE — Drop down and collapse sidebar Table of Contents
+  // ============================================================
+  function initTocToggle() {
+    var toggle = document.querySelector('.ka-article-toc-toggle');
+    var list = document.querySelector('.ka-article-sidebar__list');
+    var icon = document.querySelector('.ka-article-toc-icon');
+    var card = document.querySelector('.ka-article-toc-card');
+    if (!toggle || !list || !icon) return;
+
+    toggle.addEventListener('click', function () {
+      var isCollapsed = list.classList.contains('ka-collapsed');
+      if (isCollapsed) {
+        list.classList.remove('ka-collapsed');
+        if (card) card.classList.remove('toc-is-collapsed');
+        icon.textContent = '-';
+        list.style.maxHeight = list.scrollHeight + 'px';
+        setTimeout(function () {
+          list.style.maxHeight = '';
+        }, 300);
+      } else {
+        list.style.maxHeight = list.scrollHeight + 'px';
+        // Force reflow
+        list.offsetHeight;
+        list.classList.add('ka-collapsed');
+        if (card) card.classList.add('toc-is-collapsed');
+        icon.textContent = '+';
+        list.style.maxHeight = '0px';
+      }
+    });
+  }
+
+  // ============================================================
   // INIT — Run all on DOMContentLoaded
   // ============================================================
   function init() {
@@ -544,6 +675,9 @@
     initReadTime();
     initTopicCarousel();
     initAjaxFiltering();
+    initFloatingCTA();
+    initAuthorReviewerToggle();
+    initTocToggle();
   }
 
   if (document.readyState === 'loading') {

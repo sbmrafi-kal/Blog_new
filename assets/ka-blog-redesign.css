@@ -86,7 +86,7 @@
   --ka-radius-xl: 34px;
   --ka-radius-lg: 24px;
   --ka-radius-md: 18px;
-  --ka-max-width: 1180px;
+  --ka-max-width: 1392px;
 
   --ka-font-heading: 'Marcellus', serif;
   --ka-font-body: 'Figtree', sans-serif;
@@ -123,8 +123,26 @@
 }
 
 .ka-blog-container {
-  width: min(var(--ka-max-width), calc(100% - 40px));
+  max-width: var(--ka-max-width);
   margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 640px) {
+  .ka-blog-container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .ka-blog-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 /* =============================================================
@@ -154,6 +172,15 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   margin: 0 0 10px;
+}
+
+.ka-blog-eyebrow + h2,
+.ka-blog-eyebrow + h3,
+.ka-blog-eyebrow + .ka-article-comments-head {
+  margin-top: 6px !important;
+}
+.ka-article-comments-head h2 {
+  margin-top: 0 !important;
 }
 
 .ka-blog-eyebrow .ka-hindi {
@@ -274,12 +301,16 @@
    ============================================================= */
 .ka-blog-subnav-wrap {
   position: sticky;
-  top: var(--header-height, 154px);
+  top: var(--theme-header-height, 72px) !important;
   z-index: 60;
-  background: rgba(255, 253, 248, 0.94);
-  border-bottom: 1px solid rgba(234, 218, 196, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: #f0f0f0 !important;
+  border-bottom: 1px solid rgba(30, 75, 60, 0.15) !important;
+}
+
+/* Hide landing subnav on article and topic-wise views */
+body:has(.ka-blog-topic-section) .ka-blog-subnav-wrap,
+body:has(.ka-article-main-section) .ka-blog-subnav-wrap {
+  display: none !important;
 }
 
 .ka-blog-subnav {
@@ -296,7 +327,7 @@
   flex: 0 0 auto;
   padding: 9px 14px;
   border-radius: 999px;
-  color: var(--ka-muted);
+  color: #1e4b3c !important;
   font-family: var(--ka-font-heavy);
   font-size: 13px;
   font-weight: 800;
@@ -305,8 +336,8 @@
 
 .ka-blog-subnav a:hover,
 .ka-blog-subnav a.active {
-  color: var(--ka-deep-orange);
-  background: #FFF1DC;
+  color: #D27449 !important;
+  background: #FFF1DC !important;
 }
 
 /* =============================================================
@@ -506,6 +537,9 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   transform: scale(1.01);
   transition: transform 220ms ease;
 }
@@ -731,7 +765,16 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   margin-top: 16px;
 }
 
-.ka-article-hero h1 { color: white; margin-top: 18px; }
+.ka-article-hero h1 {
+  color: white;
+  margin-top: 18px;
+  font-size: 32px !important;
+}
+@media (min-width: 980px) {
+  .ka-article-hero h1 {
+    font-size: 48px !important;
+  }
+}
 
 .ka-article-meta-card {
   display: flex;
@@ -840,7 +883,22 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   padding: 16px;
 }
 
-.ka-article-summary-item b { display: block; margin-bottom: 5px; color: var(--ka-green); }
+.ka-article-summary-item__heading {
+  display: block;
+  margin: 0 0 6px 0;
+  font-family: var(--ka-font-heavy);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ka-green);
+  line-height: 1.3;
+}
+
+.ka-article-summary-item__body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ka-body-text);
+}
 
 /* =============================================================
    SIDEBAR TOC — Sticky table of contents
@@ -986,7 +1044,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   border-top: 1px solid var(--ka-line);
 }
 
-.ka-article-glossary-grid b { color: var(--ka-deep-orange); }
+.ka-article-glossary-grid b { color: #9F3715; }
 
 /* =============================================================
    SOURCES
@@ -1357,12 +1415,19 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   font-family: var(--ka-font-heavy);
   font-weight: 800;
   box-shadow: 0 18px 40px rgba(30, 75, 60, 0.28);
-  transition: transform 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, background 180ms ease, opacity 250ms ease, visibility 250ms ease;
 }
 
 .ka-blog-floating-cta:hover {
   transform: translateY(-2px);
   background: var(--ka-cta-bg-hover, #b03d0b);
+}
+
+.ka-blog-floating-cta.ka-blog-floating-cta--hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(20px) !important;
 }
 
 /* =============================================================
@@ -1419,7 +1484,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
    RESPONSIVE — Mobile (max-width: 639px)
    ============================================================= */
 @media (max-width: 639px) {
-  .ka-blog-container { width: min(100% - 28px, var(--ka-max-width)); }
+  .ka-blog-container { padding-left: 14px; padding-right: 14px; }
 
   .ka-blog-section { padding: 24px 0; }
   .ka-blog-section-head { display: block; }
@@ -1625,7 +1690,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
   .ka-blog-topic-sticky-wrap {
     position: sticky;
-    top: 170px; /* height of header + subnav + gap */
+    top: calc(var(--theme-header-height, 72px) + 55px) !important;
     width: 100%;
     overflow: hidden;
     padding: 10px 0;
@@ -1659,8 +1724,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
     z-index: 1;
+    transition: none !important;
   }
 
   .ka-blog-topic-deck.active {
@@ -1668,7 +1733,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     visibility: visible;
     pointer-events: auto;
     z-index: 2;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
   }
   /* Card stagger animations within decks */
   .ka-blog-topic-deck .ka-blog-image-card {
@@ -1885,8 +1950,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   color: rgba(255, 255, 255, 0.85);
   transition: color 0.2s ease, background-color 0.2s ease;
@@ -1898,8 +1963,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-article-share svg {
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
 }
 
 /* Two-column Hero Card Grid layout */
@@ -1993,4 +2058,154 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 #related .ka-blog-section-head {
   margin-bottom: 10px !important;
+}
+
+/* Flexbox layout for related articles cards to align button at bottom */
+.ka-article-related-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.ka-article-related-card__body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+}
+.ka-article-related-card__body h3 {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+}
+.ka-article-related-card__body .ka-blog-read-more {
+  margin-top: auto !important;
+  align-self: flex-start !important;
+}
+
+/* Combined Author & Reviewer scroll-toggle card */
+.ka-article-author-reviewer-card {
+  position: relative;
+  width: 100%;
+}
+.ka-article-author-reviewer-card.has-both-scroll-toggle {
+  min-height: 220px;
+}
+.ka-article-author-reviewer-card .ka-article-card-state {
+  transition: opacity 350ms ease, transform 350ms ease, visibility 350ms ease;
+  width: 100%;
+}
+.ka-article-author-reviewer-card.has-both-scroll-toggle .ka-article-card-state--reviewer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  pointer-events: none;
+}
+.ka-article-author-reviewer-card.has-both-scroll-toggle .ka-article-card-state--author {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.ka-article-author-reviewer-card.has-both-scroll-toggle.show-reviewer .ka-article-card-state--author {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px);
+  pointer-events: none;
+}
+.ka-article-author-reviewer-card.has-both-scroll-toggle.show-reviewer .ka-article-card-state--reviewer {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Slightly lower the circle of the doctor image in Reviewed by section */
+.ka-article-card-state--reviewer .ka-article-avatar {
+  transform: translateY(10px) !important;
+}
+
+/* Sidebar Table of Contents toggle button & collapse animation */
+.ka-article-toc-toggle {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  font-family: 'Avenir-Black', 'Avenir', 'Figtree', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #616161 !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+.ka-article-toc-card.toc-is-collapsed .ka-article-toc-toggle {
+  margin-bottom: 0 !important;
+}
+
+.ka-article-toc-icon {
+  font-size: 22px !important;
+  font-weight: bold !important;
+  color: #616161 !important;
+}
+
+.ka-article-sidebar__list {
+  transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms ease, visibility 250ms ease;
+  overflow: hidden;
+  max-height: 1000px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.ka-article-sidebar__list.ka-collapsed {
+  max-height: 0px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  border-top: none !important;
+}
+
+/* =============================================================
+   BLOCKQUOTE — Editorial callout style for rich-text quotes
+   ============================================================= */
+.ka-article-body blockquote,
+.ka-article-content blockquote {
+  border: none;
+  border-left: 4px solid #D27449;
+  background: #FFF9EE;
+  padding: 22px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-style: normal;
+}
+
+.ka-article-body blockquote b,
+.ka-article-content blockquote b,
+.ka-article-body blockquote strong,
+.ka-article-content blockquote strong {
+  font-family: var(--ka-font-heavy);
+  color: #D27449;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ka-article-body blockquote p,
+.ka-article-content blockquote p {
+  margin: 0;
+  color: var(--ka-ink);
+  font-family: var(--ka-font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* =============================================================
+   RESPONSIVE — Ultra-wide (min-width: 1600px)
+   ============================================================= */
+@media screen and (min-width: 1600px) {
+  .ka-blog-container {
+    --ka-max-width: 1520px;
+  }
 }

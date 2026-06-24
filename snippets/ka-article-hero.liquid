@@ -24,12 +24,6 @@
 <article class="ka-article-hero" aria-label="Article introduction">
   <div class="ka-article-hero__content">
     <div class="ka-article-hero__copy">
-      <div class="ka-blog-chip-row">
-        {%- if category_label != blank -%}
-          <span class="ka-blog-chip">{{ category_label }}</span>
-        {%- endif -%}
-      </div>
-
       <h1>{{ hero_article.title }}</h1>
 
       {%- if dek != blank -%}
@@ -40,9 +34,9 @@
       {%- assign published_date = hero_article.published_at | default: hero_article.created_at -%}
       <div class="ka-article-dates-share">
         <div class="ka-article-dates">
-          <span><b>Last Modified Date:</b> {{ modified_date | date: "%d %b, %Y" }}</span>
-          <span class="ka-article-date-sep">|</span>
           <span><b>Published Date:</b> {{ published_date | date: "%d %b, %Y" }}</span>
+          <span class="ka-article-date-sep">|</span>
+          <span><b>Last Modified Date:</b> {{ modified_date | date: "%d %b, %Y" }}</span>
         </div>
         <div class="ka-article-share">
           <span>Share</span>

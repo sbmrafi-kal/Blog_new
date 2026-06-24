@@ -13,9 +13,8 @@
 {%- if faqs != blank and faqs.size > 0 -%}
   <section class="ka-article-faq ka-blog-section--tight" id="faq">
     <p class="ka-blog-eyebrow">{{ faq_eyebrow }}</p>
-    <h2>{{ faq_heading }}</h2>
     {%- for faq_item in faqs -%}
-      <details{% if forloop.first %} open{% endif %}>
+      <details>
         <summary>{{ faq_item.question }}</summary>
         <div class="ka-faq-answer">
           {{ faq_item.answer | metafield_tag }}
