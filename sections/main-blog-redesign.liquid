@@ -45,7 +45,8 @@
             assign hero_eyebrow = selected_blog.metafields.custom.hero_eyebrow | default: section.settings.hero_eyebrow | default: 'AYURVEDA LIBRARY'
             assign hero_title = selected_blog.metafields.custom.hero_title | default: section.settings.hero_title | default: selected_blog.title
             assign hero_subtitle = selected_blog.metafields.custom.hero_subtitle | default: section.settings.hero_subtitle | default: 'Classical Ayurvedic wisdom for herbs, digestion, immunity, skin, hair, stress, sleep, detox, and everyday wellness.'
-            assign hero_image = selected_blog.metafields.custom.hero_image.value | default: selected_blog.metafields.custom.hero_image
+            assign article_path = blog_handle | append: '/what-is-ayurveda'
+            assign hero_image = articles[article_path].image | default: selected_blog.metafields.custom.hero_image.value | default: selected_blog.metafields.custom.hero_image
           -%}
           <p class="ka-blog-eyebrow">{{ hero_eyebrow }}</p>
           <h1>
@@ -174,8 +175,18 @@
                   {%- endif -%}
                 {%- endfor -%}
               {%- endif -%}
-            </div>
           </div>
+          {%- if topics != blank and topics.size > 0 -%}
+            {%- assign total_decks = topics.size | plus: batch_size | minus: 1 | divided_by: batch_size -%}
+            {%- if total_decks > 1 -%}
+              <div class="ka-blog-topic-dots" aria-hidden="true">
+                {%- for i in (1..total_decks) -%}
+                  {%- assign zero_index = forloop.index0 -%}
+                  <span class="ka-blog-topic-dot{% if zero_index == 0 %} active{% endif %}" data-index="{{ zero_index }}"></span>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
         </div>
       </div>
     </div>

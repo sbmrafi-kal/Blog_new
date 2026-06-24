@@ -10,53 +10,74 @@
   assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title | handleize
   assign topic_count_label = topic.cta_label.value | default: topic.cta_label | default: 'Explore topic'
 
-  # Generate Unsplash fallback dark images
-  assign default_img_index = index | default: 0 | modulo: 18
-  case default_img_index
-    when 0
-      assign fallback_img = 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600'
-    when 1
-      assign fallback_img = 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&q=80&w=600'
-    when 2
-      assign fallback_img = 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600'
-    when 3
-      assign fallback_img = 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&q=80&w=600'
-    when 4
-      assign fallback_img = 'https://images.unsplash.com/photo-1502741224143-90386d7c8c82?auto=format&fit=crop&q=80&w=600'
-    when 5
-      assign fallback_img = 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&q=80&w=600'
-    when 6
-      assign fallback_img = 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=600'
-    when 7
-      assign fallback_img = 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=600'
-    when 8
-      assign fallback_img = 'https://images.unsplash.com/photo-1563483783225-bc245ff8f0f0?auto=format&fit=crop&q=80&w=600'
-    when 9
-      assign fallback_img = 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&q=80&w=600'
-    when 10
-      assign fallback_img = 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&q=80&w=600'
-    when 11
-      assign fallback_img = 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&q=80&w=600'
-    when 12
-      assign fallback_img = 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=600'
-    when 13
-      assign fallback_img = 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600'
-    when 14
-      assign fallback_img = 'https://images.unsplash.com/photo-1541256996761-85df2efaa164?auto=format&fit=crop&q=80&w=600'
-    when 15
-      assign fallback_img = 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&q=80&w=600'
-    when 16
-      assign fallback_img = 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600'
-    when 17
-      assign fallback_img = 'https://images.unsplash.com/photo-1550592754-07e0e7a2b97f?auto=format&fit=crop&q=80&w=600'
-  endcase
+  # Try to match the handle for custom dark image
+  assign topic_handle = topic.handle | default: topic_tag | default: topic_title | handleize
+  
+  assign asset_name = ''
+  if topic_handle contains 'digestion'
+    assign asset_name = 'topic-digestion.jpg'
+  elsif topic_handle contains 'food'
+    assign asset_name = 'topic-food.jpg'
+  elsif topic_handle contains 'herbs'
+    assign asset_name = 'topic-herbs.jpg'
+  elsif topic_handle contains 'weight' or topic_handle contains 'cravings'
+    assign asset_name = 'topic-weight.jpg'
+  elsif topic_handle contains 'immunity'
+    assign asset_name = 'topic-immunity.jpg'
+  elsif topic_handle contains 'seasons' or topic_handle contains 'routine'
+    assign asset_name = 'topic-seasons.jpg'
+  elsif topic_handle contains 'sleep' or topic_handle contains 'circadian'
+    assign asset_name = 'topic-sleep.jpg'
+  elsif topic_handle contains 'mind' or topic_handle contains 'calm'
+    assign asset_name = 'topic-mind.jpg'
+  elsif topic_handle contains 'habits'
+    assign asset_name = 'topic-habits.jpg'
+  elsif topic_handle contains 'joints' or topic_handle contains 'body' or topic_handle contains 'pain'
+    assign asset_name = 'topic-joints.jpg'
+  elsif topic_handle contains 'skin' or topic_handle contains 'glow'
+    assign asset_name = 'topic-skin.jpg'
+  elsif topic_handle contains 'hair' or topic_handle contains 'scalp'
+    assign asset_name = 'topic-hair.jpg'
+  elsif topic_handle contains 'senses' or topic_handle contains 'eyes' or topic_handle contains 'ears' or topic_handle contains 'mouth'
+    assign asset_name = 'topic-senses.jpg'
+  elsif topic_handle contains 'women'
+    assign asset_name = 'topic-women.jpg'
+  elsif topic_handle contains 'men'
+    assign asset_name = 'topic-men.jpg'
+  elsif topic_handle contains 'kids' or topic_handle contains 'children'
+    assign asset_name = 'topic-kids.jpg'
+  elsif topic_handle contains 'elder'
+    assign asset_name = 'topic-elders.jpg'
+  elsif topic_handle contains 'basics' or topic_handle contains 'ayurveda'
+    assign asset_name = 'topic-basics.jpg'
+  endif
+
+  assign fallback_img = ''
+  if asset_name != blank
+    assign fallback_img = asset_name | asset_url
+  else
+    assign fallback_img = 'topic-basics.jpg' | asset_url
+  endif
+
+  assign topic_img_url = ''
+  if topic_image != blank
+    assign topic_img_url = topic_image | image_url: width: 600
+  endif
+
+  # Force high-quality local dark assets for Seasons and Sleep
+  if topic_handle contains 'seasons' or topic_handle contains 'routine'
+    assign topic_img_url = ''
+  endif
+  if topic_handle contains 'sleep' or topic_handle contains 'circadian'
+    assign topic_img_url = ''
+  endif
 -%}
 
 <a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag }}">
-  {%- if topic_image != blank -%}
-    <div class="ka-blog-image-card__bg" style="background-image: url('{{ topic_image | image_url: width: 600 }}');"></div>
+  {%- if topic_img_url contains 'cdn.shopify.com' -%}
+    <img class="ka-blog-image-card__bg" src="{{ topic_img_url }}" alt="{{ topic_title | escape }}" loading="lazy" width="600" height="400">
   {%- else -%}
-    <div class="ka-blog-image-card__bg" style="background-image: url('{{ fallback_img }}');"></div>
+    <img class="ka-blog-image-card__bg" src="{{ fallback_img }}" alt="{{ topic_title | escape }}" loading="lazy" width="600" height="400">
   {%- endif -%}
   <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
   <div class="ka-blog-image-card__content">

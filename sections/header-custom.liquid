@@ -202,13 +202,9 @@
                 assign subnav_consult = blog.metafields.custom.subnav_consult | default: 'Consult'
               -%}
               <a class="active" href="#overview">{{ subnav_overview }}</a>
-              <span class="subnav-separator">|</span>
               <a href="#care-paths">{{ subnav_care_paths }}</a>
-              <span class="subnav-separator">|</span>
               <a href="#topics">{{ subnav_topics }}</a>
-              <span class="subnav-separator">|</span>
               <a href="#latest">{{ subnav_latest }}</a>
-              <span class="subnav-separator">|</span>
               <a href="#consult">{{ subnav_consult }}</a>
             </div>
           {%- else -%}

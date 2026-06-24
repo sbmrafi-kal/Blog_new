@@ -4,11 +4,15 @@
 {% endcomment %}
 
 {%- liquid
-  assign author_name = 'Dr. Harsha Joy BAMS'
+  assign author_name_display = 'Dr. Harsha Joy'
+  assign author_qual = 'BAMS'
+  assign author_name = author_name_display | append: ' ' | append: author_qual
   assign author_role = 'WRITTEN BY'
   assign author_bio = 'Dr. Harsha Joy is a distinguished Ayurvedic practitioner with over five years of experience as a medical writer, combining her clinical expertise with her passion for sharing Ayurvedic knowledge.'
   
-  assign reviewer_name = 'Dr. Anjali Raichur BAMS, PGCPK Sr. Physician'
+  assign reviewer_name_display = 'Dr. Anjali Raichur'
+  assign reviewer_qual = 'BAMS, PGCPK Sr. Physician'
+  assign reviewer_name = reviewer_name_display | append: ' ' | append: reviewer_qual
   assign reviewer_role = 'REVIEWED BY'
   assign reviewer_bio = 'Dr. Anjali Raichur has over 25 years of experience as Ayurvedic practitioner with expertise in Panchakarma and holistic wellness.'
 -%}
@@ -29,7 +33,7 @@
       </div>
       <div class="ka-article-author-info">
         <p class="ka-blog-eyebrow">{{ author_role }}</p>
-        <h2>{{ author_name }}</h2>
+        <h2>{{ author_name_display }} <span class="ka-author-qual">{{ author_qual }}</span></h2>
       </div>
       <p class="ka-article-author-bio">{{ author_bio }}</p>
     </div>
@@ -49,7 +53,7 @@
       </div>
       <div class="ka-article-author-info">
         <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
-        <h2>{{ reviewer_name }}</h2>
+        <h2>{{ reviewer_name_display }} <span class="ka-author-qual">{{ reviewer_qual }}</span></h2>
       </div>
       <p class="ka-article-author-bio">{{ reviewer_bio }}</p>
     </div>

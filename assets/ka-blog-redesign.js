@@ -515,6 +515,15 @@
           deck.classList.remove('active');
         }
       });
+
+      var dots = outer.querySelectorAll('.ka-blog-topic-dot');
+      dots.forEach(function (dot, index) {
+        if (index === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
     }
 
     function handleScroll() {
@@ -1012,6 +1021,7 @@
   // ============================================================
   function initComments() {
     var textarea = document.getElementById('ka-comment-body');
+    var composer = document.getElementById('ka-comment-composer');
     var container = document.querySelector('.ka-comment-textarea-container');
     var cancelBtn = document.querySelector('.ka-comment-btn-cancel');
     var nextBtn = document.querySelector('.ka-comment-btn-next');
@@ -1019,42 +1029,47 @@
     var popupClose = document.querySelector('.ka-comment-popup-close');
     var formatBtns = document.querySelectorAll('.ka-comment-format-btn');
 
-    if (!textarea || !container) return;
+    if (!composer || !textarea || !container) return;
 
-    // 1. Focus expansion & auto-expand height
-    textarea.addEventListener('focus', function () {
+    // 1. Focus expansion & synchronization
+    composer.addEventListener('focus', function () {
       container.classList.add('is-expanded');
-      textarea.style.height = 'auto';
-      textarea.style.height = Math.max(120, textarea.scrollHeight) + 'px';
     });
 
-    textarea.addEventListener('input', function () {
-      if (container.classList.contains('is-expanded')) {
-        textarea.style.height = 'auto';
-        textarea.style.height = Math.max(120, textarea.scrollHeight) + 'px';
+    composer.addEventListener('input', function () {
+      textarea.value = composer.innerHTML;
+    });
+
+    // Helper to update bold/italic button active highlights
+    function updateFormatStates() {
+      formatBtns.forEach(function (btn) {
+        var format = btn.getAttribute('data-format');
+        if (document.queryCommandState(format)) {
+          btn.classList.add('is-active');
+        } else {
+          btn.classList.remove('is-active');
+        }
+      });
+    }
+
+    composer.addEventListener('keyup', updateFormatStates);
+    composer.addEventListener('mouseup', updateFormatStates);
+    document.addEventListener('selectionchange', function () {
+      if (document.activeElement === composer) {
+        updateFormatStates();
       }
     });
 
-    // 2. Formatting Bold & Italic
+    // 2. Formatting Bold & Italic click events
     formatBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
         var format = btn.getAttribute('data-format');
-        var start = textarea.selectionStart;
-        var end = textarea.selectionEnd;
-        var text = textarea.value;
-        var selected = text.substring(start, end);
-        
-        var openTag = format === 'bold' ? '<b>' : '<i>';
-        var closeTag = format === 'bold' ? '</b>' : '</i>';
-        
-        textarea.value = text.substring(0, start) + openTag + selected + closeTag + text.substring(end);
-        textarea.focus();
-        textarea.setSelectionRange(start + openTag.length, start + openTag.length + selected.length);
-        // Recalculate height after formatting
-        if (container.classList.contains('is-expanded')) {
-          textarea.style.height = 'auto';
-          textarea.style.height = Math.max(120, textarea.scrollHeight) + 'px';
-        }
+        document.execCommand(format, false, null);
+        composer.focus();
+        updateFormatStates();
+        // Sync formatting results
+        textarea.value = composer.innerHTML;
       });
     });
 
@@ -1062,8 +1077,8 @@
     if (cancelBtn) {
       cancelBtn.addEventListener('click', function (e) {
         e.preventDefault();
+        composer.innerHTML = '';
         textarea.value = '';
-        textarea.style.height = ''; // Reset height to default
         container.classList.remove('is-expanded');
         if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
       });
@@ -1073,8 +1088,8 @@
     if (nextBtn) {
       nextBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        if (!textarea.value.trim()) {
-          textarea.reportValidity();
+        if (!composer.innerText.trim()) {
+          composer.focus();
           return;
         }
         if (popupCard) {

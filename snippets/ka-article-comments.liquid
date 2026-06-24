@@ -49,10 +49,17 @@
           {%- endif -%}
 
           <div class="ka-comment-textarea-container">
+            <div
+              contenteditable="true"
+              id="ka-comment-composer"
+              class="ka-comment-textarea"
+              placeholder="{{ form_comment_placeholder }}"
+              required
+            >{{ form.body }}</div>
             <textarea
               name="comment[body]"
               id="ka-comment-body"
-              placeholder="{{ form_comment_placeholder }}"
+              style="display: none !important;"
               required
             >{{ form.body }}</textarea>
             
