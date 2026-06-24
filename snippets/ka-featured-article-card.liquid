@@ -49,12 +49,8 @@
   </div>
   <div class="ka-blog-feature-card__image">
     {%- if featured_image != blank -%}
-      {%- assign feat_img_url = featured_image | image_url: width: 1200 -%}
-      {%- unless feat_img_url contains 'http' -%}
-        {%- assign feat_img_url = 'https://cdn.shopify.com' | append: feat_img_url -%}
-      {%- endunless -%}
       <img
-        src="{{ feat_img_url }}"
+        src="{{ featured_image | image_url: width: 1200 }}"
         alt="{{ featured_image.alt | default: featured.title | escape }}"
         loading="lazy"
         width="1200"

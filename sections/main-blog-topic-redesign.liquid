@@ -97,11 +97,7 @@
         <div class="ka-blog-topic-hero__image-wrap">
           {%- assign topic_image = topic_metaobject.image.value | default: topic_metaobject.image -%}
           {%- if topic_image != blank -%}
-            {%- assign topic_hero_url = topic_image | image_url: width: 800 -%}
-            {%- unless topic_hero_url contains 'http' -%}
-              {%- assign topic_hero_url = 'https://cdn.shopify.com' | append: topic_hero_url -%}
-            {%- endunless -%}
-            <img src="{{ topic_hero_url }}" alt="{{ topic_title | escape }}">
+            <img src="{{ topic_image | image_url: width: 800 }}" alt="{{ topic_title | escape }}">
           {%- else -%}
             <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="{{ topic_title | escape }}">
           {%- endif -%}

@@ -85,11 +85,7 @@
         </div>
         <div class="ka-blog-hero-image-wrap">
           {%- if hero_image != blank -%}
-            {%- assign hero_img_url = hero_image | image_url: width: 800 -%}
-            {%- unless hero_img_url contains 'http' -%}
-              {%- assign hero_img_url = 'https://cdn.shopify.com' | append: hero_img_url -%}
-            {%- endunless -%}
-            <img src="{{ hero_img_url }}" alt="{{ hero_title | escape }}">
+            <img src="{{ hero_image | image_url: width: 800 }}" alt="{{ hero_title | escape }}">
           {%- else -%}
             <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="{{ hero_title | escape }}">
           {%- endif -%}

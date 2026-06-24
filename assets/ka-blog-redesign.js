@@ -299,17 +299,25 @@
       buildTocLinks(mobileToc, '.ka-article-toc-mobile__list');
       mobileTocLinks = mobileToc.querySelectorAll('a[href^="#"]');
 
-      // Mobile toggle
       var toggle = mobileToc.querySelector('.ka-article-toc-mobile__toggle');
-      var content = mobileToc.querySelector(
-        '.ka-article-toc-mobile__content'
-      );
+      var content = mobileToc.querySelector('.ka-article-toc-mobile__content');
       if (toggle && content) {
         toggle.addEventListener('click', function () {
-          var expanded =
-            toggle.getAttribute('aria-expanded') === 'true';
+          var expanded = toggle.getAttribute('aria-expanded') === 'true';
           toggle.setAttribute('aria-expanded', String(!expanded));
-          content.classList.toggle('is-open');
+          if (!expanded) {
+            content.classList.add('is-open');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.paddingBottom = '16px';
+          } else {
+            content.style.maxHeight = '0px';
+            content.style.paddingBottom = '0px';
+            setTimeout(function () {
+              if (toggle.getAttribute('aria-expanded') === 'false') {
+                content.classList.remove('is-open');
+              }
+            }, 350);
+          }
         });
       }
     }
@@ -378,12 +386,11 @@
     var faqSection = document.querySelector('.ka-article-faq');
     if (!faqSection) return;
 
-    // The <details> element handles open/close natively
-    // We just ensure aria attributes are correct
     var details = faqSection.querySelectorAll('details');
     details.forEach(function (detail) {
       var summary = detail.querySelector('summary');
-      if (!summary) return;
+      var answer = detail.querySelector('.ka-faq-answer');
+      if (!summary || !answer) return;
 
       // Set initial aria state
       summary.setAttribute(
@@ -391,11 +398,60 @@
         detail.hasAttribute('open') ? 'true' : 'false'
       );
 
-      detail.addEventListener('toggle', function () {
-        summary.setAttribute(
-          'aria-expanded',
-          detail.open ? 'true' : 'false'
-        );
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        var isOpen = detail.hasAttribute('open');
+        
+        if (!isOpen) {
+          detail.setAttribute('open', 'true');
+          summary.setAttribute('aria-expanded', 'true');
+          
+          answer.style.height = 'auto';
+          var targetHeight = answer.offsetHeight;
+          
+          answer.style.height = '0px';
+          answer.style.opacity = '0';
+          answer.style.overflow = 'hidden';
+          answer.style.transition = 'height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease';
+          
+          answer.offsetHeight; // force reflow
+          
+          answer.style.height = targetHeight + 'px';
+          answer.style.opacity = '1';
+          
+          setTimeout(function () {
+            if (detail.hasAttribute('open')) {
+              answer.style.removeProperty('height');
+              answer.style.removeProperty('opacity');
+              answer.style.removeProperty('overflow');
+              answer.style.removeProperty('transition');
+            }
+          }, 300);
+        } else {
+          summary.setAttribute('aria-expanded', 'false');
+          var currentHeight = answer.offsetHeight;
+          
+          answer.style.height = currentHeight + 'px';
+          answer.style.overflow = 'hidden';
+          answer.style.transition = 'height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease';
+          answer.style.opacity = '1';
+          
+          answer.offsetHeight; // force reflow
+          
+          answer.style.height = '0px';
+          answer.style.opacity = '0';
+          
+          setTimeout(function () {
+            if (summary.getAttribute('aria-expanded') === 'false') {
+              detail.removeAttribute('open');
+              answer.style.removeProperty('height');
+              answer.style.removeProperty('opacity');
+              answer.style.removeProperty('overflow');
+              answer.style.removeProperty('transition');
+            }
+          }, 300);
+        }
       });
     });
   }
@@ -965,9 +1021,18 @@
 
     if (!textarea || !container) return;
 
-    // 1. Focus expansion
+    // 1. Focus expansion & auto-expand height
     textarea.addEventListener('focus', function () {
       container.classList.add('is-expanded');
+      textarea.style.height = 'auto';
+      textarea.style.height = Math.max(120, textarea.scrollHeight) + 'px';
+    });
+
+    textarea.addEventListener('input', function () {
+      if (container.classList.contains('is-expanded')) {
+        textarea.style.height = 'auto';
+        textarea.style.height = Math.max(120, textarea.scrollHeight) + 'px';
+      }
     });
 
     // 2. Formatting Bold & Italic
@@ -985,6 +1050,11 @@
         textarea.value = text.substring(0, start) + openTag + selected + closeTag + text.substring(end);
         textarea.focus();
         textarea.setSelectionRange(start + openTag.length, start + openTag.length + selected.length);
+        // Recalculate height after formatting
+        if (container.classList.contains('is-expanded')) {
+          textarea.style.height = 'auto';
+          textarea.style.height = Math.max(120, textarea.scrollHeight) + 'px';
+        }
       });
     });
 
@@ -993,6 +1063,7 @@
       cancelBtn.addEventListener('click', function (e) {
         e.preventDefault();
         textarea.value = '';
+        textarea.style.height = ''; // Reset height to default
         container.classList.remove('is-expanded');
         if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
       });

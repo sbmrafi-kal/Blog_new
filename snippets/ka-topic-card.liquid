@@ -54,11 +54,7 @@
 
 <a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag }}">
   {%- if topic_image != blank -%}
-    {%- assign topic_img_url = topic_image | image_url: width: 600 -%}
-    {%- unless topic_img_url contains 'http' -%}
-      {%- assign topic_img_url = 'https://cdn.shopify.com' | append: topic_img_url -%}
-    {%- endunless -%}
-    <div class="ka-blog-image-card__bg" style="background-image: url('{{ topic_img_url }}');"></div>
+    <div class="ka-blog-image-card__bg" style="background-image: url('{{ topic_image | image_url: width: 600 }}');"></div>
   {%- else -%}
     <div class="ka-blog-image-card__bg" style="background-image: url('{{ fallback_img }}');"></div>
   {%- endif -%}
