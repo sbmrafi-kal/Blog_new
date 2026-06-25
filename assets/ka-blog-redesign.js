@@ -1106,9 +1106,17 @@
 
     if (!composer || !textarea || !container) return;
 
-    // 1. Focus expansion & synchronization
+    // 1. Focus expansion, clicking container, & synchronization
     composer.addEventListener('focus', function () {
       container.classList.add('is-expanded');
+    });
+
+    container.addEventListener('click', function (e) {
+      // Focus the contenteditable composer if the user clicks inside the container box
+      // but not on formatting or action buttons
+      if (!e.target.closest('.ka-comment-controls') && !e.target.closest('.ka-comment-popup-card')) {
+        composer.focus();
+      }
     });
 
     composer.addEventListener('input', function () {
@@ -1117,14 +1125,18 @@
 
     // Helper to update bold/italic button active highlights
     function updateFormatStates() {
-      formatBtns.forEach(function (btn) {
-        var format = btn.getAttribute('data-format');
-        if (document.queryCommandState(format)) {
-          btn.classList.add('is-active');
-        } else {
-          btn.classList.remove('is-active');
-        }
-      });
+      try {
+        formatBtns.forEach(function (btn) {
+          var format = btn.getAttribute('data-format');
+          if (document.queryCommandState && document.queryCommandState(format)) {
+            btn.classList.add('is-active');
+          } else {
+            btn.classList.remove('is-active');
+          }
+        });
+      } catch (err) {
+        console.warn('Failed to query command state:', err);
+      }
     }
 
     composer.addEventListener('keyup', updateFormatStates);
@@ -1139,14 +1151,25 @@
     formatBtns.forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
+        composer.focus(); // Focus composer FIRST so selection is active in it
         var format = btn.getAttribute('data-format');
         document.execCommand(format, false, null);
-        composer.focus();
         updateFormatStates();
         // Sync formatting results
         textarea.value = composer.innerHTML;
       });
     });
+
+    // Helper to toggle empty box height when details popup opens/closes
+    function updateEmptyBoxHeight() {
+      var emptyBox = document.querySelector('.ka-article-comments-empty');
+      if (!emptyBox) return;
+      if (popupCard && !popupCard.classList.contains('ka-comment-popup-hidden')) {
+        emptyBox.classList.add('popup-is-open');
+      } else {
+        emptyBox.classList.remove('popup-is-open');
+      }
+    }
 
     // 3. Cancel button action
     if (cancelBtn) {
@@ -1156,6 +1179,7 @@
         textarea.value = '';
         container.classList.remove('is-expanded');
         if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
+        updateEmptyBoxHeight();
       });
     }
 
@@ -1169,6 +1193,7 @@
         }
         if (popupCard) {
           popupCard.classList.remove('ka-comment-popup-hidden');
+          updateEmptyBoxHeight();
           popupCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       });
@@ -1179,9 +1204,23 @@
       popupClose.addEventListener('click', function (e) {
         e.preventDefault();
         if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
+        updateEmptyBoxHeight();
       });
     }
+
+    // 6. Click outside to collapse if empty
+    document.addEventListener('click', function (e) {
+      if (!container.contains(e.target) && (!popupCard || !popupCard.contains(e.target))) {
+        if (!composer.innerText.trim()) {
+          container.classList.remove('is-expanded');
+          if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
+          updateEmptyBoxHeight();
+        }
+      }
+    });
   }
+
+
 
   // ============================================================
   // PREMIUM SCROLL ACTIONS (Progress bar, Parallax, reveals)

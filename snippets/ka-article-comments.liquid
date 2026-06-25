@@ -26,7 +26,6 @@
     <div class="ka-article-comments-left">
       <div class="ka-article-comments-sidebar-head">
         <p class="ka-blog-eyebrow">{{ comments_eyebrow | replace: ' (0)', '' | replace: '(0)', '' }}</p>
-        <h2 id="ka-comments-title">{{ comments_heading }}</h2>
       </div>
 
       {%- comment -%} Comment Form {%- endcomment -%}
@@ -54,7 +53,6 @@
               id="ka-comment-composer"
               class="ka-comment-textarea"
               placeholder="{{ form_comment_placeholder }}"
-              required
             >{{ form.body }}</div>
             <textarea
               name="comment[body]"
@@ -105,7 +103,7 @@
             </div>
             <div class="ka-comment-popup-actions">
               <button type="button" class="ka-comment-popup-close">Close</button>
-              <button class="ka-blog-btn" type="submit">{{ form_submit_label }}</button>
+              <button class="ka-blog-btn ka-comment-submit-btn" type="submit">{{ form_submit_label }}</button>
             </div>
           </div>
 
