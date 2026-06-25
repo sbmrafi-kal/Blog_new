@@ -556,6 +556,10 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
 
 .ka-blog-breadcrumb-subnav a {
   color: #2A4D3380 !important;
+  font-family: 'Avenir-Heavy', 'Avenir', 'Figtree', sans-serif !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
   transition: color 0.2s ease;
 }
 .ka-blog-breadcrumb-subnav a.active {

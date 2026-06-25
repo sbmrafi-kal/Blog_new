@@ -339,6 +339,8 @@ body:has(.ka-article-main-section) .ka-blog-subnav-wrap {
   font-family: var(--ka-font-heavy);
   font-size: 13px;
   font-weight: 800;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
   transition: color 180ms ease, background 180ms ease;
 }
 
