@@ -4,17 +4,19 @@
 {% endcomment %}
 
 {%- liquid
-  assign author_name_display = 'Dr. Harsha Joy'
-  assign author_qual = 'BAMS'
+  assign author_name_display = author_profile.name | default: 'Dr. Harsha Joy'
+  assign author_qual = author_profile.qualifications | default: author_profile.degree | default: 'BAMS'
   assign author_name = author_name_display | append: ' ' | append: author_qual
   assign author_role = 'WRITTEN BY'
-  assign author_bio = 'Dr. Harsha Joy is a distinguished Ayurvedic practitioner with over five years of experience as a medical writer, combining her clinical expertise with her passion for sharing Ayurvedic knowledge.'
+  assign author_bio = author_profile.short_bio | default: 'Dr. Harsha Joy is a distinguished Ayurvedic practitioner with over five years of experience as a medical writer, combining her clinical expertise with her passion for sharing Ayurvedic knowledge.'
+  assign author_photo = author_profile.photo
   
-  assign reviewer_name_display = 'Dr. Anjali Raichur'
-  assign reviewer_qual = 'BAMS, PGCPK Sr. Physician'
+  assign reviewer_name_display = reviewer_profile.name | default: 'Dr. Anjali Raichur'
+  assign reviewer_qual = reviewer_profile.qualifications | default: reviewer_profile.degree | default: 'BAMS, PGCPK Sr. Physician'
   assign reviewer_name = reviewer_name_display | append: ' ' | append: reviewer_qual
   assign reviewer_role = 'REVIEWED BY'
-  assign reviewer_bio = 'Dr. Anjali Raichur has over 25 years of experience as Ayurvedic practitioner with expertise in Panchakarma and holistic wellness.'
+  assign reviewer_bio = reviewer_profile.short_bio | default: 'Dr. Anjali Raichur has over 25 years of experience as Ayurvedic practitioner with expertise in Panchakarma and holistic wellness.'
+  assign reviewer_photo = reviewer_profile.photo
 -%}
 
 <div class="ka-article-author-reviewer-card" id="author-reviewer-card">
@@ -23,13 +25,23 @@
   <div class="ka-article-card-state ka-article-card-state--author">
     <div class="ka-article-author-card">
       <div class="ka-article-avatar" aria-hidden="true">
-        <img
-          src="{{ 'Doctor.jpg' | asset_url }}"
-          alt="{{ author_name | escape }}"
-          loading="lazy"
-          width="88"
-          height="88"
-        >
+        {%- if author_photo -%}
+          <img
+            src="{{ author_photo | image_url: width: 176 }}"
+            alt="{{ author_name | escape }}"
+            loading="lazy"
+            width="88"
+            height="88"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'doctor.jpg' | asset_url }}"
+            alt="{{ author_name | escape }}"
+            loading="lazy"
+            width="88"
+            height="88"
+          >
+        {%- endif -%}
       </div>
       <div class="ka-article-author-info">
         <p class="ka-blog-eyebrow">{{ author_role }}</p>
@@ -43,13 +55,23 @@
   <div class="ka-article-card-state ka-article-card-state--reviewer">
     <div class="ka-article-author-card">
       <div class="ka-article-avatar" aria-hidden="true">
-        <img
-          src="{{ 'Doctor.jpg' | asset_url }}"
-          alt="{{ reviewer_name | escape }}"
-          loading="lazy"
-          width="88"
-          height="88"
-        >
+        {%- if reviewer_photo -%}
+          <img
+            src="{{ reviewer_photo | image_url: width: 176 }}"
+            alt="{{ reviewer_name | escape }}"
+            loading="lazy"
+            width="88"
+            height="88"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'doctor.jpg' | asset_url }}"
+            alt="{{ reviewer_name | escape }}"
+            loading="lazy"
+            width="88"
+            height="88"
+          >
+        {%- endif -%}
       </div>
       <div class="ka-article-author-info">
         <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
