@@ -1,5 +1,7 @@
 # Current Blog Metafields & Metaobjects Audit
 
+> [!NOTE]
+> This document represents the historical audit of the old "Current" modular blog codebase, which was used as a reference to design the new metafields and metaobjects schema. This audit is frozen. For the active, populated data model, please see [new-blog-metafields-and-metaobjects.md](file:///Users/rafi/Documents/Blog_KAL/docs/new-blog-metafields-and-metaobjects.md).
 ## 1. Summary
 
 ### Existing blog/article templates
