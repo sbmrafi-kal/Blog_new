@@ -21,10 +21,10 @@
     {%- if card_image != blank -%}
       <img
         class="ka-blog-card__img"
-        src="{{ card_image | image_url: width: 800 }}"
+        src="{{ card_image | image_url: width: 450 }}"
         alt="{{ card_image.alt | default: card_article.title | escape }}"
         loading="lazy"
-        width="800"
+        width="450"
       >
     {%- else -%}
       {%- comment -%} Fallback to a mock image based on article title length modulo {%- endcomment -%}

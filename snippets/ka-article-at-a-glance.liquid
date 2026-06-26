@@ -5,12 +5,34 @@
 {% endcomment %}
 
 {%- liquid
+  assign at_a_glance_cards = article.metafields.custom.at_a_glance_cards.value
   assign at_a_glance = article.metafields.custom.at_a_glance.value
   assign glance_eyebrow = article.metafields.custom.at_a_glance_eyebrow | default: blog.metafields.custom.at_a_glance_eyebrow | default: 'At a glance'
   assign glance_heading = article.metafields.custom.at_a_glance_heading | default: blog.metafields.custom.at_a_glance_heading | default: 'What this guide covers'
 -%}
 
-{%- if at_a_glance != blank and at_a_glance.size > 0 -%}
+{%- if at_a_glance_cards != blank and at_a_glance_cards.size > 0 -%}
+  <section class="ka-article-summary-card" id="at-a-glance">
+    <p class="ka-blog-eyebrow">{{ glance_eyebrow }}</p>
+    <h2>{{ glance_heading }}</h2>
+    <div class="ka-article-summary-grid">
+      {%- for card in at_a_glance_cards -%}
+        {%- liquid
+          assign card_heading = card.heading.value | default: card.heading
+          assign card_sentences = card.sentences.value | default: card.sentences
+        -%}
+        <div class="ka-article-summary-item">
+          {%- if card_heading != blank -%}
+            <h3 class="ka-article-summary-item__heading" style="font-weight: 800; font-size: 17px; margin-bottom: 8px;">{{ card_heading }}</h3>
+          {%- endif -%}
+          {%- if card_sentences != blank -%}
+            <p class="ka-article-summary-item__body">{{ card_sentences }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+{%- elsif at_a_glance != blank and at_a_glance.size > 0 -%}
   <section class="ka-article-summary-card" id="at-a-glance">
     <p class="ka-blog-eyebrow">{{ glance_eyebrow }}</p>
     <h2>{{ glance_heading }}</h2>
@@ -22,7 +44,7 @@
             {%- assign heading_text = parts.first -%}
             {%- assign heading_with_sep = heading_text | append: ': ' -%}
             {%- assign body_text = item | remove_first: heading_with_sep -%}
-            <h3 class="ka-article-summary-item__heading">{{ heading_text }}</h3>
+            <h3 class="ka-article-summary-item__heading" style="font-weight: 800; font-size: 17px; margin-bottom: 8px;">{{ heading_text }}</h3>
             <p class="ka-article-summary-item__body">{{ body_text }}</p>
           {%- else -%}
             <p class="ka-article-summary-item__body">{{ item }}</p>

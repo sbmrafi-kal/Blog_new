@@ -11,7 +11,18 @@
   assign author_name = author_profile.name | default: hero_article.author
   assign reviewer_profile = hero_article.metafields.custom.reviewed_by_profile.value
   assign reviewer_name = reviewer_profile.name | default: hero_article.metafields.custom.reviewed_by
-  assign read_time = hero_article.metafields.custom.read_time.value | default: hero_article.metafields.custom.read_time | default: hero_article.metafields.custom.read_time_minutes
+  assign raw_read_time = hero_article.metafields.custom.read_time.value | default: hero_article.metafields.custom.read_time | default: hero_article.metafields.custom.read_time_minutes
+  if raw_read_time != blank
+    if raw_read_time contains 'min' or raw_read_time contains 'read'
+      assign display_read_time = raw_read_time
+    else
+      assign display_read_time = raw_read_time | append: ' mins read'
+    endif
+  else
+    assign word_count = hero_article.content | strip_html | split: ' ' | size
+    assign est_minutes = word_count | divided_by: 200 | at_least: 1
+    assign display_read_time = est_minutes | append: ' mins read'
+  endif
   assign last_reviewed = hero_article.metafields.custom.last_reviewed_at
   assign hero_image = hero_article.metafields.custom.hero_image | default: hero_article.image
   assign hero_caption = hero_article.metafields.custom.hero_image_caption
@@ -37,6 +48,16 @@
           <span><b>Published Date:</b> {{ published_date | date: "%d %b, %Y" }}</span>
           <span class="ka-article-date-sep">|</span>
           <span><b>Last Modified Date:</b> {{ modified_date | date: "%d %b, %Y" }}</span>
+          {%- if display_read_time != blank -%}
+            <span class="ka-article-date-sep">|</span>
+            <span class="ka-article-read-time" style="display: inline-flex; align-items: center; gap: 4px;">
+              <svg class="ka-eye-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              {{ display_read_time }}
+            </span>
+          {%- endif -%}
         </div>
         <div class="ka-article-share">
           <span>Share</span>

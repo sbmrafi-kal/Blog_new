@@ -119,7 +119,7 @@
             {%- for comment in article.comments -%}
               <article class="ka-article-comment-card">
                 <div class="ka-article-comment-avatar" aria-hidden="true">
-                  {{ comment.author | split: ' ' | first | slice: 0 | upcase }}{{ comment.author | split: ' ' | last | slice: 0 | upcase }}
+                  {{ comment.author | slice: 0 | upcase }}
                 </div>
                 <div class="ka-article-comment-body">
                   <div class="ka-article-comment-meta">

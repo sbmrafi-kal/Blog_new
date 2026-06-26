@@ -11,8 +11,9 @@
   assign path_url = care_path.link_url
 
   if path_url == blank and care_path.linked_topic
-    assign topic_tag = care_path.linked_topic.value.article_filter_tag | default: path_title | handleize
-    assign path_url = blog.url | append: '/tagged/' | append: topic_tag
+    assign topic_tag = care_path.linked_topic.article_filter_tag.value | default: care_path.linked_topic.article_filter_tag | default: path_title | handleize
+    assign care_path_handle = care_path.system.handle | default: care_path.handle | default: path_title | handleize
+    assign path_url = blog.url | append: '/tagged/' | append: topic_tag | append: '?care_path=' | append: care_path_handle
   endif
 
   if path_url == blank

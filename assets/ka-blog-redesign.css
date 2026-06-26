@@ -1166,10 +1166,14 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 .ka-article-faq details[open] summary::after { content: "–"; }
 
 .ka-article-faq details .ka-faq-answer {
-  padding: 0 20px 20px;
+  padding: 0;
   color: var(--ka-muted);
   font-size: 16px;
   line-height: 1.6;
+}
+
+.ka-article-faq details .ka-faq-answer-inner {
+  padding: 0 20px 20px;
 }
 
 /* =============================================================

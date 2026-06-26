@@ -1218,6 +1218,19 @@
         }
       }
     });
+
+    // 7. Auto-fade success note
+    var successMsg = document.querySelector('.ka-form-success');
+    if (successMsg) {
+      setTimeout(function () {
+        successMsg.style.transition = 'opacity 1s ease, transform 1s ease';
+        successMsg.style.opacity = '0';
+        successMsg.style.transform = 'translateY(-10px)';
+        setTimeout(function () {
+          successMsg.style.display = 'none';
+        }, 1000);
+      }, 5000);
+    }
   }
 
 

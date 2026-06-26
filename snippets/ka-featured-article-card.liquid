@@ -6,7 +6,13 @@
 
 {%- liquid
   assign featured = article
-  assign chip_text = featured.metafields.custom.hero_badge.value | default: featured.metafields.custom.hero_badge | default: featured.metafields.custom.category_label | default: featured.tags.first
+  assign raw_chip = featured.metafields.custom.hero_badge.value | default: featured.metafields.custom.hero_badge | default: featured.metafields.custom.category_label | default: featured.tags.first
+  assign chip_downcase = raw_chip | downcase
+  if chip_downcase == 'doshas' or chip_downcase == 'dosha'
+    assign chip_text = blank
+  else
+    assign chip_text = raw_chip
+  endif
   assign dek = featured.metafields.custom.dek | default: featured.excerpt_or_content | strip_html | truncate: 200
   assign read_time = featured.metafields.custom.read_time.value | default: featured.metafields.custom.read_time | default: featured.metafields.custom.read_time_minutes
   assign author_profile = featured.metafields.custom.written_by_profile.value
@@ -21,12 +27,7 @@
 
 <a class="ka-blog-feature-card" href="{{ featured.url }}">
   <div class="ka-blog-feature-copy">
-    <div class="ka-blog-chip-row">
-      {%- if chip_text != blank -%}
-        <span class="ka-blog-chip">{{ chip_text }}</span>
-      {%- endif -%}
-    </div>
-    <h2 style="margin-top: 16px;">{{ featured.title }}</h2>
+    <h2>{{ featured.title }}</h2>
     {%- if dek != blank -%}
       <p>{{ dek }}</p>
     {%- endif -%}
@@ -50,10 +51,11 @@
   <div class="ka-blog-feature-card__image">
     {%- if featured_image != blank -%}
       <img
-        src="{{ featured_image | image_url: width: 1200 }}"
+        src="{{ featured_image | image_url: width: 800 }}"
         alt="{{ featured_image.alt | default: featured.title | escape }}"
-        loading="lazy"
-        width="1200"
+        loading="eager"
+        fetchpriority="high"
+        width="800"
       >
     {%- else -%}
       {%- comment -%} Fallback to a mock image based on article title length modulo {%- endcomment -%}
@@ -70,8 +72,9 @@
       <img
         src="{{ fallback_img | asset_url }}"
         alt="{{ featured.title | escape }}"
-        loading="lazy"
-        width="1200"
+        loading="eager"
+        fetchpriority="high"
+        width="800"
       >
     {%- endif -%}
   </div>
