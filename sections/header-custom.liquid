@@ -184,8 +184,6 @@
     assign show_breadcrumbs = false
   elsif request.page_type == 'search'
     assign show_breadcrumbs = false
-  elsif request.page_type == 'blog' and current_tags == blank
-    assign show_breadcrumbs = false
   endif
 -%}
 
@@ -286,9 +284,10 @@
                   assign first_char = topic_title | slice: 0 | upcase
                   assign rest_chars = topic_title | slice: 1, 255
                   assign formatted_topic_title = first_char | append: rest_chars
-                  
-                  assign current_tag_handle = current_tag | handleize
-                  assign back_url = blog.url | append: '/tagged/' | append: current_tag_handle
+                -%}
+                {%- assign current_tag_handle = current_tag | handleize -%}
+                {%- assign back_url = blog.url | append: '/tagged/' | append: current_tag_handle -%}
+                {%- liquid
                   if path_metaobject != nil
                     assign back_url = back_url | append: '?care_path=' | append: care_path_param
                   elsif topic_param != blank

@@ -564,15 +564,16 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
   text-decoration: none !important;
 }
 
-.ka-blog-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  background: transparent;
-  padding: 0;
-  border: 0;
-  box-shadow: none;
+.theme-header-custom__breadcrumbs .ka-blog-breadcrumb {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 .ka-blog-breadcrumb-subnav {
