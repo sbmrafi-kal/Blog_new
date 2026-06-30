@@ -104,11 +104,28 @@
             endif
 
             assign parts_h2 = body_content | split: '<h2'
-            if parts_h2.size > 2 and did_you_know != blank
+            if parts_h2.size > 3 and did_you_know != blank
+              echo parts_h2[0]
+              echo '<h2' | append: parts_h2[1]
+              echo '<h2' | append: parts_h2[2]
+              
+              # Render Did You Know box
+              capture dyk_html
+                echo '<div class="ka-article-did-you-know">'
+                echo '  <p class="ka-blog-eyebrow">Did You Know?</p>'
+                echo '  <p class="ka-article-did-you-know-text">"' | append: did_you_know | append: '"</p>'
+                echo '</div>'
+              endcapture
+              echo dyk_html
+              
+              for part in parts_h2 offset: 3
+                echo '<h2' | append: part
+              endfor
+            elsif parts_h2.size > 2 and did_you_know != blank
               echo parts_h2[0]
               echo '<h2' | append: parts_h2[1]
               
-              # Render Did You Know box
+              # Render Did You Know box (fallback to after 1st section)
               capture dyk_html
                 echo '<div class="ka-article-did-you-know">'
                 echo '  <p class="ka-blog-eyebrow">Did You Know?</p>'
@@ -198,16 +215,14 @@
   {%- render 'ka-chatbot', blog: blog -%}
 
   {%- comment -%} Mobile Niagara Scrubber Overlay & Tutorial structures {%- endcomment -%}
-  <div class="ka-niagara-scrubber-overlay" id="kaScrubberOverlay">
-    <div class="ka-niagara-scrubber-content">
-      <ul class="ka-niagara-scrubber-titles-list">
-        {%- comment -%} Injected dynamically by JS {%- endcomment -%}
-      </ul>
-    </div>
-  </div>
-
   <div class="ka-niagara-scrubber-bar" id="kaScrubberBar">
-    {%- comment -%} Vertical indexes injected dynamically by JS (e.g. 01, 02, 03) {%- endcomment -%}
+    <div class="ka-scrubber-bubble" id="kaScrubberBubble">
+      <span class="bubble-num">01</span>
+      <span class="bubble-title">Introduction</span>
+    </div>
+    <div class="ka-scrubber-nums-track" id="kaScrubberNumsTrack">
+      {%- comment -%} Vertical indexes injected dynamically by JS (e.g. 01, 02, 03) {%- endcomment -%}
+    </div>
   </div>
 
   <div class="ka-niagara-tutorial-overlay" id="kaTutorialOverlay">

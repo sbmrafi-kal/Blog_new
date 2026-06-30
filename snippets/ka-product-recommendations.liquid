@@ -17,14 +17,16 @@
   endif
   
   assign products_eyebrow = article.metafields.custom.products_eyebrow | default: blog.metafields.custom.products_eyebrow | default: 'Helpful next steps'
-  assign heading = article.metafields.custom.recommended_products_heading | default: blog.metafields.custom.recommended_products_heading | default: 'Related Kerala Ayurveda formulations'
+  assign heading = article.metafields.custom.recommended_products_heading | default: blog.metafields.custom.recommended_products_heading | default: ''
   assign description = article.metafields.custom.recommended_products_description | default: blog.metafields.custom.recommended_products_description | default: 'Support your wellness routine with classical Ayurvedic formulations.'
 -%}
 
 {%- if products != blank and products.size > 0 or is_fallback_needed -%}
   <section class="ka-article-products" id="products" aria-labelledby="ka-products-title">
     <p class="ka-blog-eyebrow">{{ products_eyebrow }}</p>
-    <h2 id="ka-products-title">{{ heading }}</h2>
+    {%- if heading != blank -%}
+      <h2 id="ka-products-title">{{ heading }}</h2>
+    {%- endif -%}
     <p class="ka-blog-muted" style="margin: 6px 0 10px;">{{ description }}</p>
     <div class="ka-article-product-grid">
       {%- if is_fallback_needed -%}
