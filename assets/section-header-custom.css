@@ -603,3 +603,7 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
     font-size: 10px !important;
   }
 }
+
+.ka-blog-breadcrumbs-wrap {
+  background: #FFFDF9 !important;
+}

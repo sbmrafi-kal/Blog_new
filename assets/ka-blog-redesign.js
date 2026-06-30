@@ -683,7 +683,6 @@
     if (!outer) return;
 
     var container = outer.querySelector('.ka-blog-topic-carousel-container');
-    var track = outer.querySelector('.ka-blog-topic-carousel-track');
     var decks = outer.querySelectorAll('.ka-blog-topic-deck');
     var dots = outer.querySelectorAll('.ka-blog-topic-dot');
     var prevBtn = outer.querySelector('.ka-blog-topic-arrow--prev');
@@ -692,36 +691,39 @@
 
     function updateActiveState() {
       var scrollLeft = container.scrollLeft;
-      var slideWidth = container.clientWidth;
-      if (slideWidth > 0) {
-        var activeIndex = Math.round(scrollLeft / slideWidth);
-        var decksCount = decks.length;
-        if (activeIndex >= decksCount) activeIndex = decksCount - 1;
-        if (activeIndex < 0) activeIndex = 0;
-
-        dots.forEach(function (dot, idx) {
-          if (idx === activeIndex) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-
-        decks.forEach(function (deck, idx) {
-          if (idx === activeIndex) {
-            deck.classList.add('active');
-          } else {
-            deck.classList.remove('active');
-          }
-        });
-
-        // Update arrows disabled state
-        if (prevBtn) {
-          prevBtn.disabled = (activeIndex === 0);
+      var activeIndex = 0;
+      var minDiff = Infinity;
+      decks.forEach(function (deck, idx) {
+        var diff = Math.abs(scrollLeft - deck.offsetLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          activeIndex = idx;
         }
-        if (nextBtn) {
-          nextBtn.disabled = (activeIndex === decksCount - 1);
+      });
+      var decksCount = decks.length;
+
+      dots.forEach(function (dot, idx) {
+        if (idx === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
         }
+      });
+
+      decks.forEach(function (deck, idx) {
+        if (idx === activeIndex) {
+          deck.classList.add('active');
+        } else {
+          deck.classList.remove('active');
+        }
+      });
+
+      // Update arrows disabled state
+      if (prevBtn) {
+        prevBtn.disabled = (activeIndex === 0);
+      }
+      if (nextBtn) {
+        nextBtn.disabled = (activeIndex === decksCount - 1);
       }
     }
 
@@ -736,11 +738,13 @@
       dot.addEventListener('click', function (e) {
         e.preventDefault();
         var index = parseInt(dot.getAttribute('data-index'));
-        var slideWidth = container.clientWidth;
-        container.scrollTo({
-          left: index * slideWidth,
-          behavior: 'smooth'
-        });
+        var targetDeck = decks[index];
+        if (targetDeck) {
+          container.scrollTo({
+            left: targetDeck.offsetLeft,
+            behavior: 'smooth'
+          });
+        }
       });
     });
 
@@ -748,27 +752,75 @@
     if (prevBtn) {
       prevBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        var slideWidth = container.clientWidth;
-        container.scrollTo({
-          left: container.scrollLeft - slideWidth,
-          behavior: 'smooth'
+        var scrollLeft = container.scrollLeft;
+        var activeIndex = 0;
+        var minDiff = Infinity;
+        decks.forEach(function (deck, idx) {
+          var diff = Math.abs(scrollLeft - deck.offsetLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            activeIndex = idx;
+          }
         });
+        var targetIndex = Math.max(0, activeIndex - 1);
+        var targetDeck = decks[targetIndex];
+        if (targetDeck) {
+          container.scrollTo({
+            left: targetDeck.offsetLeft,
+            behavior: 'smooth'
+          });
+        }
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        var slideWidth = container.clientWidth;
-        container.scrollTo({
-          left: container.scrollLeft + slideWidth,
-          behavior: 'smooth'
+        var scrollLeft = container.scrollLeft;
+        var activeIndex = 0;
+        var minDiff = Infinity;
+        decks.forEach(function (deck, idx) {
+          var diff = Math.abs(scrollLeft - deck.offsetLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            activeIndex = idx;
+          }
         });
+        var targetIndex = Math.min(decks.length - 1, activeIndex + 1);
+        var targetDeck = decks[targetIndex];
+        if (targetDeck) {
+          container.scrollTo({
+            left: targetDeck.offsetLeft,
+            behavior: 'smooth'
+          });
+        }
       });
     }
 
     // Handle resize
     window.addEventListener('resize', updateActiveState);
+  }
+
+  // ============================================================
+  // 5.1. HERO SEARCH & EXPLORE TOPICS REDIRECT
+  // ============================================================
+  function initHeroSearchExploreRedirect() {
+    var exploreBtn = document.querySelector('.ka-blog-hero-actions a[href="#topics"]');
+    var searchInput = document.querySelector('.ka-blog-hero-search input[name="q"]');
+    var searchForm = document.querySelector('.ka-blog-hero-search');
+    if (!exploreBtn || !searchInput) return;
+
+    exploreBtn.addEventListener('click', function (e) {
+      var query = searchInput.value.trim();
+      if (query) {
+        e.preventDefault();
+        if (searchForm) {
+          searchForm.submit();
+        } else {
+          window.location.href = '/search?type=article&q=' + encodeURIComponent(query);
+        }
+      }
+    });
   }
 
   // ============================================================
@@ -1506,6 +1558,7 @@
     initFAQ();
     initReadTime();
     initTopicCarousel();
+    initHeroSearchExploreRedirect();
     initAjaxFiltering();
     initFloatingCTA();
     initChatbot();

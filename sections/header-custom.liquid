@@ -184,13 +184,11 @@
     assign show_breadcrumbs = false
   elsif request.page_type == 'search'
     assign show_breadcrumbs = false
-  elsif request.page_type == 'blog' and current_tags == blank
-    assign show_breadcrumbs = false
   endif
 -%}
 
 {%- if show_breadcrumbs -%}
-<div class="theme-header-custom__breadcrumbs-wrap">
+<div class="theme-header-custom__breadcrumbs-wrap{% if request.page_type == 'blog' or request.page_type == 'article' %} ka-blog-breadcrumbs-wrap{% endif %}">
   <div class="theme-header-custom__breadcrumbs" aria-label="Breadcrumb">
       {%- if request.page_type == 'blog' or request.page_type == 'article' -%}
         <div class="ka-blog-breadcrumb">
