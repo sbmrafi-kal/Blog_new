@@ -175,15 +175,24 @@
                   {%- endif -%}
                 {%- endfor -%}
               {%- endif -%}
+            </div>
           </div>
           {%- if topics != blank and topics.size > 0 -%}
             {%- assign total_decks = topics.size | plus: batch_size | minus: 1 | divided_by: batch_size -%}
             {%- if total_decks > 1 -%}
-              <div class="ka-blog-topic-dots" aria-hidden="true">
-                {%- for i in (1..total_decks) -%}
-                  {%- assign zero_index = forloop.index0 -%}
-                  <span class="ka-blog-topic-dot{% if zero_index == 0 %} active{% endif %}" data-index="{{ zero_index }}"></span>
-                {%- endfor -%}
+              <div class="ka-blog-topic-nav" aria-label="Topics carousel navigation">
+                <button class="ka-blog-topic-arrow ka-blog-topic-arrow--prev" aria-label="Previous topics" disabled>
+                  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <div class="ka-blog-topic-dots" aria-hidden="true">
+                  {%- for i in (1..total_decks) -%}
+                    {%- assign zero_index = forloop.index0 -%}
+                    <span class="ka-blog-topic-dot{% if zero_index == 0 %} active{% endif %}" data-index="{{ zero_index }}"></span>
+                  {%- endfor -%}
+                </div>
+                <button class="ka-blog-topic-arrow ka-blog-topic-arrow--next" aria-label="Next topics">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
               </div>
             {%- endif -%}
           {%- endif -%}

@@ -24,60 +24,64 @@
   {%- comment -%} Written by Card {%- endcomment -%}
   <div class="ka-article-card-state ka-article-card-state--author">
     <div class="ka-article-author-card">
-      <div class="ka-article-avatar" aria-hidden="true">
-        {%- if author_photo -%}
-          <img
-            src="{{ author_photo | image_url: width: 176 }}"
-            alt="{{ author_name | escape }}"
-            loading="lazy"
-            width="88"
-            height="88"
-          >
-        {%- else -%}
-          <img
-            src="{{ 'doctor.jpg' | asset_url }}"
-            alt="{{ author_name | escape }}"
-            loading="lazy"
-            width="88"
-            height="88"
-          >
-        {%- endif -%}
+      <p class="ka-blog-eyebrow">{{ author_role }}</p>
+      <div class="ka-article-author-bio-row">
+        <div class="ka-article-avatar" aria-hidden="true">
+          {%- if author_photo -%}
+            <img
+              src="{{ author_photo | image_url: width: 176 }}"
+              alt="{{ author_name | escape }}"
+              loading="lazy"
+              width="88"
+              height="88"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'doctor.jpg' | asset_url }}"
+              alt="{{ author_name | escape }}"
+              loading="lazy"
+              width="88"
+              height="88"
+            >
+          {%- endif -%}
+        </div>
+        <div class="ka-article-author-content">
+          <h2>{{ author_name_display }} <span class="ka-author-qual">{{ author_qual }}</span></h2>
+          <p class="ka-article-author-bio">{{ author_bio }}</p>
+        </div>
       </div>
-      <div class="ka-article-author-info">
-        <p class="ka-blog-eyebrow">{{ author_role }}</p>
-        <h2>{{ author_name_display }} <span class="ka-author-qual">{{ author_qual }}</span></h2>
-      </div>
-      <p class="ka-article-author-bio">{{ author_bio }}</p>
     </div>
   </div>
 
   {%- comment -%} Reviewed by Card {%- endcomment -%}
   <div class="ka-article-card-state ka-article-card-state--reviewer">
     <div class="ka-article-author-card">
-      <div class="ka-article-avatar" aria-hidden="true">
-        {%- if reviewer_photo -%}
-          <img
-            src="{{ reviewer_photo | image_url: width: 176 }}"
-            alt="{{ reviewer_name | escape }}"
-            loading="lazy"
-            width="88"
-            height="88"
-          >
-        {%- else -%}
-          <img
-            src="{{ 'doctor.jpg' | asset_url }}"
-            alt="{{ reviewer_name | escape }}"
-            loading="lazy"
-            width="88"
-            height="88"
-          >
-        {%- endif -%}
+      <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
+      <div class="ka-article-author-bio-row">
+        <div class="ka-article-avatar" aria-hidden="true">
+          {%- if reviewer_photo -%}
+            <img
+              src="{{ reviewer_photo | image_url: width: 176 }}"
+              alt="{{ reviewer_name | escape }}"
+              loading="lazy"
+              width="88"
+              height="88"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'doctor.jpg' | asset_url }}"
+              alt="{{ reviewer_name | escape }}"
+              loading="lazy"
+              width="88"
+              height="88"
+            >
+          {%- endif -%}
+        </div>
+        <div class="ka-article-author-content">
+          <h2>{{ reviewer_name_display }} <span class="ka-author-qual">{{ reviewer_qual }}</span></h2>
+          <p class="ka-article-author-bio">{{ reviewer_bio }}</p>
+        </div>
       </div>
-      <div class="ka-article-author-info">
-        <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
-        <h2>{{ reviewer_name_display }} <span class="ka-author-qual">{{ reviewer_qual }}</span></h2>
-      </div>
-      <p class="ka-article-author-bio">{{ reviewer_bio }}</p>
     </div>
   </div>
 

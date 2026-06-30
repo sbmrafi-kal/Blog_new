@@ -484,179 +484,93 @@
     var outer = document.querySelector('.ka-blog-topic-carousel-outer');
     if (!outer) return;
 
+    var container = outer.querySelector('.ka-blog-topic-carousel-container');
     var track = outer.querySelector('.ka-blog-topic-carousel-track');
     var decks = outer.querySelectorAll('.ka-blog-topic-deck');
-    var container = outer.querySelector('.ka-blog-topic-carousel-container');
     var dots = outer.querySelectorAll('.ka-blog-topic-dot');
-    if (!track || !decks.length) return;
+    var prevBtn = outer.querySelector('.ka-blog-topic-arrow--prev');
+    var nextBtn = outer.querySelector('.ka-blog-topic-arrow--next');
+    if (!container || !decks.length) return;
 
-    var targetPct = 0;
-    var currentPct = 0;
-    var animFrameId = null;
+    function updateActiveState() {
+      var scrollLeft = container.scrollLeft;
+      var slideWidth = container.clientWidth;
+      if (slideWidth > 0) {
+        var activeIndex = Math.round(scrollLeft / slideWidth);
+        var decksCount = decks.length;
+        if (activeIndex >= decksCount) activeIndex = decksCount - 1;
+        if (activeIndex < 0) activeIndex = 0;
 
-    function updateAnimation() {
-      // Linear interpolation (lerp) for liquid smooth transitions
-      currentPct += (targetPct - currentPct) * 0.12;
-
-      if (Math.abs(targetPct - currentPct) < 0.001) {
-        currentPct = targetPct;
-        animFrameId = null;
-      } else {
-        animFrameId = requestAnimationFrame(updateAnimation);
-      }
-
-      var decksCount = decks.length;
-      var activeIndex = Math.floor(currentPct * decksCount);
-      if (activeIndex >= decksCount) activeIndex = decksCount - 1;
-      if (currentPct === 1) activeIndex = decksCount - 1;
-
-      decks.forEach(function (deck, index) {
-        if (index === activeIndex) {
-          deck.classList.add('active');
-        } else {
-          deck.classList.remove('active');
-        }
-      });
-
-      dots.forEach(function (dot, index) {
-        if (index === activeIndex) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
-    }
-
-    function handleScroll() {
-      if (window.innerWidth < 980) {
-        track.style.transform = '';
-        if (animFrameId) {
-          cancelAnimationFrame(animFrameId);
-          animFrameId = null;
-        }
-        return;
-      }
-
-      var rect = outer.getBoundingClientRect();
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      var outerTop = rect.top + scrollTop;
-      var outerHeight = outer.offsetHeight;
-      var viewportHeight = window.innerHeight;
-
-      // Measure header height dynamically
-      var headerHeight = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue('--theme-header-height')
-      ) || 72;
-      var subnavHeight = 55;
-      var stickyOffset = headerHeight + subnavHeight;
-
-      // Trigger animation just before it touches the subnav
-      var startScroll = outerTop - stickyOffset - 20;
-      var endScroll = outerTop + outerHeight - viewportHeight;
-      var totalScrollRange = endScroll - startScroll;
-
-      if (totalScrollRange <= 0) return;
-
-      var currentScroll = scrollTop - startScroll;
-      var pct = currentScroll / totalScrollRange;
-
-      if (pct < 0) pct = 0;
-      if (pct > 1) pct = 1;
-
-      // Set target percentage
-      targetPct = pct;
-
-      // Ensure horizontal transform is reset on desktop
-      track.style.transform = 'none';
-
-      // Start the animation loop if it's not running
-      if (!animFrameId) {
-        updateAnimation();
-      }
-    }
-
-    // Mobile scroll-snapping pagination sync
-    if (container) {
-      container.addEventListener('scroll', function () {
-        if (window.innerWidth < 980) {
-          var scrollLeft = container.scrollLeft;
-          var slideWidth = container.clientWidth;
-          if (slideWidth > 0) {
-            var activeIndex = Math.round(scrollLeft / slideWidth);
-            var decksCount = decks.length;
-            if (activeIndex >= decksCount) activeIndex = decksCount - 1;
-            if (activeIndex < 0) activeIndex = 0;
-
-            dots.forEach(function (dot, idx) {
-              if (idx === activeIndex) {
-                dot.classList.add('active');
-              } else {
-                dot.classList.remove('active');
-              }
-            });
-
-            decks.forEach(function (deck, idx) {
-              if (idx === activeIndex) {
-                deck.classList.add('active');
-              } else {
-                deck.classList.remove('active');
-              }
-            });
+        dots.forEach(function (dot, idx) {
+          if (idx === activeIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
           }
+        });
+
+        decks.forEach(function (deck, idx) {
+          if (idx === activeIndex) {
+            deck.classList.add('active');
+          } else {
+            deck.classList.remove('active');
+          }
+        });
+
+        // Update arrows disabled state
+        if (prevBtn) {
+          prevBtn.disabled = (activeIndex === 0);
         }
-      });
+        if (nextBtn) {
+          nextBtn.disabled = (activeIndex === decksCount - 1);
+        }
+      }
     }
 
-    // Dot click triggers
+    // Scroll listener on container
+    container.addEventListener('scroll', updateActiveState);
+
+    // Initial check
+    setTimeout(updateActiveState, 100);
+
+    // Dot clicks
     dots.forEach(function (dot) {
       dot.addEventListener('click', function (e) {
         e.preventDefault();
         var index = parseInt(dot.getAttribute('data-index'));
-        if (window.innerWidth < 980) {
-          if (container) {
-            var slideWidth = container.clientWidth;
-            container.scrollTo({
-              left: index * slideWidth,
-              behavior: 'smooth'
-            });
-          }
-        } else {
-          // On desktop, jump window scroll position to match the deck index
-          var rect = outer.getBoundingClientRect();
-          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          var outerTop = rect.top + scrollTop;
-          var outerHeight = outer.offsetHeight;
-          var viewportHeight = window.innerHeight;
-
-          var headerHeight = parseInt(
-            getComputedStyle(document.documentElement).getPropertyValue('--theme-header-height')
-          ) || 72;
-          var subnavHeight = 55;
-          var stickyOffset = headerHeight + subnavHeight;
-
-          var startScroll = outerTop - stickyOffset - 20;
-          var endScroll = outerTop + outerHeight - viewportHeight;
-          var totalScrollRange = endScroll - startScroll;
-
-          if (totalScrollRange > 0) {
-            var decksCount = decks.length;
-            // Map target index to window scroll position
-            var targetScrollFraction = index / (decksCount - 1);
-            var targetScroll = startScroll + targetScrollFraction * totalScrollRange;
-            window.scrollTo({
-              top: targetScroll,
-              behavior: 'smooth'
-            });
-          }
-        }
+        var slideWidth = container.clientWidth;
+        container.scrollTo({
+          left: index * slideWidth,
+          behavior: 'smooth'
+        });
       });
     });
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    
-    // Initial run
-    handleScroll();
+    // Arrow clicks
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var slideWidth = container.clientWidth;
+        container.scrollTo({
+          left: container.scrollLeft - slideWidth,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var slideWidth = container.clientWidth;
+        container.scrollTo({
+          left: container.scrollLeft + slideWidth,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // Handle resize
+    window.addEventListener('resize', updateActiveState);
   }
 
   // ============================================================
@@ -1179,6 +1093,7 @@
         textarea.value = '';
         container.classList.remove('is-expanded');
         if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
+        if (nextBtn) nextBtn.style.display = 'inline-block';
         updateEmptyBoxHeight();
       });
     }
@@ -1193,6 +1108,7 @@
         }
         if (popupCard) {
           popupCard.classList.remove('ka-comment-popup-hidden');
+          nextBtn.style.display = 'none';
           updateEmptyBoxHeight();
           popupCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
@@ -1204,6 +1120,7 @@
       popupClose.addEventListener('click', function (e) {
         e.preventDefault();
         if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
+        if (nextBtn) nextBtn.style.display = 'inline-block';
         updateEmptyBoxHeight();
       });
     }
@@ -1214,6 +1131,7 @@
         if (!composer.innerText.trim()) {
           container.classList.remove('is-expanded');
           if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
+          if (nextBtn) nextBtn.style.display = 'inline-block';
           updateEmptyBoxHeight();
         }
       }

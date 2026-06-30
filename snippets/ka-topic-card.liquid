@@ -72,43 +72,9 @@
     assign topic_img_url = ''
   endif
 
-  # Map topic handles to the actual tag handles that exist on the Shopify store to avoid 404
-  assign topic_tag_mapped = topic_handle
-  if topic_handle contains 'digestion'
-    assign topic_tag_mapped = 'digestion'
-  elsif topic_handle contains 'herbs'
-    assign topic_tag_mapped = 'herbs'
-  elsif topic_handle contains 'sleep' or topic_handle contains 'circadian'
-    assign topic_tag_mapped = 'sleep'
-  elsif topic_handle contains 'women'
-    assign topic_tag_mapped = 'womens-health'
-  elsif topic_handle contains 'joints' or topic_handle contains 'pain' or topic_handle contains 'body'
-    assign topic_tag_mapped = 'pain-joints'
-  elsif topic_handle contains 'immunity' or topic_handle contains 'detox'
-    assign topic_tag_mapped = 'detox'
-  elsif topic_handle contains 'seasons' or topic_handle contains 'routine'
-    assign topic_tag_mapped = 'doshas'
-  elsif topic_handle contains 'mind' or topic_handle contains 'calm'
-    assign topic_tag_mapped = 'doshas'
-  elsif topic_handle contains 'elder' or topic_handle contains 'old-age'
-    assign topic_tag_mapped = 'doshas'
-  elsif topic_handle contains 'basics' or topic_handle contains 'ayurveda'
-    assign topic_tag_mapped = 'doshas'
-  elsif topic_handle contains 'habits'
-    assign topic_tag_mapped = 'skin-hair'
-  elsif topic_handle contains 'senses' or topic_handle contains 'eyes' or topic_handle contains 'ears' or topic_handle contains 'mouth'
-    assign topic_tag_mapped = 'doshas'
-  elsif topic_handle contains 'men'
-    assign topic_tag_mapped = 'sleep'
-  elsif topic_handle contains 'kids' or topic_handle contains 'children'
-    assign topic_tag_mapped = 'digestion'
-  elsif topic_handle contains 'skin' or topic_handle contains 'hair' or topic_handle contains 'glow'
-    assign topic_tag_mapped = 'skin-hair'
-  elsif topic_handle contains 'food'
-    assign topic_tag_mapped = 'digestion'
-  elsif topic_handle contains 'weight' or topic_handle contains 'cravings'
-    assign topic_tag_mapped = 'digestion'
-  endif
+  # Use the topic's own article_filter_tag for the tagged URL.
+  # The ?topic= param ensures the metaobject is resolved on the topic page.
+  assign topic_tag_mapped = topic_tag | handleize
 -%}
 
 <a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag_mapped }}?topic={{ topic_handle }}">

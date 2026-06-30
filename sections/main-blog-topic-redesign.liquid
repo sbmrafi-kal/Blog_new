@@ -253,13 +253,13 @@
                     assign linked_topic_handle = path_metaobject.linked_topic.value.system.handle | default: path_metaobject.linked_topic.value.handle | default: path_metaobject.linked_topic.system.handle | default: path_metaobject.linked_topic.handle | default: path_metaobject.linked_topic.title | handleize
                     assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
                     assign article_topic_handle = article_topic.system.handle | default: article_topic.handle | default: article_topic.title | handleize
-                    if article_topic_handle == linked_topic_handle
+                    if article_topic_handle == blank or article_topic_handle == linked_topic_handle
                       assign filtered_count = filtered_count | plus: 1
                     endif
                   elsif topic_metaobject != nil
                     assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
                     assign article_topic_handle = article_topic.system.handle | default: article_topic.handle | default: article_topic.title | handleize
-                    if article_topic_handle == topic_handle
+                    if article_topic_handle == blank or article_topic_handle == topic_handle
                       assign filtered_count = filtered_count | plus: 1
                     endif
                   else
@@ -312,14 +312,14 @@
                 assign linked_topic_handle = path_metaobject.linked_topic.value.system.handle | default: path_metaobject.linked_topic.value.handle | default: path_metaobject.linked_topic.system.handle | default: path_metaobject.linked_topic.handle | default: path_metaobject.linked_topic.title | handleize
                 assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
                 assign article_topic_handle = article_topic.system.handle | default: article_topic.handle | default: article_topic.title | handleize
-                if article_topic_handle != linked_topic_handle
+                if article_topic_handle != blank and article_topic_handle != linked_topic_handle
                   continue
                 endif
               # Else if topic_metaobject is active, filter articles by the active topic
               elsif topic_metaobject != nil
                 assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
                 assign article_topic_handle = article_topic.system.handle | default: article_topic.handle | default: article_topic.title | handleize
-                if article_topic_handle != topic_handle
+                if article_topic_handle != blank and article_topic_handle != topic_handle
                   continue
                 endif
               endif

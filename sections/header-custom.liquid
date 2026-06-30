@@ -184,6 +184,8 @@
     assign show_breadcrumbs = false
   elsif request.page_type == 'search'
     assign show_breadcrumbs = false
+  elsif request.page_type == 'blog' and current_tags == blank
+    assign show_breadcrumbs = false
   endif
 -%}
 
@@ -191,7 +193,7 @@
 <div class="theme-header-custom__breadcrumbs-wrap">
   <div class="theme-header-custom__breadcrumbs" aria-label="Breadcrumb">
       {%- if request.page_type == 'blog' or request.page_type == 'article' -%}
-        <div class="ka-blog-breadcrumb" style="display: flex; align-items: center; gap: 8px; margin: 0; background: transparent; padding: 0; border: 0; box-shadow: none;">
+        <div class="ka-blog-breadcrumb">
           {%- liquid
             assign has_tags = false
             if current_tags != blank and current_tags.size > 0
@@ -199,7 +201,7 @@
             endif
           -%}
           {%- if request.page_type == 'blog' and has_tags == false -%}
-            <div class="ka-blog-breadcrumb-subnav" style="display: flex; align-items: center; gap: 24px; margin: 0; padding: 0; list-style: none;">
+            <div class="ka-blog-breadcrumb-subnav">
               {%- liquid
                 assign subnav_overview = blog.metafields.custom.subnav_overview | default: 'Overview'
                 assign subnav_care_paths = blog.metafields.custom.subnav_care_paths | default: 'Care paths'
@@ -285,8 +287,8 @@
                   assign rest_chars = topic_title | slice: 1, 255
                   assign formatted_topic_title = first_char | append: rest_chars
                   
-                  # Construct back url preserving the correct parameter
-                  assign back_url = blog.url | append: '/tagged/' | append: (current_tag | handleize)
+                  assign current_tag_handle = current_tag | handleize
+                  assign back_url = blog.url | append: '/tagged/' | append: current_tag_handle
                   if path_metaobject != nil
                     assign back_url = back_url | append: '?care_path=' | append: care_path_param
                   elsif topic_param != blank
