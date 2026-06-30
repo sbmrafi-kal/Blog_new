@@ -7,14 +7,13 @@
 {%- liquid
   assign at_a_glance_cards = article.metafields.custom.at_a_glance_cards.value
   assign at_a_glance = article.metafields.custom.at_a_glance.value
-  assign glance_eyebrow = article.metafields.custom.at_a_glance_eyebrow | default: blog.metafields.custom.at_a_glance_eyebrow | default: 'At a glance'
-  assign glance_heading = article.metafields.custom.at_a_glance_heading | default: blog.metafields.custom.at_a_glance_heading | default: 'What this guide covers'
+  assign glance_eyebrow = article.metafields.custom.at_a_glance_eyebrow | default: blog.metafields.custom.at_a_glance_eyebrow | default: 'Key Takeaways'
+  assign glance_heading = article.metafields.custom.at_a_glance_heading | default: blog.metafields.custom.at_a_glance_heading | default: ''
 -%}
 
 {%- if at_a_glance_cards != blank and at_a_glance_cards.size > 0 -%}
   <section class="ka-article-summary-card" id="at-a-glance">
     <p class="ka-blog-eyebrow">{{ glance_eyebrow }}</p>
-    <h2>{{ glance_heading }}</h2>
     <div class="ka-article-summary-grid">
       {%- for card in at_a_glance_cards -%}
         {%- liquid
@@ -35,7 +34,6 @@
 {%- elsif at_a_glance != blank and at_a_glance.size > 0 -%}
   <section class="ka-article-summary-card" id="at-a-glance">
     <p class="ka-blog-eyebrow">{{ glance_eyebrow }}</p>
-    <h2>{{ glance_heading }}</h2>
     <div class="ka-article-summary-grid">
       {%- for item in at_a_glance -%}
         {%- assign parts = item | split: ': ' -%}

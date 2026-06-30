@@ -68,29 +68,50 @@
         {%- comment -%} At a glance {%- endcomment -%}
         {%- render 'ka-article-at-a-glance', article: article -%}
 
-        {%- comment -%} Did You Know? Callout {%- endcomment -%}
-        {%- liquid
-          assign article_title_lower = article.title | downcase
-          assign did_you_know = article.metafields.custom.did_you_know.value | default: article.metafields.custom.did_you_know
-          if did_you_know == blank and article_title_lower contains 'ojas'
-            assign did_you_know = "If health is wealth, then Ojas is gold. It makes sense to build and preserve it."
-          endif
-        -%}
-        {%- if did_you_know != blank -%}
-          <div class="ka-article-did-you-know">
-            <p class="ka-blog-eyebrow">Did You Know?</p>
-            <p class="ka-article-did-you-know-text">"{{ did_you_know }}"</p>
-          </div>
-        {%- endif -%}
-
         {%- comment -%} Article body content — prefer metafield, fallback to article.content {%- endcomment -%}
         <div class="ka-article-body prose">
           {%- liquid
-            assign meta_body = article.metafields.custom.article_body
-            if meta_body != blank
-              echo meta_body | metafield_tag
+            assign body_content = article.metafields.custom.article_body | default: article.content
+            
+            # 1. Clean double/duplicate blockquote containing 'Ojas is gold' or 'If health is wealth'
+            assign parts_bq = body_content | split: '<blockquote'
+            assign clean_content = parts_bq[0]
+            for part in parts_bq offset: 1
+              if part contains 'If health is wealth' or part contains 'Ojas is gold' or part contains 'Ojas is Gold'
+                assign remaining = part | split: '</blockquote>' | last
+                assign clean_content = clean_content | append: remaining
+              else
+                assign clean_content = clean_content | append: '<blockquote' | append: part
+              endif
+            endfor
+            assign body_content = clean_content
+
+            # 2. Inject Did You Know box right before the second <h2> tag
+            assign article_title_lower = article.title | downcase
+            assign did_you_know = article.metafields.custom.did_you_know.value | default: article.metafields.custom.did_you_know
+            if did_you_know == blank and article_title_lower contains 'ojas'
+              assign did_you_know = "If health is wealth, then Ojas is gold. It makes sense to build and preserve it."
+            endif
+
+            assign parts_h2 = body_content | split: '<h2'
+            if parts_h2.size > 2 and did_you_know != blank
+              echo parts_h2[0]
+              echo '<h2' | append: parts_h2[1]
+              
+              # Render Did You Know box
+              capture dyk_html
+                echo '<div class="ka-article-did-you-know">'
+                echo '  <p class="ka-blog-eyebrow">Did You Know?</p>'
+                echo '  <p class="ka-article-did-you-know-text">"' | append: did_you_know | append: '"</p>'
+                echo '</div>'
+              endcapture
+              echo dyk_html
+              
+              for part in parts_h2 offset: 2
+                echo '<h2' | append: part
+              endfor
             else
-              echo article.content
+              echo body_content
             endif
           -%}
         </div>

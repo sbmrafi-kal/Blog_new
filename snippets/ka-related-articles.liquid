@@ -43,72 +43,84 @@
   endif
 
   assign related_eyebrow = article.metafields.custom.related_eyebrow | default: blog.metafields.custom.related_eyebrow | default: 'More from Ayurveda'
-  assign related_heading = article.metafields.custom.related_heading | default: blog.metafields.custom.related_heading | default: 'Continue reading'
+  assign related_heading = article.metafields.custom.related_heading | default: blog.metafields.custom.related_heading | default: 'Related Articles'
   assign read_label = article.metafields.custom.read_article_label | default: blog.metafields.custom.read_article_label | default: 'Read article'
 -%}
 
 <section class="ka-blog-section--tight" id="related">
-  <div class="ka-blog-section-head">
+  <div class="ka-blog-section-head" style="margin-bottom: 0;">
     <div>
       <p class="ka-blog-eyebrow">{{ related_eyebrow }}</p>
       <h2>{{ related_heading }}</h2>
+      <div class="ka-related-articles-line"></div>
     </div>
   </div>
-  <div class="ka-blog-article-grid">
-    {%- if has_explicit_related -%}
-      {%- assign shown_count = 0 -%}
-      {%- for handle in related_handles -%}
-        {%- if shown_count < 3 -%}
-          # Look up globally
-          {%- assign related_article = articles[handle] -%}
-          
-          # Fallback lookup in current blog
-          {%- if related_article == blank -%}
-            {%- for a in blog.articles -%}
-              {%- if a.handle == handle -%}
-                {%- assign related_article = a -%}
+  
+  <div class="ka-related-articles-carousel-container">
+    <div class="ka-related-articles-track ka-blog-article-grid">
+      {%- if has_explicit_related -%}
+        {%- assign shown_count = 0 -%}
+        {%- for handle in related_handles limit: 6 -%}
+          {%- if shown_count < 6 -%}
+            {%- comment -%} Look up globally {%- endcomment -%}
+            {%- assign related_article = articles[handle] -%}
+            
+            {%- comment -%} Fallback lookup in current blog {%- endcomment -%}
+            {%- if related_article == blank -%}
+              {%- for a in blog.articles -%}
+                {%- if a.handle == handle -%}
+                  {%- assign related_article = a -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+            
+            {%- comment -%} Fallback check if it includes blog prefix {%- endcomment -%}
+            {%- if related_article == blank and handle contains '/' -%}
+              {%- assign related_article = articles[handle] -%}
+            {%- endif -%}
+            
+            {%- if related_article != blank and related_article.id != article.id -%}
+              {%- render 'ka-blog-card', article: related_article -%}
+              {%- assign shown_count = shown_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- comment -%} Fallback: articles from same blog with shared tags {%- endcomment -%}
+        {%- assign shown_count = 0 -%}
+        {%- for blog_article in blog.articles limit: 20 -%}
+          {%- if blog_article.id != article.id and shown_count < 6 -%}
+            {%- assign shares_tag = false -%}
+            {%- for tag in article.tags -%}
+              {%- if blog_article.tags contains tag -%}
+                {%- assign shares_tag = true -%}
                 {%- break -%}
               {%- endif -%}
             {%- endfor -%}
-          {%- endif -%}
-          
-          # Fallback check if it includes blog prefix
-          {%- if related_article == blank and handle contains '/' -%}
-            {%- assign related_article = articles[handle] -%}
-          {%- endif -%}
-          
-          {%- if related_article != blank and related_article.id != article.id -%}
-            {%- render 'ka-blog-card', article: related_article -%}
-            {%- assign shown_count = shown_count | plus: 1 -%}
-          {%- endif -%}
-        {%- endif -%}
-      {%- endfor -%}
-    {%- else -%}
-      {%- comment -%} Fallback: articles from same blog with shared tags {%- endcomment -%}
-      {%- assign shown_count = 0 -%}
-      {%- for blog_article in blog.articles limit: 20 -%}
-        {%- if blog_article.id != article.id and shown_count < 3 -%}
-          {%- assign shares_tag = false -%}
-          {%- for tag in article.tags -%}
-            {%- if blog_article.tags contains tag -%}
-              {%- assign shares_tag = true -%}
-              {%- break -%}
+            {%- if shares_tag -%}
+              {%- render 'ka-blog-card', article: blog_article -%}
+              {%- assign shown_count = shown_count | plus: 1 -%}
             {%- endif -%}
-          {%- endfor -%}
-          {%- if shares_tag -%}
-            {%- render 'ka-blog-card', article: blog_article -%}
-            {%- assign shown_count = shown_count | plus: 1 -%}
-          {%- endif -%}
-        {%- endif -%}
-      {%- endfor -%}
-      {%- comment -%} If no shared-tag articles, show recent from blog {%- endcomment -%}
-      {%- if shown_count == 0 -%}
-        {%- for blog_article in blog.articles limit: 3 -%}
-          {%- if blog_article.id != article.id -%}
-            {%- render 'ka-blog-card', article: blog_article -%}
           {%- endif -%}
         {%- endfor -%}
+        {%- comment -%} If no shared-tag articles, show recent from blog {%- endcomment -%}
+        {%- if shown_count == 0 -%}
+          {%- for blog_article in blog.articles limit: 6 -%}
+            {%- if blog_article.id != article.id and shown_count < 3 -%}
+              {%- render 'ka-blog-card', article: blog_article -%}
+              {%- assign shown_count = shown_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
       {%- endif -%}
+    </div>
+    
+    {%- if shown_count > 3 -%}
+      <div class="ka-related-articles-nav">
+        <button class="ka-related-arrow ka-related-arrow--prev" aria-label="Previous articles">←</button>
+        <button class="ka-related-arrow ka-related-arrow--next" aria-label="Next articles">→</button>
+      </div>
     {%- endif -%}
   </div>
 </section>

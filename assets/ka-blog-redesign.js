@@ -1249,6 +1249,38 @@
   }
 
   // ============================================================
+  // RELATED ARTICLES CAROUSEL — Slide behavior on desktop
+  // ============================================================
+  function initRelatedArticlesCarousel() {
+    var track = document.querySelector('.ka-related-articles-track');
+    var prevBtn = document.querySelector('.ka-related-arrow--prev');
+    var nextBtn = document.querySelector('.ka-related-arrow--next');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    function updateButtons() {
+      prevBtn.disabled = track.scrollLeft <= 5;
+      nextBtn.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
+    }
+    
+    prevBtn.addEventListener('click', function () {
+      var cardWidth = track.firstElementChild ? track.firstElementChild.offsetWidth + 22 : track.clientWidth;
+      track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    
+    nextBtn.addEventListener('click', function () {
+      var cardWidth = track.firstElementChild ? track.firstElementChild.offsetWidth + 22 : track.clientWidth;
+      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+    
+    track.addEventListener('scroll', updateButtons);
+    window.addEventListener('resize', updateButtons);
+    
+    // Run initial check
+    setTimeout(updateButtons, 250);
+  }
+
+  // ============================================================
   // INIT — Run all on DOMContentLoaded
   // ============================================================
   function init() {
@@ -1263,6 +1295,7 @@
     initTocToggle();
     initComments();
     initScrollAnimations();
+    initRelatedArticlesCarousel();
   }
 
   if (document.readyState === 'loading') {
