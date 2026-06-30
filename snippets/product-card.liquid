@@ -7,7 +7,7 @@
   assign product_title = product.title
   assign product_url = product.url
   assign product_price = product.price | money
-  assign product_desc = product.metafields.custom.short_description | default: product.description | default: product.content | strip_html | truncate: 90
+  assign product_desc = product.metafields.custom.short_description | default: product.description | default: product.content | strip_html | truncate: 160
 -%}
 <div class="ka-blog-product-card">
   <a href="{{ product_url }}" class="ka-blog-product-card__inner">

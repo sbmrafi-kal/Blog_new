@@ -75,11 +75,13 @@
     font-size: 16px !important;
     padding-left: 24px !important;
     padding-right: 80px !important;
+    padding-top: 14px !important;
     height: 100% !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
+    box-sizing: border-box !important;
   }
 
   .template-search__search .search .field__label {
@@ -95,7 +97,8 @@
 
   .template-search__search .search .field__input:focus ~ .field__label,
   .template-search__search .search .field__input:not(:placeholder-shown) ~ .field__label {
-    top: 15% !important;
+    top: 8px !important;
+    transform: none !important;
     font-size: 10px !important;
     opacity: 0.7 !important;
   }
@@ -140,17 +143,37 @@
     display: flex !important;
     align-items: center !important;
   }
+
+  .template-search__search .search .reset__button svg circle {
+    display: none !important;
+  }
+
+  .template-search__search .search .reset__button svg {
+    fill: none !important;
+    stroke: var(--ka-muted) !important;
+    stroke-width: 2px !important;
+  }
 </style>
 
 {%- liquid
   assign sort_by = search.sort_by | default: search.default_sort_by
   assign raw_terms = search.terms
   assign display_terms = raw_terms
-  if raw_terms == '*' or raw_terms == 'author:*' or raw_terms == 'tag:*'
+  
+  if raw_terms contains 'title:(' and 'body:('
+    assign parts = raw_terms | split: 'title:('
+    if parts.size > 1
+      assign sub_parts = parts[1] | split: ')'
+      assign display_terms = sub_parts[0]
+    endif
+  endif
+
+  if display_terms == '*' or display_terms == 'author:*' or display_terms == 'tag:*'
     assign display_terms = ''
   endif
   assign terms = display_terms | escape
-  assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  assign escaped_raw_terms = raw_terms | escape
+  assign search_url = '?q=' | append: escaped_raw_terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
 -%}
 
 {%- style -%}
@@ -457,7 +480,21 @@
                 </ul>
               {%- endif -%}
               {%- if paginate.pages > 1 -%}
-                {% render 'pagination', paginate: paginate %}
+                <div class="ka-blog-pagination">
+                  {%- if paginate.previous -%}
+                    <a href="{{ paginate.previous.url }}">←</a>
+                  {%- endif -%}
+                  {%- for part in paginate.parts -%}
+                    {%- if part.is_link -%}
+                      <a href="{{ part.url }}">{{ part.title }}</a>
+                    {%- else -%}
+                      <span class="current">{{ part.title }}</span>
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- if paginate.next -%}
+                    <a href="{{ paginate.next.url }}">→</a>
+                  {%- endif -%}
+                </div>
               {%- endif -%}
             </div>
           {%- endif -%}

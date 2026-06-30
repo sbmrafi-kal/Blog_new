@@ -395,26 +395,12 @@
       activeIdx = index;
       
       barSpans.forEach(function (span, i) {
-        var diff = Math.abs(i - index);
-        
-        if (diff === 0) {
+        if (i === index) {
           span.style.transform = 'translateX(-24px) scale(3.0)';
-          span.style.color = '#FFFDF9';
-          span.style.backgroundColor = 'var(--ka-green)';
-          span.style.opacity = '1';
-          span.classList.add('active');
-        } else if (diff === 1) {
-          span.style.transform = 'translateX(-12px) scale(1.6)';
-          span.style.color = 'var(--ka-green)';
-          span.style.backgroundColor = 'rgba(30, 75, 60, 0.15)';
-          span.style.opacity = '0.4';
-          span.classList.remove('active');
-        } else if (diff === 2) {
-          span.style.transform = 'translateX(-6px) scale(1.2)';
           span.style.color = 'var(--ka-green)';
           span.style.backgroundColor = 'transparent';
-          span.style.opacity = '0.4';
-          span.classList.remove('active');
+          span.style.opacity = '1';
+          span.classList.add('active');
         } else {
           span.style.transform = 'translateX(0) scale(1)';
           span.style.color = 'var(--ka-green)';
@@ -807,17 +793,43 @@
   function initHeroSearchExploreRedirect() {
     var exploreBtn = document.querySelector('.ka-blog-hero-actions a[href="#topics"]');
     var searchInput = document.querySelector('.ka-blog-hero-search input[name="q"]');
-    var searchForm = document.querySelector('.ka-blog-hero-search');
     if (!exploreBtn || !searchInput) return;
 
     exploreBtn.addEventListener('click', function (e) {
       var query = searchInput.value.trim();
       if (query) {
         e.preventDefault();
-        if (searchForm) {
-          searchForm.submit();
-        } else {
-          window.location.href = '/search?type=article&q=' + encodeURIComponent(query);
+        var scopedQuery = 'title:(' + query + ') OR body:(' + query + ')';
+        window.location.href = '/search?type=article&q=' + encodeURIComponent(scopedQuery) + '&options[prefix]=last';
+      }
+    });
+  }
+
+  // ============================================================
+  // 5.2. SCOPED SEARCH INTERCEPTOR (Title or Description only)
+  // ============================================================
+  function initScopedSearch() {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      if (form && (form.classList.contains('search') || form.classList.contains('ka-blog-hero-search') || form.action.includes('/search'))) {
+        var qInput = form.querySelector('input[name="q"]');
+        if (qInput && qInput.value.trim()) {
+          var query = qInput.value.trim();
+          if (!query.includes('title:(') && !query.includes('body:(') && query !== '*') {
+            e.preventDefault();
+            var scopedQuery = 'title:(' + query + ') OR body:(' + query + ')';
+            var searchUrl = form.action || '/search';
+            var url = new URL(searchUrl, window.location.origin);
+            url.searchParams.set('q', scopedQuery);
+            url.searchParams.set('options[prefix]', 'last');
+            var inputs = form.querySelectorAll('input[type="hidden"]');
+            inputs.forEach(function(input) {
+              if (input.name !== 'q') {
+                url.searchParams.set(input.name, input.value);
+              }
+            });
+            window.location.href = url.toString();
+          }
         }
       }
     });
@@ -1450,6 +1462,17 @@
     // - Mobile: Trigger when scrolled 20% from initial starting position
     window.addEventListener('scroll', function () {
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Immediate reveal for Key Takeaways and TOC elements on scroll start
+      if (scrollTop > 5) {
+        var sidebar = document.querySelector('.ka-article-sidebar');
+        var mobileToc = document.querySelector('.ka-article-toc-mobile');
+        var summaryCard = document.querySelector('.ka-article-summary-card');
+        if (sidebar) sidebar.classList.add('is-visible');
+        if (mobileToc) mobileToc.classList.add('is-visible');
+        if (summaryCard) summaryCard.classList.add('is-visible');
+      }
+
       if (window.innerWidth >= 980) {
         if (scrollTop > 5) {
           var firstSection = document.querySelector('.reveal-on-scroll');
@@ -1474,8 +1497,6 @@
         '.ka-blog-section, ' +
         '.ka-blog-section--tight, ' +
         '.ka-blog-topic-deck, ' +
-        '.ka-blog-article-grid, ' +
-        '.ka-blog-card, ' +
         '.ka-blog-topic-hero, ' +
         '.ka-blog-hero-shell, ' +
         '.ka-article-content-wrapper, ' +
@@ -1559,6 +1580,7 @@
     initReadTime();
     initTopicCarousel();
     initHeroSearchExploreRedirect();
+    initScopedSearch();
     initAjaxFiltering();
     initFloatingCTA();
     initChatbot();

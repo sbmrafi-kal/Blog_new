@@ -14,6 +14,12 @@
 {%- render 'custom-article-font' -%}
 
 {%- liquid
+  assign blog_handle = section.settings.blog | default: blog.handle
+  if blog_handle == blank or blog_handle == 'ayurveda'
+    assign blog_handle = 'news'
+  endif
+  assign selected_blog = blogs[blog_handle]
+
   assign current_tag = current_tags | first
   assign topic_metaobject = nil
 
@@ -35,7 +41,7 @@
 
   assign path_metaobject = nil
   if care_path_param != blank
-    assign care_paths = blog.metafields.custom.care_paths.value
+    assign care_paths = selected_blog.metafields.custom.care_paths.value
     for cp in care_paths
       assign temp_cp_handle = cp.system.handle | default: cp.handle | default: cp.title | handleize
       if temp_cp_handle == care_path_param
@@ -45,7 +51,7 @@
     endfor
   endif
 
-  assign topics = blog.metafields.custom.topics.value
+  assign topics = selected_blog.metafields.custom.topics.value
   if topics != blank
     if topic_param != blank
       for topic in topics
@@ -230,7 +236,7 @@
 
       {%- liquid
         assign related_tags = ""
-        for article in blog.articles
+        for article in selected_blog.articles
           for t in article.tags
             assign t_clean = t | strip
             unless t_clean == current_tag
@@ -241,14 +247,14 @@
         assign related_tags_array = related_tags | split: "," | uniq
       -%}
 
-      {%- paginate blog.articles by 250 -%}
+      {%- paginate selected_blog.articles by 250 -%}
         <div class="ka-blog-section-head" style="margin-top: 18px;">
           <div>
             <p class="ka-blog-eyebrow">
               {%- liquid
                 # Dynamically count the filtered articles
                 assign filtered_count = 0
-                for article in blog.articles
+                for article in selected_blog.articles
                   if path_metaobject != nil
                     assign linked_topic_handle = path_metaobject.linked_topic.value.system.handle | default: path_metaobject.linked_topic.value.handle | default: path_metaobject.linked_topic.system.handle | default: path_metaobject.linked_topic.handle | default: path_metaobject.linked_topic.title | handleize
                     assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
@@ -277,13 +283,13 @@
         {%- if related_tags_array.size > 0 -%}
           <nav class="ka-blog-filter-bar" aria-label="{{ topic_title }} filters">
             {%- assign current_tag_handle = current_tag | handleize -%}
-            {%- assign all_filter_url = blog.url | append: '/tagged/' | append: current_tag_handle -%}
+            {%- assign all_filter_url = selected_blog.url | append: '/tagged/' | append: current_tag_handle -%}
             {%- if path_metaobject != nil -%}
               {%- assign all_filter_url = all_filter_url | append: '?care_path=' | append: topic_handle -%}
             {%- elsif topic_handle != blank -%}
               {%- assign all_filter_url = all_filter_url | append: '?topic=' | append: topic_handle -%}
             {%- endif -%}
-            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ all_filter_url }}">{{ blog.metafields.custom.filter_all_label | default: 'All' }}</a>
+            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ all_filter_url }}">{{ selected_blog.metafields.custom.filter_all_label | default: 'All' }}</a>
             {%- for tag in related_tags_array -%}
               {%- assign trimmed_tag = tag | strip -%}
               {%- if trimmed_tag != blank -%}
@@ -292,7 +298,7 @@
                   {%- assign is_active = true -%}
                 {%- endif -%}
                 {%- assign trimmed_tag_handle = trimmed_tag | handleize -%}
-                {%- assign sub_filter_url = blog.url | append: '/tagged/' | append: current_tag_handle | append: '+' | append: trimmed_tag_handle -%}
+                {%- assign sub_filter_url = selected_blog.url | append: '/tagged/' | append: current_tag_handle | append: '+' | append: trimmed_tag_handle -%}
                 {%- if path_metaobject != nil -%}
                   {%- assign sub_filter_url = sub_filter_url | append: '?care_path=' | append: topic_handle -%}
                 {%- elsif topic_handle != blank -%}
@@ -305,7 +311,7 @@
         {%- endif -%}
 
         <div class="ka-blog-article-grid" style="margin-top: 24px;">
-          {%- for article in blog.articles -%}
+          {%- for article in selected_blog.articles -%}
             {%- liquid
               # If path_metaobject is active, filter articles by the care path's linked topic
               if path_metaobject != nil
@@ -374,10 +380,10 @@
   </section>
 
   {%- comment -%} ============ CONSULT CTA ============ {%- endcomment -%}
-  {%- render 'ka-consult-cta', blog: blog, section: section -%}
+  {%- render 'ka-consult-cta', blog: selected_blog, section: section -%}
 
   {%- comment -%} ============ CHATBOT ============ {%- endcomment -%}
-  {%- render 'ka-chatbot', blog: blog -%}
+  {%- render 'ka-chatbot', blog: selected_blog -%}
 </div>
 
 <script src="{{ 'ka-blog-redesign.js' | asset_url }}" defer></script>
@@ -388,7 +394,13 @@
   "name": "Blog Topic — Redesign",
   "tag": "section",
   "class": "ka-blog-topic-section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog to fetch articles from"
+    }
+  ],
   "templates": ["blog"]
 }
 {% endschema %}
