@@ -3611,3 +3611,302 @@ html {
   }
 }
 
+/* Mobile date separators hiding and stacking */
+@media (max-width: 767px) {
+  .ka-article-dates .ka-article-date-sep {
+    display: none !important;
+  }
+  .ka-article-dates {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    align-items: flex-start !important;
+  }
+}
+
+/* Heading margins override (Exactly 24px top and bottom spacing) */
+.ka-article-body h1,
+.ka-article-body h2,
+.ka-article-body h3,
+.ka-article-body h4,
+.ka-article-body h5,
+.ka-article-body h6,
+.ka-article-content h1,
+.ka-article-content h2,
+.ka-article-content h3,
+.ka-article-content h4,
+.ka-article-content h5,
+.ka-article-content h6 {
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Left & Right marginal padding (Exactly 24px on mobile view) */
+@media (max-width: 979px) {
+  .ka-blog-container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* =============================================================
+   NIAGARA LAUNCHER STYLE SCRUBBER & TUTORIAL
+   ============================================================= */
+.ka-niagara-scrubber-bar {
+  position: fixed !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+  z-index: 99999 !important;
+  background: rgba(255, 253, 249, 0.95) !important;
+  border: 1px solid var(--ka-line) !important;
+  border-radius: 24px !important;
+  padding: 14px 8px !important;
+  box-shadow: 3px 3px 0 0 var(--ka-line) !important;
+  touch-action: none !important;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+@media (min-width: 980px) {
+  .ka-niagara-scrubber-bar {
+    display: none !important;
+  }
+}
+
+.ka-niagara-scrubber-bar.is-active {
+  opacity: 1 !important;
+  transform: translateY(-50%) scale(1.05) !important;
+}
+
+.ka-niagara-scrubber-bar span {
+  font-family: var(--ka-font-heavy) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  color: var(--ka-green) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  transition: all 150ms ease !important;
+  cursor: pointer !important;
+}
+
+.ka-niagara-scrubber-bar span.active {
+  background-color: var(--ka-green) !important;
+  color: #FFFDF9 !important;
+  transform: scale(1.2) !important;
+}
+
+/* Scrubber Overlay */
+.ka-niagara-scrubber-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(30, 75, 60, 0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  z-index: 99998 !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0;
+  transition: opacity 0.25s ease !important;
+}
+
+.ka-niagara-scrubber-overlay.is-active {
+  display: flex !important;
+  opacity: 1 !important;
+}
+
+.ka-niagara-scrubber-content {
+  width: 85% !important;
+  max-height: 80vh !important;
+  overflow-y: hidden !important;
+}
+
+.ka-niagara-scrubber-titles-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  align-items: center !important;
+}
+
+.ka-niagara-scrubber-titles-list li {
+  font-family: var(--ka-font-heading) !important;
+  font-size: 20px !important;
+  line-height: 1.3 !important;
+  color: rgba(255, 253, 249, 0.6) !important;
+  text-align: center !important;
+  transition: all 200ms ease !important;
+  display: flex !important;
+  gap: 8px !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+.ka-niagara-scrubber-titles-list li .ka-scrubber-title-idx {
+  font-family: var(--ka-font-heavy) !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  opacity: 0.8 !important;
+}
+
+.ka-niagara-scrubber-titles-list li.active {
+  color: #FFF1DC !important;
+  font-weight: 800 !important;
+  transform: scale(1.15) !important;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Background Blur Class */
+.ka-blog-wrapper.ka-bg-blurred {
+  filter: blur(4px) !important;
+  transition: filter 0.3s ease !important;
+}
+
+/* Help Onboarding Button */
+.ka-article-toc-mobile-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  gap: 12px !important;
+}
+
+.ka-article-toc-mobile__toggle {
+  flex: 1 !important;
+}
+
+.ka-article-toc-mobile__help-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background-color: var(--ka-soft) !important;
+  border: 1px solid var(--ka-line) !important;
+  border-radius: var(--ka-radius-lg) !important;
+  padding: 10px 14px !important;
+  cursor: pointer !important;
+  font-family: var(--ka-font-heavy) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: var(--ka-green) !important;
+  box-shadow: 2px 2px 0 0 var(--ka-line) !important;
+  transition: all 180ms ease !important;
+}
+
+.ka-article-toc-mobile__help-btn:hover {
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 3px 3px 0 0 var(--ka-line) !important;
+}
+
+/* Onboarding Tutorial Overlay */
+.ka-niagara-tutorial-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.75) !important;
+  z-index: 100000 !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0;
+  transition: opacity 0.3s ease !important;
+}
+
+.ka-niagara-tutorial-overlay.is-active {
+  display: flex !important;
+  opacity: 1 !important;
+}
+
+.ka-niagara-tutorial-card {
+  background: #FFFDF9 !important;
+  border: 2px solid var(--ka-line) !important;
+  border-radius: var(--ka-radius-xl) !important;
+  box-shadow: 6px 6px 0 0 var(--ka-line) !important;
+  padding: 30px !important;
+  width: 85% !important;
+  max-width: 320px !important;
+  text-align: center !important;
+  position: relative !important;
+}
+
+.ka-niagara-tutorial-scrubber-mock {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  width: 32px !important;
+  background: var(--ka-soft) !important;
+  border: 1px solid var(--ka-line) !important;
+  border-radius: 16px !important;
+  padding: 10px 4px !important;
+  margin: 20px auto !important;
+  align-items: center !important;
+}
+
+.ka-niagara-tutorial-scrubber-mock span {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  color: var(--ka-green) !important;
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  line-height: 16px !important;
+  border-radius: 50% !important;
+}
+
+.ka-niagara-tutorial-scrubber-mock span.active {
+  background-color: var(--ka-green) !important;
+  color: #FFFDF9 !important;
+}
+
+.ka-niagara-tutorial-hand {
+  font-size: 36px !important;
+  position: absolute !important;
+  right: 80px !important;
+  top: 60px !important;
+}
+
+.ka-niagara-tutorial-text {
+  font-family: var(--ka-font-body) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: var(--ka-ink) !important;
+  font-weight: 600 !important;
+  margin-top: 18px !important;
+}
+
+@keyframes kaTutorialSwipe {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    transform: translate(60px, 90px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(60px, 90px);
+    opacity: 0;
+  }
+}
+

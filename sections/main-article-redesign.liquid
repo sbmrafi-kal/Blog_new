@@ -48,16 +48,26 @@
 
         {%- comment -%} Mobile TOC (hidden on desktop via CSS) {%- endcomment -%}
         <div class="ka-article-toc-mobile">
-          <button
-            class="ka-article-toc-mobile__toggle"
-            aria-expanded="false"
-            aria-controls="ka-mobile-toc-content"
-          >
-            <span>{{ toc_mobile_label }}</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          <div class="ka-article-toc-mobile-header">
+            <button
+              class="ka-article-toc-mobile__toggle"
+              aria-expanded="false"
+              aria-controls="ka-mobile-toc-content"
+            >
+              <span>{{ toc_mobile_label }}</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="ka-article-toc-mobile__help-btn" aria-label="How to use quick scrubber">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>GUIDE</span>
+            </button>
+          </div>
           <div id="ka-mobile-toc-content" class="ka-article-toc-mobile__content">
             <ul class="ka-article-toc-mobile__list">
               {%- comment -%} Built by JS {%- endcomment -%}
@@ -186,6 +196,31 @@
 
   {%- comment -%} ============ CHATBOT ============ {%- endcomment -%}
   {%- render 'ka-chatbot', blog: blog -%}
+
+  {%- comment -%} Mobile Niagara Scrubber Overlay & Tutorial structures {%- endcomment -%}
+  <div class="ka-niagara-scrubber-overlay" id="kaScrubberOverlay">
+    <div class="ka-niagara-scrubber-content">
+      <ul class="ka-niagara-scrubber-titles-list">
+        {%- comment -%} Injected dynamically by JS {%- endcomment -%}
+      </ul>
+    </div>
+  </div>
+
+  <div class="ka-niagara-scrubber-bar" id="kaScrubberBar">
+    {%- comment -%} Vertical indexes injected dynamically by JS (e.g. 01, 02, 03) {%- endcomment -%}
+  </div>
+
+  <div class="ka-niagara-tutorial-overlay" id="kaTutorialOverlay">
+    <div class="ka-niagara-tutorial-card">
+      <div class="ka-niagara-tutorial-hand">👉</div>
+      <div class="ka-niagara-tutorial-scrubber-mock">
+        <span>01</span>
+        <span class="active">02</span>
+        <span>03</span>
+      </div>
+      <div class="ka-niagara-tutorial-text">Drag down the right side to scrub through sections</div>
+    </div>
+  </div>
 
 </div>
 
