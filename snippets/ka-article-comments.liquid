@@ -123,8 +123,8 @@
                 </div>
                 <div class="ka-article-comment-body">
                   <div class="ka-article-comment-meta">
-                    <b>{{ comment.author }}</b>
-                    <span>{{ comment.created_at | date: "%B %d, %Y" }}</span>
+                    <b class="ka-comment-author-name">{{ comment.author }}</b>
+                    <span class="ka-comment-date">{{ comment.created_at | date: "%B %d, %Y" }}</span>
                   </div>
                   <div class="ka-blog-muted-content">{{ comment.content }}</div>
                 </div>

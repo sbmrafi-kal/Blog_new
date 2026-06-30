@@ -398,24 +398,28 @@
         var diff = Math.abs(i - index);
         
         if (diff === 0) {
-          span.style.transform = 'translateX(-18px) scale(1.4)';
+          span.style.transform = 'translateX(-24px) scale(3.0)';
           span.style.color = '#FFFDF9';
           span.style.backgroundColor = 'var(--ka-green)';
+          span.style.opacity = '1';
           span.classList.add('active');
         } else if (diff === 1) {
-          span.style.transform = 'translateX(-10px) scale(1.2)';
+          span.style.transform = 'translateX(-12px) scale(1.6)';
           span.style.color = 'var(--ka-green)';
           span.style.backgroundColor = 'rgba(30, 75, 60, 0.15)';
+          span.style.opacity = '0.4';
           span.classList.remove('active');
         } else if (diff === 2) {
-          span.style.transform = 'translateX(-4px) scale(1.05)';
+          span.style.transform = 'translateX(-6px) scale(1.2)';
           span.style.color = 'var(--ka-green)';
           span.style.backgroundColor = 'transparent';
+          span.style.opacity = '0.4';
           span.classList.remove('active');
         } else {
           span.style.transform = 'translateX(0) scale(1)';
           span.style.color = 'var(--ka-green)';
           span.style.backgroundColor = 'transparent';
+          span.style.opacity = '0.4';
           span.classList.remove('active');
         }
       });
@@ -437,6 +441,10 @@
     function handleDragStart() {
       isDragging = true;
       bar.classList.add('is-active');
+      var wrapper = document.querySelector('.ka-blog-wrapper');
+      if (wrapper) {
+        wrapper.classList.add('ka-bg-blurred');
+      }
     }
     
     function handleDragMove(e) {
@@ -461,12 +469,17 @@
       isDragging = false;
       
       bar.classList.remove('is-active');
+      var wrapper = document.querySelector('.ka-blog-wrapper');
+      if (wrapper) {
+        wrapper.classList.remove('ka-bg-blurred');
+      }
       
       // Reset transforms
       barSpans.forEach(function (span) {
         span.style.transform = '';
         span.style.color = '';
         span.style.backgroundColor = '';
+        span.style.opacity = '';
         span.classList.remove('active');
       });
       
@@ -1377,6 +1390,25 @@
       if (!ticking) {
         window.requestAnimationFrame(updateScrollEffects);
         ticking = true;
+      }
+    }, { passive: true });
+
+    // First section reveal trigger based on viewport width:
+    // - Desktop: Trigger as soon as scroll starts (> 5px)
+    // - Mobile: Trigger when scrolled 20% from initial starting position
+    window.addEventListener('scroll', function () {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (window.innerWidth >= 980) {
+        if (scrollTop > 5) {
+          var firstSection = document.querySelector('.reveal-on-scroll');
+          if (firstSection) firstSection.classList.add('is-visible');
+        }
+      } else {
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0 && (scrollTop / docHeight) >= 0.20) {
+          var firstSection = document.querySelector('.reveal-on-scroll');
+          if (firstSection) firstSection.classList.add('is-visible');
+        }
       }
     }, { passive: true });
 
