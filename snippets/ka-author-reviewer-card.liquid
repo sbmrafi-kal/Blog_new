@@ -48,9 +48,6 @@
         <p style="margin-top: 12px;">{{ person_bio }}</p>
       {%- endif -%}
       <div class="ka-blog-chip-row" style="margin-top: 16px;">
-        {%- if person_designation != blank -%}
-          <span class="ka-blog-chip ka-blog-chip--neutral">{{ person_designation }}</span>
-        {%- endif -%}
         {%- if person_url != blank -%}
           <a href="{{ person_url }}" class="ka-blog-chip ka-blog-chip--green">{{ view_profile_label }}</a>
         {%- endif -%}

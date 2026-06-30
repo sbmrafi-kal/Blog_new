@@ -68,6 +68,21 @@
         {%- comment -%} At a glance {%- endcomment -%}
         {%- render 'ka-article-at-a-glance', article: article -%}
 
+        {%- comment -%} Did You Know? Callout {%- endcomment -%}
+        {%- liquid
+          assign article_title_lower = article.title | downcase
+          assign did_you_know = article.metafields.custom.did_you_know.value | default: article.metafields.custom.did_you_know
+          if did_you_know == blank and article_title_lower contains 'ojas'
+            assign did_you_know = "If health is wealth, then Ojas is gold. It makes sense to build and preserve it."
+          endif
+        -%}
+        {%- if did_you_know != blank -%}
+          <div class="ka-article-did-you-know">
+            <p class="ka-blog-eyebrow">Did You Know?</p>
+            <p class="ka-article-did-you-know-text">"{{ did_you_know }}"</p>
+          </div>
+        {%- endif -%}
+
         {%- comment -%} Article body content — prefer metafield, fallback to article.content {%- endcomment -%}
         <div class="ka-article-body prose">
           {%- liquid

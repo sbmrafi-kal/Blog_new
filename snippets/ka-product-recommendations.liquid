@@ -6,20 +6,41 @@
 
 {%- liquid
   assign products = article.metafields.custom.recommended_products.value
+  
+  # Check if we should load fallback mock products for the specific Ojas article
+  assign article_title_lower = article.title | downcase
+  assign is_fallback_needed = false
+  if products == blank or products.size == 0
+    if article_title_lower contains 'ojas'
+      assign is_fallback_needed = true
+    endif
+  endif
+  
   assign products_eyebrow = article.metafields.custom.products_eyebrow | default: blog.metafields.custom.products_eyebrow | default: 'Helpful next steps'
   assign heading = article.metafields.custom.recommended_products_heading | default: blog.metafields.custom.recommended_products_heading | default: 'Related Kerala Ayurveda formulations'
   assign description = article.metafields.custom.recommended_products_description | default: blog.metafields.custom.recommended_products_description | default: 'Support your wellness routine with classical Ayurvedic formulations.'
 -%}
 
-{%- if products != blank and products.size > 0 -%}
+{%- if products != blank and products.size > 0 or is_fallback_needed -%}
   <section class="ka-article-products" id="products" aria-labelledby="ka-products-title">
     <p class="ka-blog-eyebrow">{{ products_eyebrow }}</p>
     <h2 id="ka-products-title">{{ heading }}</h2>
     <p class="ka-blog-muted" style="margin: 6px 0 10px;">{{ description }}</p>
     <div class="ka-article-product-grid">
-      {%- for product in products limit: 3 -%}
-        {%- render 'product-card', product: product, is_alternative: true -%}
-      {%- endfor -%}
+      {%- if is_fallback_needed -%}
+        {%- assign prod_1 = all_products['neelibringadi-keram'] -%}
+        {%- assign prod_2 = all_products['bringarajasava-450ml'] | default: all_products['bringarajasava'] -%}
+        {%- if prod_1 != blank -%}
+          {%- render 'product-card', product: prod_1, is_alternative: true -%}
+        {%- endif -%}
+        {%- if prod_2 != blank -%}
+          {%- render 'product-card', product: prod_2, is_alternative: true -%}
+        {%- endif -%}
+      {%- else -%}
+        {%- for product in products limit: 3 -%}
+          {%- render 'product-card', product: product, is_alternative: true -%}
+        {%- endfor -%}
+      {%- endif -%}
     </div>
   </section>
 {%- endif -%}

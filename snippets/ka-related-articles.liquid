@@ -5,9 +5,40 @@
 {% endcomment %}
 
 {%- liquid
-  assign related = article.metafields.custom.related_articles.value | default: article.metafields.custom.similar_articles.value
+  # Try resolving values from metafields (objects or string handles)
+  assign related = article.metafields.custom.related_articles.value
+  if related == blank
+    assign related = article.metafields.custom.similar_articles.value
+  endif
+  if related == blank
+    assign related = article.metafields.custom.related_articles
+  endif
+  if related == blank
+    assign related = article.metafields.custom.similar_articles
+  endif
+
+  # Process list items to extract handles and build a clean handle list
+  assign processed_handles = ""
+  if related != blank
+    for item in related
+      # If it's already an Article object
+      if item.title != blank
+        assign processed_handles = processed_handles | append: "," | append: item.handle
+      else
+        # Extract handle from gid/string
+        assign item_str = item | to_liquid | strip
+        if item_str != blank
+          # Handle is the last portion after slash
+          assign item_handle = item_str | split: '/' | last
+          assign processed_handles = processed_handles | append: "," | append: item_handle
+        endif
+      endif
+    endfor
+  endif
+
+  assign related_handles = processed_handles | split: "," | uniq | compact
   assign has_explicit_related = false
-  if related != blank and related.size > 0
+  if related_handles.size > 0
     assign has_explicit_related = true
   endif
 
@@ -25,8 +56,32 @@
   </div>
   <div class="ka-blog-article-grid">
     {%- if has_explicit_related -%}
-      {%- for related_article in related limit: 3 -%}
-        {%- render 'ka-blog-card', article: related_article -%}
+      {%- assign shown_count = 0 -%}
+      {%- for handle in related_handles -%}
+        {%- if shown_count < 3 -%}
+          # Look up globally
+          {%- assign related_article = articles[handle] -%}
+          
+          # Fallback lookup in current blog
+          {%- if related_article == blank -%}
+            {%- for a in blog.articles -%}
+              {%- if a.handle == handle -%}
+                {%- assign related_article = a -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          
+          # Fallback check if it includes blog prefix
+          {%- if related_article == blank and handle contains '/' -%}
+            {%- assign related_article = articles[handle] -%}
+          {%- endif -%}
+          
+          {%- if related_article != blank and related_article.id != article.id -%}
+            {%- render 'ka-blog-card', article: related_article -%}
+            {%- assign shown_count = shown_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endif -%}
       {%- endfor -%}
     {%- else -%}
       {%- comment -%} Fallback: articles from same blog with shared tags {%- endcomment -%}

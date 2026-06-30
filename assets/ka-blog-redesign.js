@@ -1213,7 +1213,7 @@
         '.ka-article-sidebar'
       );
 
-      var grids = document.querySelectorAll('.ka-blog-article-grid, .ka-blog-topic-deck');
+      var grids = document.querySelectorAll('.ka-blog-topic-deck');
       grids.forEach(function (grid) {
         var children = grid.children;
         for (var i = 0; i < children.length; i++) {

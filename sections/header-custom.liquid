@@ -184,6 +184,8 @@
     assign show_breadcrumbs = false
   elsif request.page_type == 'search'
     assign show_breadcrumbs = false
+  elsif request.page_type == 'blog' and current_tags == blank
+    assign show_breadcrumbs = false
   endif
 -%}
 
