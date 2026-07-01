@@ -15,7 +15,7 @@
   assign topic_title = topic.title | default: category_label
   assign topic_tag = topic.article_filter_tag | default: category_label | handleize
   assign author_profile = article.metafields.custom.written_by_profile.value
-  assign reviewer_profile = article.metafields.custom.reviewed_by.value
+  assign reviewer_profile = article.metafields.custom.reviewed_by_profile.value
 
   assign breadcrumb_home = blog.metafields.custom.breadcrumb_home_label | default: 'Journal'
   assign subnav_overview = blog.metafields.custom.subnav_overview | default: 'Overview'

@@ -1,23 +1,15 @@
 {%- liquid
   assign author_name_display = author_profile.name
-  assign author_qual = author_profile.qualifications | default: author_profile.degree
-  assign author_name = author_name_display
-  if author_qual != blank
-    assign author_name = author_name | append: ' ' | append: author_qual
-  endif
+  assign author_degree = author_profile.degree | default: author_profile.qualifications_abbreviation
+  assign author_qual = author_profile.qualifications | default: author_profile.designation
   assign author_role = 'WRITTEN BY'
-  assign author_bio = author_profile.short_bio
-  assign author_photo = author_profile.photo
+  assign author_photo = author_profile.photo | default: author_profile.image | default: author_profile.profile_photo | default: author_profile.avatar | default: author_profile.picture
   
   assign reviewer_name_display = reviewer_profile.name
-  assign reviewer_qual = reviewer_profile.qualifications | default: reviewer_profile.degree
-  assign reviewer_name = reviewer_name_display
-  if reviewer_qual != blank
-    assign reviewer_name = reviewer_name | append: ' ' | append: reviewer_qual
-  endif
+  assign reviewer_degree = reviewer_profile.degree | default: reviewer_profile.qualifications_abbreviation
+  assign reviewer_qual = reviewer_profile.qualifications | default: reviewer_profile.designation
   assign reviewer_role = 'REVIEWED BY'
-  assign reviewer_bio = reviewer_profile.short_bio
-  assign reviewer_photo = reviewer_profile.photo
+  assign reviewer_photo = reviewer_profile.photo | default: reviewer_profile.image | default: reviewer_profile.profile_photo | default: reviewer_profile.avatar | default: reviewer_profile.picture
 -%}
 
 <div class="ka-article-author-reviewer-card" id="author-reviewer-card">
@@ -31,19 +23,24 @@
           {%- if author_photo != blank -%}
             <div class="ka-article-avatar" aria-hidden="true">
               <img
-                src="{{ author_photo | image_url: width: 176 }}"
-                alt="{{ author_name | escape }}"
+                src="{{ author_photo | image_url: width: 320 }}"
+                alt="{{ author_name_display | escape }}"
                 loading="lazy"
-                width="88"
-                height="88"
+                width="160"
+                height="160"
               >
               <span class="ka-avatar-hover-overlay">Read bio &rarr;</span>
             </div>
           {%- endif -%}
           <div class="ka-article-author-content">
-            <h2>{{ author_name_display }} {%- if author_qual != blank -%}<span class="ka-author-qual">({{ author_qual }})</span>{%- endif -%}</h2>
-            {%- if author_bio != blank -%}
-              <p class="ka-article-author-bio">{{ author_bio }}</p>
+            <h2 class="ka-author-name-row">
+              {{ author_name_display }}
+              {%- if author_degree != blank -%}
+                <span class="ka-author-degree">({{ author_degree }})</span>
+              {%- endif -%}
+            </h2>
+            {%- if author_qual != blank -%}
+              <p class="ka-author-qual-row">{{ author_qual }}</p>
             {%- endif -%}
           </div>
         </div>
@@ -60,19 +57,24 @@
           {%- if reviewer_photo != blank -%}
             <div class="ka-article-avatar" aria-hidden="true">
               <img
-                src="{{ reviewer_photo | image_url: width: 176 }}"
-                alt="{{ reviewer_name | escape }}"
+                src="{{ reviewer_photo | image_url: width: 320 }}"
+                alt="{{ reviewer_name_display | escape }}"
                 loading="lazy"
-                width="88"
-                height="88"
+                width="160"
+                height="160"
               >
               <span class="ka-avatar-hover-overlay">Read bio &rarr;</span>
             </div>
           {%- endif -%}
           <div class="ka-article-author-content">
-            <h2>{{ reviewer_name_display }} {%- if reviewer_qual != blank -%}<span class="ka-author-qual">({{ reviewer_qual }})</span>{%- endif -%}</h2>
-            {%- if reviewer_bio != blank -%}
-              <p class="ka-article-author-bio">{{ reviewer_bio }}</p>
+            <h2 class="ka-author-name-row">
+              {{ reviewer_name_display }}
+              {%- if reviewer_degree != blank -%}
+                <span class="ka-author-degree">({{ reviewer_degree }})</span>
+              {%- endif -%}
+            </h2>
+            {%- if reviewer_qual != blank -%}
+              <p class="ka-author-qual-row">{{ reviewer_qual }}</p>
             {%- endif -%}
           </div>
         </div>
