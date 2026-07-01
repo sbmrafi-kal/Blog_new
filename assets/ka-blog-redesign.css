@@ -1729,7 +1729,16 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
 
   .ka-blog-hero { padding-top: 16px !important; }
-  .ka-blog-hero-shell { border-radius: var(--ka-radius-lg); padding: 14px !important; }
+  .ka-blog-hero-shell {
+    border-radius: var(--ka-radius-lg);
+    padding: 24px !important;
+  }
+  .ka-blog-hero-content .ka-blog-eyebrow {
+    margin-top: 0 !important;
+  }
+  .ka-blog-hero-actions {
+    margin-bottom: 0 !important;
+  }
 
   .ka-blog-care-panel,
   .ka-blog-consult-card,
@@ -2152,6 +2161,16 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     grid-template-columns: none !important;
     margin-bottom: 0 !important;
     border-bottom: 1px solid var(--ka-line) !important;
+  }
+
+  /* Odd count full width override */
+  .ka-blog-path-row:nth-child(odd):last-child {
+    grid-column: span 2 !important;
+  }
+
+  .ka-blog-path-tags {
+    text-align: left !important;
+    margin-top: 18px !important;
   }
 
   .ka-blog-path-row h3 {

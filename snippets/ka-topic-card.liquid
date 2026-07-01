@@ -8,7 +8,7 @@
   assign topic_title = topic.title.value | default: topic.title | default: topic
   assign topic_image = topic.image.value | default: topic.image
   assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title | handleize
-  assign topic_count_label = topic.cta_label.value | default: topic.cta_label | default: 'Explore topic'
+  assign topic_count_label = 'Explore Guides'
 
   # Try to match the handle for custom dark image
   assign topic_handle = topic.system.handle | default: topic.handle | default: topic_tag | default: topic_title | handleize
