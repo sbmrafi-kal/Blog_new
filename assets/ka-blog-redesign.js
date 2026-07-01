@@ -540,6 +540,50 @@
           mockHand.style.animation = 'kaTutorialSwipe 3s ease-in-out forwards';
         }
         
+        var mockTitleEl = tutorialOverlay.querySelector('.mock-title');
+        var mockNumEl = tutorialOverlay.querySelector('.mock-num');
+        
+        // Find actual article sections or fall back to defaults
+        var articleSections = document.querySelectorAll('section[id^="sec-"], section[id^="key-"], .ka-article-faq');
+        var mockData = [
+          { title: "Introduction", num: "01" },
+          { title: "Key Takeaways", num: "02" },
+          { title: "Summary", num: "03" }
+        ];
+        
+        if (articleSections.length >= 3) {
+          mockData = [];
+          articleSections.forEach(function (sec, idx) {
+            if (idx < 3) {
+              var heading = sec.querySelector('h2, h3')?.textContent?.trim() || "Section";
+              if (heading.length > 22) heading = heading.substring(0, 19) + "...";
+              var numStr = (idx + 1) < 10 ? "0" + (idx + 1) : "" + (idx + 1);
+              mockData.push({ title: heading, num: numStr });
+            }
+          });
+        }
+        
+        // Initial state
+        if (mockTitleEl && mockNumEl && mockData[0]) {
+          mockTitleEl.textContent = mockData[0].title;
+          mockNumEl.textContent = mockData[0].num;
+        }
+        
+        // Frame updates to simulate drag/scrub progress
+        setTimeout(function () {
+          if (mockTitleEl && mockNumEl && mockData[1]) {
+            mockTitleEl.textContent = mockData[1].title;
+            mockNumEl.textContent = mockData[1].num;
+          }
+        }, 1200);
+        
+        setTimeout(function () {
+          if (mockTitleEl && mockNumEl && mockData[2]) {
+            mockTitleEl.textContent = mockData[2].title;
+            mockNumEl.textContent = mockData[2].num;
+          }
+        }, 2200);
+        
         // Auto scroll demo: scroll to bottom of article, then back to original position
         setTimeout(function () {
           var targetBottom = Math.min(
@@ -1143,7 +1187,8 @@
     function openChatbot() {
       windowEl.classList.remove('ka-chatbot-hidden');
       windowEl.setAttribute('aria-hidden', 'false');
-      trigger.style.display = 'none';
+      trigger.classList.add('is-open');
+      trigger.innerHTML = '<span class="ka-close-x" style="font-size: 20px; font-weight: bold; line-height: 1;">✕</span>';
       input.focus();
       
       if (!greetingTriggered) {
@@ -1159,21 +1204,19 @@
     function closeChatbot() {
       windowEl.classList.add('ka-chatbot-hidden');
       windowEl.setAttribute('aria-hidden', 'true');
-      trigger.style.display = 'flex';
+      trigger.classList.remove('is-open');
+      trigger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-chatbot-trigger-icon" style="margin-right: 8px; display: inline-block; vertical-align: middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span style="vertical-align: middle;">Ask Guruji</span>';
     }
 
     trigger.addEventListener('click', function (e) {
       e.preventDefault();
-      openChatbot();
-    });
-
-    var closeBtn = document.getElementById('ka-chatbot-close');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function (e) {
-        e.preventDefault();
+      var isHidden = windowEl.classList.contains('ka-chatbot-hidden');
+      if (isHidden) {
+        openChatbot();
+      } else {
         closeChatbot();
-      });
-    }
+      }
+    });
 
     // Close on clicking outside
     document.addEventListener('click', function (e) {

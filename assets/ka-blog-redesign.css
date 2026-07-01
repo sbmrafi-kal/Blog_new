@@ -2447,7 +2447,18 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     box-sizing: border-box !important;
   }
   .ka-article-author-reviewer-card .ka-article-author-card {
-    padding: 16px 10px !important;
+    padding: 16px 12px !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  .ka-article-author-reviewer-card .ka-article-author-bio-row {
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+  .ka-article-author-reviewer-card .ka-article-author-content {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
   }
   .ka-article-author-reviewer-card .ka-article-avatar {
     width: 90px !important;
@@ -2459,6 +2470,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   .ka-article-author-reviewer-card .ka-author-degree-row,
   .ka-article-author-reviewer-card .ka-author-qual-row {
     font-size: 11px !important;
+    text-align: left !important;
   }
   .ka-article-author-reviewer-card .ka-avatar-hover-overlay {
     height: 24px !important;
@@ -3393,8 +3405,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-chatbot-typing-dot {
-  width: 3px !important;
-  height: 3px !important;
+  width: 5px !important;
+  height: 5px !important;
   border-radius: 50% !important;
   background: var(--ka-green, #1E4B3C) !important;
   animation: ka-chatbot-bounce 1.2s infinite ease-in-out !important;
@@ -3993,31 +4005,38 @@ html {
 
 .ka-niagara-tutorial-scrubber-mock {
   display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  width: 32px !important;
-  background: var(--ka-soft) !important;
-  border: 1px solid var(--ka-line) !important;
-  border-radius: 16px !important;
-  padding: 10px 4px !important;
-  margin: 20px auto !important;
   align-items: center !important;
+  justify-content: space-between !important;
+  background: #FDFFFB !important;
+  border: 1px solid rgba(184, 210, 155, 0.4) !important;
+  border-radius: 14px !important;
+  padding: 10px 16px !important;
+  box-shadow: 0 10px 30px rgba(30, 75, 60, 0.08) !important;
+  width: 240px !important;
+  max-width: 90% !important;
+  margin: 16px auto 0 !important;
+  box-sizing: border-box !important;
 }
 
-.ka-niagara-tutorial-scrubber-mock span {
-  font-size: 10px !important;
+.ka-niagara-tutorial-scrubber-mock .mock-title {
+  font-family: var(--ka-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: var(--ka-green) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex: 1 !important;
+  text-align: left !important;
+}
+
+.ka-niagara-tutorial-scrubber-mock .mock-num {
+  font-family: var(--ka-font-heavy) !important;
   font-weight: 800 !important;
   color: var(--ka-green) !important;
-  display: block !important;
-  width: 16px !important;
-  height: 16px !important;
-  line-height: 16px !important;
-  border-radius: 50% !important;
-}
-
-.ka-niagara-tutorial-scrubber-mock span.active {
-  background-color: var(--ka-green) !important;
-  color: #FFFDF9 !important;
+  font-size: 16px !important;
+  margin-left: 12px !important;
+  flex-shrink: 0 !important;
 }
 
 .ka-niagara-tutorial-hand {
@@ -4033,7 +4052,8 @@ html {
   line-height: 1.5 !important;
   color: var(--ka-ink) !important;
   font-weight: 600 !important;
-  margin-top: 18px !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
 }
 
 @keyframes kaTutorialSwipe {
@@ -4101,6 +4121,10 @@ html {
     justify-content: flex-end;
     gap: 12px;
     margin-top: 16px;
+  }
+  
+  .ka-related-articles-nav.ka-hide-on-desktop {
+    display: none !important;
   }
   
   .ka-related-arrow {
@@ -4549,101 +4573,7 @@ html {
   box-shadow: 3px 3px 0 0 var(--ka-line) !important;
 }
 
-/* Onboarding Tutorial Overlay */
-.ka-niagara-tutorial-overlay {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  background: rgba(0, 0, 0, 0.75) !important;
-  z-index: 100000 !important;
-  display: none !important;
-  align-items: center !important;
-  justify-content: center !important;
-  opacity: 0;
-  transition: opacity 0.3s ease !important;
-}
 
-.ka-niagara-tutorial-overlay.is-active {
-  display: flex !important;
-  opacity: 1 !important;
-}
-
-.ka-niagara-tutorial-card {
-  background: #FFFDF9 !important;
-  border: 2px solid var(--ka-line) !important;
-  border-radius: var(--ka-radius-xl) !important;
-  box-shadow: 6px 6px 0 0 var(--ka-line) !important;
-  padding: 30px !important;
-  width: 85% !important;
-  max-width: 320px !important;
-  text-align: center !important;
-  position: relative !important;
-}
-
-.ka-niagara-tutorial-scrubber-mock {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  width: 32px !important;
-  background: var(--ka-soft) !important;
-  border: 1px solid var(--ka-line) !important;
-  border-radius: 16px !important;
-  padding: 10px 4px !important;
-  margin: 20px auto !important;
-  align-items: center !important;
-}
-
-.ka-niagara-tutorial-scrubber-mock span {
-  font-size: 10px !important;
-  font-weight: 800 !important;
-  color: var(--ka-green) !important;
-  display: block !important;
-  width: 16px !important;
-  height: 16px !important;
-  line-height: 16px !important;
-  border-radius: 50% !important;
-}
-
-.ka-niagara-tutorial-scrubber-mock span.active {
-  background-color: var(--ka-green) !important;
-  color: #FFFDF9 !important;
-}
-
-.ka-niagara-tutorial-hand {
-  font-size: 36px !important;
-  position: absolute !important;
-  right: 80px !important;
-  top: 60px !important;
-}
-
-.ka-niagara-tutorial-text {
-  font-family: var(--ka-font-body) !important;
-  font-size: 14px !important;
-  line-height: 1.5 !important;
-  color: var(--ka-ink) !important;
-  font-weight: 600 !important;
-  margin-top: 18px !important;
-}
-
-@keyframes kaTutorialSwipe {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  75% {
-    transform: translate(60px, 90px);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(60px, 90px);
-    opacity: 0;
-  }
-}
 
 /* =============================================================
    CUSTOM SEARCH RESULTS PAGE SEARCH BAR OVERRIDES
