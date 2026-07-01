@@ -18,7 +18,7 @@
   if blog_handle == blank
     assign blog_handle = 'news'
   endif
-  assign selected_blog = blogs[blog_handle]
+  assign selected_blog = blog
 
   assign current_tag = current_tags | first
   assign topic_metaobject = nil

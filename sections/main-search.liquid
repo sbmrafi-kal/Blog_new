@@ -190,7 +190,7 @@
   }
 {%- endstyle -%}
 
-{% paginate search.results by 24 %}
+{% paginate search.results by 12 %}
   <div class="template-search{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding ka-blog-wrapper">
     <div class="ka-blog-container">
       <div class="template-search__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}" style="text-align: center; margin-bottom: 40px;">
@@ -400,10 +400,11 @@
                 assign has_others = false
                 for item in search.results
                   if item.object_type == 'article'
-                    assign search_terms_clean = search.terms | downcase | strip
+                    assign search_terms_clean = display_terms | downcase | strip
                     assign article_title_clean = item.title | downcase
                     assign article_excerpt_clean = item.excerpt | default: item.content | default: '' | strip_html | downcase
                     assign article_dek_clean = item.metafields.custom.dek.value | default: item.metafields.custom.dek | default: '' | downcase
+                    assign article_tags_clean = item.tags | join: ',' | downcase
                     
                     assign is_match = false
                     if search_terms_clean == blank or search_terms_clean == '*' or search_terms_clean contains '*'
@@ -413,6 +414,8 @@
                     elsif article_excerpt_clean contains search_terms_clean
                       assign is_match = true
                     elsif article_dek_clean contains search_terms_clean
+                      assign is_match = true
+                    elsif article_tags_clean contains search_terms_clean
                       assign is_match = true
                     endif
                     if is_match
@@ -446,10 +449,11 @@
                   {%- for item in search.results -%}
                     {%- if item.object_type == 'article' -%}
                       {%- liquid
-                        assign search_terms_clean = search.terms | downcase | strip
+                        assign search_terms_clean = display_terms | downcase | strip
                         assign article_title_clean = item.title | downcase
                         assign article_excerpt_clean = item.excerpt | default: item.content | default: '' | strip_html | downcase
                         assign article_dek_clean = item.metafields.custom.dek.value | default: item.metafields.custom.dek | default: '' | downcase
+                        assign article_tags_clean = item.tags | join: ',' | downcase
                         
                         assign is_match = false
                         if search_terms_clean == blank or search_terms_clean == '*' or search_terms_clean contains '*'
@@ -459,6 +463,8 @@
                         elsif article_excerpt_clean contains search_terms_clean
                           assign is_match = true
                         elsif article_dek_clean contains search_terms_clean
+                          assign is_match = true
+                        elsif article_tags_clean contains search_terms_clean
                           assign is_match = true
                         endif
                       -%}

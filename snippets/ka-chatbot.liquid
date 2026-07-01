@@ -32,12 +32,15 @@
     
     <form class="ka-chatbot-input-form" id="ka-chatbot-form">
       <input type="text" id="ka-chatbot-input" placeholder="Ask Guruji a question..." required autocomplete="off">
-      <button type="submit" aria-label="Send message">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="22" y1="2" x2="11" y2="13"></line>
-          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-        </svg>
-      </button>
+      <div class="ka-chatbot-form-actions">
+        <button type="submit" class="ka-chatbot-send-btn" aria-label="Send message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+        <button type="button" class="ka-chatbot-close-btn" id="ka-chatbot-close" aria-label="Close Chatbot">✕</button>
+      </div>
     </form>
   </div>
 </div>

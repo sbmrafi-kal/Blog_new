@@ -1140,40 +1140,46 @@
     var greetingTriggered = false;
 
     // Toggle Chatbot Window
+    function openChatbot() {
+      windowEl.classList.remove('ka-chatbot-hidden');
+      windowEl.setAttribute('aria-hidden', 'false');
+      trigger.style.display = 'none';
+      input.focus();
+      
+      if (!greetingTriggered) {
+        greetingTriggered = true;
+        showTypingIndicator();
+        setTimeout(function () {
+          removeTypingIndicator();
+          addMessage("Pranam! I am Guruji, your Ayurvedic guide. How can I help you find balance today?", 'bot');
+        }, 1200);
+      }
+    }
+
+    function closeChatbot() {
+      windowEl.classList.add('ka-chatbot-hidden');
+      windowEl.setAttribute('aria-hidden', 'true');
+      trigger.style.display = 'flex';
+    }
+
     trigger.addEventListener('click', function (e) {
       e.preventDefault();
-      var isHidden = windowEl.classList.contains('ka-chatbot-hidden');
-      if (isHidden) {
-        windowEl.classList.remove('ka-chatbot-hidden');
-        windowEl.setAttribute('aria-hidden', 'false');
-        input.focus();
-        trigger.classList.add('is-open');
-        trigger.innerHTML = '<span class="ka-close-x">&times;</span>';
-        
-        if (!greetingTriggered) {
-          greetingTriggered = true;
-          showTypingIndicator();
-          setTimeout(function () {
-            removeTypingIndicator();
-            addMessage("Pranam! I am Guruji, your Ayurvedic guide. How can I help you find balance today?", 'bot');
-          }, 1200);
-        }
-      } else {
-        windowEl.classList.add('ka-chatbot-hidden');
-        windowEl.setAttribute('aria-hidden', 'true');
-        trigger.classList.remove('is-open');
-        trigger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-chatbot-trigger-icon" style="margin-right: 8px; display: inline-block; vertical-align: middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span style="vertical-align: middle;">Ask Guruji</span>';
-      }
+      openChatbot();
     });
+
+    var closeBtn = document.getElementById('ka-chatbot-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        closeChatbot();
+      });
+    }
 
     // Close on clicking outside
     document.addEventListener('click', function (e) {
       if (!windowEl.classList.contains('ka-chatbot-hidden')) {
         if (!windowEl.contains(e.target) && !trigger.contains(e.target)) {
-          windowEl.classList.add('ka-chatbot-hidden');
-          windowEl.setAttribute('aria-hidden', 'true');
-          trigger.classList.remove('is-open');
-          trigger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-chatbot-trigger-icon" style="margin-right: 8px; display: inline-block; vertical-align: middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span style="vertical-align: middle;">Ask Guruji</span>';
+          closeChatbot();
         }
       }
     });
@@ -1261,8 +1267,18 @@
       return "Pranam! Ayurveda teaches us to seek balance through custom diet, herbs, and daily routines. Try selecting one of our quick questions for verified Ayurvedic guides.";
     }
 
+    var isBotResponding = false;
+    var chatbotQueue = [];
+
     // Process question helper
     function processQuestion(questionText, isTyped) {
+      if (isBotResponding) {
+        chatbotQueue.push({ text: questionText, isTyped: isTyped });
+        addMessage(questionText, 'user');
+        return;
+      }
+
+      isBotResponding = true;
       addMessage(questionText, 'user');
       showTypingIndicator();
       
@@ -1270,6 +1286,29 @@
         removeTypingIndicator();
         var response = getBotResponse(questionText, isTyped);
         addMessage(response, 'bot');
+        isBotResponding = false;
+        
+        if (chatbotQueue.length > 0) {
+          var nextQ = chatbotQueue.shift();
+          showTypingForQueue(nextQ.text, nextQ.isTyped);
+        }
+      }, 2000);
+    }
+
+    function showTypingForQueue(questionText, isTyped) {
+      isBotResponding = true;
+      showTypingIndicator();
+      
+      setTimeout(function () {
+        removeTypingIndicator();
+        var response = getBotResponse(questionText, isTyped);
+        addMessage(response, 'bot');
+        isBotResponding = false;
+        
+        if (chatbotQueue.length > 0) {
+          var nextQ = chatbotQueue.shift();
+          showTypingForQueue(nextQ.text, nextQ.isTyped);
+        }
       }, 2000);
     }
 
