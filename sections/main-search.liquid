@@ -400,7 +400,24 @@
                 assign has_others = false
                 for item in search.results
                   if item.object_type == 'article'
-                    assign has_articles = true
+                    assign search_terms_clean = search.terms | downcase | strip
+                    assign article_title_clean = item.title | downcase
+                    assign article_excerpt_clean = item.excerpt | default: item.content | default: '' | strip_html | downcase
+                    assign article_dek_clean = item.metafields.custom.dek.value | default: item.metafields.custom.dek | default: '' | downcase
+                    
+                    assign is_match = false
+                    if search_terms_clean == blank
+                      assign is_match = true
+                    elsif article_title_clean contains search_terms_clean
+                      assign is_match = true
+                    elsif article_excerpt_clean contains search_terms_clean
+                      assign is_match = true
+                    elsif article_dek_clean contains search_terms_clean
+                      assign is_match = true
+                    endif
+                    if is_match
+                      assign has_articles = true
+                    endif
                   else
                     assign has_others = true
                   endif
@@ -411,7 +428,26 @@
                 <div class="ka-blog-article-grid" style="margin-bottom: 40px;">
                   {%- for item in search.results -%}
                     {%- if item.object_type == 'article' -%}
-                      {%- render 'ka-blog-card', article: item -%}
+                      {%- liquid
+                        assign search_terms_clean = search.terms | downcase | strip
+                        assign article_title_clean = item.title | downcase
+                        assign article_excerpt_clean = item.excerpt | default: item.content | default: '' | strip_html | downcase
+                        assign article_dek_clean = item.metafields.custom.dek.value | default: item.metafields.custom.dek | default: '' | downcase
+                        
+                        assign is_match = false
+                        if search_terms_clean == blank
+                          assign is_match = true
+                        elsif article_title_clean contains search_terms_clean
+                          assign is_match = true
+                        elsif article_excerpt_clean contains search_terms_clean
+                          assign is_match = true
+                        elsif article_dek_clean contains search_terms_clean
+                          assign is_match = true
+                        endif
+                      -%}
+                      {%- if is_match -%}
+                        {%- render 'ka-blog-card', article: item -%}
+                      {%- endif -%}
                     {%- endif -%}
                   {%- endfor -%}
                 </div>

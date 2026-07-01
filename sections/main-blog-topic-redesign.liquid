@@ -15,7 +15,7 @@
 
 {%- liquid
   assign blog_handle = section.settings.blog | default: blog.handle
-  if blog_handle == blank or blog_handle == 'ayurveda'
+  if blog_handle == blank
     assign blog_handle = 'news'
   endif
   assign selected_blog = blogs[blog_handle]

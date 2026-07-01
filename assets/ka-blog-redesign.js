@@ -1562,6 +1562,9 @@
 
     // 3. Scroll reveals via IntersectionObserver
     if ('IntersectionObserver' in window) {
+      if (document.querySelector('.ka-blog-topic-hero') || window.location.pathname.indexOf('/tagged/') !== -1) {
+        return;
+      }
       var revealTargets = document.querySelectorAll(
         '.ka-blog-container section, ' +
         '.ka-blog-section, ' +

@@ -8,7 +8,7 @@
   assign show_chip = show_chip | default: true
   assign chip_text = card_article.metafields.custom.hero_badge.value | default: card_article.metafields.custom.hero_badge | default: card_article.metafields.custom.category_label | default: card_article.tags.first
   assign read_time = card_article.metafields.custom.read_time.value | default: card_article.metafields.custom.read_time | default: card_article.metafields.custom.read_time_minutes
-  assign dek = card_article.metafields.custom.dek | default: card_article.excerpt_or_content | strip_html | truncate: 120
+  assign dek = card_article.metafields.custom.dek | default: card_article.excerpt_or_content | strip_html | truncatewords: 25
   assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
   assign read_article_label = blog.metafields.custom.read_article_label | default: 'Read article'
 
