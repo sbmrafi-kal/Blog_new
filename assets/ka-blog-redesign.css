@@ -4559,7 +4559,7 @@ html {
 }
 
 .template-search__search .field {
-  height: 52px !important;
+  height: 60px !important;
   display: flex !important;
   align-items: center !important;
   background: transparent !important;
@@ -4567,9 +4567,9 @@ html {
 
 .template-search__search .field__input {
   height: 100% !important;
-  padding-top: 14px !important;
-  padding-bottom: 14px !important;
-  padding-left: 20px !important;
+  padding-top: 22px !important;
+  padding-bottom: 6px !important;
+  padding-left: 24px !important;
   padding-right: 80px !important;
   font-size: 16px !important;
   background-color: #FFFDF9 !important;
@@ -4586,18 +4586,21 @@ html {
 
 .template-search__search .field__label {
   position: absolute !important;
-  left: 20px !important;
+  left: 24px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
   color: var(--ka-muted, #A0A59A) !important;
   font-size: 16px !important;
   pointer-events: none !important;
-  transition: opacity 0.15s ease !important;
+  transition: all 0.2s ease !important;
 }
 
 .template-search__search .field__input:focus ~ .field__label,
 .template-search__search .field__input:not(:placeholder-shown) ~ .field__label {
-  opacity: 0 !important;
+  font-size: 10px !important;
+  top: 12px !important;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
 }
 
 .template-search__search .field__button {
@@ -4714,6 +4717,34 @@ html {
   display: flex !important;
   align-items: center !important;
   gap: 12px !important;
+}
+
+.ka-why-trust-logo-placeholder {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.ka-why-trust-brand-image {
+  height: 24px !important;
+  width: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.ka-why-trust-brand-text {
+  font-family: var(--ka-font-heading) !important;
+  color: var(--ka-green) !important;
+  font-size: 13px !important;
+  line-height: 1.1 !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.ka-why-trust-brand-text .brand-line {
+  display: block !important;
 }
 
 .ka-why-trust-title {

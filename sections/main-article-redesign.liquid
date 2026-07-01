@@ -14,8 +14,8 @@
   assign topic = article.metafields.custom.topic.value
   assign topic_title = topic.title | default: category_label
   assign topic_tag = topic.article_filter_tag | default: category_label | handleize
-  assign author_profile = article.metafields.custom.written_by_profile.value
-  assign reviewer_profile = article.metafields.custom.reviewed_by_profile.value
+  assign author_profile = article.metafields.custom.written_by_profile.value | default: article.metafields.custom.written_by.value | default: article.metafields.custom.written_by_profile | default: article.metafields.custom.written_by
+  assign reviewer_profile = article.metafields.custom.reviewed_by_profile.value | default: article.metafields.custom.reviewed_by.value | default: article.metafields.custom.reviewed_by_profile | default: article.metafields.custom.reviewed_by
 
   assign breadcrumb_home = blog.metafields.custom.breadcrumb_home_label | default: 'Journal'
   assign subnav_overview = blog.metafields.custom.subnav_overview | default: 'Overview'
@@ -74,6 +74,9 @@
             </ul>
           </div>
         </div>
+
+        {%- comment -%} Why Trust Kerala Ayurveda Card {%- endcomment -%}
+        {%- render 'ka-why-trust-card', article: article -%}
 
         {%- comment -%} At a glance {%- endcomment -%}
         {%- render 'ka-article-at-a-glance', article: article -%}
@@ -173,8 +176,6 @@
           {%- render 'ka-article-faqs', article: article -%}
         </div>
 
-        {%- comment -%} Why Trust Kerala Ayurveda Card {%- endcomment -%}
-        {%- render 'ka-why-trust-card', article: article -%}
 
         {%- comment -%} Combined Author & Reviewer Card {%- endcomment -%}
         {%- render 'ka-author-reviewer-combined',

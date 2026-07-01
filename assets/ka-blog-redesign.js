@@ -859,14 +859,14 @@
       var query = searchInput.value.trim();
       if (query) {
         e.preventDefault();
-        var scopedQuery = 'title:(' + query + ') OR body:(' + query + ')';
+        var scopedQuery = 'title:(' + query + ') OR body:(' + query + ') OR tag:(' + query + ')';
         window.location.href = '/search?type=article&q=' + encodeURIComponent(scopedQuery) + '&options[prefix]=last';
       }
     });
   }
 
   // ============================================================
-  // 5.2. SCOPED SEARCH INTERCEPTOR (Title or Description only)
+  // 5.2. SCOPED SEARCH INTERCEPTOR (Title, Description, or Tags/Topics)
   // ============================================================
   function initScopedSearch() {
     document.addEventListener('submit', function(e) {
@@ -877,7 +877,7 @@
           var query = qInput.value.trim();
           if (!query.includes('title:(') && !query.includes('body:(') && query !== '*') {
             e.preventDefault();
-            var scopedQuery = 'title:(' + query + ') OR body:(' + query + ')';
+            var scopedQuery = 'title:(' + query + ') OR body:(' + query + ') OR tag:(' + query + ')';
             var searchUrl = form.action || '/search';
             var url = new URL(searchUrl, window.location.origin);
             url.searchParams.set('q', scopedQuery);
@@ -1645,6 +1645,25 @@
   function initWhyTrustCard() {
     var card = document.getElementById('ka-why-trust-card');
     if (!card) return;
+    
+    // Copy the logo from the header into the trust card
+    var placeholder = card.querySelector('.ka-why-trust-logo-placeholder');
+    if (placeholder) {
+      var headerLogoImg = document.querySelector('.theme-header-custom__brand-image');
+      var headerLogoText = document.querySelector('.theme-header-custom__brand-text');
+      if (headerLogoImg) {
+        var clonedImg = headerLogoImg.cloneNode(true);
+        clonedImg.className = 'ka-why-trust-brand-image';
+        placeholder.innerHTML = '';
+        placeholder.appendChild(clonedImg);
+      } else if (headerLogoText) {
+        var clonedText = headerLogoText.cloneNode(true);
+        clonedText.className = 'ka-why-trust-brand-text';
+        placeholder.innerHTML = '';
+        placeholder.appendChild(clonedText);
+      }
+    }
+
     var header = card.querySelector('.ka-why-trust-header');
     var content = card.querySelector('.ka-why-trust-content');
     if (!header || !content) return;

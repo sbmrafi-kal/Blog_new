@@ -607,7 +607,7 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
 }
 
 .ka-blog-breadcrumbs-wrap {
-  background: #FFFDF9 !important;
+  background: #F0F0F0 !important;
   width: 100% !important;
 }
 

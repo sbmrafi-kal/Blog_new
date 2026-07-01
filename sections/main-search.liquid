@@ -160,7 +160,7 @@
   assign raw_terms = search.terms
   assign display_terms = raw_terms
   
-  if raw_terms contains 'title:(' and 'body:('
+  if raw_terms contains 'title:('
     assign parts = raw_terms | split: 'title:('
     if parts.size > 1
       assign sub_parts = parts[1] | split: ')'
