@@ -1641,6 +1641,28 @@
     setTimeout(updateButtons, 250);
   }
 
+  // Why Trust Collapsible Card
+  function initWhyTrustCard() {
+    var card = document.getElementById('ka-why-trust-card');
+    if (!card) return;
+    var header = card.querySelector('.ka-why-trust-header');
+    var content = card.querySelector('.ka-why-trust-content');
+    if (!header || !content) return;
+
+    header.addEventListener('click', function () {
+      var isOpen = card.classList.contains('is-open');
+      if (isOpen) {
+        card.classList.remove('is-open');
+        header.setAttribute('aria-expanded', 'false');
+        content.style.maxHeight = '0px';
+      } else {
+        card.classList.add('is-open');
+        header.setAttribute('aria-expanded', 'true');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  }
+
   // ============================================================
   // INIT — Run all on DOMContentLoaded
   // ============================================================
@@ -1660,6 +1682,7 @@
     initScrollAnimations();
     initRelatedArticlesCarousel();
     initMobileScrollProgressBar();
+    initWhyTrustCard();
   }
 
   if (document.readyState === 'loading') {

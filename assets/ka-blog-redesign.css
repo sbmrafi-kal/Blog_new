@@ -4684,3 +4684,111 @@ html {
   outline: none !important;
 }
 
+/* =============================================================
+   WHY TRUST KERALA AYURVEDA COLLAPSIBLE CARD
+   ============================================================= */
+.ka-why-trust-card {
+  border: 1px solid var(--ka-line);
+  border-radius: var(--ka-radius-lg);
+  background: #FFFFFF !important;
+  margin-top: 36px !important;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.ka-why-trust-header {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 16px 20px !important;
+  cursor: pointer !important;
+  transition: background-color 0.25s ease !important;
+  outline: none !important;
+}
+
+.ka-why-trust-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.ka-why-trust-title {
+  font-family: var(--ka-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: var(--ka-green) !important;
+}
+
+.ka-why-trust-chevron {
+  transition: transform 0.25s ease !important;
+}
+
+/* Open State Header Override */
+.ka-why-trust-card.is-open {
+  border-color: #A2C29B !important;
+}
+
+.ka-why-trust-card.is-open .ka-why-trust-header {
+  background-color: #E8F5E9 !important;
+}
+
+.ka-why-trust-card.is-open .ka-why-trust-chevron {
+  transform: rotate(180deg) !important;
+}
+
+.ka-why-trust-content {
+  background: #FFFFFF !important;
+}
+
+.ka-why-trust-inner {
+  padding: 24px 20px !important;
+  border-top: 1px solid #E8F5E9 !important;
+}
+
+.ka-why-trust-default-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ka-why-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left !important;
+}
+
+.ka-why-trust-num {
+  font-family: var(--ka-font-heavy) !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  color: var(--ka-green) !important;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ka-why-trust-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ka-why-trust-text strong {
+  font-family: var(--ka-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  color: var(--ka-green) !important;
+  margin: 0 !important;
+}
+
+.ka-why-trust-text p {
+  margin: 0 !important;
+  font-family: var(--ka-font-body) !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  color: var(--ka-muted) !important;
+}
