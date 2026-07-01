@@ -611,12 +611,19 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
   width: 100% !important;
 }
 
+/* Match the grey header background strictly on the main news landing page */
+body.template-blog:not(:has(.ka-blog-topic-section)):not(:has(.ka-blog-topic-hero)):not(:has(.ka-article-main-section)) .ka-blog-breadcrumbs-wrap {
+  background: #f0f0f0 !important;
+}
+
 .ka-blog-breadcrumbs-wrap .theme-header-custom__breadcrumbs {
   max-width: 1392px !important;
   width: 100% !important;
   margin: 0 auto !important;
   padding: 12px 16px !important;
   box-sizing: border-box !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 @media screen and (min-width: 640px) {
