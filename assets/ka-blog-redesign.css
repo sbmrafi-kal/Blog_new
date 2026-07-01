@@ -1305,16 +1305,18 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-article-author-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  align-items: center !important;
+  text-align: center !important;
   width: 100% !important;
   max-width: 100% !important;
   overflow: hidden !important;
 }
 
 .ka-author-name-row,
+.ka-author-degree-row,
 .ka-author-qual-row {
   white-space: nowrap !important;
   overflow: hidden !important;
@@ -1323,22 +1325,21 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   max-width: 100% !important;
   box-sizing: border-box !important;
   margin: 0 !important;
+  line-height: 1.2 !important;
 }
 
 .ka-author-name-row {
   font-size: 20px !important;
   font-family: var(--ka-font-heading) !important;
   font-weight: 700 !important;
-  line-height: 1.2 !important;
   color: var(--ka-green) !important;
 }
 
-.ka-author-degree {
-  font-size: 16px !important;
+.ka-author-degree-row {
+  font-size: 15px !important;
   font-family: var(--ka-font-body) !important;
   font-weight: 500 !important;
-  color: var(--ka-green) !important;
-  margin-left: 4px !important;
+  color: var(--ka-muted) !important;
 }
 
 .ka-author-qual-row {
@@ -1346,7 +1347,6 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   font-family: var(--ka-font-body) !important;
   font-weight: 500 !important;
   color: var(--ka-muted) !important;
-  margin-top: 4px !important;
 }
 
 @media (min-width: 768px) {
@@ -3232,7 +3232,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: auto !important;
   align-self: flex-start;
 }
 
@@ -4062,7 +4062,7 @@ html {
   }
 
   .ka-related-articles-track > .ka-blog-card {
-    flex: 0 0 calc(33.333% - 10px) !important;
+    flex: 0 0 100% !important;
     scroll-snap-align: start !important;
     scroll-snap-stop: always !important;
     padding: 0 !important;
@@ -4694,7 +4694,8 @@ html {
   border: 1px solid var(--ka-line);
   border-radius: var(--ka-radius-lg);
   background: #FFFFFF !important;
-  margin-top: 36px !important;
+  margin-top: 0px !important;
+  margin-bottom: 26px !important;
   overflow: hidden;
   box-sizing: border-box;
   transition: border-color 0.2s ease;

@@ -1686,22 +1686,22 @@
   // INIT — Run all on DOMContentLoaded
   // ============================================================
   function init() {
-    initSubnav();
-    initArticleTOC();
-    initFAQ();
-    initReadTime();
-    initTopicCarousel();
-    initHeroSearchExploreRedirect();
-    initScopedSearch();
-    initAjaxFiltering();
-    initFloatingCTA();
-    initChatbot();
-    initTocToggle();
-    initComments();
-    initScrollAnimations();
-    initRelatedArticlesCarousel();
-    initMobileScrollProgressBar();
-    initWhyTrustCard();
+    try { initSubnav(); } catch(e) { console.error("initSubnav error:", e); }
+    try { initArticleTOC(); } catch(e) { console.error("initArticleTOC error:", e); }
+    try { initFAQ(); } catch(e) { console.error("initFAQ error:", e); }
+    try { initReadTime(); } catch(e) { console.error("initReadTime error:", e); }
+    try { initTopicCarousel(); } catch(e) { console.error("initTopicCarousel error:", e); }
+    try { initHeroSearchExploreRedirect(); } catch(e) { console.error("initHeroSearchExploreRedirect error:", e); }
+    try { initScopedSearch(); } catch(e) { console.error("initScopedSearch error:", e); }
+    try { initAjaxFiltering(); } catch(e) { console.error("initAjaxFiltering error:", e); }
+    try { initFloatingCTA(); } catch(e) { console.error("initFloatingCTA error:", e); }
+    try { initChatbot(); } catch(e) { console.error("initChatbot error:", e); }
+    try { initTocToggle(); } catch(e) { console.error("initTocToggle error:", e); }
+    try { initComments(); } catch(e) { console.error("initComments error:", e); }
+    try { initScrollAnimations(); } catch(e) { console.error("initScrollAnimations error:", e); }
+    try { initRelatedArticlesCarousel(); } catch(e) { console.error("initRelatedArticlesCarousel error:", e); }
+    try { initMobileScrollProgressBar(); } catch(e) { console.error("initMobileScrollProgressBar error:", e); }
+    try { initWhyTrustCard(); } catch(e) { console.error("initWhyTrustCard error:", e); }
   }
 
   if (document.readyState === 'loading') {

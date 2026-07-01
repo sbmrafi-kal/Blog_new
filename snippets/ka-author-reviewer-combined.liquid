@@ -5,11 +5,35 @@
   assign author_role = 'WRITTEN BY'
   assign author_photo = author_profile.photo.value | default: author_profile.image.value | default: author_profile.profile_photo.value | default: author_profile.avatar.value | default: author_profile.picture.value | default: author_profile.photo | default: author_profile.image
   
+  assign author_photo_url = ''
+  if author_photo != blank
+    assign author_photo_str = author_photo | downcase
+    if author_photo_str contains 'http://' or author_photo_str contains 'https://' or author_photo_str contains '//cdn.'
+      assign author_photo_url = author_photo
+    elsif author_photo_str contains '.png' or author_photo_str contains '.jpg' or author_photo_str contains '.jpeg' or author_photo_str contains '.webp'
+      assign author_photo_url = author_photo | file_img_url: '320x320'
+    else
+      assign author_photo_url = author_photo | image_url: width: 320
+    endif
+  endif
+
   assign reviewer_name_display = reviewer_profile.name.value | default: reviewer_profile.name
   assign reviewer_degree = reviewer_profile.degree.value | default: reviewer_profile.degree | default: reviewer_profile.qualifications_abbreviation.value | default: reviewer_profile.qualifications_abbreviation
   assign reviewer_qual = reviewer_profile.qualifications.value | default: reviewer_profile.qualifications | default: reviewer_profile.designation.value | default: reviewer_profile.designation
   assign reviewer_role = 'REVIEWED BY'
   assign reviewer_photo = reviewer_profile.photo.value | default: reviewer_profile.image.value | default: reviewer_profile.profile_photo.value | default: reviewer_profile.avatar.value | default: reviewer_profile.picture.value | default: reviewer_profile.photo | default: reviewer_profile.image
+  
+  assign reviewer_photo_url = ''
+  if reviewer_photo != blank
+    assign reviewer_photo_str = reviewer_photo | downcase
+    if reviewer_photo_str contains 'http://' or reviewer_photo_str contains 'https://' or reviewer_photo_str contains '//cdn.'
+      assign reviewer_photo_url = reviewer_photo
+    elsif reviewer_photo_str contains '.png' or reviewer_photo_str contains '.jpg' or reviewer_photo_str contains '.jpeg' or reviewer_photo_str contains '.webp'
+      assign reviewer_photo_url = reviewer_photo | file_img_url: '320x320'
+    else
+      assign reviewer_photo_url = reviewer_photo | image_url: width: 320
+    endif
+  endif
 -%}
 
 <div class="ka-article-author-reviewer-card" id="author-reviewer-card">
@@ -20,10 +44,10 @@
       <div class="ka-article-author-card">
         <p class="ka-blog-eyebrow">{{ author_role }}</p>
         <div class="ka-article-author-bio-row">
-          {%- if author_photo != blank -%}
+          {%- if author_photo_url != blank -%}
             <div class="ka-article-avatar" aria-hidden="true">
               <img
-                src="{{ author_photo | image_url: width: 320 }}"
+                src="{{ author_photo_url }}"
                 alt="{{ author_name_display | escape }}"
                 loading="lazy"
                 width="160"
@@ -33,12 +57,10 @@
             </div>
           {%- endif -%}
           <div class="ka-article-author-content">
-            <h2 class="ka-author-name-row">
-              {{ author_name_display }}
-              {%- if author_degree != blank -%}
-                <span class="ka-author-degree">({{ author_degree }})</span>
-              {%- endif -%}
-            </h2>
+            <h2 class="ka-author-name-row">{{ author_name_display }}</h2>
+            {%- if author_degree != blank -%}
+              <span class="ka-author-degree-row">({{ author_degree }})</span>
+            {%- endif -%}
             {%- if author_qual != blank -%}
               <p class="ka-author-qual-row">{{ author_qual }}</p>
             {%- endif -%}
@@ -54,10 +76,10 @@
       <div class="ka-article-author-card">
         <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
         <div class="ka-article-author-bio-row">
-          {%- if reviewer_photo != blank -%}
+          {%- if reviewer_photo_url != blank -%}
             <div class="ka-article-avatar" aria-hidden="true">
               <img
-                src="{{ reviewer_photo | image_url: width: 320 }}"
+                src="{{ reviewer_photo_url }}"
                 alt="{{ reviewer_name_display | escape }}"
                 loading="lazy"
                 width="160"
@@ -67,12 +89,10 @@
             </div>
           {%- endif -%}
           <div class="ka-article-author-content">
-            <h2 class="ka-author-name-row">
-              {{ reviewer_name_display }}
-              {%- if reviewer_degree != blank -%}
-                <span class="ka-author-degree">({{ reviewer_degree }})</span>
-              {%- endif -%}
-            </h2>
+            <h2 class="ka-author-name-row">{{ reviewer_name_display }}</h2>
+            {%- if reviewer_degree != blank -%}
+              <span class="ka-author-degree-row">({{ reviewer_degree }})</span>
+            {%- endif -%}
             {%- if reviewer_qual != blank -%}
               <p class="ka-author-qual-row">{{ reviewer_qual }}</p>
             {%- endif -%}
@@ -81,16 +101,4 @@
       </div>
     </div>
   {%- endif -%}
-
-  <div style="display:none;" id="ka-author-reviewer-debug">
-    Author:
-    {%- for field in author_profile.fields -%}
-      [{{ field.key }} = {{ field.value }} (type: {{ field.type }})]
-    {%- endfor -%}
-    Reviewer:
-    {%- for field in reviewer_profile.fields -%}
-      [{{ field.key }} = {{ field.value }} (type: {{ field.type }})]
-    {%- endfor -%}
-  </div>
-
 </div>
