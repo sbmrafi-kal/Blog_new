@@ -755,6 +755,22 @@
       }
     }
 
+    function scrollToTopicsTopOnMobile() {
+      if (window.innerWidth < 980) {
+        var topicsSec = document.getElementById('topics');
+        if (topicsSec) {
+          var headerHeight = parseInt(
+            getComputedStyle(document.documentElement).getPropertyValue('--header-height')
+          ) || 60;
+          var targetPosition = topicsSec.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }
+
     // Scroll listener on container
     container.addEventListener('scroll', updateActiveState);
 
@@ -797,6 +813,7 @@
             left: targetDeck.offsetLeft,
             behavior: 'smooth'
           });
+          scrollToTopicsTopOnMobile();
         }
       });
     }
@@ -821,6 +838,7 @@
             left: targetDeck.offsetLeft,
             behavior: 'smooth'
           });
+          scrollToTopicsTopOnMobile();
         }
       });
     }
@@ -1130,7 +1148,7 @@
         windowEl.setAttribute('aria-hidden', 'false');
         input.focus();
         trigger.classList.add('is-open');
-        trigger.innerHTML = '<span style="font-size: 24px; line-height: 1;">&times;</span>';
+        trigger.innerHTML = '<span class="ka-close-x">&times;</span>';
         
         if (!greetingTriggered) {
           greetingTriggered = true;

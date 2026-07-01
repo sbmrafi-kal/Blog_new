@@ -7,7 +7,7 @@
 {%- liquid
   assign path_title = care_path.title | default: title
   assign path_subtitle = care_path.subtitle | default: subtitle
-  assign path_cta = care_path.cta_label | default: 'Explore'
+  assign path_cta = 'Learn More'
   assign path_url = care_path.link_url
 
   if path_url == blank and care_path.linked_topic
