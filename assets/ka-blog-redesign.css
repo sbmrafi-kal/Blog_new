@@ -3028,14 +3028,14 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-chatbot-trigger.is-open {
-  width: 54px !important;
-  height: 54px !important;
+  width: 38px !important;
+  height: 38px !important;
   border-radius: 50% !important;
   padding: 0 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background-color: var(--ka-orange, #D27449) !important;
+  background-color: #1E4B3C !important;
   color: #fff !important;
   border: 2px solid #fff !important;
   box-shadow: 0 10px 30px rgba(30, 75, 60, 0.25) !important;
@@ -3048,7 +3048,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
 .ka-chatbot-trigger.is-open .ka-close-x {
   display: block !important;
-  font-size: 34px !important;
+  font-size: 24px !important;
   color: #fff !important;
   line-height: 1 !important;
   margin: 0 !important;
@@ -3259,6 +3259,11 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
 .ka-chatbot-input-form button:hover {
   background: #15342a;
+}
+
+.ka-chatbot-input-form button svg {
+  transform: rotate(45deg) !important;
+  display: block !important;
 }
 
 /* Typing bubble animation */
