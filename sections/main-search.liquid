@@ -406,7 +406,7 @@
                     assign article_dek_clean = item.metafields.custom.dek.value | default: item.metafields.custom.dek | default: '' | downcase
                     
                     assign is_match = false
-                    if search_terms_clean == blank
+                    if search_terms_clean == blank or search_terms_clean == '*' or search_terms_clean contains '*'
                       assign is_match = true
                     elsif article_title_clean contains search_terms_clean
                       assign is_match = true
@@ -425,6 +425,23 @@
               -%}
 
               {%- if has_articles -%}
+                {%- liquid
+                  assign selected_blog = blogs['news']
+                  assign topics = selected_blog.metafields.custom.topics.value
+                -%}
+                {%- if topics != blank -%}
+                  <nav class="ka-blog-filter-bar" aria-label="Search page filters" style="margin-bottom: 24px;">
+                    <a class="active" href="{{ routes.search_url }}?type=article&q=*&options[prefix]=last">All</a>
+                    {%- for topic in topics -%}
+                      {%- assign topic_title = topic.title.value | default: topic.title -%}
+                      {%- assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title -%}
+                      {%- assign topic_tag_handle = topic_tag | handleize -%}
+                      {%- assign topic_url = selected_blog.url | append: '/tagged/' | append: topic_tag_handle -%}
+                      <a href="{{ topic_url }}">{{ topic_title }}</a>
+                    {%- endfor -%}
+                  </nav>
+                {%- endif -%}
+
                 <div class="ka-blog-article-grid" style="margin-bottom: 40px;">
                   {%- for item in search.results -%}
                     {%- if item.object_type == 'article' -%}
@@ -435,7 +452,7 @@
                         assign article_dek_clean = item.metafields.custom.dek.value | default: item.metafields.custom.dek | default: '' | downcase
                         
                         assign is_match = false
-                        if search_terms_clean == blank
+                        if search_terms_clean == blank or search_terms_clean == '*' or search_terms_clean contains '*'
                           assign is_match = true
                         elsif article_title_clean contains search_terms_clean
                           assign is_match = true

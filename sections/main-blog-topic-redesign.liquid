@@ -228,52 +228,53 @@
   {%- comment -%} ============ ARTICLES IN TOPIC ============ {%- endcomment -%}
   <section class="ka-blog-section--tight" id="articles">
     <div class="ka-blog-container">
-      {%- if path_metaobject != nil -%}
-        <a class="ka-blog-small" href="{{ blog.url }}#care-paths">{{ blog.metafields.custom.all_care_paths_label | default: '← All care paths' }}</a>
-      {%- else -%}
-        <a class="ka-blog-small" href="{{ blog.url }}#topics">{{ blog.metafields.custom.all_topics_label | default: '← All topics' }}</a>
-      {%- endif -%}
 
       {%- liquid
+        # 1. Build a list of all major topic filter tags and titles to exclude them from sub-filters
+        assign major_topic_tags = ""
+        assign major_topics = selected_blog.metafields.custom.topics.value
+        for t_obj in major_topics
+          assign mt_tag = t_obj.article_filter_tag | strip
+          assign mt_title = t_obj.title | strip
+          if mt_tag != blank
+            assign major_topic_tags = major_topic_tags | append: "," | append: mt_tag
+          endif
+          if mt_title != blank
+            assign major_topic_tags = major_topic_tags | append: "," | append: mt_title
+          endif
+        endfor
+        
+        # Also add administrative tags to the blacklist
+        assign major_topic_tags = major_topic_tags | append: ",Feature,Essay,Reading guide,Ayurveda,Journal,Popular,All"
+        assign blacklist_tags = major_topic_tags | split: "," | uniq
+
+        # 2. Extract related tags from article tags, skipping blacklisted tags
         assign related_tags = ""
         for article in selected_blog.articles
           for t in article.tags
             assign t_clean = t | strip
-            unless t_clean == current_tag
-              assign related_tags = related_tags | append: "," | append: t_clean
-            endunless
+            if t_clean != current_tag
+              assign is_blacklisted = false
+              for bl_tag in blacklist_tags
+                if bl_tag == t_clean
+                  assign is_blacklisted = true
+                  break
+                endif
+              endfor
+              unless is_blacklisted
+                assign related_tags = related_tags | append: "," | append: t_clean
+              endunless
+            endif
           endfor
         endfor
-        assign related_tags_array = related_tags | split: "," | uniq
+        assign related_tags_array = related_tags | split: "," | uniq | compact
       -%}
 
       {%- paginate selected_blog.articles by 9 -%}
         <div class="ka-blog-section-head" style="margin-top: 18px;">
           <div>
             <p class="ka-blog-eyebrow">
-              {%- liquid
-                # Dynamically count the filtered articles
-                assign filtered_count = 0
-                for article in selected_blog.articles
-                  if path_metaobject != nil
-                    assign linked_topic_handle = path_metaobject.linked_topic.value.system.handle | default: path_metaobject.linked_topic.value.handle | default: path_metaobject.linked_topic.system.handle | default: path_metaobject.linked_topic.handle | default: path_metaobject.linked_topic.title | handleize
-                    assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
-                    assign article_topic_handle = article_topic.system.handle | default: article_topic.handle | default: article_topic.title | handleize
-                    if article_topic_handle == blank or article_topic_handle == linked_topic_handle
-                      assign filtered_count = filtered_count | plus: 1
-                    endif
-                  elsif topic_metaobject != nil
-                    assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
-                    assign article_topic_handle = article_topic.system.handle | default: article_topic.handle | default: article_topic.title | handleize
-                    if article_topic_handle == blank or article_topic_handle == topic_handle
-                      assign filtered_count = filtered_count | plus: 1
-                    endif
-                  else
-                    assign filtered_count = filtered_count | plus: 1
-                  endif
-                endfor
-              -%}
-              {{ filtered_count }} articles
+              {{ paginate.items }} articles
             </p>
             <h2>{{ topic_metaobject.guides_heading | default: 'Guides in this topic' }}</h2>
           </div>
