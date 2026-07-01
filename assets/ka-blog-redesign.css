@@ -1958,8 +1958,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
 
   .ka-blog-topic-carousel-container {
-    display: flex !important;
-    flex-direction: row !important;
+    display: block !important;
     overflow-x: auto !important;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -1977,7 +1976,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-    width: auto !important;
+    width: 100% !important;
     height: auto !important;
     min-height: unset !important;
     flex-shrink: 0 !important;
@@ -2046,7 +2045,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     overflow-x: auto !important;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    display: flex;
+    display: block !important;
     width: 100%;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
@@ -2062,7 +2061,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     flex-wrap: nowrap !important;
     transform: none !important;
     transition: none !important;
-    width: auto !important;
+    width: 100% !important;
     height: auto !important;
     flex-shrink: 0 !important;
   }

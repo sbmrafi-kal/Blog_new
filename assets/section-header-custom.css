@@ -608,12 +608,19 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
 
 .ka-blog-breadcrumbs-wrap {
   background: #FFFDF9 !important;
+  width: 100% !important;
 }
 
 .ka-blog-breadcrumbs-wrap .theme-header-custom__breadcrumbs {
-  max-width: 100% !important;
+  max-width: 1392px !important;
   width: 100% !important;
-  margin: 0 !important;
-  padding: 12px 24px !important;
+  margin: 0 auto !important;
+  padding: 12px 16px !important;
   box-sizing: border-box !important;
+}
+
+@media screen and (min-width: 640px) {
+  .ka-blog-breadcrumbs-wrap .theme-header-custom__breadcrumbs {
+    padding: 12px 8px !important;
+  }
 }
