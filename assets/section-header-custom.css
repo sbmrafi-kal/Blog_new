@@ -611,7 +611,9 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
 }
 
 .ka-blog-breadcrumbs-wrap .theme-header-custom__breadcrumbs {
-  max-width: 1392px !important;
-  margin: 0 auto !important;
-  padding: 12px 16px !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
 }

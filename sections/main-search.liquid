@@ -524,7 +524,11 @@
                     {%- if part.is_link -%}
                       <a href="{{ part.url }}">{{ part.title }}</a>
                     {%- else -%}
-                      <span class="current">{{ part.title }}</span>
+                      {%- if part.title == paginate.current_page -%}
+                        <span class="current">{{ part.title }}</span>
+                      {%- else -%}
+                        <span class="deco">{{ part.title }}</span>
+                      {%- endif -%}
                     {%- endif -%}
                   {%- endfor -%}
                   {%- if paginate.next -%}

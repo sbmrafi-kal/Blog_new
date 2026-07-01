@@ -348,7 +348,7 @@
               <a href="{{ prev_url }}#articles">← Previous</a>
             {%- endif -%}
             {%- for part in paginate.parts -%}
-              {%- if part.is_link -%}
+               {%- if part.is_link -%}
                 {%- assign part_url = part.url -%}
                 {%- if topic_handle != blank -%}
                   {%- if part_url contains '?' -%}
@@ -359,7 +359,11 @@
                 {%- endif -%}
                 <a href="{{ part_url }}#articles">{{ part.title }}</a>
               {%- else -%}
-                <span class="current">{{ part.title }}</span>
+                {%- if part.title == paginate.current_page -%}
+                  <span class="current">{{ part.title }}</span>
+                {%- else -%}
+                  <span class="deco">{{ part.title }}</span>
+                {%- endif -%}
               {%- endif -%}
             {%- endfor -%}
             {%- if paginate.next -%}
