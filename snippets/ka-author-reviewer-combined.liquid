@@ -82,4 +82,15 @@
     </div>
   {%- endif -%}
 
+  <div style="display:none;" id="ka-author-reviewer-debug">
+    Author:
+    {%- for field in author_profile.fields -%}
+      [{{ field.key }} = {{ field.value }} (type: {{ field.type }})]
+    {%- endfor -%}
+    Reviewer:
+    {%- for field in reviewer_profile.fields -%}
+      [{{ field.key }} = {{ field.value }} (type: {{ field.type }})]
+    {%- endfor -%}
+  </div>
+
 </div>
