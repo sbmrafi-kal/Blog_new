@@ -247,7 +247,7 @@
         assign related_tags_array = related_tags | split: "," | uniq
       -%}
 
-      {%- paginate selected_blog.articles by 250 -%}
+      {%- paginate selected_blog.articles by 9 -%}
         <div class="ka-blog-section-head" style="margin-top: 18px;">
           <div>
             <p class="ka-blog-eyebrow">

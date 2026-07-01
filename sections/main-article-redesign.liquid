@@ -46,6 +46,9 @@
       {%- comment -%} ===== MAIN CONTENT COLUMN ===== {%- endcomment -%}
       <article class="ka-article-content">
 
+        {%- comment -%} Why Trust Kerala Ayurveda Card {%- endcomment -%}
+        {%- render 'ka-why-trust-card', article: article -%}
+
         {%- comment -%} Mobile TOC (hidden on desktop via CSS) {%- endcomment -%}
         <div class="ka-article-toc-mobile">
           <div class="ka-article-toc-mobile-header">
@@ -74,9 +77,6 @@
             </ul>
           </div>
         </div>
-
-        {%- comment -%} Why Trust Kerala Ayurveda Card {%- endcomment -%}
-        {%- render 'ka-why-trust-card', article: article -%}
 
         {%- comment -%} At a glance {%- endcomment -%}
         {%- render 'ka-article-at-a-glance', article: article -%}
