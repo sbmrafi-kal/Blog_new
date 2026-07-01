@@ -435,8 +435,8 @@
         
         var activeSpan = barSpans[index];
         if (activeSpan) {
-          bubble.style.top = (activeSpan.offsetTop + (activeSpan.offsetHeight / 2)) + 'px';
-          bubble.style.right = (56 + shiftX) + 'px';
+          var rect = activeSpan.getBoundingClientRect();
+          bubble.style.top = (rect.top + (rect.height / 2)) + 'px';
         }
       }
     }
