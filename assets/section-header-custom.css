@@ -610,3 +610,9 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
 .ka-blog-breadcrumbs-wrap {
   background: #FFFDF9 !important;
 }
+
+.ka-blog-breadcrumbs-wrap .theme-header-custom__breadcrumbs {
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 12px 24px !important;
+}

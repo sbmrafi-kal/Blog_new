@@ -1653,7 +1653,14 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
   .ka-article-comment-card {
     grid-template-columns: 40px 1fr !important;
-    gap: 12px !important;
+    column-gap: 16px !important;
+    row-gap: 8px !important;
+  }
+
+  .ka-article-comment-avatar {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 14px !important;
   }
 
   .ka-article-author-card {
@@ -3388,7 +3395,7 @@ html {
 
 .ka-blog-product-card__inner {
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: column !important;
   align-items: stretch !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -3401,12 +3408,11 @@ html {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex: 0 0 160px !important;
-  width: 160px !important;
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
   margin: 0 !important;
   border-radius: 0 !important;
   overflow: hidden !important;
-  align-self: stretch !important;
   height: auto !important;
 }
 
@@ -3433,9 +3439,10 @@ html {
 .ka-blog-product-card__title {
   font-family: var(--ka-font-heading) !important;
   font-size: 26px !important;
-  line-height: 1.25 !important;
+  line-height: 1.15 !important;
   color: var(--ka-green) !important;
-  margin: 0 !important;
+  margin: 0 0 4px 0 !important;
+  padding: 0 !important;
   font-weight: 800 !important;
   letter-spacing: 0px !important;
   word-spacing: 0px !important;
@@ -3493,8 +3500,8 @@ html {
   }
   
   .ka-blog-product-card__image {
-    flex: 0 0 110px !important;
-    width: 110px !important;
+    flex: 0 0 140px !important;
+    width: 140px !important;
     height: auto !important;
     aspect-ratio: auto !important;
     border-radius: 0 !important;
@@ -3972,10 +3979,8 @@ html {
     left: 0 !important;
     width: 0%;
     height: 2px !important;
-    background: linear-gradient(90deg, #1E4B3C, #437E63, #1E4B3C) !important;
-    background-size: 200% 100% !important;
-    box-shadow: 0 0 6px rgba(30, 75, 60, 0.8), 0 0 3px rgba(30, 75, 60, 0.8) !important;
-    animation: kaShineProgress 2s linear infinite !important;
+    background: #1E4B3C !important;
+    box-shadow: none !important;
     z-index: 99 !important;
     transition: width 100ms ease-out !important;
   }
@@ -4113,7 +4118,7 @@ html {
   pointer-events: none !important;
   transition: opacity 0.2s ease, top 0.18s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   width: max-content !important;
-  max-width: 240px !important;
+  max-width: 280px !important;
   z-index: 100000 !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
@@ -4134,11 +4139,9 @@ html {
   font-family: var(--ka-font-heading) !important;
   font-weight: 600 !important;
   font-size: 13px !important;
-  line-height: 1.2 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  max-width: 160px !important;
+  line-height: 1.25 !important;
+  white-space: normal !important;
+  max-width: 220px !important;
 }
 
 /* Scrubber Overlay */
@@ -4227,14 +4230,15 @@ html {
 }
 
 .ka-article-toc-mobile__help-btn {
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 6px !important;
   background-color: var(--ka-soft) !important;
   border: 1px solid var(--ka-line) !important;
   border-radius: var(--ka-radius-lg) !important;
-  padding: 10px 28px 10px 14px !important;
-  margin-left: 8px !important;
+  padding: 10px 16px !important;
+  margin: 0 !important;
   cursor: pointer !important;
   font-family: var(--ka-font-heavy) !important;
   font-size: 11px !important;

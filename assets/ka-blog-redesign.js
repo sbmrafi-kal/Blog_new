@@ -395,12 +395,25 @@
       activeIdx = index;
       
       barSpans.forEach(function (span, i) {
-        if (i === index) {
-          span.style.transform = 'translateX(-24px) scale(3.0)';
+        var diff = Math.abs(i - index);
+        if (diff === 0) {
+          span.style.transform = 'translateX(-36px) scale(3.0)';
           span.style.color = 'var(--ka-green)';
           span.style.backgroundColor = 'transparent';
           span.style.opacity = '1';
           span.classList.add('active');
+        } else if (diff === 1) {
+          span.style.transform = 'translateX(-20px) scale(1.8)';
+          span.style.color = 'var(--ka-green)';
+          span.style.backgroundColor = 'transparent';
+          span.style.opacity = '0.6';
+          span.classList.remove('active');
+        } else if (diff === 2) {
+          span.style.transform = 'translateX(-8px) scale(1.2)';
+          span.style.color = 'var(--ka-green)';
+          span.style.backgroundColor = 'transparent';
+          span.style.opacity = '0.4';
+          span.classList.remove('active');
         } else {
           span.style.transform = 'translateX(0) scale(1)';
           span.style.color = 'var(--ka-green)';
@@ -504,16 +517,32 @@
     
     if (helpBtn && tutorialOverlay) {
       helpBtn.addEventListener('click', function () {
+        var originalScrollY = window.pageYOffset || document.documentElement.scrollTop;
         tutorialOverlay.classList.add('is-active');
         
         var mockHand = tutorialOverlay.querySelector('.ka-niagara-tutorial-hand');
-        mockHand.style.animation = 'none';
-        void mockHand.offsetWidth;
-        mockHand.style.animation = 'kaTutorialSwipe 3s ease-in-out forwards';
+        if (mockHand) {
+          mockHand.style.animation = 'none';
+          void mockHand.offsetWidth;
+          mockHand.style.animation = 'kaTutorialSwipe 3s ease-in-out forwards';
+        }
         
+        // Auto scroll demo: scroll to bottom of article, then back to original position
+        setTimeout(function () {
+          var targetBottom = Math.min(
+            document.documentElement.scrollHeight - window.innerHeight,
+            (document.querySelector('.ka-article-content')?.offsetTop || 0) + (document.querySelector('.ka-article-content')?.offsetHeight || 0)
+          );
+          window.scrollTo({ top: targetBottom, behavior: 'smooth' });
+        }, 500);
+
+        setTimeout(function () {
+          window.scrollTo({ top: originalScrollY, behavior: 'smooth' });
+        }, 2200);
+
         setTimeout(function () {
           tutorialOverlay.classList.remove('is-active');
-        }, 3200);
+        }, 3600);
       });
     }
   }
@@ -1498,9 +1527,7 @@
         '.ka-blog-section--tight, ' +
         '.ka-blog-topic-deck, ' +
         '.ka-blog-topic-hero, ' +
-        '.ka-blog-hero-shell, ' +
-        '.ka-article-content-wrapper, ' +
-        '.ka-article-sidebar'
+        '.ka-blog-hero-shell'
       );
 
       var grids = document.querySelectorAll('.ka-blog-topic-deck');
