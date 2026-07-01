@@ -444,6 +444,7 @@
     function handleDragStart() {
       isDragging = true;
       bar.classList.add('is-active');
+      bubble.classList.add('is-active');
       var wrapper = document.querySelector('.ka-blog-wrapper');
       if (wrapper) {
         wrapper.classList.add('ka-bg-blurred');
@@ -478,6 +479,7 @@
       isDragging = false;
       
       bar.classList.remove('is-active');
+      bubble.classList.remove('is-active');
       var wrapper = document.querySelector('.ka-blog-wrapper');
       if (wrapper) {
         wrapper.classList.remove('ka-bg-blurred');

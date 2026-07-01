@@ -3958,8 +3958,14 @@ html {
   max-width: calc(100vw - 150px) !important;
 }
 
-.ka-niagara-scrubber-bar.is-active .ka-scrubber-bubble {
+.ka-scrubber-bubble.is-active {
   opacity: 1 !important;
+}
+
+@media (min-width: 980px) {
+  .ka-scrubber-bubble {
+    display: none !important;
+  }
 }
 
 .ka-scrubber-bubble .bubble-num {
