@@ -3941,20 +3941,21 @@ html {
 /* Floating Scrubber Title Bubble */
 .ka-scrubber-bubble {
   position: fixed !important;
-  right: 80px !important;
+  left: 24px !important;
+  right: 120px !important;
   transform: translateY(-50%) !important;
-  background: #FDFFFB !important;
-  border: 1px solid rgba(184, 210, 155, 0.4) !important;
-  border-radius: 12px !important;
-  padding: 8px 12px !important;
-  box-shadow: 0 8px 24px rgba(30, 75, 60, 0.08) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
   display: flex !important;
   align-items: center !important;
+  justify-content: flex-start !important;
   pointer-events: none !important;
   opacity: 0;
   transition: opacity 0.2s ease, top 0.1s ease !important;
   z-index: 100000 !important;
-  max-width: calc(100vw - 120px) !important;
+  max-width: calc(100vw - 150px) !important;
 }
 
 .ka-niagara-scrubber-bar.is-active .ka-scrubber-bubble {
@@ -3962,25 +3963,23 @@ html {
 }
 
 .ka-scrubber-bubble .bubble-num {
-  display: inline-block !important;
-  font-family: var(--ka-font-heavy) !important;
-  font-weight: 800 !important;
-  font-size: 14px !important;
-  color: var(--ka-green) !important;
-  order: 2 !important;
-  margin-left: 8px !important;
+  display: none !important;
 }
 
 .ka-scrubber-bubble .bubble-title {
   font-family: var(--ka-font-heading) !important;
-  font-weight: 700 !important;
-  font-size: 13px !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
   line-height: 1.2 !important;
-  color: var(--ka-green) !important;
+  color: #1E4B3C !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  text-shadow: 0 0 2px #ffffff, 0 0 6px #ffffff, 0 0 10px #ffffff !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
-  order: 1 !important;
+  width: 100% !important;
+  text-align: left !important;
 }
 
 .ka-niagara-scrubber-bar span,
