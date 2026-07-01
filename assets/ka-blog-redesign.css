@@ -1192,7 +1192,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   border-radius: var(--ka-radius-xl);
   background: linear-gradient(135deg, #FDFFFB, #FDFFFB);
   box-shadow: var(--ka-shadow-soft);
-  padding: 28px;
+  padding: 16px 28px !important;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0;
@@ -1649,7 +1649,11 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
 
   .ka-article-content p,
-  .ka-article-content li { font-size: 16px; }
+  .ka-article-content li {
+    font-size: 16px;
+    letter-spacing: 0px !important;
+    word-spacing: 0px !important;
+  }
 
   .ka-article-comment-card {
     grid-template-columns: 40px 1fr !important;
@@ -1791,8 +1795,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   line-height: 1.45 !important;
   letter-spacing: 0px !important;
   word-spacing: 0px !important;
-  margin: 0 0 12px 0 !important;
-  padding-bottom: 6px !important;
+  margin: 0 0 6px 0 !important;
+  padding-bottom: 0 !important;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -2537,7 +2541,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
 /* 3. Latest Article Card Margin */
 .ka-blog-card__title {
-  margin-bottom: 16px !important;
+  margin-bottom: 6px !important;
 }
 
 /* 4. Consult CTA step numbers 3x size */
@@ -2927,6 +2931,26 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   padding: 14px 22px !important;
   font-size: 15px !important;
   box-shadow: 0 10px 30px rgba(210, 116, 73, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.ka-chatbot-trigger.is-open {
+  width: 54px !important;
+  height: 54px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--ka-orange, #D27449) !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+  box-shadow: 0 10px 30px rgba(30, 75, 60, 0.25) !important;
+}
+
+.ka-chatbot-trigger.is-open span,
+.ka-chatbot-trigger.is-open svg {
+  display: none !important;
 }
 
 .ka-chatbot-window {
@@ -3441,7 +3465,7 @@ html {
   font-size: 26px !important;
   line-height: 1.15 !important;
   color: var(--ka-green) !important;
-  margin: 0 0 4px 0 !important;
+  margin: 0 0 8px 0 !important;
   padding: 0 !important;
   font-weight: 800 !important;
   letter-spacing: 0px !important;
@@ -3509,13 +3533,14 @@ html {
   }
   
   .ka-blog-product-card__info {
-    padding: 12px 14px !important;
+    padding: 14px !important;
     flex: 1 !important;
   }
   
   .ka-blog-product-card__title {
-    font-size: 16px !important;
-    margin-bottom: 4px !important;
+    font-size: 24px !important;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
   }
   
   .ka-blog-product-card__desc {
@@ -3780,10 +3805,12 @@ html {
 
 /* Related Articles Snapping Slider (Desktop Only) */
 .ka-related-articles-line {
-  width: 100%;
+  display: block !important;
+  width: 100% !important;
   height: 6px !important;
-  background-color: var(--ka-green, #1E4B3C) !important;
-  margin: 16px 0 28px 0 !important;
+  background-color: #1E4B3C !important;
+  background: #1E4B3C !important;
+  margin: 12px 0 24px 0 !important;
   border-radius: 3px !important;
 }
 
@@ -4019,11 +4046,12 @@ html {
 @media (max-width: 767px) {
   .ka-article-author-card .ka-article-author-bio-row {
     display: grid !important;
-    grid-template-columns: 88px 1fr !important;
+    grid-template-columns: 56px 1fr !important;
     grid-template-areas: 
       "avatar name"
       "bio bio" !important;
-    gap: 16px !important;
+    column-gap: 8px !important;
+    row-gap: 12px !important;
   }
   .ka-article-avatar {
     grid-area: avatar !important;
@@ -4129,10 +4157,7 @@ html {
 }
 
 .ka-scrubber-bubble .bubble-num {
-  font-family: var(--ka-font-heavy) !important;
-  font-weight: 800 !important;
-  color: #FFF1DC !important;
-  font-size: 13px !important;
+  display: none !important;
 }
 
 .ka-scrubber-bubble .bubble-title {
@@ -4237,7 +4262,7 @@ html {
   background-color: var(--ka-soft) !important;
   border: 1px solid var(--ka-line) !important;
   border-radius: var(--ka-radius-lg) !important;
-  padding: 10px 16px !important;
+  padding: 8px 12px !important;
   margin: 0 !important;
   cursor: pointer !important;
   font-family: var(--ka-font-heavy) !important;
@@ -4246,6 +4271,15 @@ html {
   color: var(--ka-green) !important;
   box-shadow: 2px 2px 0 0 var(--ka-line) !important;
   transition: all 180ms ease !important;
+}
+
+.ka-article-toc-mobile__help-btn svg,
+.ka-article-toc-mobile__help-btn span {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
 }
 
 .ka-article-toc-mobile__help-btn:hover {

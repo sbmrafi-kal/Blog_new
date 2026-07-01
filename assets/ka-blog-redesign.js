@@ -381,7 +381,7 @@
       var idxNum = String(index + 1).padStart(2, '0');
       var barSpan = document.createElement('span');
       barSpan.textContent = idxNum;
-      barSpan.setAttribute('data-index', index);
+        barSpan.setAttribute('data-index', index);
       track.appendChild(barSpan);
     });
     
@@ -389,27 +389,30 @@
     var totalItems = headings.length;
     var isDragging = false;
     var activeIdx = -1;
+    var lastShiftX = -1;
     
-    function highlightItem(index) {
-      if (index === activeIdx) return;
+    function highlightItem(index, shiftX) {
+      shiftX = shiftX || 0;
+      if (index === activeIdx && shiftX === lastShiftX) return;
       activeIdx = index;
+      lastShiftX = shiftX;
       
       barSpans.forEach(function (span, i) {
         var diff = Math.abs(i - index);
         if (diff === 0) {
-          span.style.transform = 'translateX(-36px) scale(3.0)';
+          span.style.transform = 'translateX(' + (-36 - shiftX) + 'px) scale(3.0)';
           span.style.color = 'var(--ka-green)';
           span.style.backgroundColor = 'transparent';
           span.style.opacity = '1';
           span.classList.add('active');
         } else if (diff === 1) {
-          span.style.transform = 'translateX(-20px) scale(1.8)';
+          span.style.transform = 'translateX(' + (-20 - shiftX * 0.5) + 'px) scale(1.8)';
           span.style.color = 'var(--ka-green)';
           span.style.backgroundColor = 'transparent';
           span.style.opacity = '0.6';
           span.classList.remove('active');
         } else if (diff === 2) {
-          span.style.transform = 'translateX(-8px) scale(1.2)';
+          span.style.transform = 'translateX(' + (-8 - shiftX * 0.2) + 'px) scale(1.2)';
           span.style.color = 'var(--ka-green)';
           span.style.backgroundColor = 'transparent';
           span.style.opacity = '0.4';
@@ -433,6 +436,7 @@
         var activeSpan = barSpans[index];
         if (activeSpan) {
           bubble.style.top = (activeSpan.offsetTop + (activeSpan.offsetHeight / 2)) + 'px';
+          bubble.style.right = (56 + shiftX) + 'px';
         }
       }
     }
@@ -451,15 +455,21 @@
       
       var touch = e.touches[0];
       var touchY = touch.clientY;
-      var trackRect = track.getBoundingClientRect();
+      var touchX = touch.clientX;
       
+      // Calculate how far left the user has dragged from the right edge
+      var dragLeft = Math.max(0, window.innerWidth - touchX);
+      var maxDragLeft = window.innerWidth / 3; // Cap shift at 1/3rd of the screen width
+      var shiftX = Math.min(dragLeft, maxDragLeft);
+      
+      var trackRect = track.getBoundingClientRect();
       var relativeY = touchY - trackRect.top;
       var percentage = Math.max(0, Math.min(1, relativeY / trackRect.height));
       var index = Math.floor(percentage * totalItems);
       if (index >= totalItems) index = totalItems - 1;
       if (index < 0) index = 0;
       
-      highlightItem(index);
+      highlightItem(index, shiftX);
       e.preventDefault();
     }
     
@@ -473,6 +483,8 @@
         wrapper.classList.remove('ka-bg-blurred');
       }
       
+      var targetIndex = activeIdx;
+      
       // Reset transforms
       barSpans.forEach(function (span) {
         span.style.transform = '';
@@ -481,9 +493,11 @@
         span.style.opacity = '';
         span.classList.remove('active');
       });
+      activeIdx = -1;
+      lastShiftX = -1;
       
-      if (activeIdx >= 0 && activeIdx < totalItems && headings[activeIdx]) {
-        var targetHeading = headings[activeIdx];
+      if (targetIndex >= 0 && targetIndex < totalItems && headings[targetIndex]) {
+        var targetHeading = headings[targetIndex];
         
         var headerHeight = parseInt(
           getComputedStyle(document.documentElement).getPropertyValue('--header-height')
@@ -500,7 +514,6 @@
           behavior: 'smooth'
         });
       }
-      activeIdx = -1;
     }
     
     bar.addEventListener('touchstart', function (e) {
@@ -1037,12 +1050,11 @@
   function initChatbot() {
     var trigger = document.getElementById('ka-chatbot-trigger');
     var windowEl = document.getElementById('ka-chatbot-window');
-    var closeBtn = document.getElementById('ka-chatbot-close');
     var messagesContainer = document.getElementById('ka-chatbot-messages');
     var form = document.getElementById('ka-chatbot-form');
     var input = document.getElementById('ka-chatbot-input');
 
-    if (!trigger || !windowEl || !closeBtn || !messagesContainer || !form || !input) return;
+    if (!trigger || !windowEl || !messagesContainer || !form || !input) return;
 
     var backupQuestions = [
       "What is Agni?",
@@ -1107,6 +1119,8 @@
       "how to practice mindful eating?": "Eat in a calm environment, chew your food thoroughly, avoid distractions like phones, and eat until you are about 75% full."
     };
 
+    var greetingTriggered = false;
+
     // Toggle Chatbot Window
     trigger.addEventListener('click', function (e) {
       e.preventDefault();
@@ -1115,16 +1129,23 @@
         windowEl.classList.remove('ka-chatbot-hidden');
         windowEl.setAttribute('aria-hidden', 'false');
         input.focus();
+        trigger.classList.add('is-open');
+        trigger.innerHTML = '<span style="font-size: 24px; line-height: 1;">&times;</span>';
+        
+        if (!greetingTriggered) {
+          greetingTriggered = true;
+          showTypingIndicator();
+          setTimeout(function () {
+            removeTypingIndicator();
+            addMessage("Pranam! I am Guruji, your Ayurvedic guide. How can I help you find balance today?", 'bot');
+          }, 1200);
+        }
       } else {
         windowEl.classList.add('ka-chatbot-hidden');
         windowEl.setAttribute('aria-hidden', 'true');
+        trigger.classList.remove('is-open');
+        trigger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-chatbot-trigger-icon" style="margin-right: 8px; display: inline-block; vertical-align: middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span style="vertical-align: middle;">Ask Guruji</span>';
       }
-    });
-
-    closeBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      windowEl.classList.add('ka-chatbot-hidden');
-      windowEl.setAttribute('aria-hidden', 'true');
     });
 
     // Close on clicking outside
@@ -1133,6 +1154,8 @@
         if (!windowEl.contains(e.target) && !trigger.contains(e.target)) {
           windowEl.classList.add('ka-chatbot-hidden');
           windowEl.setAttribute('aria-hidden', 'true');
+          trigger.classList.remove('is-open');
+          trigger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-chatbot-trigger-icon" style="margin-right: 8px; display: inline-block; vertical-align: middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span style="vertical-align: middle;">Ask Guruji</span>';
         }
       }
     });
