@@ -103,7 +103,7 @@
     opacity: 0.7 !important;
   }
 
-  .template-search__search .search .field__button {
+  .template-search__search .search .search__button {
     background: var(--ka-cta-bg) !important;
     color: var(--ka-cta-text) !important;
     border-radius: 0 !important;
@@ -120,11 +120,11 @@
     justify-content: center !important;
   }
 
-  .template-search__search .search .field__button:hover {
+  .template-search__search .search .search__button:hover {
     background: var(--ka-cta-bg-hover) !important;
   }
 
-  .template-search__search .search .field__button svg {
+  .template-search__search .search .search__button svg {
     width: 20px !important;
     height: 20px !important;
     color: var(--ka-cta-text) !important;
@@ -406,18 +406,7 @@
                     assign article_dek_clean = item.metafields.custom.dek.value | default: item.metafields.custom.dek | default: '' | downcase
                     assign article_tags_clean = item.tags | join: ',' | downcase
                     
-                    assign is_match = false
-                    if search_terms_clean == blank or search_terms_clean == '*' or search_terms_clean contains '*'
-                      assign is_match = true
-                    elsif article_title_clean contains search_terms_clean
-                      assign is_match = true
-                    elsif article_excerpt_clean contains search_terms_clean
-                      assign is_match = true
-                    elsif article_dek_clean contains search_terms_clean
-                      assign is_match = true
-                    elsif article_tags_clean contains search_terms_clean
-                      assign is_match = true
-                    endif
+                    assign is_match = true
                     if is_match
                       assign has_articles = true
                     endif
@@ -448,26 +437,7 @@
                 <div class="ka-blog-article-grid" style="margin-bottom: 40px;">
                   {%- for item in search.results -%}
                     {%- if item.object_type == 'article' -%}
-                      {%- liquid
-                        assign search_terms_clean = display_terms | downcase | strip
-                        assign article_title_clean = item.title | downcase
-                        assign article_excerpt_clean = item.excerpt | default: item.content | default: '' | strip_html | downcase
-                        assign article_dek_clean = item.metafields.custom.dek.value | default: item.metafields.custom.dek | default: '' | downcase
-                        assign article_tags_clean = item.tags | join: ',' | downcase
-                        
-                        assign is_match = false
-                        if search_terms_clean == blank or search_terms_clean == '*' or search_terms_clean contains '*'
-                          assign is_match = true
-                        elsif article_title_clean contains search_terms_clean
-                          assign is_match = true
-                        elsif article_excerpt_clean contains search_terms_clean
-                          assign is_match = true
-                        elsif article_dek_clean contains search_terms_clean
-                          assign is_match = true
-                        elsif article_tags_clean contains search_terms_clean
-                          assign is_match = true
-                        endif
-                      -%}
+                      {%- assign is_match = true -%}
                       {%- if is_match -%}
                         {%- render 'ka-blog-card', article: item -%}
                       {%- endif -%}

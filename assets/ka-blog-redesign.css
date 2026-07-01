@@ -2440,7 +2440,13 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 @media (min-width: 768px) {
   .ka-article-author-reviewer-card {
     flex-direction: row !important;
-    gap: 32px !important;
+    gap: 16px !important;
+  }
+  .ka-article-card-state--author .ka-article-author-card {
+    padding-left: 44px !important;
+  }
+  .ka-article-card-state--reviewer .ka-article-author-card {
+    padding-right: 44px !important;
   }
 }
 
@@ -3935,21 +3941,20 @@ html {
 /* Floating Scrubber Title Bubble */
 .ka-scrubber-bubble {
   position: fixed !important;
-  left: 24px !important;
   right: 80px !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+  background: #FDFFFB !important;
+  border: 1px solid rgba(184, 210, 155, 0.4) !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 8px 24px rgba(30, 75, 60, 0.08) !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
   pointer-events: none !important;
   opacity: 0;
   transition: opacity 0.2s ease, top 0.1s ease !important;
   z-index: 100000 !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  max-width: calc(100vw - 120px) !important;
 }
 
 .ka-niagara-scrubber-bar.is-active .ka-scrubber-bubble {
@@ -3957,21 +3962,24 @@ html {
 }
 
 .ka-scrubber-bubble .bubble-num {
-  display: none !important;
+  display: inline-block !important;
+  font-family: var(--ka-font-heavy) !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  color: var(--ka-green) !important;
+  order: 2 !important;
+  margin-left: 8px !important;
 }
 
 .ka-scrubber-bubble .bubble-title {
   font-family: var(--ka-font-heading) !important;
   font-weight: 700 !important;
-  font-size: 16px !important;
+  font-size: 13px !important;
   line-height: 1.2 !important;
-  color: #1E4B3C !important;
+  color: var(--ka-green) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
-  width: calc(100vw - 140px) !important;
-  max-width: calc(100vw - 140px) !important;
-  text-align: left !important;
   order: 1 !important;
 }
 
@@ -4200,7 +4208,7 @@ html {
   }
 
   .ka-related-articles-track > .ka-blog-card {
-    flex: 0 0 100% !important;
+    flex: 0 0 calc(50% - 8px) !important;
     scroll-snap-align: start !important;
     scroll-snap-stop: always !important;
     padding: 0 !important;
@@ -4692,6 +4700,7 @@ html {
 .template-search__search .reset__button:focus-visible {
   background: transparent !important;
   background-color: transparent !important;
+  background-image: none !important;
   color: var(--ka-muted, #A0A59A) !important;
   outline: none !important;
   box-shadow: none !important;
