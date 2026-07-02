@@ -309,7 +309,34 @@
               {%- liquid
                 assign topic = article.metafields.custom.topic.value
                 assign topic_title = topic.title.value | default: topic.title | default: article.metafields.custom.category_label.value | default: article.metafields.custom.category_label | default: article.tags.first
-                assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title | handleize
+                assign raw_tag_handle = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title | handleize
+                if raw_tag_handle contains 'digestion' or raw_tag_handle contains 'digest' or raw_tag_handle contains 'gut'
+                  assign topic_tag = 'digestion'
+                elsif raw_tag_handle contains 'sleep' or raw_tag_handle contains 'stress' or raw_tag_handle contains 'mind'
+                  assign topic_tag = 'sleep'
+                elsif raw_tag_handle contains 'joints' or raw_tag_handle contains 'pain' or raw_tag_handle contains 'bone'
+                  assign topic_tag = 'pain-joints'
+                elsif raw_tag_handle contains 'skin' or raw_tag_handle contains 'hair' or raw_tag_handle contains 'beauty'
+                  assign topic_tag = 'skin-hair'
+                elsif raw_tag_handle contains 'women'
+                  assign topic_tag = 'women-s-health'
+                elsif raw_tag_handle contains 'men'
+                  assign topic_tag = 'men-s-health'
+                elsif raw_tag_handle contains 'kids' or raw_tag_handle contains 'children'
+                  assign topic_tag = 'kids'
+                elsif raw_tag_handle contains 'elder' or raw_tag_handle contains 'old'
+                  assign topic_tag = 'elders'
+                elsif raw_tag_handle contains 'herb'
+                  assign topic_tag = 'herbs'
+                elsif raw_tag_handle contains 'weight'
+                  assign topic_tag = 'weight'
+                elsif raw_tag_handle contains 'immunity'
+                  assign topic_tag = 'immunity'
+                elsif raw_tag_handle contains 'detox'
+                  assign topic_tag = 'detox'
+                else
+                  assign topic_tag = raw_tag_handle
+                endif
               -%}
               {%- if topic_title != blank -%}
                 {%- liquid

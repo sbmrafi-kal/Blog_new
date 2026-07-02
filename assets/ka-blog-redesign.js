@@ -1790,7 +1790,18 @@
         content.style.maxHeight = content.scrollHeight + 'px';
         // Scroll the card fully into view after opening animation
         setTimeout(function() {
-          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          var headerEl = document.querySelector('.theme-header-custom');
+          var headerHeight = headerEl ? headerEl.offsetHeight : 60;
+          var breadcrumbsWrap = document.querySelector('.theme-header-custom__breadcrumbs-wrap');
+          var subnavHeight = breadcrumbsWrap ? breadcrumbsWrap.offsetHeight : 50;
+          
+          var targetPosition = card.getBoundingClientRect().top + window.pageYOffset;
+          var offsetPosition = targetPosition - headerHeight - subnavHeight - 24;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }, 350);
       }
     });

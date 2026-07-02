@@ -3160,7 +3160,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   color: #fff !important;
   border: 2px solid #fff !important;
   box-shadow: 0 10px 30px rgba(30, 75, 60, 0.25) !important;
-  right: 33px !important;
+  right: 40px !important;
   position: fixed !important;
   bottom: 24px !important;
 }
@@ -3186,7 +3186,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 .ka-chatbot-window {
   position: fixed;
   right: 24px;
-  bottom: 95px;
+  bottom: 78px;
   width: 380px;
   height: 520px;
   max-height: calc(100vh - 130px);
@@ -3481,9 +3481,13 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 @media (max-width: 639px) {
   .ka-chatbot-window {
     right: 14px;
-    bottom: 80px;
+    bottom: 70px;
     max-width: calc(100vw - 28px);
     height: 460px;
+  }
+  .ka-chatbot-trigger.is-open {
+    right: 30px !important;
+    bottom: 16px !important;
   }
 }
 
@@ -4220,13 +4224,14 @@ html {
   }
 
   .ka-related-articles-track {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    display: grid !important;
+    grid-auto-flow: column !important;
+    grid-template-rows: repeat(3, auto) !important;
+    grid-auto-columns: 100% !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
-    gap: 15px !important;
+    gap: 16px !important;
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
     padding-bottom: 8px !important;
@@ -4237,11 +4242,11 @@ html {
   }
 
   .ka-related-articles-track > .ka-blog-card {
-    flex: 0 0 100% !important;
     scroll-snap-align: start !important;
     scroll-snap-stop: always !important;
     padding: 0 !important;
     box-sizing: border-box !important;
+    width: 100% !important;
   }
 
   .ka-related-articles-nav {

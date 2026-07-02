@@ -74,7 +74,34 @@
 
   # Use the topic's own article_filter_tag for the tagged URL.
   # The ?topic= param ensures the metaobject is resolved on the topic page.
-  assign topic_tag_mapped = topic_tag | handleize
+  assign raw_tag_handle = topic_tag | handleize
+  if raw_tag_handle contains 'digestion' or raw_tag_handle contains 'digest' or raw_tag_handle contains 'gut'
+    assign topic_tag_mapped = 'digestion'
+  elsif raw_tag_handle contains 'sleep' or raw_tag_handle contains 'stress' or raw_tag_handle contains 'mind'
+    assign topic_tag_mapped = 'sleep'
+  elsif raw_tag_handle contains 'joints' or raw_tag_handle contains 'pain' or raw_tag_handle contains 'bone'
+    assign topic_tag_mapped = 'pain-joints'
+  elsif raw_tag_handle contains 'skin' or raw_tag_handle contains 'hair' or raw_tag_handle contains 'beauty'
+    assign topic_tag_mapped = 'skin-hair'
+  elsif raw_tag_handle contains 'women'
+    assign topic_tag_mapped = 'women-s-health'
+  elsif raw_tag_handle contains 'men'
+    assign topic_tag_mapped = 'men-s-health'
+  elsif raw_tag_handle contains 'kids' or raw_tag_handle contains 'children'
+    assign topic_tag_mapped = 'kids'
+  elsif raw_tag_handle contains 'elder' or raw_tag_handle contains 'old'
+    assign topic_tag_mapped = 'elders'
+  elsif raw_tag_handle contains 'herb'
+    assign topic_tag_mapped = 'herbs'
+  elsif raw_tag_handle contains 'weight'
+    assign topic_tag_mapped = 'weight'
+  elsif raw_tag_handle contains 'immunity'
+    assign topic_tag_mapped = 'immunity'
+  elsif raw_tag_handle contains 'detox'
+    assign topic_tag_mapped = 'detox'
+  else
+    assign topic_tag_mapped = raw_tag_handle
+  endif
 -%}
 
 <a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag_mapped }}?topic={{ topic_handle }}">
