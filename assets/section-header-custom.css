@@ -445,27 +445,38 @@ body.overflow-hidden {
 }
 
 /* Large-tablet / small-laptop tuning: prevent nav wrapping in the custom header. */
-@media screen and (min-width: 1024px) and (max-width: 1280px) {
+@media screen and (min-width: 990px) and (max-width: 1200px) {
   .theme-header-custom__inner {
-    gap: 10px;
+    gap: 10px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .theme-header-custom__breadcrumbs {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
   }
 
   .theme-header-custom__nav {
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
   }
 
   .theme-header-custom__nav-link {
-    font-size: 13px;
-    padding: 0 6px;
-    white-space: nowrap;
+    font-size: 13px !important;
+    padding: 0 6px !important;
+    white-space: nowrap !important;
   }
 
+  .theme-header-custom__brand,
   .theme-header-custom__brand-image {
-    height: 42px;
+    width: 48px !important;
+    height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
   }
 
   .theme-header-custom__right {
-    gap: 8px;
+    gap: 8px !important;
   }
 }
 

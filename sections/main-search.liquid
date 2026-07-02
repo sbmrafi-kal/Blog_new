@@ -528,25 +528,6 @@
                   {%- endfor -%}
                 </div>
 
-                {%- if total_pages > 1 -%}
-                  <nav class="ka-blog-pagination" aria-label="Search results pagination" style="margin-bottom: 40px;">
-                    {%- if current_page > 1 -%}
-                      <a href="/search?type=article&q={{ escaped_raw_terms }}&options[prefix]=last&page={{ current_page | minus: 1 }}">← Previous</a>
-                    {%- endif -%}
-                    
-                    {%- for page_num in (1..total_pages) -%}
-                      {%- if page_num == current_page -%}
-                        <span class="current">{{ page_num }}</span>
-                      {%- else -%}
-                        <a href="/search?type=article&q={{ escaped_raw_terms }}&options[prefix]=last&page={{ page_num }}">{{ page_num }}</a>
-                      {%- endif -%}
-                    {%- endfor -%}
-                    
-                    {%- if current_page < total_pages -%}
-                      <a href="/search?type=article&q={{ escaped_raw_terms }}&options[prefix]=last&page={{ current_page | plus: 1 }}">Next →</a>
-                    {%- endif -%}
-                  </nav>
-                {%- endif -%}
               {%- endif -%}
 
               {%- if has_others -%}
