@@ -73,13 +73,13 @@
   assign topic_handle = topic_metaobject.system.handle | default: topic_metaobject.handle | default: topic_param | default: topic_title | handleize
   assign topic_description = topic_metaobject.description.value | default: topic_metaobject.description
   assign eyebrow_label = blog.metafields.custom.topic_hero_eyebrow
-  assign topic_image = topic_metaobject.image.value | default: topic_metaobject.image
+  assign topic_image = topic_metaobject.image.value
 
   if path_metaobject != nil
     assign topic_title = path_metaobject.title.value | default: path_metaobject.title
     assign topic_handle = path_metaobject.system.handle | default: path_metaobject.handle | default: topic_title | handleize
     assign topic_description = path_metaobject.subtitle.value | default: path_metaobject.subtitle
-    assign topic_image = path_metaobject.image.value | default: path_metaobject.image
+    assign topic_image = path_metaobject.image.value
     assign eyebrow_label = path_metaobject.eyebrow_label.value | default: path_metaobject.eyebrow_label
   endif
 

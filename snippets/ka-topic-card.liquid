@@ -5,8 +5,8 @@
 {% endcomment %}
 
 {%- liquid
-  assign topic_title = topic.title.value | default: topic.title
-  assign topic_image = topic.image.value | default: topic.image
+  assign topic_title = topic.title.value | default: topic.title | default: topic
+  assign topic_image = topic.image.value
   assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag
   assign topic_handle = topic.system.handle | default: topic.handle | default: topic_tag | handleize
   assign topic_count_label = topic.cta_label.value | default: topic.cta_label

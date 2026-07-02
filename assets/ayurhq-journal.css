@@ -3386,6 +3386,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 14px 22px;
   font-size: 15px;
   background-color: #1E4B3C;
