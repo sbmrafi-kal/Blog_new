@@ -636,7 +636,7 @@ body:not(:has(.theme-header-custom__breadcrumbs-wrap)) #MainContent {
   background: #F0F0F0 !important;
   width: 100% !important;
   border-bottom: 1px solid var(--ka-line) !important;
-  z-index: 99998 !important;
+  z-index: 98 !important;
 }
 
 .ka-blog-breadcrumbs-wrap .theme-header-custom__breadcrumbs {

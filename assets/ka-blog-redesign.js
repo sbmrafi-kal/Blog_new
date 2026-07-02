@@ -434,7 +434,14 @@
         var bubbleTitle = bubble.querySelector('.bubble-title');
         
         if (bubbleNum) bubbleNum.textContent = String(index + 1).padStart(2, '0');
-        if (bubbleTitle) bubbleTitle.textContent = headings[index].textContent.trim();
+        if (bubbleTitle) {
+          var rawTitle = headings[index].textContent.trim();
+          if (rawTitle.length > 30) {
+            bubbleTitle.textContent = rawTitle.slice(0, 30) + '...';
+          } else {
+            bubbleTitle.textContent = rawTitle;
+          }
+        }
         
         var activeSpan = barSpans[index];
         if (activeSpan) {
