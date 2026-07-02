@@ -225,6 +225,95 @@
     </div>
   </section>
 
+  {%- if path_metaobject != nil -%}
+    {%- liquid
+      # Define phase title, description, and list for each main concern
+      assign phase_1_title = "Cleanse & Prep"
+      assign phase_1_desc = "Clear internal toxins (Ama) and prepare the body for nourishment."
+      assign phase_2_title = "Nourish & Balance"
+      assign phase_2_desc = "Feed the tissues, balance the active doshas, and restore organ function."
+      assign phase_3_title = "Rejuvenate & Sustain"
+      assign phase_3_desc = "Cultivate deep immunity (Ojas) and prevent future imbalances."
+      
+      assign topic_handle_lower = topic_handle | downcase
+      if topic_handle_lower contains 'digest'
+        assign phase_1_title = "Kindle Digestive Fire (Agni)"
+        assign phase_1_desc = "Sip warm ginger water and eat light, fresh foods to clear toxic build-up (Ama)."
+        assign phase_2_title = "Balance Gut Flora"
+        assign phase_2_desc = "Integrate cooling spices, home-cooked meals, and natural buttermilk (Takra)."
+        assign phase_3_title = "Rebuild Ojas (Immunity)"
+        assign phase_3_desc = "Restore vitality and absorption with daily ghee, nourishing herbs, and mindfulness."
+      elsif topic_handle_lower contains 'sleep' or topic_handle_lower contains 'stress' or topic_handle_lower contains 'mind'
+        assign phase_1_title = "Calm Vata (Nervous System)"
+        assign phase_1_desc = "Massage feet with warm oil (Abhyanga) and power down all digital screens by 9 PM."
+        assign phase_2_title = "Nourish the Mind"
+        assign phase_2_desc = "Sip warm milk with Ashwagandha and practice deep alternate nostril breathing."
+        assign phase_3_title = "Establish Daily Rhythms"
+        assign phase_3_desc = "Align sleep-wake cycles with nature and maintain calm physical resilience."
+      elsif topic_handle_lower contains 'joint' or topic_handle_lower contains 'pain' or topic_handle_lower contains 'body'
+        assign phase_1_title = "Reduce Stiffness"
+        assign phase_1_desc = "Apply warm herbal oils and perform gentle circular self-massage on affected areas."
+        assign phase_2_title = "Strengthen Tissues"
+        assign phase_2_desc = "Incorporate Vata-balancing foods, warm broths, and bone-strengthening Ayurvedic herbs."
+        assign phase_3_title = "Maintain Flexibility"
+        assign phase_3_desc = "Engage in light, fluid movements, joint lubrication exercises, and regular oiling."
+      elsif topic_handle_lower contains 'skin' or topic_handle_lower contains 'hair' or topic_handle_lower contains 'beauty'
+        assign phase_1_title = "Purify Blood (Rakta)"
+        assign phase_1_desc = "Consume bitter greens and detoxifying teas to purge excess internal heat (Pitta)."
+        assign phase_2_title = "Deeply Nourish Roots"
+        assign phase_2_desc = "Massage scalp or skin with classical oils, and use natural cooling clay or herbal masks."
+        assign phase_3_title = "Cultivate Natural Glow"
+        assign phase_3_desc = "Retain optimal hydration, balance sleep, and support collagen production organically."
+      endif
+    -%}
+    <section class="ka-blog-section" id="care-path-journey" style="padding-top: 0 !important;">
+      <div class="ka-blog-container">
+        <div class="ka-care-journey-card">
+          <div class="ka-care-journey-badge">Your Health Pathway</div>
+          <h2>Ayurvedic Care Journey</h2>
+          <p class="ka-care-journey-intro">Follow this expert-designed 3-phase progression to restore balance for your concern:</p>
+          
+          <div class="ka-care-journey-steps">
+            <div class="ka-care-journey-step">
+              <div class="ka-care-step-num">01</div>
+              <div class="ka-care-step-content">
+                <h4>{{ phase_1_title }}</h4>
+                <p>{{ phase_1_desc }}</p>
+              </div>
+            </div>
+            
+            <div class="ka-care-journey-step-connector"></div>
+            
+            <div class="ka-care-journey-step">
+              <div class="ka-care-step-num">02</div>
+              <div class="ka-care-step-content">
+                <h4>{{ phase_2_title }}</h4>
+                <p>{{ phase_2_desc }}</p>
+              </div>
+            </div>
+            
+            <div class="ka-care-journey-step-connector"></div>
+            
+            <div class="ka-care-journey-step">
+              <div class="ka-care-step-num">03</div>
+              <div class="ka-care-step-content">
+                <h4>{{ phase_3_title }}</h4>
+                <p>{{ phase_3_desc }}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ka-care-journey-footer">
+            <div class="ka-care-journey-footer-text">
+              <strong>Need personalized advice?</strong> Get a custom care pathway tailored specifically to your body constitution (Prakriti) from our certified Vaidyas.
+            </div>
+            <a href="#consult" class="ka-blog-btn ka-care-journey-btn">Consult Vaidya</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
   {%- comment -%} ============ ARTICLES IN TOPIC ============ {%- endcomment -%}
   <section class="ka-blog-section--tight" id="articles">
     <div class="ka-blog-container">

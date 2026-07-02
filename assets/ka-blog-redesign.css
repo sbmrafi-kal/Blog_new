@@ -4954,3 +4954,184 @@ html {
     display: none !important;
   }
 }
+
+/* =============================================================
+   HEALTH CONCERNS — CARE JOURNEY STYLING
+   ============================================================= */
+.ka-care-journey-card {
+  background: linear-gradient(135deg, #f6f7f2 0%, #FDFFFB 100%) !important;
+  border: 1px solid rgba(184, 210, 155, 0.4) !important;
+  border-radius: 24px !important;
+  padding: 40px !important;
+  box-shadow: 0 12px 32px rgba(30, 75, 60, 0.04) !important;
+  margin-bottom: 40px !important;
+}
+
+.ka-care-journey-badge {
+  display: inline-block !important;
+  font-family: var(--ka-font-heavy) !important;
+  font-weight: 800 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  color: var(--ka-deep-orange) !important;
+  background: #FFF0E8 !important;
+  padding: 5px 12px !important;
+  border-radius: 99px !important;
+  margin-bottom: 16px !important;
+  letter-spacing: 0.05em !important;
+}
+
+.ka-care-journey-card h2 {
+  font-family: var(--ka-font-heading) !important;
+  font-size: clamp(24px, 4vw, 32px) !important;
+  color: var(--ka-green) !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  font-weight: 400 !important;
+}
+
+.ka-care-journey-intro {
+  font-family: var(--ka-font-body) !important;
+  font-size: 15px !important;
+  color: var(--ka-muted) !important;
+  margin-top: 0 !important;
+  margin-bottom: 32px !important;
+}
+
+.ka-care-journey-steps {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  margin: 36px 0 !important;
+  gap: 0 !important;
+}
+
+.ka-care-journey-step {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+
+.ka-care-step-num {
+  font-family: var(--ka-font-heavy) !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  color: #ffffff !important;
+  background: var(--ka-green) !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 12px rgba(30, 75, 60, 0.12) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.ka-care-journey-step:hover .ka-care-step-num {
+  transform: scale(1.1) !important;
+}
+
+.ka-care-step-content h4 {
+  font-family: var(--ka-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: var(--ka-green) !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.ka-care-step-content p {
+  font-family: var(--ka-font-body) !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+  color: var(--ka-muted) !important;
+  margin: 0 !important;
+  padding-right: 16px !important;
+}
+
+.ka-care-journey-step-connector {
+  flex-grow: 1 !important;
+  align-self: flex-start !important;
+  height: 2px !important;
+  background: rgba(184, 210, 155, 0.3) !important;
+  margin: 20px 15px 0 15px !important;
+  min-width: 30px !important;
+  max-width: 60px !important;
+}
+
+.ka-care-journey-footer {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+  padding-top: 28px !important;
+  border-top: 1px solid rgba(184, 210, 155, 0.3) !important;
+}
+
+.ka-care-journey-footer-text {
+  font-family: var(--ka-font-body) !important;
+  font-size: 14px !important;
+  color: var(--ka-green) !important;
+  line-height: 1.5 !important;
+  max-width: 70% !important;
+}
+
+.ka-care-journey-btn {
+  background: var(--ka-deep-orange, #c95119) !important;
+  color: #ffffff !important;
+  white-space: nowrap !important;
+  padding: 12px 24px !important;
+  box-shadow: 0 8px 20px rgba(201, 81, 25, 0.15) !important;
+  border: none !important;
+}
+
+.ka-care-journey-btn:hover {
+  background: #b03d0b !important;
+}
+
+@media (max-width: 767px) {
+  .ka-care-journey-card {
+    padding: 24px !important;
+    border-radius: 16px !important;
+  }
+  
+  .ka-care-journey-steps {
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin: 24px 0 !important;
+  }
+  
+  .ka-care-journey-step {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  
+  .ka-care-step-content p {
+    padding-right: 0 !important;
+  }
+  
+  .ka-care-journey-step-connector {
+    display: none !important;
+  }
+  
+  .ka-care-journey-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+  
+  .ka-care-journey-footer-text {
+    max-width: 100% !important;
+  }
+  
+  .ka-care-journey-btn {
+    text-align: center !important;
+    width: 100% !important;
+  }
+}
+
