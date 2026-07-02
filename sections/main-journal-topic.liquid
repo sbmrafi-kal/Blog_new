@@ -72,15 +72,15 @@
   assign topic_title = topic_metaobject.title.value | default: topic_metaobject.title | default: current_tag
   assign topic_handle = topic_metaobject.system.handle | default: topic_metaobject.handle | default: topic_param | default: topic_title | handleize
   assign topic_description = topic_metaobject.description.value | default: topic_metaobject.description
-  assign eyebrow_label = blog.metafields.custom.topic_hero_eyebrow
+  assign eyebrow_label = blog.metafields.custom.topic_hero_eyebrow.value | default: blog.metafields.custom.topic_hero_eyebrow
   assign topic_image = topic_metaobject.image.value
 
   if path_metaobject != nil
-    assign topic_title = path_metaobject.title.value | default: path_metaobject.title
+    assign topic_title = path_metaobject.title.value
     assign topic_handle = path_metaobject.system.handle | default: path_metaobject.handle | default: topic_title | handleize
-    assign topic_description = path_metaobject.subtitle.value | default: path_metaobject.subtitle
+    assign topic_description = path_metaobject.subtitle.value
     assign topic_image = path_metaobject.image.value
-    assign eyebrow_label = path_metaobject.eyebrow_label.value | default: path_metaobject.eyebrow_label
+    assign eyebrow_label = path_metaobject.eyebrow_label.value
   endif
 
   assign topic_img_url = ''
@@ -88,7 +88,7 @@
     assign topic_img_url = topic_image | image_url: width: 800
   endif
 
-  assign topic_secondary_label = topic_metaobject.secondary_label.value | default: topic_metaobject.secondary_label
+  assign topic_secondary_label = topic_metaobject.secondary_label.value
 -%}
 
 <div class="ka-blog-wrapper">
@@ -266,7 +266,7 @@
             <p class="ka-blog-eyebrow">
               {{ paginate.items }} articles
             </p>
-            <h2>{{ topic_metaobject.guides_heading.value | default: topic_metaobject.guides_heading }}</h2>
+            <h2>{{ topic_metaobject.guides_heading.value }}</h2>
           </div>
         </div>
 
@@ -280,7 +280,7 @@
             {%- elsif topic_handle != blank -%}
               {%- assign all_filter_url = all_filter_url | append: '?topic=' | append: topic_handle -%}
             {%- endif -%}
-            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ all_filter_url }}">{{ selected_blog.metafields.custom.filter_all_label }}</a>
+            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ all_filter_url }}">{{ selected_blog.metafields.custom.filter_all_label.value | default: selected_blog.metafields.custom.filter_all_label }}</a>
             {%- for tag in related_tags_array -%}
               {%- assign trimmed_tag = tag | strip -%}
               {%- if trimmed_tag != blank -%}

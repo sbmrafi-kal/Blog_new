@@ -6,12 +6,12 @@
 {%- liquid
   assign card_article = article
   assign show_chip = show_chip | default: true
-  assign chip_text = card_article.metafields.custom.hero_badge.value | default: card_article.metafields.custom.hero_badge | default: card_article.metafields.custom.category_label | default: card_article.tags.first
-  assign read_time = card_article.metafields.custom.read_time.value | default: card_article.metafields.custom.read_time | default: card_article.metafields.custom.read_time_minutes
-  assign dek = card_article.metafields.custom.dek | default: card_article.excerpt_or_content | strip_html | truncatewords: 25
-  assign min_read_label = blog.metafields.custom.min_read_label
-  assign read_article_label = blog.metafields.custom.read_article_label
-  assign card_image = card_article.metafields.custom.hero_image.value | default: card_article.metafields.custom.hero_image | default: card_article.image
+  assign chip_text = card_article.metafields.custom.hero_badge.value | default: card_article.metafields.custom.category_label.value | default: card_article.tags.first
+  assign read_time = card_article.metafields.custom.read_time.value | default: card_article.metafields.custom.read_time_minutes.value
+  assign dek = card_article.metafields.custom.dek.value | default: card_article.excerpt | default: card_article.content | strip_html | truncatewords: 25
+  assign min_read_label = blog.metafields.custom.min_read_label.value | default: blog.metafields.custom.min_read_label
+  assign read_article_label = blog.metafields.custom.read_article_label.value | default: blog.metafields.custom.read_article_label
+  assign card_image = card_article.metafields.custom.hero_image.value | default: card_article.image
 -%}
 
 <a class="ka-blog-card" href="{{ card_article.url }}">

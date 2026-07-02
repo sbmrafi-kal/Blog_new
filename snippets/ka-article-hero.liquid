@@ -11,7 +11,7 @@
   assign author_name = author_profile.name | default: hero_article.author
   assign reviewer_profile = hero_article.metafields.custom.reviewed_by_profile.value
   assign reviewer_name = reviewer_profile.name | default: hero_article.metafields.custom.reviewed_by
-  assign raw_read_time = hero_article.metafields.custom.read_time.value | default: hero_article.metafields.custom.read_time | default: hero_article.metafields.custom.read_time_minutes
+  assign raw_read_time = hero_article.metafields.custom.read_time.value | default: hero_article.metafields.custom.read_time_minutes.value
   assign min_read_label = blog.metafields.custom.min_read_label
   assign display_read_time = ''
 
