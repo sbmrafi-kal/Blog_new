@@ -2941,6 +2941,37 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   line-height: 1 !important;
 }
 
+@media (max-width: 639px) {
+  .ka-blog-step-number {
+    font-size: 56px !important;
+    line-height: 0.9 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  #consult.ka-blog-section {
+    padding-bottom: 24px !important;
+  }
+}
+
+/* 4.1 Search page styling overrides */
+.template-search facet-filters-form,
+.template-search .mobile-facets__wrapper,
+.template-search .product-count,
+.template-search .facets__form {
+  display: none !important;
+}
+
+.ka-search-count-text {
+  text-align: center;
+  font-family: var(--ka-font-body);
+  font-size: 18px;
+  color: var(--ka-muted);
+  margin-top: -10px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
 /* 5. Article page dates-share top vertical alignment, same-line dates & social icon sizing */
 .ka-article-hero__content {
   align-items: start !important;
@@ -4764,6 +4795,12 @@ html {
   font-weight: 800 !important;
   font-size: 18px !important;
   opacity: 0.8 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  color: inherit !important;
 }
 
 .ka-niagara-scrubber-titles-list li.active {
@@ -4771,6 +4808,21 @@ html {
   font-weight: 800 !important;
   transform: scale(1.15) !important;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.ka-niagara-scrubber-titles-list li.active .ka-scrubber-title-idx {
+  background-color: #1e4b3c !important;
+  color: #FFFFFF !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  font-size: 15px !important;
+  opacity: 1 !important;
+  flex-shrink: 0 !important;
+  margin-right: 4px !important;
 }
 
 /* Background Blur Class */

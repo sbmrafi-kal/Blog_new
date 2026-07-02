@@ -455,24 +455,6 @@
 
         <div class="ka-blog-article-grid" style="margin-top: 24px;">
           {%- for article in selected_blog.articles -%}
-            {%- liquid
-              # If path_metaobject is active, filter articles by the care path's linked topic
-              if path_metaobject != nil
-                assign linked_topic_handle = path_metaobject.linked_topic.value.system.handle | default: path_metaobject.linked_topic.value.handle | default: path_metaobject.linked_topic.system.handle | default: path_metaobject.linked_topic.handle | default: path_metaobject.linked_topic.title | handleize
-                assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
-                assign article_topic_handle = article_topic.system.handle | default: article_topic.handle | default: article_topic.title | handleize
-                if article_topic_handle != blank and article_topic_handle != linked_topic_handle
-                  continue
-                endif
-              # Else if topic_metaobject is active, filter articles by the active topic
-              elsif topic_metaobject != nil
-                assign article_topic = article.metafields.custom.topic.value | default: article.metafields.custom.topic
-                assign article_topic_handle = article_topic.system.handle | default: article_topic.handle | default: article_topic.title | handleize
-                if article_topic_handle != blank and article_topic_handle != topic_handle
-                  continue
-                endif
-              endif
-            -%}
             {%- render 'ka-blog-card', article: article -%}
           {%- endfor -%}
         </div>

@@ -834,6 +834,7 @@
             left: targetDeck.offsetLeft,
             behavior: 'smooth'
           });
+          scrollToTopicsTopOnMobile();
         }
       });
     });
