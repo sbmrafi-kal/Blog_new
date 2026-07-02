@@ -320,7 +320,7 @@
             {{ matched_count }} articles found
           {%- endif -%}
           {%- if display_terms != blank -%}
-            for “{{ display_terms }}”
+            &nbsp;for “{{ display_terms }}”
           {%- endif -%}
         </p>
         {%- if matched_count == 0 -%}
@@ -499,14 +499,49 @@
                   </nav>
                 {%- endif -%}
 
+                {%- liquid
+                  assign current_page = 1
+                  if page_url contains 'page='
+                    assign current_page = page_url | split: 'page=' | last | split: '&' | first | plus: 0
+                  endif
+                  if current_page < 1
+                    assign current_page = 1
+                  endif
+                  
+                  assign limit = 12
+                  assign offset = current_page | minus: 1 | times: limit
+                  assign total_items = matched_handles.size
+                  assign total_pages = total_items | plus: limit | minus: 1 | divided_by: limit
+                -%}
+
                 <div class="ka-blog-article-grid" style="margin-bottom: 40px;">
-                  {%- for handle in matched_handles -%}
+                  {%- for handle in matched_handles limit: limit offset: offset -%}
                     {%- assign item = articles[handle] -%}
                     {%- if item != blank -%}
                       {%- render 'ka-blog-card', article: item -%}
                     {%- endif -%}
                   {%- endfor -%}
                 </div>
+
+                {%- if total_pages > 1 -%}
+                  <nav class="ka-blog-pagination" aria-label="Search results pagination" style="margin-bottom: 40px;">
+                    {%- if current_page > 1 -%}
+                      <a href="/search?type=article&q={{ escaped_raw_terms }}&options[prefix]=last&page={{ current_page | minus: 1 }}">← Previous</a>
+                    {%- endif -%}
+                    
+                    {%- for page_num in (1..total_pages) -%}
+                      {%- if page_num == current_page -%}
+                        <span class="current">{{ page_num }}</span>
+                      {%- else -%}
+                        <a href="/search?type=article&q={{ escaped_raw_terms }}&options[prefix]=last&page={{ page_num }}">{{ page_num }}</a>
+                      {%- endif -%}
+                    {%- endfor -%}
+                    
+                    {%- if current_page < total_pages -%}
+                      <a href="/search?type=article&q={{ escaped_raw_terms }}&options[prefix]=last&page={{ current_page | plus: 1 }}">Next →</a>
+                    {%- endif -%}
+                  </nav>
+                {%- endif -%}
               {%- endif -%}
 
               {%- if has_others -%}
