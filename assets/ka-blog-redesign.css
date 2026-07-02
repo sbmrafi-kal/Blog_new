@@ -1631,6 +1631,25 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   border-color: #b8d29b;
 }
 
+@media (max-width: 767px) {
+  .ka-blog-pagination {
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    row-gap: 8px !important;
+    padding: 24px 0 !important;
+  }
+  .ka-blog-pagination a,
+  .ka-blog-pagination span {
+    min-width: 32px !important;
+    height: 32px !important;
+    padding: 0 6px !important;
+    font-size: 11px !important;
+  }
+  .ka-blog-pagination span.deco {
+    padding: 6px 2px !important;
+  }
+}
+
 /* =============================================================
    SHARE ROW
    ============================================================= */
@@ -2278,7 +2297,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
 
   .ka-blog-path-tags {
-    margin-top: 18px !important;
+    margin-top: 0px !important;
     text-align: left !important;
     width: 100% !important;
   }
@@ -2291,12 +2310,6 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   .ka-blog-path-row .ka-blog-muted {
     font-size: 13px !important;
     line-height: 1.4 !important;
-  }
-
-  .ka-blog-path-tags {
-    margin-top: 18px !important;
-    text-align: left !important;
-    width: 100% !important;
   }
 
   .ka-blog-path-row:nth-child(odd):last-child .ka-blog-path-tags {
