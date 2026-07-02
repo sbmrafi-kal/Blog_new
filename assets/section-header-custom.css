@@ -455,6 +455,15 @@ body.overflow-hidden {
   .theme-header-custom__breadcrumbs {
     padding-left: 24px !important;
     padding-right: 24px !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+  }
+
+  .theme-header-custom__breadcrumbs::-webkit-scrollbar {
+    display: none !important;
   }
 
   .theme-header-custom__nav {
@@ -465,6 +474,11 @@ body.overflow-hidden {
     font-size: 13px !important;
     padding: 0 6px !important;
     white-space: nowrap !important;
+  }
+
+  .theme-header-custom__nav-link::after {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
   }
 
   .theme-header-custom__brand,
