@@ -37,68 +37,105 @@
 -%}
 
 <div class="ka-article-author-reviewer-card" id="author-reviewer-card">
-  
-  {%- comment -%} Written by Card {%- endcomment -%}
-  {%- if author_name_display != blank -%}
-    <div class="ka-article-card-state ka-article-card-state--author">
-      <div class="ka-article-author-card">
-        <p class="ka-blog-eyebrow">{{ author_role }}</p>
-        <div class="ka-article-author-bio-row">
-          {%- if author_photo_url != blank -%}
-            <div class="ka-article-avatar" aria-hidden="true">
-              <img
-                src="{{ author_photo_url }}"
-                alt="{{ author_name_display | escape }}"
-                loading="lazy"
-                width="160"
-                height="160"
-              >
-              <span class="ka-avatar-hover-overlay">Read bio &rarr;</span>
+  <div class="ka-author-reviewer-track">
+    {%- comment -%} Written by Card {%- endcomment -%}
+    {%- if author_name_display != blank -%}
+      <div class="ka-article-card-state ka-article-card-state--author">
+        <div class="ka-article-author-card">
+          <p class="ka-blog-eyebrow">{{ author_role }}</p>
+          <div class="ka-article-author-bio-row">
+            {%- if author_photo_url != blank -%}
+              <div class="ka-article-avatar" aria-hidden="true">
+                <img
+                  src="{{ author_photo_url }}"
+                  alt="{{ author_name_display | escape }}"
+                  loading="lazy"
+                  width="160"
+                  height="160"
+                >
+                <span class="ka-avatar-hover-overlay">Read bio &rarr;</span>
+              </div>
+            {%- endif -%}
+            <div class="ka-article-author-content">
+              <h2 class="ka-author-name-row">{{ author_name_display }}</h2>
+              {%- if author_degree != blank -%}
+                <span class="ka-author-degree-row">({{ author_degree }})</span>
+              {%- endif -%}
+              {%- if author_qual != blank -%}
+                <p class="ka-author-qual-row">{{ author_qual }}</p>
+              {%- endif -%}
             </div>
-          {%- endif -%}
-          <div class="ka-article-author-content">
-            <h2 class="ka-author-name-row">{{ author_name_display }}</h2>
-            {%- if author_degree != blank -%}
-              <span class="ka-author-degree-row">({{ author_degree }})</span>
-            {%- endif -%}
-            {%- if author_qual != blank -%}
-              <p class="ka-author-qual-row">{{ author_qual }}</p>
-            {%- endif -%}
           </div>
         </div>
       </div>
-    </div>
-  {%- endif -%}
+    {%- endif -%}
 
-  {%- comment -%} Reviewed by Card {%- endcomment -%}
-  {%- if reviewer_name_display != blank -%}
-    <div class="ka-article-card-state ka-article-card-state--reviewer">
-      <div class="ka-article-author-card">
-        <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
-        <div class="ka-article-author-bio-row">
-          {%- if reviewer_photo_url != blank -%}
-            <div class="ka-article-avatar" aria-hidden="true">
-              <img
-                src="{{ reviewer_photo_url }}"
-                alt="{{ reviewer_name_display | escape }}"
-                loading="lazy"
-                width="160"
-                height="160"
-              >
-              <span class="ka-avatar-hover-overlay">Read bio &rarr;</span>
+    {%- comment -%} Reviewed by Card {%- endcomment -%}
+    {%- if reviewer_name_display != blank -%}
+      <div class="ka-article-card-state ka-article-card-state--reviewer">
+        <div class="ka-article-author-card">
+          <p class="ka-blog-eyebrow">{{ reviewer_role }}</p>
+          <div class="ka-article-author-bio-row">
+            {%- if reviewer_photo_url != blank -%}
+              <div class="ka-article-avatar" aria-hidden="true">
+                <img
+                  src="{{ reviewer_photo_url }}"
+                  alt="{{ reviewer_name_display | escape }}"
+                  loading="lazy"
+                  width="160"
+                  height="160"
+                >
+                <span class="ka-avatar-hover-overlay">Read bio &rarr;</span>
+              </div>
+            {%- endif -%}
+            <div class="ka-article-author-content">
+              <h2 class="ka-author-name-row">{{ reviewer_name_display }}</h2>
+              {%- if reviewer_degree != blank -%}
+                <span class="ka-author-degree-row">({{ reviewer_degree }})</span>
+              {%- endif -%}
+              {%- if reviewer_qual != blank -%}
+                <p class="ka-author-qual-row">{{ reviewer_qual }}</p>
+              {%- endif -%}
             </div>
-          {%- endif -%}
-          <div class="ka-article-author-content">
-            <h2 class="ka-author-name-row">{{ reviewer_name_display }}</h2>
-            {%- if reviewer_degree != blank -%}
-              <span class="ka-author-degree-row">({{ reviewer_degree }})</span>
-            {%- endif -%}
-            {%- if reviewer_qual != blank -%}
-              <p class="ka-author-qual-row">{{ reviewer_qual }}</p>
-            {%- endif -%}
           </div>
         </div>
       </div>
+    {%- endif -%}
+  </div>
+  
+  {%- if author_name_display != blank and reviewer_name_display != blank -%}
+    <div class="ka-author-reviewer-nav">
+      <button class="ka-ar-nav-btn ka-ar-nav-prev" aria-label="Previous card" disabled>&larr;</button>
+      <button class="ka-ar-nav-btn ka-ar-nav-next" aria-label="Next card">&rarr;</button>
     </div>
   {%- endif -%}
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var track = document.querySelector('.ka-author-reviewer-track');
+    var btnPrev = document.querySelector('.ka-ar-nav-prev');
+    var btnNext = document.querySelector('.ka-ar-nav-next');
+    if (!track || !btnPrev || !btnNext) return;
+
+    function updateNav() {
+      var scrollLeft = track.scrollLeft;
+      var width = track.clientWidth;
+      btnPrev.disabled = scrollLeft < 10;
+      btnNext.disabled = (track.scrollWidth - scrollLeft - width) < 10;
+    }
+
+    btnPrev.addEventListener('click', function() {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    });
+
+    btnNext.addEventListener('click', function() {
+      track.scrollTo({ left: track.clientWidth, behavior: 'smooth' });
+    });
+
+    track.addEventListener('scroll', updateNav);
+    window.addEventListener('resize', updateNav);
+    // Initial check
+    setTimeout(updateNav, 100);
+  });
+</script>

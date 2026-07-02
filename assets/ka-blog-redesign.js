@@ -1436,9 +1436,47 @@
 
     if (!composer || !textarea || !container) return;
 
+    var chatbotTrigger = document.getElementById('ka-chatbot-trigger');
+    var authorInput = document.getElementById('ka-comment-author');
+    var emailInput = document.getElementById('ka-comment-email');
+
+    function hideChatbot() {
+      if (window.innerWidth < 980 && chatbotTrigger) {
+        chatbotTrigger.style.setProperty('display', 'none', 'important');
+      }
+    }
+
+    function showChatbot() {
+      if (chatbotTrigger) {
+        chatbotTrigger.style.display = '';
+      }
+    }
+
+    composer.addEventListener('focus', hideChatbot);
+    if (authorInput) authorInput.addEventListener('focus', hideChatbot);
+    if (emailInput) emailInput.addEventListener('focus', hideChatbot);
+
+    function checkActiveFocus() {
+      setTimeout(function() {
+        if (
+          document.activeElement !== composer &&
+          document.activeElement !== authorInput &&
+          document.activeElement !== emailInput &&
+          !container.classList.contains('is-expanded')
+        ) {
+          showChatbot();
+        }
+      }, 150);
+    }
+
+    composer.addEventListener('blur', checkActiveFocus);
+    if (authorInput) authorInput.addEventListener('blur', checkActiveFocus);
+    if (emailInput) emailInput.addEventListener('blur', checkActiveFocus);
+
     // 1. Focus expansion, clicking container, & synchronization
     composer.addEventListener('focus', function () {
       container.classList.add('is-expanded');
+      hideChatbot();
     });
 
     container.addEventListener('click', function (e) {
@@ -1511,6 +1549,7 @@
         if (popupCard) popupCard.classList.add('ka-comment-popup-hidden');
         if (nextBtn) nextBtn.style.display = 'inline-block';
         updateEmptyBoxHeight();
+        showChatbot();
       });
     }
 

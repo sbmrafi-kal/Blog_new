@@ -1819,6 +1819,21 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   .ka-blog-hero-actions {
     margin-top: 16px !important;
     margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  
+  .ka-blog-hero-actions .ka-blog-btn,
+  .ka-blog-hero-actions .ka-blog-btn--secondary {
+    flex: 1 !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    padding: 10px 8px !important;
+    font-size: 13px !important;
+    text-align: center !important;
   }
 
   .ka-blog-care-panel,
@@ -2240,7 +2255,7 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     border: 1px solid var(--ka-line) !important;
     border-radius: var(--ka-radius-lg) !important;
     padding: 18px !important;
-    height: 100% !important;
+    height: auto !important;
     grid-template-columns: none !important;
     margin-bottom: 0 !important;
     border-bottom: 1px solid var(--ka-line) !important;
@@ -2578,32 +2593,100 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   width: 100%;
 }
 
+.ka-author-reviewer-track {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  width: 100%;
+}
+
+.ka-author-reviewer-nav {
+  display: none !important;
+}
+
 @media (min-width: 768px) {
-  .ka-article-author-reviewer-card .ka-article-card-state {
-    flex: 1 !important;
+  .ka-author-reviewer-track {
+    flex-direction: row !important;
+    gap: 16px !important;
   }
 }
 
 @media (max-width: 767px) {
   .ka-article-author-reviewer-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  .ka-author-reviewer-track {
+    display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-    gap: 12px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    width: 100% !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    gap: 0 !important;
   }
+
+  .ka-author-reviewer-track::-webkit-scrollbar {
+    display: none !important;
+  }
+
   .ka-article-author-reviewer-card .ka-article-card-state {
-    flex: 0 0 calc(50% - 6px) !important;
-    min-width: 140px !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
     box-sizing: border-box !important;
   }
+
   .ka-article-author-reviewer-card .ka-article-author-card {
-    padding: 16px 12px !important;
+    padding: 16px 20px !important;
     align-items: flex-start !important;
     text-align: left !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
-  .ka-article-author-reviewer-card .ka-article-author-bio-row {
-    align-items: flex-start !important;
+
+  .ka-author-reviewer-nav {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-top: 8px !important;
     width: 100% !important;
   }
+
+  .ka-ar-nav-btn {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    border: 1px solid var(--ka-line) !important;
+    background: var(--ka-card) !important;
+    color: var(--ka-green) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    transition: all 180ms ease !important;
+    padding: 0 !important;
+    box-shadow: 2px 2px 0 0 var(--ka-line) !important;
+  }
+
+  .ka-ar-nav-btn:disabled {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
   .ka-article-author-reviewer-card .ka-article-author-content {
     align-items: flex-start !important;
     text-align: left !important;
