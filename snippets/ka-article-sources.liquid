@@ -1,32 +1,35 @@
 {% comment %}
-  ka-article-sources.liquid — Sources list from metaobjects
-  Usage: {% render 'ka-article-sources', article: article %}
-  All labels meta-driven via article.metafields.custom.*
+  ka-article-sources.liquid — Sources list from metaobjects (meta-driven)
+  Usage: {% render 'ka-article-sources', article: article, blog: blog %}
 {% endcomment %}
 
 {%- liquid
   assign sources = article.metafields.custom.sources.value
-  assign sources_eyebrow = article.metafields.custom.sources_eyebrow | default: blog.metafields.custom.sources_eyebrow | default: 'Sources'
-  assign view_source_label = article.metafields.custom.view_source_label | default: blog.metafields.custom.view_source_label | default: 'View source'
+  assign sources_eyebrow = article.metafields.custom.sources_eyebrow | default: blog.metafields.custom.sources_eyebrow
+  assign view_source_label = article.metafields.custom.view_source_label | default: blog.metafields.custom.view_source_label
 -%}
 
 {%- if sources != blank and sources.size > 0 -%}
-  <section class="ka-article-sources" id="sources" style="margin-top: 36px;">
-    <p class="ka-blog-eyebrow">{{ sources_eyebrow }}</p>
+  <section class="ka-article-sources ka-section-spaced" id="sources">
+    {%- if sources_eyebrow != blank -%}
+      <p class="ka-blog-eyebrow">{{ sources_eyebrow }}</p>
+    {%- endif -%}
     <ol>
       {%- for source in sources -%}
         <li>
           {%- if source.author != blank -%}
             {{ source.author }}.
           {%- endif -%}
-          <strong>{{ source.title }}</strong>
+          {%- if source.title != blank -%}
+            <strong>{{ source.title }}</strong>
+          {%- endif -%}
           {%- if source.publisher != blank -%}
             . {{ source.publisher }}
           {%- endif -%}
           {%- if source.published_date -%}
             ({{ source.published_date | date: "%Y" }})
           {%- endif -%}
-          {%- if source.url != blank -%}
+          {%- if source.url != blank and view_source_label != blank -%}
             . <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ view_source_label }}</a>
           {%- endif -%}
           {%- if source.note != blank -%}

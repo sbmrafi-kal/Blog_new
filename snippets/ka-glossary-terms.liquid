@@ -1,30 +1,35 @@
 {% comment %}
-  ka-glossary-terms.liquid — Glossary grid from metaobjects
-  Usage: {% render 'ka-glossary-terms', article: article %}
-  All labels meta-driven via article.metafields.custom.*
+  ka-glossary-terms.liquid — Glossary grid from metaobjects (meta-driven)
+  Usage: {% render 'ka-glossary-terms', article: article, blog: blog %}
 {% endcomment %}
 
 {%- liquid
   assign glossary = article.metafields.custom.glossary_terms.value
-  assign glossary_eyebrow = article.metafields.custom.glossary_eyebrow | default: blog.metafields.custom.glossary_eyebrow | default: 'Words to know'
-  assign glossary_heading = article.metafields.custom.glossary_heading | default: blog.metafields.custom.glossary_heading | default: 'Ayurveda glossary'
+  assign glossary_eyebrow = article.metafields.custom.glossary_eyebrow | default: blog.metafields.custom.glossary_eyebrow
+  assign glossary_heading = article.metafields.custom.glossary_heading | default: blog.metafields.custom.glossary_heading
 -%}
 
 {%- if glossary != blank and glossary.size > 0 -%}
-  <section class="ka-article-glossary-card" id="glossary" style="margin-top: 36px;">
-    <p class="ka-blog-eyebrow">{{ glossary_eyebrow }}</p>
-    <h2>{{ glossary_heading }}</h2>
+  <section class="ka-article-glossary-card ka-glossary-section ka-section-spaced" id="glossary">
+    {%- if glossary_eyebrow != blank -%}
+      <p class="ka-blog-eyebrow">{{ glossary_eyebrow }}</p>
+    {%- endif -%}
+    {%- if glossary_heading != blank -%}
+      <h2>{{ glossary_heading }}</h2>
+    {%- endif -%}
     <div class="ka-article-glossary-grid">
       {%- for term in glossary -%}
         <div>
           <b>{{ term.term }}</b>
           {%- if term.secondary_term != blank -%}
-            <span class="ka-blog-muted" style="margin-left: 6px; font-size: 14px;">({{ term.secondary_term }})</span>
+            <span class="ka-blog-muted ka-glossary-secondary">({{ term.secondary_term }})</span>
           {%- endif -%}
           {%- if term.pronunciation != blank -%}
-            <span class="ka-blog-muted" style="display: block; font-size: 13px; font-style: italic;">{{ term.pronunciation }}</span>
+            <span class="ka-blog-muted ka-glossary-pronunciation">{{ term.pronunciation }}</span>
           {%- endif -%}
-          <p class="ka-blog-muted">{{ term.short_definition }}</p>
+          {%- if term.short_definition != blank -%}
+            <p class="ka-blog-muted">{{ term.short_definition }}</p>
+          {%- endif -%}
         </div>
       {%- endfor -%}
     </div>

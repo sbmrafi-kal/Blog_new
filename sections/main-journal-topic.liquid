@@ -1,0 +1,382 @@
+{% comment %}
+  main-blog-topic-redesign.liquid — Topic/category page section (meta-driven)
+  Renders when current_tags is present (tag-filtered blog view)
+  Template: blog.ayurveda.json
+{% endcomment %}
+
+{%- if current_tags -%}
+{{ 'ayurhq-journal.css' | asset_url | stylesheet_tag }}
+{%- render 'custom-article-font' -%}
+
+{%- liquid
+  assign blog_handle = section.settings.blog | default: blog.handle
+  if blog_handle == blank
+    assign blog_handle = 'news'
+  endif
+  assign selected_blog = blog
+
+  assign current_tag = current_tags | first
+  assign topic_metaobject = nil
+
+  # Parse topic and care_path query parameters dynamically from content_for_header
+  capture content_header
+    echo content_for_header
+  endcapture
+  assign page_url = content_header | split: '"pageurl":"' | last | split: '"' | first
+
+  assign topic_param = ''
+  if page_url contains 'topic='
+    assign topic_param = page_url | split: 'topic=' | last | split: '&' | first | url_decode | handleize
+  endif
+
+  assign care_path_param = ''
+  if page_url contains 'care_path='
+    assign care_path_param = page_url | split: 'care_path=' | last | split: '&' | first | url_decode | handleize
+  endif
+
+  assign path_metaobject = nil
+  if care_path_param != blank
+    assign care_paths = selected_blog.metafields.custom.care_paths.value
+    for cp in care_paths
+      assign temp_cp_handle = cp.system.handle | default: cp.handle | default: cp.title | handleize
+      if temp_cp_handle == care_path_param
+        assign path_metaobject = cp
+        break
+      endif
+    endfor
+  endif
+
+  assign topics = selected_blog.metafields.custom.topics.value
+  if topics != blank
+    if topic_param != blank
+      for topic in topics
+        assign temp_handle = topic.system.handle | default: topic.handle | default: topic.title | handleize
+        if temp_handle == topic_param
+          assign topic_metaobject = topic
+          break
+        endif
+      endfor
+    endif
+
+    # Fallback to current_tag match if not found by query param
+    if topic_metaobject == nil and path_metaobject == nil
+      for topic in topics
+        if topic.article_filter_tag == current_tag or topic.title == current_tag
+          assign topic_metaobject = topic
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  assign topic_title = topic_metaobject.title.value | default: topic_metaobject.title | default: current_tag
+  assign topic_handle = topic_metaobject.system.handle | default: topic_metaobject.handle | default: topic_param | default: topic_title | handleize
+  assign topic_description = topic_metaobject.description.value | default: topic_metaobject.description
+  assign eyebrow_label = blog.metafields.custom.topic_hero_eyebrow
+  assign topic_image = topic_metaobject.image.value | default: topic_metaobject.image
+
+  if path_metaobject != nil
+    assign topic_title = path_metaobject.title.value | default: path_metaobject.title
+    assign topic_handle = path_metaobject.system.handle | default: path_metaobject.handle | default: topic_title | handleize
+    assign topic_description = path_metaobject.subtitle.value | default: path_metaobject.subtitle
+    assign topic_image = path_metaobject.image.value | default: path_metaobject.image
+    assign eyebrow_label = path_metaobject.eyebrow_label.value | default: path_metaobject.eyebrow_label
+  endif
+
+  assign topic_img_url = ''
+  if topic_image != blank
+    assign topic_img_url = topic_image | image_url: width: 800
+  endif
+
+  assign topic_secondary_label = topic_metaobject.secondary_label.value | default: topic_metaobject.secondary_label
+-%}
+
+<div class="ka-blog-wrapper">
+
+  <section class="ka-blog-section--tight" id="overview">
+    <div class="ka-blog-container">
+      <article class="ka-blog-topic-hero{% if path_metaobject != nil %} ka-blog-topic-hero--carepath{% endif %}">
+        <div class="ka-blog-topic-hero__content">
+          {%- if eyebrow_label != blank -%}
+            <p class="ka-blog-eyebrow">
+              {{ eyebrow_label }}
+              {%- if topic_secondary_label != blank and path_metaobject == nil -%}
+                <span class="ka-hindi"> · {{ topic_secondary_label }}</span>
+              {%- endif -%}
+            </p>
+          {%- endif -%}
+          <h1>{{ topic_title }}</h1>
+          {%- if topic_description != blank -%}
+            <p class="ka-blog-lead">{{ topic_description }}</p>
+          {%- endif -%}
+        </div>
+        <div class="ka-blog-topic-hero__image-wrap">
+          {%- if topic_img_url != blank -%}
+            <img src="{{ topic_img_url }}" alt="{{ topic_title | escape }}" loading="eager" fetchpriority="high" width="800" height="400">
+          {%- endif -%}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  {%- if path_metaobject != nil -%}
+    {%- liquid
+      assign phase_1_title = path_metaobject.phase_1_title.value | default: path_metaobject.phase_1_title
+      assign phase_1_desc = path_metaobject.phase_1_description.value | default: path_metaobject.phase_1_description
+      assign phase_2_title = path_metaobject.phase_2_title.value | default: path_metaobject.phase_2_title
+      assign phase_2_desc = path_metaobject.phase_2_description.value | default: path_metaobject.phase_2_description
+      assign phase_3_title = path_metaobject.phase_3_title.value | default: path_metaobject.phase_3_title
+      assign phase_3_desc = path_metaobject.phase_3_description.value | default: path_metaobject.phase_3_description
+    -%}
+    {%- if phase_1_title != blank or phase_2_title != blank or phase_3_title != blank -%}
+      <section class="ka-blog-section ka-section-carepath" id="care-path-journey">
+        <div class="ka-blog-container">
+          <div class="ka-care-journey-card">
+            <div class="ka-care-journey-badge">Your Health Pathway</div>
+            <h2>Ayurvedic Care Journey</h2>
+            <p class="ka-care-journey-intro">Follow this expert-designed 3-phase progression to restore balance for your concern:</p>
+            
+            <div class="ka-care-journey-steps">
+              {%- if phase_1_title != blank -%}
+                <div class="ka-care-journey-step">
+                  <div class="ka-care-step-icon-wrap">
+                    <div class="ka-care-step-num">01</div>
+                    <div class="ka-care-step-svg">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"></path>
+                        <path d="M12 22V12"></path>
+                        <path d="M12 12c2.5-2.5 4.5-2.5 6-1"></path>
+                        <path d="M12 15c-2.5-2.5-4.5-2.5-6-1"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ka-care-step-content">
+                    <h4>{{ phase_1_title }}</h4>
+                    <p>{{ phase_1_desc }}</p>
+                  </div>
+                </div>
+              {%- endif -%}
+              
+              {%- if phase_2_title != blank -%}
+                <div class="ka-care-journey-step-connector"></div>
+                
+                <div class="ka-care-journey-step">
+                  <div class="ka-care-step-icon-wrap">
+                    <div class="ka-care-step-num">02</div>
+                    <div class="ka-care-step-svg">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3v18"></path>
+                        <path d="M5 12h14"></path>
+                        <path d="M12 12l-6-6"></path>
+                        <path d="M12 12l6 6"></path>
+                        <path d="M12 12l-6 6"></path>
+                        <path d="M12 12l6-6"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ka-care-step-content">
+                    <h4>{{ phase_2_title }}</h4>
+                    <p>{{ phase_2_desc }}</p>
+                  </div>
+                </div>
+              {%- endif -%}
+              
+              {%- if phase_3_title != blank -%}
+                <div class="ka-care-journey-step-connector"></div>
+                
+                <div class="ka-care-journey-step">
+                  <div class="ka-care-step-icon-wrap">
+                    <div class="ka-care-step-num">03</div>
+                    <div class="ka-care-step-svg">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M12 8v8"></path>
+                        <path d="M9 12h6"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ka-care-step-content">
+                    <h4>{{ phase_3_title }}</h4>
+                    <p>{{ phase_3_desc }}</p>
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+            
+            <div class="ka-care-journey-footer">
+              <div class="ka-care-journey-footer-text">
+                <strong>Need personalized advice?</strong> Get a custom care pathway tailored specifically to your body constitution (Prakriti) from our certified Vaidyas.
+              </div>
+              <a href="#consult" class="ka-blog-btn ka-care-journey-btn">Consult Vaidya</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- comment -%} ============ ARTICLES IN TOPIC ============ {%- endcomment -%}
+  <section class="ka-blog-section--tight" id="articles">
+    <div class="ka-blog-container">
+
+      {%- liquid
+        # 1. Build a list of all major topic filter tags and titles to exclude them from sub-filters
+        assign major_topic_tags = ""
+        assign major_topics = selected_blog.metafields.custom.topics.value
+        for t_obj in major_topics
+          assign mt_tag = t_obj.article_filter_tag | strip
+          assign mt_title = t_obj.title | strip
+          if mt_tag != blank
+            assign major_topic_tags = major_topic_tags | append: "," | append: mt_tag
+          endif
+          if mt_title != blank
+            assign major_topic_tags = major_topic_tags | append: "," | append: mt_title
+          endif
+        endfor
+        
+        # Also add administrative tags to the blacklist
+        assign major_topic_tags = major_topic_tags | append: ",Feature,Essay,Reading guide,Ayurveda,Journal,Popular,All"
+        assign blacklist_tags = major_topic_tags | split: "," | uniq
+
+        # 2. Extract related tags from article tags, skipping blacklisted tags
+        assign related_tags = ""
+        for article in selected_blog.articles
+          for t in article.tags
+            assign t_clean = t | strip
+            if t_clean != current_tag
+              assign is_blacklisted = false
+              for bl_tag in blacklist_tags
+                if bl_tag == t_clean
+                  assign is_blacklisted = true
+                  break
+                endif
+              endfor
+              unless is_blacklisted
+                assign related_tags = related_tags | append: "," | append: t_clean
+              endunless
+            endif
+          endfor
+        endfor
+        assign related_tags_array = related_tags | split: "," | uniq | compact
+      -%}
+
+      {%- paginate selected_blog.articles by 9 -%}
+        <div class="ka-blog-section-head ka-section-head--spaced">
+          <div>
+            <p class="ka-blog-eyebrow">
+              {{ paginate.items }} articles
+            </p>
+            <h2>{{ topic_metaobject.guides_heading.value | default: topic_metaobject.guides_heading }}</h2>
+          </div>
+        </div>
+
+        {%- comment -%} Filter bar from dynamic related tags {%- endcomment -%}
+        {%- if related_tags_array.size > 0 -%}
+          <nav class="ka-blog-filter-bar" aria-label="{{ topic_title }} filters">
+            {%- assign current_tag_handle = current_tag | handleize -%}
+            {%- assign all_filter_url = selected_blog.url | append: '/tagged/' | append: current_tag_handle -%}
+            {%- if path_metaobject != nil -%}
+              {%- assign all_filter_url = all_filter_url | append: '?care_path=' | append: topic_handle -%}
+            {%- elsif topic_handle != blank -%}
+              {%- assign all_filter_url = all_filter_url | append: '?topic=' | append: topic_handle -%}
+            {%- endif -%}
+            <a class="{% if current_tags.size == 1 %}active{% endif %}" href="{{ all_filter_url }}">{{ selected_blog.metafields.custom.filter_all_label }}</a>
+            {%- for tag in related_tags_array -%}
+              {%- assign trimmed_tag = tag | strip -%}
+              {%- if trimmed_tag != blank -%}
+                {%- assign is_active = false -%}
+                {%- if current_tags contains trimmed_tag -%}
+                  {%- assign is_active = true -%}
+                {%- endif -%}
+                {%- assign trimmed_tag_handle = trimmed_tag | handleize -%}
+                {%- assign sub_filter_url = selected_blog.url | append: '/tagged/' | append: current_tag_handle | append: '+' | append: trimmed_tag_handle -%}
+                {%- if path_metaobject != nil -%}
+                  {%- assign sub_filter_url = sub_filter_url | append: '?care_path=' | append: topic_handle -%}
+                {%- elsif topic_handle != blank -%}
+                  {%- assign sub_filter_url = sub_filter_url | append: '?topic=' | append: topic_handle -%}
+                {%- endif -%}
+                <a class="{% if is_active %}active{% endif %}" href="{{ sub_filter_url }}">{{ trimmed_tag }}</a>
+              {%- endif -%}
+            {%- endfor -%}
+          </nav>
+        {%- endif -%}
+
+        <div class="ka-blog-article-grid ka-blog-article-grid--spaced">
+          {%- for article in selected_blog.articles -%}
+            {%- render 'ka-blog-card', article: article -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="ka-blog-pagination" aria-label="Topic pagination">
+            {%- if paginate.previous -%}
+              {%- assign prev_url = paginate.previous.url -%}
+              {%- if topic_handle != blank -%}
+                {%- if prev_url contains '?' -%}
+                  {%- assign prev_url = prev_url | append: '&topic=' | append: topic_handle -%}
+                {%- else -%}
+                  {%- assign prev_url = prev_url | append: '?topic=' | append: topic_handle -%}
+                {%- endif -%}
+              {%- endif -%}
+              <a href="{{ prev_url }}#articles">← Previous</a>
+            {%- endif -%}
+            {%- for part in paginate.parts -%}
+               {%- if part.is_link -%}
+                {%- assign part_url = part.url -%}
+                {%- if topic_handle != blank -%}
+                  {%- if part_url contains '?' -%}
+                    {%- assign part_url = part_url | append: '&topic=' | append: topic_handle -%}
+                  {%- else -%}
+                    {%- assign part_url = part_url | append: '?topic=' | append: topic_handle -%}
+                  {%- endif -%}
+                {%- endif -%}
+                <a href="{{ part_url }}#articles">{{ part.title }}</a>
+              {%- else -%}
+                {%- if part.title == paginate.current_page -%}
+                  <span class="current">{{ part.title }}</span>
+                {%- else -%}
+                  <span class="deco">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next -%}
+              {%- assign next_url = paginate.next.url -%}
+              {%- if topic_handle != blank -%}
+                {%- if next_url contains '?' -%}
+                  {%- assign next_url = next_url | append: '&topic=' | append: topic_handle -%}
+                {%- else -%}
+                  {%- assign next_url = next_url | append: '?topic=' | append: topic_handle -%}
+                {%- endif -%}
+              {%- endif -%}
+              <a href="{{ next_url }}#articles">Next →</a>
+            {%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </section>
+
+  {%- comment -%} ============ CONSULT CTA ============ {%- endcomment -%}
+  {%- render 'ka-consult-cta', blog: selected_blog, section: section -%}
+
+  {%- comment -%} ============ CHATBOT ============ {%- endcomment -%}
+  {%- render 'ka-chatbot', blog: selected_blog -%}
+</div>
+
+<script src="{{ 'ayurhq-journal.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Blog Topic — Redesign",
+  "tag": "section",
+  "class": "ka-blog-topic-section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog to fetch articles from"
+    }
+  ]
+}
+{% endschema %}

@@ -1,7 +1,7 @@
 {
   "sections": {
     "main-blog": {
-      "type": "main-blog-redesign",
+      "type": "main-journal",
       "settings": {
         "blog": "news",
         "hero_eyebrow": "AYURVEDA LIBRARY",

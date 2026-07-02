@@ -1,118 +1,33 @@
 {% comment %}
-  ka-topic-card.liquid — Full-image topic card with dark fallback image list
+  ka-topic-card.liquid — Full-image topic card (meta-driven)
   Usage: {% render 'ka-topic-card', topic: topic, blog: blog, index: index %}
   topic = blog_topic metaobject entry
 {% endcomment %}
 
 {%- liquid
-  assign topic_title = topic.title.value | default: topic.title | default: topic
+  assign topic_title = topic.title.value | default: topic.title
   assign topic_image = topic.image.value | default: topic.image
-  assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title | handleize
-  assign topic_count_label = 'Explore Guides'
-
-  # Try to match the handle for custom dark image
-  assign topic_handle = topic.system.handle | default: topic.handle | default: topic_tag | default: topic_title | handleize
-  
-  assign asset_name = ''
-  if topic_handle contains 'digestion'
-    assign asset_name = 'topic-digestion.jpg'
-  elsif topic_handle contains 'food'
-    assign asset_name = 'topic-food.jpg'
-  elsif topic_handle contains 'herbs'
-    assign asset_name = 'topic-herbs.jpg'
-  elsif topic_handle contains 'weight' or topic_handle contains 'cravings'
-    assign asset_name = 'topic-weight.jpg'
-  elsif topic_handle contains 'immunity'
-    assign asset_name = 'topic-immunity.jpg'
-  elsif topic_handle contains 'seasons' or topic_handle contains 'routine'
-    assign asset_name = 'topic-seasons.jpg'
-  elsif topic_handle contains 'sleep' or topic_handle contains 'circadian'
-    assign asset_name = 'topic-sleep.jpg'
-  elsif topic_handle contains 'mind' or topic_handle contains 'calm'
-    assign asset_name = 'topic-mind.jpg'
-  elsif topic_handle contains 'habits'
-    assign asset_name = 'topic-habits.jpg'
-  elsif topic_handle contains 'joints' or topic_handle contains 'body' or topic_handle contains 'pain'
-    assign asset_name = 'topic-joints.jpg'
-  elsif topic_handle contains 'skin' or topic_handle contains 'glow'
-    assign asset_name = 'topic-skin.jpg'
-  elsif topic_handle contains 'hair' or topic_handle contains 'scalp'
-    assign asset_name = 'topic-hair.jpg'
-  elsif topic_handle contains 'senses' or topic_handle contains 'eyes' or topic_handle contains 'ears' or topic_handle contains 'mouth'
-    assign asset_name = 'topic-senses.jpg'
-  elsif topic_handle contains 'women'
-    assign asset_name = 'topic-women.jpg'
-  elsif topic_handle contains 'men'
-    assign asset_name = 'topic-men.jpg'
-  elsif topic_handle contains 'kids' or topic_handle contains 'children'
-    assign asset_name = 'topic-kids.jpg'
-  elsif topic_handle contains 'elder'
-    assign asset_name = 'topic-elders.jpg'
-  elsif topic_handle contains 'basics' or topic_handle contains 'ayurveda'
-    assign asset_name = 'topic-basics.jpg'
-  endif
-
-  assign fallback_img = ''
-  if asset_name != blank
-    assign fallback_img = asset_name | asset_url
-  else
-    assign fallback_img = 'topic-basics.jpg' | asset_url
-  endif
-
+  assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag
+  assign topic_handle = topic.system.handle | default: topic.handle | default: topic_tag | handleize
+  assign topic_count_label = topic.cta_label.value | default: topic.cta_label
   assign topic_img_url = ''
+
   if topic_image != blank
     assign topic_img_url = topic_image | image_url: width: 600
   endif
-
-  # Force high-quality local dark assets for Seasons and Sleep
-  if topic_handle contains 'seasons' or topic_handle contains 'routine'
-    assign topic_img_url = ''
-  endif
-  if topic_handle contains 'sleep' or topic_handle contains 'circadian'
-    assign topic_img_url = ''
-  endif
-
-  # Use the topic's own article_filter_tag for the tagged URL.
-  # The ?topic= param ensures the metaobject is resolved on the topic page.
-  assign raw_tag_handle = topic_tag | handleize
-  if raw_tag_handle contains 'digestion' or raw_tag_handle contains 'digest' or raw_tag_handle contains 'gut'
-    assign topic_tag_mapped = 'digestion'
-  elsif raw_tag_handle contains 'sleep' or raw_tag_handle contains 'stress' or raw_tag_handle contains 'mind'
-    assign topic_tag_mapped = 'sleep'
-  elsif raw_tag_handle contains 'joints' or raw_tag_handle contains 'pain' or raw_tag_handle contains 'bone'
-    assign topic_tag_mapped = 'pain-joints'
-  elsif raw_tag_handle contains 'skin' or raw_tag_handle contains 'hair' or raw_tag_handle contains 'beauty'
-    assign topic_tag_mapped = 'skin-hair'
-  elsif raw_tag_handle contains 'women'
-    assign topic_tag_mapped = 'women-s-health'
-  elsif raw_tag_handle contains 'men'
-    assign topic_tag_mapped = 'men-s-health'
-  elsif raw_tag_handle contains 'kids' or raw_tag_handle contains 'children'
-    assign topic_tag_mapped = 'kids'
-  elsif raw_tag_handle contains 'elder' or raw_tag_handle contains 'old'
-    assign topic_tag_mapped = 'elders'
-  elsif raw_tag_handle contains 'herb'
-    assign topic_tag_mapped = 'herbs'
-  elsif raw_tag_handle contains 'weight'
-    assign topic_tag_mapped = 'weight'
-  elsif raw_tag_handle contains 'immunity'
-    assign topic_tag_mapped = 'immunity'
-  elsif raw_tag_handle contains 'detox'
-    assign topic_tag_mapped = 'detox'
-  else
-    assign topic_tag_mapped = raw_tag_handle
-  endif
 -%}
 
-<a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag_mapped }}?topic={{ topic_handle }}">
-  {%- if topic_img_url contains 'cdn.shopify.com' -%}
-    <img class="ka-blog-image-card__bg" src="{{ topic_img_url }}" alt="{{ topic_title | escape }}" loading="lazy" width="600" height="400">
-  {%- else -%}
-    <img class="ka-blog-image-card__bg" src="{{ fallback_img }}" alt="{{ topic_title | escape }}" loading="lazy" width="600" height="400">
-  {%- endif -%}
-  <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
-  <div class="ka-blog-image-card__content">
-    <h3>{{ topic_title }}</h3>
-    <span class="ka-blog-read-more">{{ topic_count_label }}</span>
-  </div>
-</a>
+{%- if topic_title != blank -%}
+  <a class="ka-blog-image-card" href="{{ blog.url }}/tagged/{{ topic_tag | handleize }}?topic={{ topic_handle }}">
+    {%- if topic_img_url != blank -%}
+      <img class="ka-blog-image-card__bg" src="{{ topic_img_url }}" alt="{{ topic_title | escape }}" loading="lazy" width="600" height="400">
+    {%- endif -%}
+    <div class="ka-blog-image-card__overlay" aria-hidden="true"></div>
+    <div class="ka-blog-image-card__content">
+      <h3>{{ topic_title }}</h3>
+      {%- if topic_count_label != blank -%}
+        <span class="ka-blog-read-more">{{ topic_count_label }}</span>
+      {%- endif -%}
+    </div>
+  </a>
+{%- endif -%}

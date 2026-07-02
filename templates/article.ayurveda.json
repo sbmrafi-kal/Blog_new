@@ -2,7 +2,7 @@
   "name": "Article — Ayurveda Redesign",
   "sections": {
     "main-article": {
-      "type": "main-article-redesign",
+      "type": "main-journal-article",
       "settings": {
         "default_disclaimer": "This content is for informational and educational purposes only. It is not intended as medical advice and should not replace consultation with a qualified healthcare professional. Kerala Ayurveda recommends consulting a doctor or qualified vaidya before beginning any new wellness routine, especially if you have existing health conditions or are on medication."
       }

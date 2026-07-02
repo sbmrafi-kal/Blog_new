@@ -2,7 +2,7 @@
   "name": "Blog — Ayurveda Redesign",
   "sections": {
     "main-blog": {
-      "type": "main-blog-redesign",
+      "type": "main-journal",
       "settings": {
         "hero_eyebrow": "AYURVEDA LIBRARY",
         "hero_title": "Kerala Ayurveda Wellness Journal",
@@ -76,7 +76,7 @@
       ]
     },
     "topic-view": {
-      "type": "main-blog-topic-redesign",
+      "type": "main-journal-topic",
       "settings": {}
     }
   },

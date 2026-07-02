@@ -1,48 +1,30 @@
 {% comment %}
-  ka-product-recommendations.liquid — Product grid using existing product-card
-  Usage: {% render 'ka-product-recommendations', article: article %}
-  All labels meta-driven via article.metafields.custom.*
+  ka-product-recommendations.liquid — Product grid (meta-driven)
+  Usage: {% render 'ka-product-recommendations', article: article, blog: blog %}
 {% endcomment %}
 
 {%- liquid
   assign products = article.metafields.custom.recommended_products.value
-  
-  # Check if we should load fallback mock products for the specific Ojas article
-  assign article_title_lower = article.title | downcase
-  assign is_fallback_needed = false
-  if products == blank or products.size == 0
-    if article_title_lower contains 'ojas'
-      assign is_fallback_needed = true
-    endif
-  endif
-  
-  assign products_eyebrow = article.metafields.custom.products_eyebrow | default: blog.metafields.custom.products_eyebrow | default: 'Helpful next steps'
-  assign heading = article.metafields.custom.recommended_products_heading | default: blog.metafields.custom.recommended_products_heading | default: ''
-  assign description = article.metafields.custom.recommended_products_description | default: blog.metafields.custom.recommended_products_description | default: 'Support your wellness routine with classical Ayurvedic formulations.'
+  assign products_eyebrow = article.metafields.custom.products_eyebrow | default: blog.metafields.custom.products_eyebrow
+  assign heading = article.metafields.custom.recommended_products_heading | default: blog.metafields.custom.recommended_products_heading
+  assign description = article.metafields.custom.recommended_products_description | default: blog.metafields.custom.recommended_products_description
 -%}
 
-{%- if products != blank and products.size > 0 or is_fallback_needed -%}
+{%- if products != blank and products.size > 0 -%}
   <section class="ka-article-products" id="products" aria-labelledby="ka-products-title">
-    <p class="ka-blog-eyebrow">{{ products_eyebrow }}</p>
+    {%- if products_eyebrow != blank -%}
+      <p class="ka-blog-eyebrow">{{ products_eyebrow }}</p>
+    {%- endif -%}
     {%- if heading != blank -%}
       <h2 id="ka-products-title">{{ heading }}</h2>
     {%- endif -%}
-    <p class="ka-blog-muted" style="margin: 6px 0 10px;">{{ description }}</p>
+    {%- if description != blank -%}
+      <p class="ka-blog-muted ka-product-desc">{{ description }}</p>
+    {%- endif -%}
     <div class="ka-article-product-grid">
-      {%- if is_fallback_needed -%}
-        {%- assign prod_1 = all_products['neelibringadi-keram'] -%}
-        {%- assign prod_2 = all_products['bringarajasava-450ml'] | default: all_products['bringarajasava'] -%}
-        {%- if prod_1 != blank -%}
-          {%- render 'product-card', product: prod_1, is_alternative: true -%}
-        {%- endif -%}
-        {%- if prod_2 != blank -%}
-          {%- render 'product-card', product: prod_2, is_alternative: true -%}
-        {%- endif -%}
-      {%- else -%}
-        {%- for product in products limit: 3 -%}
-          {%- render 'product-card', product: product, is_alternative: true -%}
-        {%- endfor -%}
-      {%- endif -%}
+      {%- for product in products limit: 3 -%}
+        {%- render 'product-card', product: product, is_alternative: true -%}
+      {%- endfor -%}
     </div>
   </section>
 {%- endif -%}

@@ -1,18 +1,18 @@
 {% comment %}
-  ka-article-disclaimer.liquid — Health disclaimer with fallback and brand cleansing
-  Usage: {% render 'ka-article-disclaimer', article: article, section: section %}
-  All labels meta-driven via article.metafields.custom.*
+  ka-article-disclaimer.liquid — Health disclaimer (meta-driven)
+  Usage: {% render 'ka-article-disclaimer', article: article, blog: blog %}
 {% endcomment %}
 
 {%- liquid
-  assign disclaimer_label = article.metafields.custom.disclaimer_label | default: blog.metafields.custom.disclaimer_label | default: 'Health disclaimer:'
-  assign custom_disclaimer = article.metafields.custom.medical_disclaimer.value | default: article.metafields.custom.medical_disclaimer | default: article.metafields.custom.disclaimer.value | default: article.metafields.custom.disclaimer
-  assign default_disclaimer = section.settings.default_disclaimer | default: 'Ayurveda guidance on Kerala Ayurveda is supportive care, not emergency or diagnostic medical treatment.'
-  assign disclaimer_text = custom_disclaimer | default: default_disclaimer
-  
-  assign disclaimer_text = disclaimer_text | replace: 'on AyurHQ', 'on Kerala Ayurveda' | replace: 'on DhyanHQ', 'on Kerala Ayurveda' | replace: 'AyurHQ', 'Kerala Ayurveda' | replace: 'DhyanHQ', 'Kerala Ayurveda' | replace: '  ', ' ' | strip
+  assign disclaimer_label = article.metafields.custom.disclaimer_label | default: blog.metafields.custom.disclaimer_label
+  assign disclaimer_text = article.metafields.custom.medical_disclaimer.value | default: article.metafields.custom.medical_disclaimer | default: article.metafields.custom.disclaimer.value | default: article.metafields.custom.disclaimer | default: blog.metafields.custom.default_disclaimer
 -%}
 
-<section class="ka-article-disclaimer" id="disclaimer" style="margin-top: 36px;">
-  <p><b>{{ disclaimer_label }}</b> {{ disclaimer_text }}</p>
-</section>
+{%- if disclaimer_text != blank -%}
+  <section class="ka-article-disclaimer ka-section-spaced" id="disclaimer">
+    <p>
+      {%- if disclaimer_label != blank -%}<b>{{ disclaimer_label }}</b> {%- endif -%}
+      {{ disclaimer_text }}
+    </p>
+  </section>
+{%- endif -%}

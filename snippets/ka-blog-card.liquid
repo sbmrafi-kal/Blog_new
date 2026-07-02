@@ -1,6 +1,6 @@
 {% comment %}
-  ka-blog-card.liquid — Premium standard article card (content below image)
-  Usage: {% render 'ka-blog-card', article: article, show_chip: true %}
+  ka-blog-card.liquid — Standard article card (meta-driven)
+  Usage: {% render 'ka-blog-card', article: article, blog: blog, show_chip: true %}
 {% endcomment %}
 
 {%- liquid
@@ -9,10 +9,8 @@
   assign chip_text = card_article.metafields.custom.hero_badge.value | default: card_article.metafields.custom.hero_badge | default: card_article.metafields.custom.category_label | default: card_article.tags.first
   assign read_time = card_article.metafields.custom.read_time.value | default: card_article.metafields.custom.read_time | default: card_article.metafields.custom.read_time_minutes
   assign dek = card_article.metafields.custom.dek | default: card_article.excerpt_or_content | strip_html | truncatewords: 25
-  assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
-  assign read_article_label = blog.metafields.custom.read_article_label | default: 'Read article'
-
-  # Image resolution order: metafield custom.hero_image, standard article image, or fallback
+  assign min_read_label = blog.metafields.custom.min_read_label
+  assign read_article_label = blog.metafields.custom.read_article_label
   assign card_image = card_article.metafields.custom.hero_image.value | default: card_article.metafields.custom.hero_image | default: card_article.image
 -%}
 
@@ -25,6 +23,7 @@
         alt="{{ card_image.alt | default: card_article.title | escape }}"
         loading="lazy"
         width="450"
+        height="300"
       >
     {%- endif -%}
     {%- if show_chip and chip_text != blank -%}
@@ -38,13 +37,15 @@
     {%- endif -%}
     <div class="ka-blog-card__footer">
       <span class="ka-blog-card__read-more">
-        {%- if read_time -%}
+        {%- if read_time != blank -%}
           {%- if read_time contains 'min' or read_time contains 'read' -%}
             {{ read_time }}
-          {%- else -%}
+          {%- elsif min_read_label != blank -%}
             {{ read_time }} {{ min_read_label }}
+          {%- else -%}
+            {{ read_time }}
           {%- endif -%}
-        {%- else -%}
+        {%- elsif read_article_label != blank -%}
           {{ read_article_label }}
         {%- endif -%}
         {%- if card_article.published_at -%}

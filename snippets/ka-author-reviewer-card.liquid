@@ -1,12 +1,12 @@
 {% comment %}
-  ka-author-reviewer-card.liquid — Author/reviewer profile card
-  Usage: {% render 'ka-author-reviewer-card', profile: profile, role_label: 'Written by', fallback_name: article.author %}
+  ka-author-reviewer-card.liquid — Author/reviewer profile card (meta-driven)
+  Usage: {% render 'ka-author-reviewer-card', profile: profile, role_label: role_label, blog: blog %}
 {% endcomment %}
 
 {%- liquid
   assign person = profile
-  assign person_name = person.name | default: fallback_name
-  assign person_role = person.role_label | default: role_label | default: 'Author'
+  assign person_name = person.name
+  assign person_role = person.role_label | default: role_label
   assign person_designation = person.designation
   assign person_degree = person.degree
   assign person_qualifications = person.qualifications
@@ -14,11 +14,11 @@
   assign person_photo = person.photo
   assign person_url = person.profile_url
   assign person_initials = person_name | split: ' ' | map: 'first' | join: '' | upcase | truncate: 2, ''
-  assign view_profile_label = blog.metafields.custom.view_profile_label | default: 'View profile'
+  assign view_profile_label = blog.metafields.custom.view_profile_label
 -%}
 
 {%- if person_name != blank -%}
-  <section class="ka-article-author-card" id="{{ role_label | handleize | default: 'author' }}">
+  <section class="ka-article-author-card" id="{{ role_label | handleize }}">
     <div class="ka-article-avatar" aria-hidden="true">
       {%- if person_photo -%}
         <img
@@ -33,10 +33,12 @@
       {%- endif -%}
     </div>
     <div>
-      <p class="ka-blog-eyebrow">{{ person_role }}</p>
+      {%- if person_role != blank -%}
+        <p class="ka-blog-eyebrow">{{ person_role }}</p>
+      {%- endif -%}
       <h2>{{ person_name }}</h2>
       {%- if person_degree != blank or person_qualifications != blank -%}
-        <p class="ka-blog-muted" style="margin-top: 8px;">
+        <p class="ka-blog-muted ka-author-credentials">
           <b>
             {%- if person_degree != blank -%}{{ person_degree }}{%- endif -%}
             {%- if person_degree != blank and person_qualifications != blank -%} · {%- endif -%}
@@ -45,13 +47,13 @@
         </p>
       {%- endif -%}
       {%- if person_bio != blank -%}
-        <p style="margin-top: 12px;">{{ person_bio }}</p>
+        <p class="ka-author-bio">{{ person_bio }}</p>
       {%- endif -%}
-      <div class="ka-blog-chip-row" style="margin-top: 16px;">
-        {%- if person_url != blank -%}
+      {%- if person_url != blank and view_profile_label != blank -%}
+        <div class="ka-blog-chip-row ka-author-actions">
           <a href="{{ person_url }}" class="ka-blog-chip ka-blog-chip--green">{{ view_profile_label }}</a>
-        {%- endif -%}
-      </div>
+        </div>
+      {%- endif -%}
     </div>
   </section>
 {%- endif -%}

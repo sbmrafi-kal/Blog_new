@@ -1,27 +1,17 @@
 {% comment %}
-  ka-featured-article-card.liquid — Two-column featured article card
+  ka-featured-article-card.liquid — Two-column featured article card (meta-driven)
   Usage: {% render 'ka-featured-article-card', article: article, blog: blog %}
-  All labels meta-driven via blog.metafields.custom.*
 {% endcomment %}
 
 {%- liquid
   assign featured = article
-  assign raw_chip = featured.metafields.custom.hero_badge.value | default: featured.metafields.custom.hero_badge | default: featured.metafields.custom.category_label | default: featured.tags.first
-  assign chip_downcase = raw_chip | downcase
-  if chip_downcase == 'doshas' or chip_downcase == 'dosha'
-    assign chip_text = blank
-  else
-    assign chip_text = raw_chip
-  endif
   assign dek = featured.metafields.custom.dek | default: featured.excerpt_or_content | strip_html | truncate: 200
   assign read_time = featured.metafields.custom.read_time.value | default: featured.metafields.custom.read_time | default: featured.metafields.custom.read_time_minutes
   assign author_profile = featured.metafields.custom.written_by_profile.value
   assign author_name = author_profile.name | default: featured.author
-  assign read_full_label = blog.metafields.custom.read_full_label | default: 'Read full article'
-  assign by_label = blog.metafields.custom.by_label | default: 'By'
-  assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
-
-  # Image resolution order: metafield custom.hero_image, standard article image, or fallback
+  assign read_full_label = blog.metafields.custom.read_full_label
+  assign by_label = blog.metafields.custom.by_label
+  assign min_read_label = blog.metafields.custom.min_read_label
   assign featured_image = featured.metafields.custom.hero_image.value | default: featured.metafields.custom.hero_image | default: featured.image
 -%}
 
@@ -32,21 +22,23 @@
       <p>{{ dek }}</p>
     {%- endif -%}
     <div class="ka-blog-meta-line">
-      {%- if author_name != blank -%}
-        {%- unless author_name contains 'Editorial Team' or author_name contains 'Editorial' -%}
-          <span>{{ by_label }} {{ author_name }}</span>
-        {%- endunless -%}
+      {%- if author_name != blank and by_label != blank -%}
+        <span>{{ by_label }} {{ author_name }}</span>
       {%- endif -%}
-      {%- if read_time -%}
+      {%- if read_time != blank -%}
         {%- if read_time contains 'min' or read_time contains 'read' -%}
           <span>{{ read_time }}</span>
-        {%- else -%}
+        {%- elsif min_read_label != blank -%}
           <span>{{ read_time }} {{ min_read_label }}</span>
         {%- endif -%}
       {%- endif -%}
-      <span>Pub. Date : {{ featured.published_at | date: "%B %d, %Y" }}</span>
+      {%- if featured.published_at -%}
+        <span>{{ featured.published_at | date: "%B %d, %Y" }}</span>
+      {%- endif -%}
     </div>
-    <span class="ka-blog-read-more">{{ read_full_label }}</span>
+    {%- if read_full_label != blank -%}
+      <span class="ka-blog-read-more">{{ read_full_label }}</span>
+    {%- endif -%}
   </div>
   <div class="ka-blog-feature-card__image">
     {%- if featured_image != blank -%}
@@ -56,6 +48,7 @@
         loading="eager"
         fetchpriority="high"
         width="800"
+        height="500"
       >
     {%- endif -%}
   </div>

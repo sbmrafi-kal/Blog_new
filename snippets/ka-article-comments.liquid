@@ -57,13 +57,13 @@
             <textarea
               name="comment[body]"
               id="ka-comment-body"
-              style="display: none !important;"
+              class="ka-hidden"
             >{{ form.body }}</textarea>
             
             <div class="ka-comment-controls">
               <div class="ka-comment-formatting">
                 <button type="button" class="ka-comment-format-btn" data-format="bold" title="Bold">B</button>
-                <button type="button" class="ka-comment-format-btn" data-format="italic" title="Italic" style="font-style: italic;">i</button>
+                <button type="button" class="ka-comment-format-btn ka-comment-format-btn--italic" data-format="italic" title="Italic">i</button>
               </div>
               <div class="ka-comment-actions">
                 <button type="button" class="ka-comment-btn-cancel">Cancel</button>

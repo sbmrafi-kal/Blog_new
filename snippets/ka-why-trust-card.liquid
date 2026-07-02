@@ -1,87 +1,38 @@
 {% comment %}
-  ka-why-trust-card.liquid — Collapsible trust card
+  ka-why-trust-card.liquid — Collapsible trust card (meta-driven)
   Usage: {% render 'ka-why-trust-card', article: article %}
 {% endcomment %}
 
 {%- liquid
   assign trust_metaobject = article.metafields.custom.why_trust_kerala_ayurveda.value
-  assign trust_title = trust_metaobject.title | default: 'Why trust Kerala Ayurveda?'
 -%}
 
-<div class="ka-why-trust-card" id="ka-why-trust-card">
-  <button class="ka-why-trust-header" type="button" aria-expanded="false" aria-controls="ka-why-trust-content">
-    <div class="ka-why-trust-header-left">
-      <div class="ka-why-trust-logo-placeholder">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E4B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-why-trust-icon">
-          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path>
-          <path d="M12 6C12 6 8.5 9.5 8.5 12C8.5 14.5 10.5 16 12 16C13.5 16 15.5 14.5 15.5 12C15.5 9.5 12 6 12 6Z"></path>
-        </svg>
+{%- if trust_metaobject != blank -%}
+  <div class="ka-why-trust-card" id="ka-why-trust-card">
+    <button class="ka-why-trust-header" type="button" aria-expanded="false" aria-controls="ka-why-trust-content">
+      <div class="ka-why-trust-header-left">
+        <div class="ka-why-trust-logo-placeholder">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E4B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-why-trust-icon">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path>
+            <path d="M12 6C12 6 8.5 9.5 8.5 12C8.5 14.5 10.5 16 12 16C13.5 16 15.5 14.5 15.5 12C15.5 9.5 12 6 12 6Z"></path>
+          </svg>
+        </div>
+        {%- if trust_metaobject.title != blank -%}
+          <span class="ka-why-trust-title">{{ trust_metaobject.title }}</span>
+        {%- endif -%}
       </div>
-      <span class="ka-why-trust-title">{{ trust_title }}</span>
-    </div>
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E4B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-why-trust-chevron">
-      <polyline points="6 9 12 15 18 9"></polyline>
-    </svg>
-  </button>
-  <div class="ka-why-trust-content" id="ka-why-trust-content" style="max-height: 0px; overflow: hidden; transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
-    <div class="ka-why-trust-inner">
-      {%- if trust_metaobject != blank and trust_metaobject.content_html != blank -%}
-        <div class="rte">
-          {{ trust_metaobject.content_html }}
-        </div>
-      {%- else -%}
-        <div class="ka-why-trust-default-list">
-          <div class="ka-why-trust-item">
-            <span class="ka-why-trust-num">1.</span>
-            <div class="ka-why-trust-text">
-              <strong>80+ Years of Ayurvedic Expertise</strong>
-              <p>Built on decades of clinical practice and authentic Ayurvedic knowledge.</p>
-            </div>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E4B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-why-trust-chevron">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+    <div class="ka-why-trust-content ka-collapsible-content" id="ka-why-trust-content">
+      <div class="ka-why-trust-inner">
+        {%- if trust_metaobject.content_html != blank -%}
+          <div class="rte">
+            {{ trust_metaobject.content_html }}
           </div>
-          <div class="ka-why-trust-item">
-            <span class="ka-why-trust-num">2.</span>
-            <div class="ka-why-trust-text">
-              <strong>Research-Backed Content</strong>
-              <p>Combines classical Ayurvedic texts with modern research insights.</p>
-            </div>
-          </div>
-          <div class="ka-why-trust-item">
-            <span class="ka-why-trust-num">3.</span>
-            <div class="ka-why-trust-text">
-              <strong>Expert-Curated & Reviewed</strong>
-              <p>Every article is created and validated by qualified Ayurvedic doctors and experts.</p>
-            </div>
-          </div>
-          <div class="ka-why-trust-item">
-            <span class="ka-why-trust-num">4.</span>
-            <div class="ka-why-trust-text">
-              <strong>Multi-Level Accuracy Checks</strong>
-              <p>Content is medically reviewed and cross-verified for safety and reliability.</p>
-            </div>
-          </div>
-          <div class="ka-why-trust-item">
-            <span class="ka-why-trust-num">5.</span>
-            <div class="ka-why-trust-text">
-              <strong>Real Clinical Insights</strong>
-              <p>Based on practitioner experience and real-world outcomes-not just theory.</p>
-            </div>
-          </div>
-          <div class="ka-why-trust-item">
-            <span class="ka-why-trust-num">6.</span>
-            <div class="ka-why-trust-text">
-              <strong>Quality You Can Trust</strong>
-              <p>Backed by GMP-certified processes and a strong R&D ecosystem.</p>
-            </div>
-          </div>
-          <div class="ka-why-trust-item">
-            <span class="ka-why-trust-num">7.</span>
-            <div class="ka-why-trust-text">
-              <strong>Holistic Health Approach</strong>
-              <p>Focuses on root-cause healing, not quick fixes.</p>
-            </div>
-          </div>
-        </div>
-      {%- endif -%}
+        {%- endif -%}
+      </div>
     </div>
   </div>
-</div>
+{%- endif -%}

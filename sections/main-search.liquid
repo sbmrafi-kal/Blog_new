@@ -2,7 +2,7 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-search.css' | asset_url | stylesheet_tag }}
-{{ 'ka-blog-redesign.css' | asset_url | stylesheet_tag }}
+{{ 'ayurhq-journal.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
   {{ 'component-facets.css' | asset_url | stylesheet_tag }}
@@ -13,9 +13,7 @@
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
-<script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
-
-
+<script src="{{ 'ayurhq-search.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign sort_by = search.sort_by | default: search.default_sort_by
@@ -57,7 +55,7 @@
   assign search_term = display_terms | downcase | strip
 -%}
 {%- paginate blogs['news'].articles by 250 -%}
-  {%- if search.performed -%}
+  {%- if search.performed -%
     {%- for art in blogs['news'].articles -%}
       {%- assign art_title = art.title | downcase -%}
       
@@ -101,8 +99,8 @@
 {% paginate search.results by 12 %}
   <div class="template-search{% unless search.performed and matched_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding ka-blog-wrapper">
     <div class="ka-blog-container">
-      <div class="template-search__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}" style="text-align: center; margin-bottom: 40px;">
-        <h1 style="margin-bottom: 12px; font-family: var(--ka-font-heading); color: var(--ka-green);">
+      <div class="template-search__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} ka-search-header-wrap">
+        <h1 class="ka-search-h1">
           {%- if search.performed -%}
             {{- 'templates.search.title' | t -}}
           {%- else -%}
@@ -180,7 +178,7 @@
           {%- endif -%}
         </p>
         {%- if matched_count == 0 -%}
-          <p role="status" style="text-align: center; margin-top: 16px; font-family: var(--ka-font-body); color: var(--ka-muted);">
+          <p role="status" class="ka-search-no-results">
             No articles matched your search.
           </p>
         {%- endif -%}
@@ -224,40 +222,27 @@
               </div>
             </div>
 
-            <div class="product-count-vertical light" role="status">
-              <h2 class="product-count__text text-body">
-                <span id="ProductCountDesktop">
-                  {%- if matched_count -%}
-                    {%- if display_terms != blank -%}
-                      {{ 'templates.search.results_with_count' | t: terms: display_terms, count: matched_count }}
-                    {%- else -%}
-                      {{ 'templates.search.results_with_count' | t: terms: '', count: matched_count | replace: 'for ""', '' | replace: '""', '' }}
+            {%- if search.results_count -%}
+              <div class="product-count light" role="status">
+                <h2 class="product-count__text text-body">
+                  <span id="ProductCountDesktop">
+                    {%- if search.results_count -%}
+                      {{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
                     {%- endif -%}
-                  {%- elsif search.products_count == search.all_products_count -%}
-                    {{ 'products.facets.product_count_simple' | t: count: search.products_count }}
-                  {%- else -%}
-                    {{
-                      'products.facets.product_count'
-                      | t: product_count: search.products_count, count: search.all_products_count
-                    }}
-                  {%- endif -%}
-                </span>
-              </h2>
-              {%- render 'loading-spinner' -%}
-            </div>
+                  </span>
+                </h2>
+                {%- render 'loading-spinner' -%}
+              </div>
+            {%- endif -%}
           </form>
         </facet-filters-form>
       {%- endif -%}
-      <div
-        {% if section.settings.filter_type == 'vertical' %}
-          class="facets-vertical page-width"
-        {% endif %}
-      >
+      <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
         {%- if search.filters != empty -%}
           {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
             <aside
               aria-labelledby="verticalTitle"
-              class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+              class="facets-wrapper{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
               id="main-search-filters"
               data-id="{{ section.id }}"
             >
@@ -272,213 +257,93 @@
           {%- endif -%}
         {%- endif -%}
         <div class="product-grid-container" id="ProductGridContainer">
-          {%- if search.results.size == 0 and search.filters != empty -%}
-            <div
-              class="template-search__results collection collection--empty{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
-              id="product-grid"
-              data-id="{{ section.id }}"
-            >
-              <div class="loading-overlay gradient"></div>
-              <div class="title-wrapper center">
-                <h2 class="title title--primary">
-                  {{ 'sections.collection_template.empty' | t -}}
-                  <br>
-                  {{
-                    'sections.collection_template.use_fewer_filters_html'
-                    | t: link: search_url, class: 'underlined-link link'
-                  }}
-                </h2>
-              </div>
-            </div>
-          {%- else -%}
-            <div
-              class="template-search__results collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
-              id="product-grid"
-              data-id="{{ section.id }}"
-            >
-              <div class="loading-overlay gradient"></div>
+          {%- if matched_count > 0 -%}
+            {%- liquid
+              # Check if there are articles in the search results
+              assign has_articles = false
+              if matched_count > 0
+                assign has_articles = true
+              endif
+            -%}
+
+            {%- if has_articles -%}
+              {%- liquid
+                assign selected_blog = blogs['news']
+                assign topics = selected_blog.metafields.custom.topics.value
+              -%}
+              {%- if search_term == blank and topics != blank -%}
+                <nav class="ka-blog-filter-bar ka-blog-filter-bar--search" aria-label="Search page filters">
+                  <a class="active" href="{{ routes.search_url }}?type=article&q=*&options[prefix]=last">All</a>
+                  {%- for topic in topics -%}
+                    {%- assign topic_title = topic.title.value | default: topic.title -%}
+                    {%- assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title -%}
+                    {%- assign topic_tag_mapped = topic_tag | handleize -%}
+                    {%- assign topic_handle = topic.system.handle | default: topic.handle | handleize -%}
+                    {%- assign topic_url = selected_blog.url | append: '/tagged/' | append: topic_tag_mapped | append: '?topic=' | append: topic_handle -%}
+                    <a href="{{ topic_url }}">{{ topic_title }}</a>
+                  {%- endfor -%}
+                </nav>
+              {%- endif -%}
 
               {%- liquid
-                assign has_articles = false
-                assign has_others = false
-                if matched_count > 0
-                  assign has_articles = true
+                # Parse page parameter from pageurl
+                assign page_url = content_header | split: '"pageurl":"' | last | split: '"' | first
+                assign current_page = 1
+                if page_url contains 'page='
+                  assign current_page = page_url | split: 'page=' | last | split: '&' | first | plus: 0
                 endif
-                for item in search.results
-                  if item.object_type != 'article'
-                    assign has_others = true
-                  endif
-                endfor
+                if current_page < 1
+                  assign current_page = 1
+                endif
+                
+                assign limit = 12
+                assign offset = current_page | minus: 1 | times: limit
+                assign total_items = matched_handles.size
+                assign total_pages = total_items | plus: limit | minus: 1 | divided_by: limit
               -%}
 
-              {%- if has_articles -%}
-                {%- liquid
-                  assign selected_blog = blogs['news']
-                  assign topics = selected_blog.metafields.custom.topics.value
-                -%}
-                {%- if search_term == blank and topics != blank -%}
-                  <nav class="ka-blog-filter-bar" aria-label="Search page filters" style="margin-bottom: 24px;">
-                    <a class="active" href="{{ routes.search_url }}?type=article&q=*&options[prefix]=last">All</a>
-                    {%- for topic in topics -%}
-                      {%- assign topic_title = topic.title.value | default: topic.title -%}
-                      {%- assign topic_tag = topic.article_filter_tag.value | default: topic.article_filter_tag | default: topic_title -%}
-                      {%- assign topic_tag_mapped = topic_tag | handleize -%}
-                      {%- assign raw_tag_handle = topic_tag_mapped -%}
-                      {%- if raw_tag_handle contains 'digestion' or raw_tag_handle contains 'digest' or raw_tag_handle contains 'gut' -%}
-                        {%- assign topic_tag_mapped = 'digestion' -%}
-                      {%- elsif raw_tag_handle contains 'sleep' or raw_tag_handle contains 'stress' or raw_tag_handle contains 'mind' -%}
-                        {%- assign topic_tag_mapped = 'sleep' -%}
-                      {%- elsif raw_tag_handle contains 'joints' or raw_tag_handle contains 'pain' or raw_tag_handle contains 'bone' -%}
-                        {%- assign topic_tag_mapped = 'pain-joints' -%}
-                      {%- elsif raw_tag_handle contains 'skin' or raw_tag_handle contains 'hair' or raw_tag_handle contains 'beauty' -%}
-                        {%- assign topic_tag_mapped = 'skin-hair' -%}
-                      {%- elsif raw_tag_handle contains 'women' -%}
-                        {%- assign topic_tag_mapped = 'women-s-health' -%}
-                      {%- elsif raw_tag_handle contains 'men' -%}
-                        {%- assign topic_tag_mapped = 'men-s-health' -%}
-                      {%- elsif raw_tag_handle contains 'kids' or raw_tag_handle contains 'children' -%}
-                        {%- assign topic_tag_mapped = 'kids' -%}
-                      {%- elsif raw_tag_handle contains 'elder' or raw_tag_handle contains 'old' -%}
-                        {%- assign topic_tag_mapped = 'elders' -%}
-                      {%- elsif raw_tag_handle contains 'herb' -%}
-                        {%- assign topic_tag_mapped = 'herbs' -%}
-                      {%- elsif raw_tag_handle contains 'weight' -%}
-                        {%- assign topic_tag_mapped = 'weight' -%}
-                      {%- elsif raw_tag_handle contains 'immunity' -%}
-                        {%- assign topic_tag_mapped = 'immunity' -%}
-                      {%- elsif raw_tag_handle contains 'detox' -%}
-                        {%- assign topic_tag_mapped = 'detox' -%}
-                      {%- endif -%}
-                      {%- assign topic_url = selected_blog.url | append: '/tagged/' | append: topic_tag_mapped -%}
-                      <a href="{{ topic_url }}">{{ topic_title }}</a>
-                    {%- endfor -%}
-                  </nav>
-                {%- endif -%}
-
-                {%- liquid
-                  assign current_page = 1
-                  if page_url contains 'page='
-                    assign current_page = page_url | split: 'page=' | last | split: '&' | first | plus: 0
-                  endif
-                  if current_page < 1
-                    assign current_page = 1
-                  endif
-                  
-                  assign limit = 12
-                  assign offset = current_page | minus: 1 | times: limit
-                  assign total_items = matched_handles.size
-                  assign total_pages = total_items | plus: limit | minus: 1 | divided_by: limit
-                -%}
-
-                <div class="ka-blog-article-grid" style="margin-bottom: 40px;">
-                  {%- for handle in matched_handles limit: limit offset: offset -%}
-                    {%- assign item = articles[handle] -%}
-                    {%- if item != blank -%}
-                      {%- render 'ka-blog-card', article: item -%}
-                    {%- endif -%}
-                  {%- endfor -%}
-                </div>
-
-              {%- endif -%}
-
-              {%- if has_others -%}
-                <ul
-                  class="grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
-                  role="list"
-                >
-                  {%- assign skip_card_product_styles = false -%}
-                  {%- for item in search.results -%}
-                    {%- if item.object_type != 'article' -%}
-                      {% assign lazy_load = false %}
-                      {%- if forloop.index > 2 -%}
-                        {%- assign lazy_load = true -%}
-                      {%- endif -%}
-
-                      <li
-                        class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                        {% if settings.animations_reveal_on_scroll %}
-                          data-cascade
-                        {% endif %}
-                      >
-                        {%- case item.object_type -%}
-                          {%- when 'product' -%}
-                            {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
-                            {% render 'card-product',
-                              card_product: item,
-                              media_aspect_ratio: section.settings.image_ratio,
-                              image_shape: section.settings.image_shape,
-                              show_secondary_image: section.settings.show_secondary_image,
-                              show_vendor: section.settings.show_vendor,
-                              show_rating: section.settings.show_rating,
-                              lazy_load: lazy_load,
-                              skip_styles: skip_card_product_styles,
-                              product_view_context: 'search'
-                            %}
-                            {%- assign skip_card_product_styles = true -%}
-                          {%- when 'page' -%}
-                            <div class="article-card-wrapper card-wrapper underline-links-hover">
-                              <div
-                                class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}"
-                                style="--ratio-percent: 100%;"
-                              >
-                                <div class="card__content">
-                                  <div class="card__information">
-                                    <h3 class="card__heading">
-                                      <a href="{{ item.url }}" class="full-unstyled-link">
-                                        {{ item.title | truncate: 50 | escape }}
-                                      </a>
-                                    </h3>
-                                  </div>
-                                  <div class="card__badge {{ settings.badge_position }}">
-                                    <span class="badge color-{{ settings.color_schemes | first }}">
-                                      {{- 'templates.search.page' | t -}}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                        {%- endcase -%}
-                      </li>
-                    {%- endif -%}
-                  {%- endfor -%}
-                </ul>
-              {%- endif -%}
-              {%- if paginate.pages > 1 -%}
-                <div class="ka-blog-pagination">
-                  {%- if paginate.previous -%}
-                    <a href="{{ paginate.previous.url }}">←</a>
+              <div class="ka-blog-article-grid ka-blog-article-grid--search">
+                {%- for handle in matched_handles limit: limit offset: offset -%}
+                  {%- assign item = articles[handle] -%}
+                  {%- if item != blank -%}
+                    {%- render 'ka-blog-card', article: item -%}
                   {%- endif -%}
-                  {%- for part in paginate.parts -%}
-                    {%- if part.is_link -%}
-                      <a href="{{ part.url }}">{{ part.title }}</a>
+                {%- endfor -%}
+              </div>
+
+              {%- if total_pages > 1 -%}
+                <nav class="ka-blog-pagination" aria-label="Search pagination">
+                  {%- if current_page > 1 -%}
+                    {%- assign prev_page = current_page | minus: 1 -%}
+                    <a href="{{ search_url }}&page={{ prev_page }}#ProductGridContainer">← Previous</a>
+                  {%- endif -%}
+                  {%- for page_num in (1..total_pages) -%}
+                    {%- if page_num == current_page -%}
+                      <span class="current">{{ page_num }}</span>
                     {%- else -%}
-                      {%- if part.title == paginate.current_page -%}
-                        <span class="current">{{ part.title }}</span>
-                      {%- else -%}
-                        <span class="deco">{{ part.title }}</span>
-                      {%- endif -%}
+                      <a href="{{ search_url }}&page={{ page_num }}#ProductGridContainer">{{ page_num }}</a>
                     {%- endif -%}
                   {%- endfor -%}
-                  {%- if paginate.next -%}
-                    <a href="{{ paginate.next.url }}">→</a>
+                  {%- if current_page < total_pages -%}
+                    {%- assign next_page = current_page | plus: 1 -%}
+                    <a href="{{ search_url }}&page={{ next_page }}#ProductGridContainer">Next →</a>
                   {%- endif -%}
-                </div>
+                </nav>
               {%- endif -%}
+            {%- endif -%}
+          {%- else -%}
+            <div class="template-search__results collection" id="product-grid" data-id="{{ section.id }}">
+              <div class="loading-overlay gradient"></div>
+              <div class="title-wrapper-with-link" style="display: none;">
+                <h2 class="title">{{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count }}</h2>
+              </div>
             </div>
           {%- endif -%}
         </div>
       </div>
     {%- endif -%}
-    </div>
   </div>
 {% endpaginate %}
-{% if section.settings.image_shape == 'arch' %}
-  {{ 'mask-arch.svg' | inline_asset_content }}
-{%- endif -%}
-
-{%- comment -%} ============ CHATBOT ============ {%- endcomment -%}
-{%- render 'ka-chatbot' -%}
-<script src="{{ 'ka-blog-redesign.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
@@ -490,57 +355,21 @@
       "type": "range",
       "id": "columns_desktop",
       "min": 1,
-      "max": 6,
+      "max": 5,
       "step": 1,
       "default": 4,
       "label": "t:sections.main-search.settings.columns_desktop.label"
     },
-    {
-      "type": "select",
-      "id": "columns_mobile",
-      "default": "2",
-      "label": "t:sections.main-search.settings.columns_mobile.label",
-      "options": [
-        {
-          "value": "1",
-          "label": "t:sections.main-search.settings.columns_mobile.options__1.label"
-        },
-        {
-          "value": "2",
-          "label": "t:sections.main-search.settings.columns_mobile.options__2.label"
-        }
-      ]
-    },    
     {
       "type": "header",
       "content": "t:sections.main-search.settings.header__1.content"
     },
     {
       "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.main-search.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.main-search.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.main-search.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.main-search.settings.image_ratio.label"
-    },
-    {
-      "type": "select",
       "id": "image_shape",
       "options": [
         {
-          "value": "default",
+          "value": "regular",
           "label": "t:sections.all.image_shape.options__1.label"
         },
         {
@@ -572,7 +401,7 @@
           "label": "t:sections.all.image_shape.options__8.label"
         }
       ],
-      "default": "default",
+      "default": "regular",
       "label": "t:sections.all.image_shape.label"
     },
     {
@@ -596,14 +425,14 @@
     },
     {
       "type": "header",
-      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+      "content": "t:sections.main-search.settings.header__2.content",
+      "info": "t:sections.main-search.settings.header__2.info"
     },
     {
       "type": "checkbox",
       "id": "enable_filtering",
       "default": true,
-      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
-      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+      "label": "t:sections.main-search.settings.enable_filtering.label"
     },
     {
       "type": "select",
@@ -611,41 +440,25 @@
       "options": [
         {
           "value": "horizontal",
-          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__1.label"
+          "label": "t:sections.main-search.settings.filter_type.options__1.label"
         },
         {
           "value": "vertical",
-          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label"
+          "label": "t:sections.main-search.settings.filter_type.options__2.label"
         },
         {
           "value": "drawer",
-          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
+          "label": "t:sections.main-search.settings.filter_type.options__3.label"
         }
       ],
       "default": "horizontal",
-      "label": "t:sections.main-collection-product-grid.settings.filter_type.label"
+      "label": "t:sections.main-search.settings.filter_type.label"
     },
     {
       "type": "checkbox",
       "id": "enable_sorting",
       "default": true,
-      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.main-search.settings.header__2.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "article_show_date",
-      "default": true,
-      "label": "t:sections.main-search.settings.article_show_date.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "article_show_author",
-      "default": false,
-      "label": "t:sections.main-search.settings.article_show_author.label"
+      "label": "t:sections.main-search.settings.enable_sorting.label"
     },
     {
       "type": "header",
@@ -658,8 +471,8 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "default": 36,
+      "label": "t:sections.all.padding.padding_top"
     },
     {
       "type": "range",
@@ -668,8 +481,8 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "default": 36,
+      "label": "t:sections.all.padding.padding_bottom"
     }
   ]
 }

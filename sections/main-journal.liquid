@@ -1,10 +1,10 @@
 {% comment %}
-  main-blog-redesign.liquid — Blog landing page section
+  main-blog-redesign.liquid — Blog landing page section (meta-driven)
   Renders: hero, subnav, care paths, featured article, topics, latest articles, consult CTA
   Template: blog.ayurveda.json
 {% endcomment %}
 
-{{ 'ka-blog-redesign.css' | asset_url | stylesheet_tag }}
+{{ 'ayurhq-journal.css' | asset_url | stylesheet_tag }}
 {%- render 'custom-article-font' -%}
 
 {%- liquid
@@ -18,46 +18,48 @@
 {%- unless current_tags -%}
 <div class="ka-blog-wrapper">
   {%- comment -%} ============ SUBNAV ============ {%- endcomment -%}
-  <div class="ka-blog-subnav-wrap">
-    <div class="ka-blog-container">
-      <nav class="ka-blog-subnav" aria-label="Blog section navigation">
-        {%- liquid
-          assign subnav_overview = selected_blog.metafields.custom.subnav_overview | default: 'Overview'
-          assign subnav_care_paths = selected_blog.metafields.custom.subnav_care_paths | default: 'Care paths'
-          assign subnav_topics = selected_blog.metafields.custom.subnav_topics | default: 'Topics'
-          assign subnav_latest = selected_blog.metafields.custom.subnav_latest | default: 'Latest articles'
-          assign subnav_consult = selected_blog.metafields.custom.subnav_consult | default: 'Consult'
-        -%}
-        <a class="active" href="#overview">{{ subnav_overview }}</a>
-        <a href="#care-paths">{{ subnav_care_paths }}</a>
-        <a href="#topics">{{ subnav_topics }}</a>
-        <a href="#latest">{{ subnav_latest }}</a>
-        <a href="#consult">{{ subnav_consult }}</a>
-      </nav>
+  {%- liquid
+    assign subnav_overview = selected_blog.metafields.custom.subnav_overview
+    assign subnav_care_paths = selected_blog.metafields.custom.subnav_care_paths
+    assign subnav_topics = selected_blog.metafields.custom.subnav_topics
+    assign subnav_latest = selected_blog.metafields.custom.subnav_latest
+    assign subnav_consult = selected_blog.metafields.custom.subnav_consult
+  -%}
+  {%- if subnav_overview != blank or subnav_care_paths != blank or subnav_topics != blank or subnav_latest != blank or subnav_consult != blank -%}
+    <div class="ka-blog-subnav-wrap">
+      <div class="ka-blog-container">
+        <nav class="ka-blog-subnav" aria-label="Blog section navigation">
+          {%- if subnav_overview != blank -%}<a class="active" href="#overview">{{ subnav_overview }}</a>{%- endif -%}
+          {%- if subnav_care_paths != blank -%}<a href="#care-paths">{{ subnav_care_paths }}</a>{%- endif -%}
+          {%- if subnav_topics != blank -%}<a href="#topics">{{ subnav_topics }}</a>{%- endif -%}
+          {%- if subnav_latest != blank -%}<a href="#latest">{{ subnav_latest }}</a>{%- endif -%}
+          {%- if subnav_consult != blank -%}<a href="#consult">{{ subnav_consult }}</a>{%- endif -%}
+        </nav>
+      </div>
     </div>
-  </div>
+  {%- endif -%}
 
   <section class="ka-blog-hero" id="overview">
     <div class="ka-blog-container">
       <div class="ka-blog-hero-shell">
         <div class="ka-blog-hero-content">
           {%- liquid
-            assign hero_eyebrow = selected_blog.metafields.custom.hero_eyebrow | default: section.settings.hero_eyebrow | default: 'AYURVEDA LIBRARY'
+            assign hero_eyebrow = selected_blog.metafields.custom.hero_eyebrow | default: section.settings.hero_eyebrow
             assign hero_title = selected_blog.metafields.custom.hero_title | default: section.settings.hero_title | default: selected_blog.title
-            assign hero_subtitle = selected_blog.metafields.custom.hero_subtitle | default: section.settings.hero_subtitle | default: 'Classical Ayurvedic wisdom for herbs, digestion, immunity, skin, hair, stress, sleep, detox, and everyday wellness.'
-            assign article_path = blog_handle | append: '/what-is-ayurveda'
-            assign hero_image = articles[article_path].image | default: selected_blog.metafields.custom.hero_image.value | default: selected_blog.metafields.custom.hero_image
+            assign hero_subtitle = selected_blog.metafields.custom.hero_subtitle | default: section.settings.hero_subtitle
+            assign hero_image = selected_blog.metafields.custom.hero_image.value | default: selected_blog.metafields.custom.hero_image
+            assign hero_cta_1 = selected_blog.metafields.custom.hero_cta_1
+            assign hero_cta_2 = selected_blog.metafields.custom.hero_cta_2
           -%}
-          <p class="ka-blog-eyebrow">{{ hero_eyebrow }}</p>
-          <h1>
-            {%- assign hero_title_stripped = hero_title | strip -%}
-            {%- if hero_title_stripped == "Kerala Ayurveda Wellness Journal" -%}
-              Kerala Ayurveda<br>Wellness Journal
-            {%- else -%}
-              {{ hero_title }}
-            {%- endif -%}
-          </h1>
-          <p class="ka-blog-lead">{{ hero_subtitle }}</p>
+          {%- if hero_eyebrow != blank -%}
+            <p class="ka-blog-eyebrow">{{ hero_eyebrow }}</p>
+          {%- endif -%}
+          {%- if hero_title != blank -%}
+            <h1>{{ hero_title }}</h1>
+          {%- endif -%}
+          {%- if hero_subtitle != blank -%}
+            <p class="ka-blog-lead">{{ hero_subtitle }}</p>
+          {%- endif -%}
           
           {%- comment -%} Search Bar {%- endcomment -%}
           <form action="{{ routes.search_url }}" method="get" role="search" class="ka-blog-hero-search">
@@ -79,62 +81,90 @@
             </div>
           </form>
 
-          <div class="ka-blog-hero-actions">
-            <a class="ka-blog-btn" href="#topics">{{ selected_blog.metafields.custom.hero_cta_1 | default: 'Explore topics' }}</a>
-            <a class="ka-blog-btn ka-blog-btn--secondary" href="#latest">{{ selected_blog.metafields.custom.hero_cta_2 | default: 'Latest articles' }}</a>
-          </div>
-        </div>
-        <div class="ka-blog-hero-image-wrap">
-          {%- if hero_image != blank -%}
-            <img src="{{ hero_image | image_url: width: 800 }}" alt="{{ hero_title | escape }}" loading="eager" fetchpriority="high" width="800">
-          {%- else -%}
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="{{ hero_title | escape }}" loading="eager" fetchpriority="high" width="800">
+          {%- if hero_cta_1 != blank or hero_cta_2 != blank -%}
+            <div class="ka-blog-hero-actions">
+              {%- if hero_cta_1 != blank -%}
+                <a class="ka-blog-btn" href="#topics">{{ hero_cta_1 }}</a>
+              {%- endif -%}
+              {%- if hero_cta_2 != blank -%}
+                <a class="ka-blog-btn ka-blog-btn--secondary" href="#latest">{{ hero_cta_2 }}</a>
+              {%- endif -%}
+            </div>
           {%- endif -%}
         </div>
+        {%- if hero_image != blank -%}
+          <div class="ka-blog-hero-image-wrap">
+            <img src="{{ hero_image | image_url: width: 800 }}" alt="{{ hero_title | escape }}" loading="eager" fetchpriority="high" width="800" height="500">
+          </div>
+        {%- endif -%}
       </div>
     </div>
   </section>
 
   {%- comment -%} ============ CARE PATHS ============ {%- endcomment -%}
-  <section class="ka-blog-section" id="care-paths">
-    <div class="ka-blog-container">
-      <div class="ka-blog-section-head">
-        <div>
-          <p class="ka-blog-eyebrow">{{ selected_blog.metafields.custom.care_paths_eyebrow | default: 'Start here' }} <span class="ka-hindi">{{ selected_blog.metafields.custom.care_paths_eyebrow_hindi | default: '· शुरू करें' }}</span></p>
-          <h2>{{ selected_blog.metafields.custom.care_paths_title | default: 'Care paths' }}</h2>
+  {%- liquid
+    assign care_paths_eyebrow = selected_blog.metafields.custom.care_paths_eyebrow
+    assign care_paths_eyebrow_hindi = selected_blog.metafields.custom.care_paths_eyebrow_hindi
+    assign care_paths_title = selected_blog.metafields.custom.care_paths_title
+    assign care_paths_intro_title = selected_blog.metafields.custom.care_paths_intro_title
+    assign care_paths_intro_text = selected_blog.metafields.custom.care_paths_intro_text
+    assign care_paths = selected_blog.metafields.custom.care_paths.value
+  -%}
+  {%- if care_paths != blank and care_paths.size > 0 -%}
+    <section class="ka-blog-section" id="care-paths">
+      <div class="ka-blog-container">
+        <div class="ka-blog-section-head">
+          <div>
+            <p class="ka-blog-eyebrow">
+              {{ care_paths_eyebrow }}
+              {%- if care_paths_eyebrow_hindi != blank -%}
+                <span class="ka-hindi"> · {{ care_paths_eyebrow_hindi }}</span>
+              {%- endif -%}
+            </p>
+            {%- if care_paths_title != blank -%}
+              <h2>{{ care_paths_title }}</h2>
+            {%- endif -%}
+          </div>
         </div>
-      </div>
 
-      <div class="ka-blog-care-panel">
-        <div class="ka-blog-care-intro">
-          <h3>{{ selected_blog.metafields.custom.care_paths_intro_title | default: 'Choose a health concern' }}</h3>
-          <p class="ka-blog-lead">{{ selected_blog.metafields.custom.care_paths_intro_text | default: 'Each path groups Ayurvedic articles around a specific area of wellness, so you can read what matters to you.' }}</p>
-        </div>
-        <div class="ka-blog-path-list">
-          {%- liquid
-            assign care_paths = selected_blog.metafields.custom.care_paths.value
-          -%}
-          {%- if care_paths != blank and care_paths.size > 0 -%}
+        <div class="ka-blog-care-panel">
+          {%- if care_paths_intro_title != blank or care_paths_intro_text != blank -%}
+            <div class="ka-blog-care-intro">
+              {%- if care_paths_intro_title != blank -%}
+                <h3>{{ care_paths_intro_title }}</h3>
+              {%- endif -%}
+              {%- if care_paths_intro_text != blank -%}
+                <p class="ka-blog-lead">{{ care_paths_intro_text }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          <div class="ka-blog-path-list">
             {%- for care_path in care_paths -%}
               {%- render 'ka-care-path-card', care_path: care_path, blog: selected_blog -%}
             {%- endfor -%}
-          {%- endif -%}
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  {%- endif -%}
 
   {%- comment -%} ============ FEATURED ARTICLE ============ {%- endcomment -%}
   {%- liquid
     assign featured_article = selected_blog.metafields.custom.featured_article.value | default: selected_blog.metafields.custom.featured_article
+    assign featured_eyebrow = selected_blog.metafields.custom.featured_eyebrow
+    assign featured_title = selected_blog.metafields.custom.featured_title
   -%}
   {%- if featured_article -%}
     <section class="ka-blog-section--tight">
       <div class="ka-blog-container">
         <div class="ka-blog-section-head">
           <div>
-            <p class="ka-blog-eyebrow">{{ selected_blog.metafields.custom.featured_eyebrow | default: 'Featured' }}</p>
-            <h2>{{ selected_blog.metafields.custom.featured_title | default: "Editor's pick" }}</h2>
+            {%- if featured_eyebrow != blank -%}
+              <p class="ka-blog-eyebrow">{{ featured_eyebrow }}</p>
+            {%- endif -%}
+            {%- if featured_title != blank -%}
+              <h2>{{ featured_title }}</h2>
+            {%- endif -%}
           </div>
         </div>
         {%- render 'ka-featured-article-card', article: featured_article -%}
@@ -143,23 +173,33 @@
   {%- endif -%}
 
   {%- comment -%} ============ TOPICS GRID ============ {%- endcomment -%}
-  <section class="ka-blog-section" id="topics">
-    <div class="ka-blog-container">
-      <div class="ka-blog-topic-carousel-outer">
-        <div class="ka-blog-topic-sticky-wrap">
-          <div class="ka-blog-section-head" style="margin-bottom: 12px;">
-            <div>
-              <p class="ka-blog-eyebrow">{{ selected_blog.metafields.custom.topics_eyebrow | default: 'Browse by topic' }} <span class="ka-hindi">{{ selected_blog.metafields.custom.topics_eyebrow_hindi | default: '· विषय' }}</span></p>
-              <h2>{{ selected_blog.metafields.custom.topics_title | default: 'Topics' }}</h2>
+  {%- liquid
+    assign topics_eyebrow = selected_blog.metafields.custom.topics_eyebrow
+    assign topics_eyebrow_hindi = selected_blog.metafields.custom.topics_eyebrow_hindi
+    assign topics_title = selected_blog.metafields.custom.topics_title
+    assign topics = selected_blog.metafields.custom.topics.value
+    assign batch_size = 8
+  -%}
+  {%- if topics != blank and topics.size > 0 -%}
+    <section class="ka-blog-section" id="topics">
+      <div class="ka-blog-container">
+        <div class="ka-blog-topic-carousel-outer">
+          <div class="ka-blog-topic-sticky-wrap">
+            <div class="ka-blog-section-head ka-section-head--tight">
+              <div>
+                <p class="ka-blog-eyebrow">
+                  {{ topics_eyebrow }}
+                  {%- if topics_eyebrow_hindi != blank -%}
+                    <span class="ka-hindi"> · {{ topics_eyebrow_hindi }}</span>
+                  {%- endif -%}
+                </p>
+                {%- if topics_title != blank -%}
+                  <h2>{{ topics_title }}</h2>
+                {%- endif -%}
+              </div>
             </div>
-          </div>
-          <div class="ka-blog-topic-carousel-container">
-            <div class="ka-blog-topic-carousel-track">
-              {%- liquid
-                assign topics = selected_blog.metafields.custom.topics.value
-                assign batch_size = 8
-              -%}
-              {%- if topics != blank and topics.size > 0 -%}
+            <div class="ka-blog-topic-carousel-container">
+              <div class="ka-blog-topic-carousel-track">
                 {%- for topic in topics -%}
                   {%- assign modulo = forloop.index0 | modulo: batch_size -%}
                   {%- if modulo == 0 -%}
@@ -174,10 +214,8 @@
                     </div>
                   {%- endif -%}
                 {%- endfor -%}
-              {%- endif -%}
+              </div>
             </div>
-          </div>
-          {%- if topics != blank and topics.size > 0 -%}
             {%- assign total_decks = topics.size | plus: batch_size | minus: 1 | divided_by: batch_size -%}
             {%- if total_decks > 1 -%}
               <div class="ka-blog-topic-nav" aria-label="Topics carousel navigation">
@@ -195,19 +233,24 @@
                 </button>
               </div>
             {%- endif -%}
-          {%- endif -%}
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  {%- endif -%}
 
   {%- comment -%} ============ LATEST ARTICLES ============ {%- endcomment -%}
+  {%- liquid
+    assign latest_title = selected_blog.metafields.custom.latest_title
+  -%}
   <section class="ka-blog-section" id="latest">
     <div class="ka-blog-container">
       <div class="ka-blog-section-head">
         <div>
           <p class="ka-blog-eyebrow">{{ selected_blog.articles_count }} articles</p>
-          <h2>{{ selected_blog.metafields.custom.latest_title | default: 'Latest from the journal' }}</h2>
+          {%- if latest_title != blank -%}
+            <h2>{{ latest_title }}</h2>
+          {%- endif -%}
         </div>
         {%- if selected_blog.articles_count > 6 -%}
           <a class="ka-blog-btn ka-blog-btn--outline" href="{{ routes.search_url }}?type=article&q=*&options[prefix]=last">View all</a>
@@ -253,7 +296,7 @@
 
 </div>
 
-<script src="{{ 'ka-blog-redesign.js' | asset_url }}" defer></script>
+<script src="{{ 'ayurhq-journal.js' | asset_url }}" defer></script>
 {%- endunless -%}
 
 {% schema %}
@@ -357,7 +400,6 @@
         }
       ]
     }
-  ],
-  "templates": ["blog", "index"]
+  ]
 }
 {% endschema %}

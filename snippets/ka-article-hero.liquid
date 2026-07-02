@@ -1,5 +1,5 @@
 {% comment %}
-  ka-article-hero.liquid — Individual article hero layout
+  ka-article-hero.liquid — Individual article hero layout (meta-driven)
   Usage: {% render 'ka-article-hero', article: article, blog: blog %}
 {% endcomment %}
 
@@ -12,24 +12,24 @@
   assign reviewer_profile = hero_article.metafields.custom.reviewed_by_profile.value
   assign reviewer_name = reviewer_profile.name | default: hero_article.metafields.custom.reviewed_by
   assign raw_read_time = hero_article.metafields.custom.read_time.value | default: hero_article.metafields.custom.read_time | default: hero_article.metafields.custom.read_time_minutes
+  assign min_read_label = blog.metafields.custom.min_read_label
+  assign display_read_time = ''
+
   if raw_read_time != blank
     if raw_read_time contains 'min' or raw_read_time contains 'read'
       assign display_read_time = raw_read_time
+    elsif min_read_label != blank
+      assign display_read_time = raw_read_time | append: ' ' | append: min_read_label
     else
-      assign display_read_time = raw_read_time | append: ' mins read'
+      assign display_read_time = raw_read_time
     endif
-  else
-    assign word_count = hero_article.content | strip_html | split: ' ' | size
-    assign est_minutes = word_count | divided_by: 200 | at_least: 1
-    assign display_read_time = est_minutes | append: ' mins read'
   endif
-  assign last_reviewed = hero_article.metafields.custom.last_reviewed_at
+
   assign hero_image = hero_article.metafields.custom.hero_image | default: hero_article.image
   assign hero_caption = hero_article.metafields.custom.hero_image_caption
-  assign by_label = blog.metafields.custom.by_label | default: 'By'
-  assign min_read_label = blog.metafields.custom.min_read_label | default: 'min read'
-  assign reviewed_by_prefix = blog.metafields.custom.reviewed_by_label | default: 'Reviewed by'
-  assign updated_prefix = blog.metafields.custom.updated_label | default: 'Updated'
+  assign by_label = blog.metafields.custom.by_label
+  assign reviewed_by_prefix = blog.metafields.custom.reviewed_by_label
+  assign updated_prefix = blog.metafields.custom.updated_label
 -%}
 
 <article class="ka-article-hero" aria-label="Article introduction">
@@ -45,13 +45,17 @@
       {%- assign published_date = hero_article.published_at | default: hero_article.created_at -%}
       <div class="ka-article-dates-share">
         <div class="ka-article-dates">
-          <span><b>Published Date:</b> {{ published_date | date: "%d %b, %Y" }}</span>
-          <span class="ka-article-date-sep">|</span>
-          <span><b>Last Modified Date:</b> {{ modified_date | date: "%d %b, %Y" }}</span>
+          {%- if published_date -%}
+            <span><b>Published Date:</b> {{ published_date | date: "%d %b, %Y" }}</span>
+          {%- endif -%}
+          {%- if modified_date -%}
+            <span class="ka-article-date-sep">|</span>
+            <span><b>Last Modified Date:</b> {{ modified_date | date: "%d %b, %Y" }}</span>
+          {%- endif -%}
           {%- if display_read_time != blank -%}
             <span class="ka-article-date-sep">|</span>
-            <span class="ka-article-read-time" style="display: inline-flex; align-items: center; gap: 4px;">
-              <svg class="ka-eye-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;">
+            <span class="ka-article-read-time ka-read-time-inline">
+              <svg class="ka-eye-icon ka-eye-icon-middle" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
