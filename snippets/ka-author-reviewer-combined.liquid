@@ -1,19 +1,19 @@
 {%- liquid
-  assign author_name_display = author_profile.name.value
-  assign author_degree = author_profile.degree.value | default: author_profile.qualifications_abbreviation.value
-  assign author_qual = author_profile.qualifications.value | default: author_profile.designation.value
+  assign author_name_display = author_profile.name.value | default: author_profile.name
+  assign author_degree = author_profile.degree.value | default: author_profile.degree | default: author_profile.qualifications_abbreviation.value | default: author_profile.qualifications_abbreviation
+  assign author_qual = author_profile.qualifications.value | default: author_profile.qualifications | default: author_profile.designation.value | default: author_profile.designation
   assign author_role = 'WRITTEN BY'
-  assign author_photo = author_profile.photo.value | default: author_profile.image.value
+  assign author_photo = author_profile.photo.value | default: author_profile.photo | default: author_profile.image.value | default: author_profile.image
   assign author_photo_url = ''
   if author_photo != blank
     assign author_photo_url = author_photo | image_url: width: 320
   endif
 
-  assign reviewer_name_display = reviewer_profile.name.value
-  assign reviewer_degree = reviewer_profile.degree.value | default: reviewer_profile.qualifications_abbreviation.value
-  assign reviewer_qual = reviewer_profile.qualifications.value | default: reviewer_profile.designation.value
+  assign reviewer_name_display = reviewer_profile.name.value | default: reviewer_profile.name
+  assign reviewer_degree = reviewer_profile.degree.value | default: reviewer_profile.degree | default: reviewer_profile.qualifications_abbreviation.value | default: reviewer_profile.qualifications_abbreviation
+  assign reviewer_qual = reviewer_profile.qualifications.value | default: reviewer_profile.qualifications | default: reviewer_profile.designation.value | default: reviewer_profile.designation
   assign reviewer_role = 'REVIEWED BY'
-  assign reviewer_photo = reviewer_profile.photo.value | default: reviewer_profile.image.value
+  assign reviewer_photo = reviewer_profile.photo.value | default: reviewer_profile.photo | default: reviewer_profile.image.value | default: reviewer_profile.image
   assign reviewer_photo_url = ''
   if reviewer_photo != blank
     assign reviewer_photo_url = reviewer_photo | image_url: width: 320

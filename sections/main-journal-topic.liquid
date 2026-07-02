@@ -57,12 +57,11 @@
         endif
       endfor
     endif
-
     # Fallback to current_tag match if not found by query param
     if topic_metaobject == nil and path_metaobject == nil
       for topic in topics
-        assign t_tag = topic.article_filter_tag.value | downcase | strip
-        assign t_title = topic.title.value | downcase | strip
+        assign t_tag = topic.article_filter_tag | downcase | strip
+        assign t_title = topic.title | downcase | strip
         assign c_tag = current_tag | downcase | strip
         if t_tag == c_tag or t_title == c_tag
           assign topic_metaobject = topic
@@ -72,18 +71,18 @@
     endif
   endif
 
-  assign topic_title = topic_metaobject.title.value | default: topic_metaobject.title | default: current_tag
+  assign topic_title = topic_metaobject.title | default: current_tag
   assign topic_handle = topic_metaobject.system.handle | default: topic_metaobject.handle | default: topic_param | default: topic_title | handleize
-  assign topic_description = topic_metaobject.description.value | default: topic_metaobject.description
-  assign eyebrow_label = blog.metafields.custom.topic_hero_eyebrow.value | default: blog.metafields.custom.topic_hero_eyebrow
-  assign topic_image = topic_metaobject.image.value
+  assign topic_description = topic_metaobject.description
+  assign eyebrow_label = blog.metafields.custom.topic_hero_eyebrow
+  assign topic_image = topic_metaobject.image.value | default: topic_metaobject.image
 
   if path_metaobject != nil
-    assign topic_title = path_metaobject.title.value
+    assign topic_title = path_metaobject.title
     assign topic_handle = path_metaobject.system.handle | default: path_metaobject.handle | default: topic_title | handleize
-    assign topic_description = path_metaobject.subtitle.value
-    assign topic_image = path_metaobject.image.value
-    assign eyebrow_label = path_metaobject.eyebrow_label.value
+    assign topic_description = path_metaobject.subtitle
+    assign topic_image = path_metaobject.image.value | default: path_metaobject.image
+    assign eyebrow_label = path_metaobject.eyebrow_label
   endif
 
   assign topic_img_url = ''
@@ -91,7 +90,7 @@
     assign topic_img_url = topic_image | image_url: width: 800
   endif
 
-  assign topic_secondary_label = topic_metaobject.secondary_label.value
+  assign topic_secondary_label = topic_metaobject.secondary_label
 -%}
 
 <div class="ka-blog-wrapper">
