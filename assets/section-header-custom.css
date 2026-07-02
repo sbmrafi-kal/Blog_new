@@ -421,10 +421,10 @@ body.overflow-hidden {
 @media screen and (min-width: 990px) {
   .theme-header-custom__brand,
   .theme-header-custom__brand-image {
-    width: 65px !important;
-    height: 65px !important;
-    max-width: 65px !important;
-    max-height: 65px !important;
+    width: clamp(48px, 3.78vw + 10.6px, 65px) !important;
+    height: clamp(48px, 3.78vw + 10.6px, 65px) !important;
+    max-width: clamp(48px, 3.78vw + 10.6px, 65px) !important;
+    max-height: clamp(48px, 3.78vw + 10.6px, 65px) !important;
     object-fit: contain !important;
   }
   .theme-header-custom__nav-link:first-child {
@@ -432,15 +432,22 @@ body.overflow-hidden {
   }
   .theme-header-custom__inner {
     max-width: 1440px !important;
-    padding-left: 60px !important;
-    padding-right: 60px !important;
+    padding-left: clamp(24px, 8vw - 55.2px, 60px) !important;
+    padding-right: clamp(24px, 8vw - 55.2px, 60px) !important;
     margin: 0 auto !important;
   }
   .theme-header-custom__breadcrumbs {
     max-width: 1440px !important;
-    padding-left: 60px !important;
-    padding-right: 60px !important;
+    padding-left: clamp(24px, 8vw - 55.2px, 60px) !important;
+    padding-right: clamp(24px, 8vw - 55.2px, 60px) !important;
     margin: 0 auto !important;
+  }
+  .theme-header-custom__nav-link {
+    font-size: clamp(13px, 0.89vw + 4.2px, 17px) !important;
+  }
+  .theme-header-custom__nav-link::after {
+    margin-left: clamp(10px, 3.11vw - 20.8px, 24px) !important;
+    margin-right: clamp(10px, 3.11vw - 20.8px, 24px) !important;
   }
 }
 
@@ -448,13 +455,9 @@ body.overflow-hidden {
 @media screen and (min-width: 990px) and (max-width: 1200px) {
   .theme-header-custom__inner {
     gap: 10px !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
   }
 
   .theme-header-custom__breadcrumbs {
-    padding-left: 24px !important;
-    padding-right: 24px !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     white-space: nowrap !important;
@@ -471,22 +474,8 @@ body.overflow-hidden {
   }
 
   .theme-header-custom__nav-link {
-    font-size: 13px !important;
     padding: 0 6px !important;
     white-space: nowrap !important;
-  }
-
-  .theme-header-custom__nav-link::after {
-    margin-left: 10px !important;
-    margin-right: 10px !important;
-  }
-
-  .theme-header-custom__brand,
-  .theme-header-custom__brand-image {
-    width: 48px !important;
-    height: 48px !important;
-    max-width: 48px !important;
-    max-height: 48px !important;
   }
 
   .theme-header-custom__right {

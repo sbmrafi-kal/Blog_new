@@ -26,25 +26,6 @@
         loading="lazy"
         width="450"
       >
-    {%- else -%}
-      {%- comment -%} Fallback to a mock image based on article title length modulo {%- endcomment -%}
-      {%- assign fallback_num = card_article.title.size | modulo: 4 -%}
-      {%- if fallback_num == 0 -%}
-        {%- assign fallback_img = 'ginger.webp' -%}
-      {%- elsif fallback_num == 1 -%}
-        {%- assign fallback_img = 'cumin.webp' -%}
-      {%- elsif fallback_num == 2 -%}
-        {%- assign fallback_img = 'fennel.webp' -%}
-      {%- else -%}
-        {%- assign fallback_img = 'coriander.webp' -%}
-      {%- endif -%}
-      <img
-        class="ka-blog-card__img"
-        src="{{ fallback_img | asset_url }}"
-        alt="{{ card_article.title | escape }}"
-        loading="lazy"
-        width="800"
-      >
     {%- endif -%}
     {%- if show_chip and chip_text != blank -%}
       <span class="ka-blog-card__badge">{{ chip_text }}</span>

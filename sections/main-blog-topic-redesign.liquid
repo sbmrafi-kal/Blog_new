@@ -152,52 +152,7 @@
     assign eyebrow_label = 'Care Path'
   endif
 
-  # Retrieve/Map the same dark fallback images as on the main news page
-  assign asset_name = ''
-  if topic_handle contains 'digestion'
-    assign asset_name = 'topic-digestion.jpg'
-  elsif topic_handle contains 'food'
-    assign asset_name = 'topic-food.jpg'
-  elsif topic_handle contains 'herbs'
-    assign asset_name = 'topic-herbs.jpg'
-  elsif topic_handle contains 'weight' or topic_handle contains 'cravings'
-    assign asset_name = 'topic-weight.jpg'
-  elsif topic_handle contains 'immunity'
-    assign asset_name = 'topic-immunity.jpg'
-  elsif topic_handle contains 'seasons' or topic_handle contains 'routine'
-    assign asset_name = 'topic-seasons.jpg'
-  elsif topic_handle contains 'sleep' or topic_handle contains 'circadian'
-    assign asset_name = 'topic-sleep.jpg'
-  elsif topic_handle contains 'mind' or topic_handle contains 'calm'
-    assign asset_name = 'topic-mind.jpg'
-  elsif topic_handle contains 'habits'
-    assign asset_name = 'topic-habits.jpg'
-  elsif topic_handle contains 'joints' or topic_handle contains 'body' or topic_handle contains 'pain'
-    assign asset_name = 'topic-joints.jpg'
-  elsif topic_handle contains 'skin' or topic_handle contains 'glow'
-    assign asset_name = 'topic-skin.jpg'
-  elsif topic_handle contains 'hair' or topic_handle contains 'scalp'
-    assign asset_name = 'topic-hair.jpg'
-  elsif topic_handle contains 'senses' or topic_handle contains 'eyes' or topic_handle contains 'ears' or topic_handle contains 'mouth'
-    assign asset_name = 'topic-senses.jpg'
-  elsif topic_handle contains 'women'
-    assign asset_name = 'topic-women.jpg'
-  elsif topic_handle contains 'men'
-    assign asset_name = 'topic-men.jpg'
-  elsif topic_handle contains 'kids' or topic_handle contains 'children'
-    assign asset_name = 'topic-kids.jpg'
-  elsif topic_handle contains 'elder'
-    assign asset_name = 'topic-elders.jpg'
-  elsif topic_handle contains 'basics' or topic_handle contains 'ayurveda'
-    assign asset_name = 'topic-basics.jpg'
-  endif
 
-  assign fallback_img = ''
-  if asset_name != blank
-    assign fallback_img = asset_name | asset_url
-  else
-    assign fallback_img = 'topic-basics.jpg' | asset_url
-  endif
 
   # Image gets overridden above for Care Paths, but dereference/url check remains correct
   assign topic_img_url = ''
@@ -236,8 +191,6 @@
         <div class="ka-blog-topic-hero__image-wrap">
           {%- if topic_img_url != blank -%}
             <img src="{{ topic_img_url }}" alt="{{ topic_title | escape }}" loading="eager" fetchpriority="high">
-          {%- else -%}
-            <img src="{{ fallback_img }}" alt="{{ topic_title | escape }}" loading="eager" fetchpriority="high">
           {%- endif -%}
         </div>
       </article>

@@ -57,25 +57,6 @@
         fetchpriority="high"
         width="800"
       >
-    {%- else -%}
-      {%- comment -%} Fallback to a mock image based on article title length modulo {%- endcomment -%}
-      {%- assign fallback_num = featured.title.size | modulo: 4 -%}
-      {%- if fallback_num == 0 -%}
-        {%- assign fallback_img = 'ginger.webp' -%}
-      {%- elsif fallback_num == 1 -%}
-        {%- assign fallback_img = 'cumin.webp' -%}
-      {%- elsif fallback_num == 2 -%}
-        {%- assign fallback_img = 'fennel.webp' -%}
-      {%- else -%}
-        {%- assign fallback_img = 'coriander.webp' -%}
-      {%- endif -%}
-      <img
-        src="{{ fallback_img | asset_url }}"
-        alt="{{ featured.title | escape }}"
-        loading="eager"
-        fetchpriority="high"
-        width="800"
-      >
     {%- endif -%}
   </div>
 </a>
