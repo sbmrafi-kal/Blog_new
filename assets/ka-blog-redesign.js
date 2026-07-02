@@ -400,7 +400,10 @@
       barSpans.forEach(function (span, i) {
         var diff = Math.abs(i - index);
         if (diff === 0) {
-          span.style.transform = 'translateX(' + (-36 - shiftX) + 'px) scale(3.0)';
+          var baseScale = (window.innerWidth / 375) * 2.0;
+          var scaleVal = Math.min(2.4, Math.max(1.8, baseScale));
+          var shiftOffset = -12 * scaleVal;
+          span.style.transform = 'translateX(' + (shiftOffset - shiftX) + 'px) scale(' + scaleVal + ')';
           span.style.color = '#FFFFFF';
           span.style.backgroundColor = '#1E4B3C';
           span.style.opacity = '1';
