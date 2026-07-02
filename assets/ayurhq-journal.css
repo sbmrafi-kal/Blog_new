@@ -363,24 +363,24 @@ body:has(.ka-article-main-section) .ka-blog-subnav-wrap {
   border-radius: var(--ka-radius-xl);
   overflow: hidden;
   box-shadow: var(--ka-shadow);
-  background: #225040;
+  background: #225040 !important;
   display: flex;
   align-items: center;
   padding: clamp(32px, 7vw, 78px);
   position: relative;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .ka-blog-hero-shell h1 {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .ka-blog-hero-shell .ka-blog-lead {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .ka-blog-hero-shell .ka-blog-eyebrow {
-  color: #b8d29b;
+  color: #b8d29b !important;
 }
 
 .ka-blog-hero-content {
@@ -400,25 +400,25 @@ body:has(.ka-article-main-section) .ka-blog-subnav-wrap {
 
 .ka-blog-hero-actions .ka-blog-btn,
 .ka-blog-hero-actions .ka-blog-btn--secondary {
-  background-color: #ffffff;
-  color: #225040;
-  border: 1px solid #ffffff;
-  transition: all 0.2s ease-in-out;
+  background-color: #ffffff !important;
+  color: #225040 !important;
+  border: 1px solid #ffffff !important;
+  transition: all 0.2s ease-in-out !important;
 }
 
 @media (hover: hover) {
   .ka-blog-hero-actions .ka-blog-btn:hover,
   .ka-blog-hero-actions .ka-blog-btn--secondary:hover {
-    background-color: #225040;
-    color: #ffffff;
-    border-color: #ffffff;
+    background-color: #225040 !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
   }
 }
 .ka-blog-hero-actions .ka-blog-btn:active,
 .ka-blog-hero-actions .ka-blog-btn--secondary:active {
-  background-color: #225040;
-  color: #ffffff;
-  border-color: #ffffff;
+  background-color: #225040 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
 }
 
 /* =============================================================
