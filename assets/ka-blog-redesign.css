@@ -4189,6 +4189,11 @@ html {
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease !important;
 }
 
+.ka-niagara-scrubber-bar span.active {
+  color: #FFFFFF !important;
+  background-color: #1E4B3C !important;
+}
+
 /* Floating Scrubber Title Bubble */
 .ka-scrubber-bubble {
   position: fixed !important;
