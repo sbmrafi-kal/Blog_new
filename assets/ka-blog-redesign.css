@@ -1574,6 +1574,15 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   align-items: center !important;
   gap: 8px !important;
   padding: 48px 0 !important;
+  list-style: none !important;
+}
+
+.ka-blog-pagination li,
+.pagination__list > li {
+  flex: none !important;
+  max-width: none !important;
+  width: auto !important;
+  margin: 0 !important;
 }
 
 .ka-blog-pagination a,
@@ -1582,8 +1591,9 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   align-items: center !important;
   justify-content: center !important;
   min-width: 40px !important;
+  width: auto !important;
   height: 40px !important;
-  padding: 0 14px !important;
+  padding: 0 12px !important;
   border-radius: 999px !important;
   font-family: var(--ka-font-heavy) !important;
   font-weight: 800 !important;
@@ -1592,6 +1602,13 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   border: 1px solid var(--ka-line) !important;
   background: #FDFFFB !important;
   box-sizing: border-box !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.ka-blog-pagination a::after,
+.ka-blog-pagination span::after {
+  display: none !important;
 }
 
 .ka-blog-pagination span.current {
@@ -1786,15 +1803,21 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     font-size: 13px !important;
   }
 
-  .ka-blog-hero { padding-top: 16px !important; }
+  .ka-blog-hero { 
+    padding-top: 16px !important; 
+    padding-bottom: 16px !important;
+  }
   .ka-blog-hero-shell {
-    border-radius: var(--ka-radius-lg);
+    border-radius: var(--ka-radius-lg) !important;
     padding: 24px !important;
+    min-height: auto !important;
   }
   .ka-blog-hero-content .ka-blog-eyebrow {
     margin-top: 0 !important;
+    margin-bottom: 8px !important;
   }
   .ka-blog-hero-actions {
+    margin-top: 16px !important;
     margin-bottom: 0 !important;
   }
 
@@ -2210,7 +2233,9 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   .ka-blog-path-row {
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    text-align: left !important;
     background: white !important;
     border: 1px solid var(--ka-line) !important;
     border-radius: var(--ka-radius-lg) !important;
@@ -2224,11 +2249,14 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   /* Odd count full width override */
   .ka-blog-path-row:nth-child(odd):last-child {
     grid-column: span 2 !important;
+    align-items: center !important;
+    text-align: center !important;
   }
 
   .ka-blog-path-tags {
-    text-align: left !important;
     margin-top: 18px !important;
+    text-align: left !important;
+    width: 100% !important;
   }
 
   .ka-blog-path-row h3 {
@@ -2242,8 +2270,46 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
 
   .ka-blog-path-tags {
-    margin-top: 4px !important;
+    margin-top: 18px !important;
     text-align: left !important;
+    width: 100% !important;
+  }
+
+  .ka-blog-path-row:nth-child(odd):last-child .ka-blog-path-tags {
+    text-align: center !important;
+  }
+
+  /* Care Path Hero Page - Image on top inside hero on mobile */
+  .ka-blog-topic-hero--carepath {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    min-height: auto !important;
+    background: var(--ka-green) !important;
+  }
+  
+  .ka-blog-topic-hero--carepath .ka-blog-topic-hero__image-wrap {
+    display: block !important;
+    width: 100% !important;
+    height: 220px !important;
+    order: -1 !important;
+    position: relative !important;
+  }
+
+  .ka-blog-topic-hero--carepath .ka-blog-topic-hero__image-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .ka-blog-topic-hero--carepath .ka-blog-topic-hero__content {
+    padding: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -4268,6 +4334,7 @@ html {
 
   .ka-related-articles-track {
     display: grid !important;
+    grid-template-columns: none !important;
     grid-auto-flow: column !important;
     grid-template-rows: repeat(3, auto) !important;
     grid-auto-columns: 100% !important;

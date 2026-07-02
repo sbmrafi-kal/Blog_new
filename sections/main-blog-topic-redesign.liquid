@@ -220,7 +220,7 @@
 
   <section class="ka-blog-section--tight" id="overview">
     <div class="ka-blog-container">
-      <article class="ka-blog-topic-hero">
+      <article class="ka-blog-topic-hero{% if path_metaobject != nil %} ka-blog-topic-hero--carepath{% endif %}">
         <div class="ka-blog-topic-hero__content">
           <p class="ka-blog-eyebrow">
             {{ eyebrow_label }}
