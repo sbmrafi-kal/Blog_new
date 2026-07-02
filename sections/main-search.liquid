@@ -460,7 +460,7 @@
                   assign selected_blog = blogs['news']
                   assign topics = selected_blog.metafields.custom.topics.value
                 -%}
-                {%- if topics != blank -%}
+                {%- if search_term == blank and topics != blank -%}
                   <nav class="ka-blog-filter-bar" aria-label="Search page filters" style="margin-bottom: 24px;">
                     <a class="active" href="{{ routes.search_url }}?type=article&q=*&options[prefix]=last">All</a>
                     {%- for topic in topics -%}

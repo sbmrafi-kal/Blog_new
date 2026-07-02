@@ -400,9 +400,9 @@
       barSpans.forEach(function (span, i) {
         var diff = Math.abs(i - index);
         if (diff === 0) {
-          var baseScale = (window.innerWidth / 375) * 2.0;
-          var scaleVal = Math.min(2.4, Math.max(1.8, baseScale));
-          var shiftOffset = -12 * scaleVal;
+          var baseScale = (window.innerWidth / 375) * 1.6;
+          var scaleVal = Math.min(2.0, Math.max(1.4, baseScale));
+          var shiftOffset = -8 * scaleVal;
           span.style.transform = 'translateX(' + (shiftOffset - shiftX) + 'px) scale(' + scaleVal + ')';
           span.style.color = '#FFFFFF';
           span.style.backgroundColor = '#1E4B3C';
@@ -435,12 +435,7 @@
         
         if (bubbleNum) bubbleNum.textContent = String(index + 1).padStart(2, '0');
         if (bubbleTitle) {
-          var rawTitle = headings[index].textContent.trim();
-          if (rawTitle.length > 30) {
-            bubbleTitle.textContent = rawTitle.slice(0, 30) + '...';
-          } else {
-            bubbleTitle.textContent = rawTitle;
-          }
+          bubbleTitle.textContent = headings[index].textContent.trim();
         }
         
         var activeSpan = barSpans[index];
