@@ -55,7 +55,7 @@
   assign search_term = display_terms | downcase | strip
 -%}
 {%- paginate blogs['news'].articles by 250 -%}
-  {%- if search.performed -%
+  {%- if search.performed -%}
     {%- for art in blogs['news'].articles -%}
       {%- assign art_title = art.title | downcase -%}
       
