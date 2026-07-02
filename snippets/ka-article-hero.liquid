@@ -25,8 +25,8 @@
     endif
   endif
 
-  assign hero_image = hero_article.metafields.custom.hero_image | default: hero_article.image
-  assign hero_caption = hero_article.metafields.custom.hero_image_caption
+  assign hero_image = hero_article.metafields.custom.hero_image.value | default: hero_article.image
+  assign hero_caption = hero_article.metafields.custom.hero_image_caption.value | default: hero_article.metafields.custom.hero_image_caption
   assign by_label = blog.metafields.custom.by_label
   assign reviewed_by_prefix = blog.metafields.custom.reviewed_by_label
   assign updated_prefix = blog.metafields.custom.updated_label
