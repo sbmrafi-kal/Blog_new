@@ -8,24 +8,24 @@
 {%- render 'custom-article-font' -%}
 
 {%- liquid
-  assign category_label = article.metafields.custom.category_label.value | default: article.metafields.custom.category_label
+  assign category_label = article.metafields.custom.category_label.value
   assign topic = article.metafields.custom.topic.value
-  assign topic_title = topic.title
-  assign topic_tag = topic.article_filter_tag | handleize
+  assign topic_title = topic.title.value
+  assign topic_tag = topic.article_filter_tag.value | handleize
   assign author_profile = article.metafields.custom.written_by_profile.value | default: article.metafields.custom.written_by.value
   assign reviewer_profile = article.metafields.custom.reviewed_by_profile.value | default: article.metafields.custom.reviewed_by.value
 
-  assign breadcrumb_home = blog.metafields.custom.breadcrumb_home_label
-  assign subnav_overview = blog.metafields.custom.subnav_overview
-  assign subnav_care_paths = blog.metafields.custom.subnav_care_paths
-  assign subnav_topics = blog.metafields.custom.subnav_topics
-  assign subnav_latest = blog.metafields.custom.subnav_latest
-  assign subnav_consult = blog.metafields.custom.subnav_consult
-  assign toc_heading = blog.metafields.custom.toc_heading
-  assign toc_mobile_label = blog.metafields.custom.toc_mobile_label
-  assign share_label = blog.metafields.custom.share_label
-  assign written_by_label = blog.metafields.custom.written_by_label
-  assign reviewed_by_label = blog.metafields.custom.reviewed_by_label
+  assign breadcrumb_home = blog.metafields.custom.breadcrumb_home_label.value | default: blog.metafields.custom.breadcrumb_home_label
+  assign subnav_overview = blog.metafields.custom.subnav_overview.value | default: blog.metafields.custom.subnav_overview
+  assign subnav_care_paths = blog.metafields.custom.subnav_care_paths.value | default: blog.metafields.custom.subnav_care_paths
+  assign subnav_topics = blog.metafields.custom.subnav_topics.value | default: blog.metafields.custom.subnav_topics
+  assign subnav_latest = blog.metafields.custom.subnav_latest.value | default: blog.metafields.custom.subnav_latest
+  assign subnav_consult = blog.metafields.custom.subnav_consult.value | default: blog.metafields.custom.subnav_consult
+  assign toc_heading = blog.metafields.custom.toc_heading.value | default: blog.metafields.custom.toc_heading
+  assign toc_mobile_label = blog.metafields.custom.toc_mobile_label.value | default: blog.metafields.custom.toc_mobile_label
+  assign share_label = blog.metafields.custom.share_label.value | default: blog.metafields.custom.share_label
+  assign written_by_label = blog.metafields.custom.written_by_label.value | default: blog.metafields.custom.written_by_label
+  assign reviewed_by_label = blog.metafields.custom.reviewed_by_label.value | default: blog.metafields.custom.reviewed_by_label
 -%}
 
 <div class="ka-blog-wrapper">
