@@ -44,9 +44,9 @@
       <div class="ka-blog-hero-shell">
         <div class="ka-blog-hero-content">
           {%- liquid
-            assign hero_eyebrow = selected_blog.metafields.custom.hero_eyebrow | default: section.settings.hero_eyebrow
-            assign hero_title = selected_blog.metafields.custom.hero_title | default: section.settings.hero_title | default: selected_blog.title
-            assign hero_subtitle = selected_blog.metafields.custom.hero_subtitle | default: section.settings.hero_subtitle
+            assign hero_eyebrow = selected_blog.metafields.custom.hero_eyebrow
+            assign hero_title = selected_blog.metafields.custom.hero_title
+            assign hero_subtitle = selected_blog.metafields.custom.hero_subtitle
             assign hero_image = selected_blog.metafields.custom.hero_image.value | default: selected_blog.metafields.custom.hero_image
             assign hero_cta_1 = selected_blog.metafields.custom.hero_cta_1
             assign hero_cta_2 = selected_blog.metafields.custom.hero_cta_2

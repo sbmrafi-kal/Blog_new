@@ -4,8 +4,8 @@
 {% endcomment %}
 
 {%- liquid
-  assign disclaimer_label = article.metafields.custom.disclaimer_label | default: blog.metafields.custom.disclaimer_label
-  assign disclaimer_text = article.metafields.custom.medical_disclaimer.value | default: article.metafields.custom.medical_disclaimer | default: article.metafields.custom.disclaimer.value | default: article.metafields.custom.disclaimer | default: blog.metafields.custom.default_disclaimer
+  assign disclaimer_obj = blog.metafields.custom.health_disclaimer.value
+  assign disclaimer_text = disclaimer_obj.content.value | default: disclaimer_obj.content
 -%}
 
 {%- if disclaimer_text != blank -%}
