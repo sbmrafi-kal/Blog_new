@@ -1196,7 +1196,7 @@
       windowEl.classList.remove('ka-chatbot-hidden');
       windowEl.setAttribute('aria-hidden', 'false');
       trigger.classList.add('is-open');
-      trigger.innerHTML = '<span class="ka-close-x" style="font-size: 20px; font-weight: bold; line-height: 1;">✕</span>';
+      trigger.innerHTML = '<span class="ka-close-x">✕</span>';
       input.focus();
       
       if (!greetingTriggered) {
@@ -1213,7 +1213,7 @@
       windowEl.classList.add('ka-chatbot-hidden');
       windowEl.setAttribute('aria-hidden', 'true');
       trigger.classList.remove('is-open');
-      trigger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-chatbot-trigger-icon" style="margin-right: 8px; display: inline-block; vertical-align: middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span style="vertical-align: middle;">Ask Guruji</span>';
+      trigger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ka-chatbot-trigger-icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="ka-chatbot-label">Ask Guruji</span>';
     }
 
     trigger.addEventListener('click', function (e) {

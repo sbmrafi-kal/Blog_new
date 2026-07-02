@@ -3693,21 +3693,25 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 /* Typing bubble animation */
 .ka-chatbot-typing-bubble {
   display: flex;
-  gap: 4px;
-  padding: 12px 18px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 52px;
+  height: 32px;
   align-self: flex-start;
   background: #f6f7f2;
-  border: 1px solid var(--ka-line);
-  border-radius: 18px 18px 18px 4px;
+  border: 1px solid #e1e3db;
+  border-radius: 16px 16px 16px 4px;
+  box-sizing: border-box;
 }
 
 .ka-chatbot-typing-dot {
-  width: 5px;
-  height: 5px;
+  display: block;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--ka-green, #1E4B3C);
+  background: #1E4B3C;
   animation: ka-chatbot-bounce 1.2s infinite ease-in-out;
-  display: inline-block;
   flex-shrink: 0;
 }
 
