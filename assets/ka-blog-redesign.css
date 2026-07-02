@@ -2648,8 +2648,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
   .ka-article-author-reviewer-card .ka-article-author-card {
     padding: 16px 20px !important;
-    align-items: flex-start !important;
-    text-align: left !important;
+    align-items: center !important;
+    text-align: center !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -2688,8 +2688,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
 
   .ka-article-author-reviewer-card .ka-article-author-content {
-    align-items: flex-start !important;
-    text-align: left !important;
+    align-items: center !important;
+    text-align: center !important;
     width: 100% !important;
   }
   .ka-article-author-reviewer-card .ka-article-avatar {
@@ -2698,12 +2698,12 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
   .ka-article-author-reviewer-card .ka-author-name-row {
     font-size: 15px !important;
-    text-align: left !important;
+    text-align: center !important;
   }
   .ka-article-author-reviewer-card .ka-author-degree-row,
   .ka-article-author-reviewer-card .ka-author-qual-row {
     font-size: 11px !important;
-    text-align: left !important;
+    text-align: center !important;
   }
   .ka-article-author-reviewer-card .ka-avatar-hover-overlay {
     height: 24px !important;
@@ -4047,7 +4047,7 @@ html {
   
   .ka-blog-product-card__inner {
     flex-direction: row !important;
-    align-items: stretch !important;
+    align-items: flex-start !important;
   }
   
   .ka-blog-product-card__image {
@@ -4062,7 +4062,7 @@ html {
   }
   
   .ka-blog-product-card__info {
-    padding: 16px 14px !important;
+    padding: 8px 14px !important;
     justify-content: flex-start !important;
     flex: 1 !important;
     gap: 0px !important;

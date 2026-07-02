@@ -209,27 +209,24 @@
   {%- if search.performed -%}
     {%- for art in blogs['news'].articles -%}
       {%- assign art_title = art.title | downcase -%}
-      {%- assign art_excerpt = art.excerpt | default: art.content | strip_html | downcase -%}
-      {%- assign art_dek = art.metafields.custom.dek.value | default: art.metafields.custom.dek | default: '' | downcase -%}
       
       {%- assign match_found = false -%}
       {%- if search_term == blank or search_term == '*' -%}
         {%- assign match_found = true -%}
-      {%- elsif art_title contains search_term -%}
-        {%- assign match_found = true -%}
-      {%- elsif art_excerpt contains search_term -%}
-        {%- assign match_found = true -%}
-      {%- elsif art_dek contains search_term -%}
-        {%- assign match_found = true -%}
-      {%- endif -%}
-      
-      {%- if match_found == false -%}
+      {%- else -%}
+        {%- comment -%} Primary: match by tags {%- endcomment -%}
         {%- for t in art.tags -%}
           {%- assign t_down = t | downcase -%}
           {%- if t_down contains search_term -%}
             {%- assign match_found = true -%}{%- break -%}
           {%- endif -%}
         {%- endfor -%}
+        {%- comment -%} Secondary: match by title {%- endcomment -%}
+        {%- if match_found == false -%}
+          {%- if art_title contains search_term -%}
+            {%- assign match_found = true -%}
+          {%- endif -%}
+        {%- endif -%}
       {%- endif -%}
       
       {%- if match_found -%}
