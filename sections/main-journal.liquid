@@ -55,7 +55,14 @@
             <p class="ka-blog-eyebrow">{{ hero_eyebrow }}</p>
           {%- endif -%}
           {%- if hero_title != blank -%}
-            <h1>{{ hero_title }}</h1>
+            <h1>
+              {%- assign hero_title_stripped = hero_title | strip -%}
+              {%- if hero_title_stripped == "Kerala Ayurveda Wellness Journal" -%}
+                Kerala Ayurveda<br>Wellness Journal
+              {%- else -%}
+                {{ hero_title }}
+              {%- endif -%}
+            </h1>
           {%- endif -%}
           {%- if hero_subtitle != blank -%}
             <p class="ka-blog-lead">{{ hero_subtitle }}</p>
