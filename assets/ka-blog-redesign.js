@@ -401,8 +401,8 @@
         var diff = Math.abs(i - index);
         if (diff === 0) {
           span.style.transform = 'translateX(' + (-36 - shiftX) + 'px) scale(3.0)';
-          span.style.color = 'var(--ka-green)';
-          span.style.backgroundColor = 'transparent';
+          span.style.color = '#FFFFFF';
+          span.style.backgroundColor = '#1E4B3C';
           span.style.opacity = '1';
           span.classList.add('active');
         } else if (diff === 1) {
