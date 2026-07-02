@@ -2297,7 +2297,8 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   }
 
   .ka-blog-path-tags {
-    margin-top: 0px !important;
+    margin-top: auto !important;
+    padding-top: 12px !important;
     text-align: left !important;
     width: 100% !important;
   }
