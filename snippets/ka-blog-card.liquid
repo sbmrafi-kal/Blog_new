@@ -6,12 +6,12 @@
 {%- liquid
   assign card_article = article
   assign show_chip = show_chip | default: true
-  assign chip_text = card_article.metafields.custom.hero_badge.value | default: card_article.metafields.custom.category_label.value | default: card_article.tags.first
-  assign read_time = card_article.metafields.custom.read_time.value | default: card_article.metafields.custom.read_time_minutes.value
-  assign dek = card_article.metafields.custom.dek.value | default: card_article.excerpt | default: card_article.content | strip_html | truncatewords: 25
-  assign min_read_label = blog.metafields.custom.min_read_label.value | default: blog.metafields.custom.min_read_label
-  assign read_article_label = blog.metafields.custom.read_article_label.value | default: blog.metafields.custom.read_article_label
-  assign card_image = card_article.metafields.custom.hero_image.value | default: card_article.image
+  assign chip_text = card_article.metafields.custom.hero_badge.value | default: card_article.metafields.custom.hero_badge | default: card_article.metafields.custom.category_label.value | default: card_article.metafields.custom.category_label | default: card_article.tags.first
+  assign read_time = card_article.metafields.custom.read_time.value | default: card_article.metafields.custom.read_time | default: card_article.metafields.custom.read_time_minutes.value | default: card_article.metafields.custom.read_time_minutes
+  assign dek = card_article.metafields.custom.dek.value | default: card_article.metafields.custom.dek | default: card_article.excerpt | default: card_article.metafields.custom.article_body.value | default: card_article.metafields.custom.article_body | default: card_article.content | strip_html | truncatewords: 25
+  assign min_read_label = blog.metafields.custom.min_read_label.value | default: blog.metafields.custom.min_read_label | default: 'min read'
+  assign read_article_label = blog.metafields.custom.read_article_label.value | default: blog.metafields.custom.read_article_label | default: 'Read article'
+  assign card_image = card_article.metafields.custom.hero_image.value | default: card_article.metafields.custom.hero_image | default: card_article.image
 -%}
 
 <a class="ka-blog-card" href="{{ card_article.url }}">
@@ -21,6 +21,26 @@
         class="ka-blog-card__img"
         src="{{ card_image | image_url: width: 450 }}"
         alt="{{ card_image.alt | default: card_article.title | escape }}"
+        loading="lazy"
+        width="450"
+        height="300"
+      >
+    {%- else -%}
+      {%- comment -%} Fallback to a mock image based on article title length modulo {%- endcomment -%}
+      {%- assign fallback_num = card_article.title.size | modulo: 4 -%}
+      {%- if fallback_num == 0 -%}
+        {%- assign fallback_img = 'ginger.webp' -%}
+      {%- elsif fallback_num == 1 -%}
+        {%- assign fallback_img = 'cumin.webp' -%}
+      {%- elsif fallback_num == 2 -%}
+        {%- assign fallback_img = 'fennel.webp' -%}
+      {%- else -%}
+        {%- assign fallback_img = 'coriander.webp' -%}
+      {%- endif -%}
+      <img
+        class="ka-blog-card__img"
+        src="{{ fallback_img | asset_url }}"
+        alt="{{ card_article.title | escape }}"
         loading="lazy"
         width="450"
         height="300"

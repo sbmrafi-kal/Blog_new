@@ -2819,6 +2819,11 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
     justify-content: center;
   }
 
+  .ka-blog-hero-content h1 {
+    max-width: 37.6rem; /* baseline: 601.47px */
+    width: 100%;
+  }
+
   .ka-blog-hero-image-wrap {
     display: block !important;
     height: 100%;
@@ -3692,25 +3697,21 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 /* Typing bubble animation */
 .ka-chatbot-typing-bubble {
   display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 5px !important;
-  width: 52px !important;
-  height: 32px !important;
+  gap: 4px !important;
+  padding: 12px 18px !important;
   align-self: flex-start !important;
   background: #f6f7f2 !important;
   border: 1px solid #e1e3db !important;
-  border-radius: 16px 16px 16px 4px !important;
-  box-sizing: border-box !important;
+  border-radius: 18px 18px 18px 4px !important;
 }
 
 .ka-chatbot-typing-dot {
-  display: block !important;
-  width: 6px !important;
-  height: 6px !important;
+  width: 5px !important;
+  height: 5px !important;
   border-radius: 50% !important;
   background: #1E4B3C !important;
   animation: ka-chatbot-bounce 1.2s infinite ease-in-out !important;
+  display: inline-block !important;
   flex-shrink: 0 !important;
 }
 
