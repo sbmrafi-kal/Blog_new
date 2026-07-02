@@ -1788,22 +1788,54 @@
         card.classList.add('is-open');
         header.setAttribute('aria-expanded', 'true');
         content.style.maxHeight = content.scrollHeight + 'px';
-        // Scroll the card fully into view after opening animation
-        setTimeout(function() {
+        // Scroll the card fully into view immediately
+        var headerEl = document.querySelector('.theme-header-custom');
+        var headerHeight = headerEl ? headerEl.offsetHeight : 60;
+        var breadcrumbsWrap = document.querySelector('.theme-header-custom__breadcrumbs-wrap');
+        var subnavHeight = breadcrumbsWrap ? breadcrumbsWrap.offsetHeight : 50;
+        
+        var targetPosition = card.getBoundingClientRect().top + window.pageYOffset;
+        var offsetPosition = targetPosition - headerHeight - subnavHeight - 24;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+
+  // ============================================================
+  // GENERIC SMOOTH SCROLL WITH HEADER OFFSET FOR ANCHOR LINKS
+  // ============================================================
+  function initAnchorOffsets() {
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var targetId = this.getAttribute('href');
+        if (targetId === '#' || targetId.length < 2) return;
+        var targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
           var headerEl = document.querySelector('.theme-header-custom');
           var headerHeight = headerEl ? headerEl.offsetHeight : 60;
           var breadcrumbsWrap = document.querySelector('.theme-header-custom__breadcrumbs-wrap');
           var subnavHeight = breadcrumbsWrap ? breadcrumbsWrap.offsetHeight : 50;
           
-          var targetPosition = card.getBoundingClientRect().top + window.pageYOffset;
+          var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
           var offsetPosition = targetPosition - headerHeight - subnavHeight - 24;
           
           window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
           });
-        }, 350);
-      }
+          
+          if (history.pushState) {
+            history.pushState(null, null, targetId);
+          } else {
+            location.hash = targetId;
+          }
+        }
+      });
     });
   }
 
@@ -1827,6 +1859,7 @@
     try { initRelatedArticlesCarousel(); } catch(e) { console.error("initRelatedArticlesCarousel error:", e); }
     try { initMobileScrollProgressBar(); } catch(e) { console.error("initMobileScrollProgressBar error:", e); }
     try { initWhyTrustCard(); } catch(e) { console.error("initWhyTrustCard error:", e); }
+    try { initAnchorOffsets(); } catch(e) { console.error("initAnchorOffsets error:", e); }
   }
 
   if (document.readyState === 'loading') {

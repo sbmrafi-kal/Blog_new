@@ -129,6 +129,25 @@
     assign topic_title = path_metaobject.title.value | default: path_metaobject.title
     assign topic_handle = path_metaobject.system.handle | default: path_metaobject.handle | default: topic_title | handleize
     assign topic_description = path_metaobject.subtitle.value | default: path_metaobject.subtitle
+    
+    # Custom high-quality descriptions for each care path
+    assign topic_handle_lower_desc = topic_handle | downcase
+    if topic_handle_lower_desc contains 'digest' or topic_handle_lower_desc contains 'gut'
+      assign topic_description = 'Restore your core digestive fire (Agni) and naturally eliminate toxins (Ama). This clinical care pathway is tailored to resolve bloating, irregular motions, and metabolic stress using classical Ayurvedic herbs.'
+    elsif topic_handle_lower_desc contains 'sleep' or topic_handle_lower_desc contains 'stress' or topic_handle_lower_desc contains 'mind'
+      assign topic_description = 'Calm Vata, nourish your nervous system, and achieve natural restful sleep cycles. This care pathway provides step-by-step guidance on Ayurvedic routines, herbal support, and stress relief to restore tranquility.'
+    elsif topic_handle_lower_desc contains 'joint' or topic_handle_lower_desc contains 'pain' or topic_handle_lower_desc contains 'body'
+      assign topic_description = 'Relieve stiffness, ease deep tissue discomfort, and nourish bone density. This care pathway features traditional herbal formulations, heat therapies, and targeted movements to keep your joints active and flexible.'
+    elsif topic_handle_lower_desc contains 'skin' or topic_handle_lower_desc contains 'hair' or topic_handle_lower_desc contains 'beauty'
+      assign topic_description = 'Nurture skin luminosity and scalp health from within. This pathway balances excess Pitta, purifies circulatory channels, and promotes natural hair follicle strength using time-tested botanical oils and internal therapies.'
+    elsif topic_handle_lower_desc contains 'women'
+      assign topic_description = 'Nurture feminine balance, support monthly comfort, and ease transitional wellness. This pathway provides classical Ayurvedic formulas and daily routines designed to maintain natural hormonal cycles and vitality.'
+    elsif topic_handle_lower_desc contains 'men'
+      assign topic_description = 'Boost physical strength, support male reproductive wellness, and build active stamina. This pathway leverages traditional vitality herbs, performance nutrition, and lifestyle modifications for complete health.'
+    elsif topic_description == blank
+      assign topic_description = 'An expert-guided Ayurvedic pathway containing personalized diet plans, specific herbal formulas, and daily routines to achieve complete root-cause healing and restore natural vitality.'
+    endif
+    
     assign topic_image = path_metaobject.image.value | default: path_metaobject.image
     assign eyebrow_label = 'Care Path'
   endif
@@ -275,7 +294,18 @@
           
           <div class="ka-care-journey-steps">
             <div class="ka-care-journey-step">
-              <div class="ka-care-step-num">01</div>
+              <div class="ka-care-step-icon-wrap">
+                <div class="ka-care-step-num">01</div>
+                <div class="ka-care-step-svg">
+                  <!-- Cleanse / Prep Leaf Droplet SVG -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"></path>
+                    <path d="M12 22V12"></path>
+                    <path d="M12 12c2.5-2.5 4.5-2.5 6-1"></path>
+                    <path d="M12 15c-2.5-2.5-4.5-2.5-6-1"></path>
+                  </svg>
+                </div>
+              </div>
               <div class="ka-care-step-content">
                 <h4>{{ phase_1_title }}</h4>
                 <p>{{ phase_1_desc }}</p>
@@ -285,7 +315,20 @@
             <div class="ka-care-journey-step-connector"></div>
             
             <div class="ka-care-journey-step">
-              <div class="ka-care-step-num">02</div>
+              <div class="ka-care-step-icon-wrap">
+                <div class="ka-care-step-num">02</div>
+                <div class="ka-care-step-svg">
+                  <!-- Nourish / Balance Lotus SVG -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v18"></path>
+                    <path d="M5 12h14"></path>
+                    <path d="M12 12l-6-6"></path>
+                    <path d="M12 12l6 6"></path>
+                    <path d="M12 12l-6 6"></path>
+                    <path d="M12 12l6-6"></path>
+                  </svg>
+                </div>
+              </div>
               <div class="ka-care-step-content">
                 <h4>{{ phase_2_title }}</h4>
                 <p>{{ phase_2_desc }}</p>
@@ -295,7 +338,17 @@
             <div class="ka-care-journey-step-connector"></div>
             
             <div class="ka-care-journey-step">
-              <div class="ka-care-step-num">03</div>
+              <div class="ka-care-step-icon-wrap">
+                <div class="ka-care-step-num">03</div>
+                <div class="ka-care-step-svg">
+                  <!-- Rejuvenate / Sustain Sunburst Shield SVG -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M12 8v8"></path>
+                    <path d="M9 12h6"></path>
+                  </svg>
+                </div>
+              </div>
               <div class="ka-care-step-content">
                 <h4>{{ phase_3_title }}</h4>
                 <p>{{ phase_3_desc }}</p>

@@ -116,8 +116,8 @@
       {%- endif -%}
     </div>
     
-    {%- if shown_count > 1 -%}
-      <div class="ka-related-articles-nav{% if shown_count <= 3 %} ka-hide-on-desktop{% endif %}">
+    {%- if shown_count > 3 -%}
+      <div class="ka-related-articles-nav">
         <button class="ka-related-arrow ka-related-arrow--prev" aria-label="Previous articles">←</button>
         <button class="ka-related-arrow ka-related-arrow--next" aria-label="Next articles">→</button>
       </div>
