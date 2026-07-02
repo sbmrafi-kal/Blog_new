@@ -1054,10 +1054,14 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   padding: 0 20px 16px;
 }
 
-.ka-article-toc-mobile__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.ka-article-toc-mobile__list,
+.ka-article-toc-mobile__list li,
+.ka-article-sidebar__list,
+.ka-article-sidebar__list li {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .ka-article-toc-mobile__list a {
@@ -3185,92 +3189,99 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-comment-format-btn {
-  background: none;
-  border: none;
-  color: var(--ka-muted);
-  font-family: var(--ka-font-medium);
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
-  transition: background 0.15s ease, color 0.15s ease;
+  background: none !important;
+  border: none !important;
+  color: var(--ka-muted) !important;
+  font-family: var(--ka-font-medium) !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 4px !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .ka-comment-format-btn:hover {
-  background: var(--ka-soft-2);
-  color: var(--ka-green);
+  background: var(--ka-soft-2) !important;
+  color: var(--ka-green) !important;
 }
 
 .ka-comment-format-btn.is-active {
-  background-color: #cbd5e1;
-  color: #1e4b3c;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px #9ca3af;
+  background-color: #cbd5e1 !important;
+  color: #1e4b3c !important;
+  border-radius: 2px !important;
+  box-shadow: 0 0 0 1px #9ca3af !important;
 }
 
 .ka-comment-format-btn[data-format="bold"] {
-  font-weight: 800;
+  font-weight: 800 !important;
 }
 
 .ka-comment-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
+  display: flex !important;
+  gap: 12px !important;
+  align-items: center !important;
 }
 
 .ka-comment-btn-cancel {
-  background: none;
-  border: none;
-  color: var(--ka-muted);
-  font-family: var(--ka-font-heavy);
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: color 0.15s ease;
+  background: none !important;
+  border: none !important;
+  color: var(--ka-muted) !important;
+  font-family: var(--ka-font-heavy) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: color 0.15s ease !important;
+  padding: 8px 12px !important;
+  box-shadow: none !important;
 }
 
 .ka-comment-btn-cancel:hover {
-  color: var(--ka-green);
+  color: var(--ka-green) !important;
 }
 
 .ka-comment-btn-next {
-  background: var(--ka-green);
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-family: var(--ka-font-heavy);
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
+  background: var(--ka-green) !important;
+  border: none !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 999px !important;
+  font-family: var(--ka-font-heavy) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease, transform 0.15s ease !important;
+  box-shadow: none !important;
 }
 
 .ka-comment-btn-next:hover {
-  background: var(--ka-green-2);
-  transform: translateY(-1px);
+  background: var(--ka-green-2) !important;
+  transform: translateY(-1px) !important;
+  color: white !important;
 }
 
 .ka-comment-submit-btn {
-  background: var(--ka-green);
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-family: var(--ka-font-heavy);
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
+  background: var(--ka-green) !important;
+  border: none !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 999px !important;
+  font-family: var(--ka-font-heavy) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease, transform 0.15s ease !important;
+  box-shadow: none !important;
 }
 
 .ka-comment-submit-btn:hover {
-  background: var(--ka-green-2);
-  transform: translateY(-1px);
-  color: white;
+  background: var(--ka-green-2) !important;
+  transform: translateY(-1px) !important;
+  color: white !important;
 }
 
 /* Name & Email Popup Form */

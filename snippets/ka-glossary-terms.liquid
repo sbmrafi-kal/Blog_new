@@ -5,8 +5,8 @@
 
 {%- liquid
   assign glossary = article.metafields.custom.glossary_terms.value
-  assign glossary_eyebrow = article.metafields.custom.glossary_eyebrow | default: blog.metafields.custom.glossary_eyebrow
-  assign glossary_heading = article.metafields.custom.glossary_heading | default: blog.metafields.custom.glossary_heading
+  assign glossary_eyebrow = article.metafields.custom.glossary_eyebrow | default: blog.metafields.custom.glossary_eyebrow | default: 'Words to know'
+  assign glossary_heading = article.metafields.custom.glossary_heading | default: blog.metafields.custom.glossary_heading | default: 'Ayurveda glossary'
 -%}
 
 {%- if glossary != blank and glossary.size > 0 -%}

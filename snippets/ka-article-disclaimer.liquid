@@ -4,8 +4,12 @@
 {% endcomment %}
 
 {%- liquid
-  assign disclaimer_obj = blog.metafields.custom.health_disclaimer.value
-  assign disclaimer_text = disclaimer_obj.content.value | default: disclaimer_obj.content
+  assign disclaimer_label = article.metafields.custom.disclaimer_label | default: blog.metafields.custom.disclaimer_label | default: 'Health disclaimer:'
+  assign custom_disclaimer = article.metafields.custom.medical_disclaimer.value | default: article.metafields.custom.medical_disclaimer | default: article.metafields.custom.disclaimer.value | default: article.metafields.custom.disclaimer | default: blog.metafields.custom.health_disclaimer.value.content.value | default: blog.metafields.custom.health_disclaimer.value.content
+  assign default_disclaimer = 'Ayurveda guidance on Kerala Ayurveda is supportive care, not emergency or diagnostic medical treatment.'
+  assign disclaimer_text = custom_disclaimer | default: default_disclaimer
+  
+  assign disclaimer_text = disclaimer_text | replace: 'on AyurHQ', 'on Kerala Ayurveda' | replace: 'on DhyanHQ', 'on Kerala Ayurveda' | replace: 'AyurHQ', 'Kerala Ayurveda' | replace: 'DhyanHQ', 'Kerala Ayurveda' | replace: '  ', ' ' | strip
 -%}
 
 {%- if disclaimer_text != blank -%}

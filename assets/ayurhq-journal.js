@@ -911,10 +911,11 @@
       var query = searchInput.value.trim();
       if (query) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         var scopedQuery = 'title:(' + query + ') OR body:(' + query + ') OR tag:(' + query + ')';
         window.location.href = '/search?type=article&q=' + encodeURIComponent(scopedQuery) + '&options[prefix]=last';
       }
-    });
+    }, true);
   }
 
   // ============================================================

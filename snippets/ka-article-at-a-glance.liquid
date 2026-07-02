@@ -6,8 +6,8 @@
 {%- liquid
   assign at_a_glance_cards = article.metafields.custom.at_a_glance_cards.value
   assign at_a_glance = article.metafields.custom.at_a_glance.value
-  assign glance_eyebrow = article.metafields.custom.at_a_glance_eyebrow | default: blog.metafields.custom.at_a_glance_eyebrow
-  assign glance_heading = article.metafields.custom.at_a_glance_heading | default: blog.metafields.custom.at_a_glance_heading
+  assign glance_eyebrow = article.metafields.custom.at_a_glance_eyebrow | default: blog.metafields.custom.at_a_glance_eyebrow | default: 'Key Takeaways'
+  assign glance_heading = article.metafields.custom.at_a_glance_heading | default: blog.metafields.custom.at_a_glance_heading | default: ''
 -%}
 
 {%- if at_a_glance_cards != blank and at_a_glance_cards.size > 0 -%}
