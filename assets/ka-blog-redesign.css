@@ -227,7 +227,14 @@
   cursor: pointer;
 }
 
-.ka-blog-btn:hover {
+@media (hover: hover) {
+  .ka-blog-btn:hover {
+    transform: translateY(-2px);
+    background: var(--ka-cta-bg-hover, #b03d0b);
+    box-shadow: 0 18px 30px rgba(30, 75, 60, 0.20);
+  }
+}
+.ka-blog-btn:active {
   transform: translateY(-2px);
   background: var(--ka-cta-bg-hover, #b03d0b);
   box-shadow: 0 18px 30px rgba(30, 75, 60, 0.20);
@@ -405,8 +412,16 @@ body:has(.ka-article-main-section) .ka-blog-subnav-wrap {
   transition: all 0.2s ease-in-out !important;
 }
 
-.ka-blog-hero-actions .ka-blog-btn:hover,
-.ka-blog-hero-actions .ka-blog-btn--secondary:hover {
+@media (hover: hover) {
+  .ka-blog-hero-actions .ka-blog-btn:hover,
+  .ka-blog-hero-actions .ka-blog-btn--secondary:hover {
+    background-color: #225040 !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+  }
+}
+.ka-blog-hero-actions .ka-blog-btn:active,
+.ka-blog-hero-actions .ka-blog-btn--secondary:active {
   background-color: #225040 !important;
   color: #ffffff !important;
   border-color: #ffffff !important;
@@ -1425,10 +1440,15 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
 .ka-article-comment-list {
   display: block !important;
-  max-height: 400px !important;
+  max-height: 520px !important;
+  min-height: 520px !important;
   overflow-y: auto !important;
   margin-top: 22px;
   padding-right: 8px !important;
+  border: 1px dashed var(--ka-line) !important;
+  border-radius: var(--ka-radius-md) !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
 }
 
 .ka-article-comment-card {
@@ -2835,13 +2855,14 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 }
 
 .ka-article-comment-list {
-  max-height: 350px !important;
+  max-height: 520px !important;
+  min-height: 520px !important;
   overflow-y: auto !important;
-  padding-right: 12px !important;
-  border: 1px solid var(--ka-line) !important;
-  border-radius: var(--ka-radius-lg) !important;
+  border: 1px dashed var(--ka-line) !important;
+  border-radius: var(--ka-radius-md) !important;
   padding: 16px !important;
   background: #FDFFFB !important;
+  box-sizing: border-box !important;
 }
 
 .ka-article-comments-left,
@@ -3139,6 +3160,9 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
   color: #fff !important;
   border: 2px solid #fff !important;
   box-shadow: 0 10px 30px rgba(30, 75, 60, 0.25) !important;
+  right: 33px !important;
+  position: fixed !important;
+  bottom: 24px !important;
 }
 
 .ka-chatbot-trigger.is-open span:not(.ka-close-x),
@@ -3975,15 +3999,15 @@ html {
 .ka-scrubber-bubble .bubble-title {
   font-family: var(--ka-font-heading) !important;
   font-weight: 800 !important;
-  font-size: 18px !important;
-  line-height: 1.2 !important;
+  font-size: 16px !important;
+  line-height: 1.3 !important;
   color: #1E4B3C !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  text-shadow: 0 0 2px #ffffff, 0 0 6px #ffffff, 0 0 10px #ffffff !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff, 0 0 14px #ffffff, 0 0 20px rgba(255,255,255,0.6) !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow: visible !important;
   width: 100% !important;
   text-align: left !important;
 }
@@ -4213,7 +4237,7 @@ html {
   }
 
   .ka-related-articles-track > .ka-blog-card {
-    flex: 0 0 calc(50% - 8px) !important;
+    flex: 0 0 100% !important;
     scroll-snap-align: start !important;
     scroll-snap-stop: always !important;
     padding: 0 !important;

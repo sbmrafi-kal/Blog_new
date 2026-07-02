@@ -4,7 +4,10 @@
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
+  max-width: 100vw !important;
   z-index: 99999 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 
 .theme-header-custom {
@@ -21,6 +24,8 @@
   margin: 0 auto;
   padding: 10px 6px 10px 2px !important;
   color: #1e4b3c;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
 
@@ -133,7 +138,15 @@
 .brand-line--top { font-size: 32px; font-weight: 400; line-height: 1; text-transform: lowercase; }
 .brand-line--bottom { font-size: 14px; font-weight: 400; opacity: 0.95; margin-top: -4px; text-transform: lowercase; }
 
-.theme-header-custom__right { display: flex; gap: 12px; justify-content: flex-end; align-items: center; }
+.theme-header-custom__right {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+}
 .theme-header-custom__action {
   position: relative;
   display: inline-flex;
@@ -231,8 +244,10 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 4px !important;
+    gap: 2px !important;
     min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
   }
 
   .theme-header-custom__action--account {
@@ -268,6 +283,13 @@
     gap: 6px;
     overflow-x: auto;
     white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .theme-header-custom__breadcrumbs::-webkit-scrollbar {
+    display: none;
   }
 
 }

@@ -59,7 +59,7 @@
     background: #FDFFFB !important;
     box-shadow: var(--ka-shadow-soft) !important;
     overflow: hidden;
-    height: 52px !important;
+    height: 56px !important;
     display: flex !important;
     align-items: center !important;
   }
@@ -75,7 +75,8 @@
     font-size: 16px !important;
     padding-left: 24px !important;
     padding-right: 80px !important;
-    padding-top: 14px !important;
+    padding-top: 18px !important;
+    padding-bottom: 6px !important;
     height: 100% !important;
     background: transparent !important;
     border: none !important;
@@ -97,7 +98,7 @@
 
   .template-search__search .search .field__input:focus ~ .field__label,
   .template-search__search .search .field__input:not(:placeholder-shown) ~ .field__label {
-    top: 8px !important;
+    top: 10px !important;
     transform: none !important;
     font-size: 10px !important;
     opacity: 0.7 !important;
@@ -152,6 +153,16 @@
     fill: none !important;
     stroke: var(--ka-muted) !important;
     stroke-width: 2px !important;
+  }
+
+  /* Mobile search results: 1 card per row, 6 visible */
+  @media (max-width: 749px) {
+    .template-search .ka-blog-article-grid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+      overflow-x: hidden !important;
+    }
   }
 </style>
 

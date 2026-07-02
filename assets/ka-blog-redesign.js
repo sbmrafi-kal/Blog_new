@@ -1788,6 +1788,10 @@
         card.classList.add('is-open');
         header.setAttribute('aria-expanded', 'true');
         content.style.maxHeight = content.scrollHeight + 'px';
+        // Scroll the card fully into view after opening animation
+        setTimeout(function() {
+          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 350);
       }
     });
   }
