@@ -227,6 +227,14 @@
             {%- assign match_found = true -%}
           {%- endif -%}
         {%- endif -%}
+        {%- comment -%} Tertiary: match by body/excerpt or dek {%- endcomment -%}
+        {%- if match_found == false -%}
+          {%- assign art_excerpt = art.excerpt | default: art.content | strip_html | downcase -%}
+          {%- assign art_dek = art.metafields.custom.dek.value | default: art.metafields.custom.dek | default: '' | downcase -%}
+          {%- if art_excerpt contains search_term or art_dek contains search_term -%}
+            {%- assign match_found = true -%}
+          {%- endif -%}
+        {%- endif -%}
       {%- endif -%}
       
       {%- if match_found -%}
