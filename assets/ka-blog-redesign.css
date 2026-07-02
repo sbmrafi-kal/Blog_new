@@ -99,11 +99,6 @@
 /* =============================================================
    BASE — Wrapper & Container
    ============================================================= */
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
-  width: 100% !important;
-}
 
 .ka-blog-wrapper {
   color: var(--ka-ink);
@@ -1726,16 +1721,31 @@ a:hover .ka-blog-read-more::after { transform: translateX(3px); }
 
   .ka-article-toc-mobile { display: block; }
   
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+
   .ka-blog-wrapper {
     overflow-x: hidden !important;
     max-width: 100vw !important;
     width: 100% !important;
   }
 
+  .ka-article-content,
   .ka-article-body {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  .ka-article-body * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
   }
 
   .ka-blog-topic-grid { grid-template-columns: repeat(2, 1fr); }
